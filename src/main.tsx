@@ -95,8 +95,9 @@ function clamp(value: number, min: number, max: number): number {
 export class Main extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
-  private readonly MIN_BLOCKS_PER_PIXEL = 0.125;
-  private readonly MAX_BLOCKS_PER_PIXEL = 8;
+  private readonly MIN_BLOCKS_PER_PIXEL = 0.25;
+  private readonly MAX_BLOCKS_PER_PIXEL = 4;
+  private isRedrawNeeded = true;
 
   constructor(props: {}) {
     super(props);
@@ -110,7 +111,9 @@ export class Main extends React.Component<{}, MainState> {
   private scheduleRender(ctx: CanvasRenderingContext2D) {
     let updateAndRender = () => {};
     updateAndRender = () => {
-      this.draw(ctx);
+      if (this.isRedrawNeeded) {
+        this.draw(ctx);
+      }
       requestAnimationFrame(updateAndRender);
     };
     requestAnimationFrame(updateAndRender);
@@ -137,18 +140,23 @@ export class Main extends React.Component<{}, MainState> {
     const maxMipmapZ = Math.ceil(maxBlockz / mipmapBlockHeight);
     const now = Date.now();
     const fadeInSeconds = 0.3;
-    ctx.imageSmoothingEnabled = blocksPerPixel > 2;
+    ctx.imageSmoothingEnabled = blocksPerPixel > 0.5;
     ctx.imageSmoothingQuality = "high";
+    let loadingInProgress = false;
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
       for (let z = minMipmapZ; z <= maxMipmapZ; z++) {
         const tile = this.mipmaps[0].get(new Point(x, z));
         if (!tile) {
+          loadingInProgress = true;
           continue;
         }
         const px = (x * mipmapBlockWidth - minBlockX) / blocksPerPixel;
         const py = (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel;
         const elapsed = (now - tile.loadedUnixTime) / 1000;
         const alpha = clamp(elapsed / fadeInSeconds, 0, 1);
+        if (alpha < 1) {
+          loadingInProgress = true;
+        }
         ctx.globalAlpha = alpha;
         ctx.drawImage(
           tile.image,
@@ -160,6 +168,9 @@ export class Main extends React.Component<{}, MainState> {
       }
     }
     ctx.restore();
+    if (!loadingInProgress) {
+      this.isRedrawNeeded = false;
+    }
   }
 
   private mipmapLevel(scale: number) {
@@ -175,6 +186,14 @@ export class Main extends React.Component<{}, MainState> {
     canvas.addEventListener("wheel", this.onWheelEvent);
     const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<{}>,
+    prevState: Readonly<MainState>,
+    snapshot?: any
+  ): void {
+    this.isRedrawNeeded = true;
   }
 
   private readonly onWheelEvent = (ev: WheelEvent) => {
