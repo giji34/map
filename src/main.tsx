@@ -13,6 +13,10 @@ class Point {
   toString() {
     return `[${this.x},${this.z}]`;
   }
+
+  clone(): Point {
+    return new Point(this.x, this.z);
+  }
 }
 
 class MainState {
@@ -92,12 +96,18 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
+type DownEvent = {
+  event: MouseEvent;
+  center: Point;
+};
+
 export class Main extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
   private readonly MIN_BLOCKS_PER_PIXEL = 0.25;
   private readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
+  private downEvent: DownEvent | undefined;
 
   constructor(props: {}) {
     super(props);
@@ -184,6 +194,9 @@ export class Main extends React.Component<{}, MainState> {
       return;
     }
     canvas.addEventListener("wheel", this.onWheelEvent);
+    canvas.addEventListener("mousedown", this.onMouseDown);
+    canvas.addEventListener("mousemove", this.onMouseMove);
+    canvas.addEventListener("mouseup", this.onMouseUp);
     const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
   }
@@ -209,6 +222,27 @@ export class Main extends React.Component<{}, MainState> {
       this.MAX_BLOCKS_PER_PIXEL
     );
     this.setState(new MainState(state.center, nextBlocksPerPixel));
+  };
+
+  private readonly onMouseDown = (ev: MouseEvent) => {
+    this.downEvent = { event: ev, center: this.state.center.clone() };
+  };
+
+  private readonly onMouseMove = (ev: MouseEvent) => {
+    const down = this.downEvent;
+    if (!down) {
+      return;
+    }
+    const dx = down.event.clientX - ev.clientX;
+    const dy = down.event.clientY - ev.clientY;
+    const blocksPerPixel = this.state.blocksPerPixel;
+    const x = down.center.x + dx * blocksPerPixel;
+    const z = down.center.z + dy * blocksPerPixel;
+    this.setState(new MainState(new Point(x, z), blocksPerPixel));
+  };
+
+  private readonly onMouseUp = (ev: MouseEvent) => {
+    this.downEvent = void 0;
   };
 
   render() {
