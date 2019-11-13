@@ -141,8 +141,12 @@ export class Main extends React.Component<{}, MainState> {
         if (!tile) {
           continue;
         }
-        const px = (x * mipmapBlockWidth - minBlockX) / blocksPerPixel;
-        const py = (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel;
+        const px = Math.floor(
+          (x * mipmapBlockWidth - minBlockX) / blocksPerPixel
+        );
+        const py = Math.floor(
+          (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel
+        );
         const elapsed = (now - tile.loadedUnixTime) / 1000;
         const alpha = clamp(elapsed / fadeInSeconds, 0, 1);
         ctx.globalAlpha = alpha;
