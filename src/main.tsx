@@ -102,6 +102,8 @@ type DownEvent = {
 
 export class Main extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
+  private readonly xLabel: RefObject<HTMLDivElement>;
+  private readonly zLabel: RefObject<HTMLDivElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
   private readonly MIN_BLOCKS_PER_PIXEL = 0.25;
   private readonly MAX_BLOCKS_PER_PIXEL = 4;
@@ -111,6 +113,8 @@ export class Main extends React.Component<{}, MainState> {
   constructor(props: {}) {
     super(props);
     this.canvas = createRef();
+    this.xLabel = createRef();
+    this.zLabel = createRef();
     this.state = createMainState();
     window.addEventListener("resize", () => {
       this.setState(this.state);
@@ -214,8 +218,8 @@ export class Main extends React.Component<{}, MainState> {
     const cy = window.innerHeight / 2;
     const dx = client.x - cx;
     const dy = client.z - cy;
-    const bx = state.center.x - dx * blocksPerPixel;
-    const bz = state.center.z - dy * blocksPerPixel;
+    const bx = state.center.x + dx * blocksPerPixel;
+    const bz = state.center.z + dy * blocksPerPixel;
     return new Point(bx, bz);
   }
 
@@ -242,7 +246,7 @@ export class Main extends React.Component<{}, MainState> {
     const dz = pivotOfDraft.z - pivot.z;
     this.setState(
       createMainState(
-        new Point(state.center.x + dx, state.center.z + dz),
+        new Point(state.center.x - dx, state.center.z - dz),
         nextBlocksPerPixel
       )
     );
@@ -253,6 +257,16 @@ export class Main extends React.Component<{}, MainState> {
   };
 
   private readonly onMouseMove = (ev: MouseEvent) => {
+    const world = this.clientToWorld(
+      this.state,
+      new Point(ev.clientX, ev.clientY)
+    );
+    if (this.xLabel.current) {
+      this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
+    }
+    if (this.zLabel.current) {
+      this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
+    }
     const down = this.downEvent;
     if (!down) {
       return;
@@ -273,16 +287,22 @@ export class Main extends React.Component<{}, MainState> {
     const width = window.innerWidth;
     const height = window.innerHeight;
     return (
-      <canvas
-        className="canvas"
-        ref={this.canvas}
-        style={{
-          width: `${width}px`,
-          height: `${height}px`
-        }}
-        width={width}
-        height={height}
-      />
+      <>
+        <canvas
+          className="canvas"
+          ref={this.canvas}
+          style={{
+            width: `${width}px`,
+            height: `${height}px`
+          }}
+          width={width}
+          height={height}
+        />
+        <div className="coordinateLabel">
+          <div className="coordinateValue" ref={this.xLabel} />
+          <div className="coordinateValue" ref={this.zLabel} />
+        </div>
+      </>
     );
   }
 }

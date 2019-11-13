@@ -1,3 +1,10 @@
+body {
+  font-family: "Roboto", "YuGothic", "Yu Gothic", "游ゴシック体",
+    "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo",
+    "ＭＳ Ｐゴシック", "Osaka", "MS PGothic", "Arial", "Helvetica", "Verdana",
+    sans-serif;
+}
+
 .root {
   position: absolute;
   top: 0;
@@ -17,4 +24,24 @@
   left: 0;
   min-width: 100%;
   min-height: 100%;
+}
+
+.coordinateLabel {
+  position: absolute;
+  min-width: 100px;
+  min-height: 50px;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 8px;
+  border: solid 1px black;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.coordinateValue {
 }
