@@ -38,12 +38,19 @@ function promiseLoadImage(url: string): Promise<HTMLImageElement | undefined> {
   });
 }
 
+class Tile {
+  constructor(
+    readonly image: HTMLImageElement,
+    readonly loadedUnixTime: number
+  ) {}
+}
+
 class MipmapStorage {
-  private readonly storage = new Map<string, HTMLImageElement | null>();
+  private readonly storage = new Map<string, Tile | null>();
   private readonly queued = new Set<string>();
   private readonly level: number = 0;
 
-  get(v: Point, loadIfNotExists: boolean = true): HTMLImageElement | undefined {
+  get(v: Point, loadIfNotExists: boolean = true): Tile | undefined {
     const key = v.toString();
     const image = this.storage.get(key);
     if (image === null) {
@@ -59,7 +66,7 @@ class MipmapStorage {
     const url = this.getImageFilePath(v);
     promiseLoadImage(url)
       .then(image => {
-        this.storage.set(key, image ? image : null);
+        this.storage.set(key, image ? new Tile(image, Date.now()) : null);
         this.queued.delete(key);
       })
       .catch(e => {
@@ -72,10 +79,6 @@ class MipmapStorage {
     return `images/${this.level}/r.${v.x}.${v.z}.png`;
   }
 
-  set(v: Point, image: HTMLImageElement) {
-    this.storage.set(v.toString(), image);
-  }
-
   delete(v: Point) {
     this.storage.delete(v.toString());
   }
@@ -83,6 +86,10 @@ class MipmapStorage {
   clear() {
     this.storage.clear();
   }
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
 }
 
 export class Main extends React.Component<{}, MainState> {
@@ -109,7 +116,8 @@ export class Main extends React.Component<{}, MainState> {
 
   private draw(ctx: CanvasRenderingContext2D) {
     ctx.save();
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     const cx = this.state.center.x;
     const cz = this.state.center.z;
     const blocksPerPixel = this.state.blocksPerPixel;
@@ -125,15 +133,20 @@ export class Main extends React.Component<{}, MainState> {
     const maxMipmapX = Math.ceil(maxBlockX / mipmapBlockWidth);
     const minMipmapZ = Math.floor(minBlockZ / mipmapBlockHeight);
     const maxMipmapZ = Math.ceil(maxBlockz / mipmapBlockHeight);
+    const now = Date.now();
+    const fadeInSeconds = 0.3;
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
       for (let z = minMipmapZ; z <= maxMipmapZ; z++) {
-        const image = this.mipmaps[0].get(new Point(x, z));
-        if (!image) {
+        const tile = this.mipmaps[0].get(new Point(x, z));
+        if (!tile) {
           continue;
         }
         const px = (x * mipmapBlockWidth - minBlockX) / blocksPerPixel;
         const py = (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel;
-        ctx.drawImage(image, px, py);
+        const elapsed = (now - tile.loadedUnixTime) / 1000;
+        const alpha = clamp(elapsed / fadeInSeconds, 0, 1);
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(tile.image, px, py);
       }
     }
     ctx.restore();
