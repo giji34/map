@@ -19,9 +19,9 @@ class MainState {
   readonly center: Point;
   readonly blocksPerPixel: number;
 
-  constructor() {
-    this.center = new Point(0, 0);
-    this.blocksPerPixel = 1;
+  constructor(center: Point = new Point(0, 0), blocksPerPixel: number = 1) {
+    this.center = center;
+    this.blocksPerPixel = blocksPerPixel;
   }
 }
 
@@ -95,6 +95,8 @@ function clamp(value: number, min: number, max: number): number {
 export class Main extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
+  private readonly MIN_BLOCKS_PER_PIXEL = 0.125;
+  private readonly MAX_BLOCKS_PER_PIXEL = 8;
 
   constructor(props: {}) {
     super(props);
@@ -135,22 +137,26 @@ export class Main extends React.Component<{}, MainState> {
     const maxMipmapZ = Math.ceil(maxBlockz / mipmapBlockHeight);
     const now = Date.now();
     const fadeInSeconds = 0.3;
+    ctx.imageSmoothingEnabled = blocksPerPixel > 2;
+    ctx.imageSmoothingQuality = "high";
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
       for (let z = minMipmapZ; z <= maxMipmapZ; z++) {
         const tile = this.mipmaps[0].get(new Point(x, z));
         if (!tile) {
           continue;
         }
-        const px = Math.floor(
-          (x * mipmapBlockWidth - minBlockX) / blocksPerPixel
-        );
-        const py = Math.floor(
-          (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel
-        );
+        const px = (x * mipmapBlockWidth - minBlockX) / blocksPerPixel;
+        const py = (z * mipmapBlockHeight - minBlockZ) / blocksPerPixel;
         const elapsed = (now - tile.loadedUnixTime) / 1000;
         const alpha = clamp(elapsed / fadeInSeconds, 0, 1);
         ctx.globalAlpha = alpha;
-        ctx.drawImage(tile.image, px, py);
+        ctx.drawImage(
+          tile.image,
+          px,
+          py,
+          mipmapBlockWidth / blocksPerPixel,
+          mipmapBlockHeight / blocksPerPixel
+        );
       }
     }
     ctx.restore();
@@ -162,13 +168,29 @@ export class Main extends React.Component<{}, MainState> {
   }
 
   componentDidMount() {
-    const canvas: RefObject<HTMLCanvasElement> = this.canvas;
+    const canvas = this.canvas?.current;
     if (!canvas) {
       return;
     }
-    const ctx = canvas.current!.getContext("2d")!;
+    canvas.addEventListener("wheel", this.onWheelEvent);
+    const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
   }
+
+  private readonly onWheelEvent = (ev: WheelEvent) => {
+    ev.stopPropagation();
+    ev.preventDefault();
+    if (ev.deltaMode !== ev.DOM_DELTA_PIXEL) {
+      return;
+    }
+    const state = this.state;
+    const nextBlocksPerPixel = clamp(
+      state.blocksPerPixel + ev.deltaY * 0.003,
+      this.MIN_BLOCKS_PER_PIXEL,
+      this.MAX_BLOCKS_PER_PIXEL
+    );
+    this.setState(new MainState(state.center, nextBlocksPerPixel));
+  };
 
   render() {
     const width = window.innerWidth;
