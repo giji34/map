@@ -19,14 +19,13 @@ class Point {
   }
 }
 
-class MainState {
-  readonly center: Point;
-  readonly blocksPerPixel: number;
+type MainState = { center: Point; blocksPerPixel: number };
 
-  constructor(center: Point = new Point(0, 0), blocksPerPixel: number = 1) {
-    this.center = center;
-    this.blocksPerPixel = blocksPerPixel;
-  }
+function createMainState(
+  center: Point = new Point(0, 0),
+  blocksPerPixel: number = 1
+) {
+  return { center: center.clone(), blocksPerPixel };
 }
 
 function promiseLoadImage(url: string): Promise<HTMLImageElement | undefined> {
@@ -112,7 +111,7 @@ export class Main extends React.Component<{}, MainState> {
   constructor(props: {}) {
     super(props);
     this.canvas = createRef();
-    this.state = new MainState();
+    this.state = createMainState();
     window.addEventListener("resize", () => {
       this.setState(this.state);
     });
@@ -209,19 +208,44 @@ export class Main extends React.Component<{}, MainState> {
     this.isRedrawNeeded = true;
   }
 
+  private clientToWorld(state: MainState, client: Point): Point {
+    const blocksPerPixel = state.blocksPerPixel;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const dx = client.x - cx;
+    const dy = client.z - cy;
+    const bx = state.center.x - dx * blocksPerPixel;
+    const bz = state.center.z - dy * blocksPerPixel;
+    return new Point(bx, bz);
+  }
+
   private readonly onWheelEvent = (ev: WheelEvent) => {
     ev.stopPropagation();
     ev.preventDefault();
     if (ev.deltaMode !== ev.DOM_DELTA_PIXEL) {
       return;
     }
+    const client = new Point(ev.clientX, ev.clientY);
     const state = this.state;
+    if (!state) {
+      return;
+    }
+    const pivot = this.clientToWorld(state, client);
     const nextBlocksPerPixel = clamp(
       state.blocksPerPixel + ev.deltaY * 0.003,
       this.MIN_BLOCKS_PER_PIXEL,
       this.MAX_BLOCKS_PER_PIXEL
     );
-    this.setState(new MainState(state.center, nextBlocksPerPixel));
+    const draft = createMainState(state.center, nextBlocksPerPixel);
+    const pivotOfDraft = this.clientToWorld(draft, client);
+    const dx = pivotOfDraft.x - pivot.x;
+    const dz = pivotOfDraft.z - pivot.z;
+    this.setState(
+      createMainState(
+        new Point(state.center.x + dx, state.center.z + dz),
+        nextBlocksPerPixel
+      )
+    );
   };
 
   private readonly onMouseDown = (ev: MouseEvent) => {
@@ -238,7 +262,7 @@ export class Main extends React.Component<{}, MainState> {
     const blocksPerPixel = this.state.blocksPerPixel;
     const x = down.center.x + dx * blocksPerPixel;
     const z = down.center.z + dy * blocksPerPixel;
-    this.setState(new MainState(new Point(x, z), blocksPerPixel));
+    this.setState(createMainState(new Point(x, z), blocksPerPixel));
   };
 
   private readonly onMouseUp = (ev: MouseEvent) => {
