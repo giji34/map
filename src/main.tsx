@@ -19,6 +19,97 @@ class Point {
   }
 }
 
+type Landmark = { name: string; location: Point; finished?: boolean };
+
+const kLandmarks: Landmark[] = [
+  { name: "いちご大墳墓", location: new Point(325, 638) },
+  { name: "みんなの家", location: new Point(185, 30) },
+  { name: "さんばか城", location: new Point(-271, 767) },
+  { name: "サクラダ・ファミリア", location: new Point(86, 17) },
+  { name: "世界", location: new Point(78, -84) },
+  { name: "しばと凛月のおうち", location: new Point(158, -110) },
+  { name: "弓道場", location: new Point(106, -149) },
+  { name: "桜第一惑星", location: new Point(128, -147) },
+  { name: "紅白アホアホハウス", location: new Point(101, -247) },
+  { name: "叶の家", location: new Point(206, -83) },
+  { name: "Kyoko's_seacret_house", location: new Point(243, -120) },
+  { name: "✞黒の要塞✞", location: new Point(242, -41) },
+  { name: "神社", location: new Point(245, 31) },
+  { name: "舞元の家", location: new Point(322, -11) },
+  { name: "ドラひまハウス", location: new Point(383, 9) },
+  { name: "ド葛本社", location: new Point(382, 46) },
+  { name: "アズカバン", location: new Point(387, 71) },
+  { name: "教会", location: new Point(310, 73) },
+  { name: "BLハウス", location: new Point(271, 82) },
+  { name: "森中温泉", location: new Point(278, 112) },
+  { name: "カリン塔", location: new Point(308, 130) },
+  { name: "くまさんランド", location: new Point(305, 169) },
+  { name: "猫カフェ", location: new Point(352, 166) },
+  { name: "陰キャ帝国", location: new Point(407, 203) },
+  { name: "山田太郎", location: new Point(405, 202) },
+  { name: "ラトナ・プティの家", location: new Point(455, 344) },
+  { name: "一期生ハウス", location: new Point(597, 302) },
+  { name: "夕陽リリの家", location: new Point(749, -3) },
+  { name: "しずくしま神社", location: new Point(880, 41) },
+  { name: "静凛の家", location: new Point(838, 71) },
+  { name: "しばハウス2", location: new Point(197, 127) },
+  { name: "たけし", location: new Point(176, 74) },
+  { name: "さわるな危険", location: new Point(169, 70) },
+  { name: "リリかざハウス", location: new Point(206, 66) },
+  { name: "舞ハウス", location: new Point(80, 179) },
+  { name: "モルパレス", location: new Point(78, 75) },
+  { name: "アキくんはし", location: new Point(33, 16) },
+  { name: "理想のおうち", location: new Point(9, 27) },
+  { name: "狂犬ズハウス", location: new Point(-89, 19) },
+  { name: "黒井神社", location: new Point(-86, 3) },
+  { name: "物述有栖の家", location: new Point(-139, 15) },
+  { name: "メイドカフェ", location: new Point(-159, 20) },
+  { name: "セーフハウス", location: new Point(-172, 16) },
+  { name: "夢追翔のライブハウス", location: new Point(-183, 29) },
+  { name: "DERAS_HOUSE", location: new Point(-184, 73) },
+  { name: "セブンイレブン", location: new Point(-185, 100) },
+  { name: "しば城", location: new Point(-130, 72) },
+  { name: "競馬場予定地", location: new Point(-270, -35) },
+  { name: "立ち退き反対ハウス", location: new Point(-326, -21) },
+  { name: "ハジメ村", location: new Point(-383, 18) },
+  { name: "鈴谷アキの仮拠点", location: new Point(-266, 217) },
+  { name: "キャンプ場テント", location: new Point(-300, 431) },
+  { name: "キリトの剣取らないで", location: new Point(-467, 543) },
+  { name: "夕陽リリの塔跡地", location: new Point(-570, 456) },
+  { name: "トニー・スタークのおうち", location: new Point(-184, 145) },
+  { name: "学校", location: new Point(-229, 680) },
+  { name: "第2秘密基地", location: new Point(-238, 909) },
+  { name: "にじさんじランド", location: new Point(-1400, 1412) },
+  { name: "駅", location: new Point(194, -4) },
+  { name: "森中ランド", location: new Point(-47, 507) },
+  { name: "✿ンボ村", location: new Point(-4792, 4860) },
+  { name: "偽JK組ハウス", location: new Point(-30011, -20195) },
+  { name: "アパホテルの水", location: new Point(-30023, -20170) },
+  { name: "ボートレース場", location: new Point(-4681, 4796) },
+  { name: "✿ンボ宮殿", location: new Point(-4792, 4891) },
+  { name: "舞元さん化石耐久配信現場", location: new Point(-383, -504) },
+  { name: "しずりんの村", location: new Point(1621, 292) },
+  { name: "葛葉さん海底神殿遭難跡地", location: new Point(-298, 1076) },
+  { name: "ベルさん海底神殿攻略拠点", location: new Point(597, 7875) },
+  { name: "静凛サンゴ礁仮拠点", location: new Point(0, 5418) },
+  { name: "エンド要塞(静凛)", location: new Point(5870, 5746) },
+  { name: "しずりんの洋館", location: new Point(4319, 5423) },
+  { name: "ちーかざちーハウス", location: new Point(15, -86) },
+  { name: "骨バイオーム", location: new Point(24, 190) },
+  { name: "神田笑一の家", location: new Point(4, 315) },
+  { name: "マジックツリーハウス", location: new Point(53, 489) },
+  { name: "液", location: new Point(253, 309) },
+  { name: "BIG_WOOD_HAYAMA_HOUSE", location: new Point(352, 185) },
+  { name: "笹木咲の水族館(跡地)", location: new Point(371, 212) },
+  { name: "マンション", location: new Point(117, 73) },
+  { name: "うい覇道", location: new Point(-736, 347) },
+  { name: "神田ロード", location: new Point(8, 428) },
+  { name: "chima_kakurega", location: new Point(-107, -156) },
+  { name: "うさぎの像(作者不明)", location: new Point(-920, -1496) },
+  { name: "う◯ち", location: new Point(227, 19) },
+  { name: "ハロウィンの館", location: new Point(-4973, 4915) }
+];
+
 type MainState = { center: Point; blocksPerPixel: number };
 
 function createMainState(
@@ -153,7 +244,7 @@ export class Main extends React.Component<{}, MainState> {
     const maxMipmapZ = Math.ceil(maxBlockz / mipmapBlockHeight);
     const now = Date.now();
     const fadeInSeconds = 0.3;
-    ctx.imageSmoothingEnabled = blocksPerPixel > 0.5;
+    ctx.imageSmoothingEnabled = blocksPerPixel > 1;
     ctx.imageSmoothingQuality = "high";
     let loadingInProgress = false;
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
@@ -180,17 +271,54 @@ export class Main extends React.Component<{}, MainState> {
         );
       }
     }
+
+    ctx.globalAlpha = 1;
+    kLandmarks.forEach(landmark => {
+      const location = landmark.location;
+      if (
+        location.x < minBlockX ||
+        maxBlockX < location.x ||
+        location.z < minBlockZ ||
+        maxBlockz < location.z
+      ) {
+        return;
+      }
+      const pixel = this.worldToClient(this.state, location);
+      ctx.beginPath();
+      ctx.moveTo(pixel.x, pixel.z);
+      ctx.lineTo(pixel.x, pixel.z - 10);
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      const fontSize = 16;
+      const padding = 5;
+      const stemHeight = 10;
+      ctx.font = `${fontSize}px`;
+      ctx.beginPath();
+      const metrics = ctx.measureText(landmark.name);
+      const ascent = fontSize;
+      ctx.fillStyle = "white";
+      ctx.fillRect(
+        pixel.x - metrics.width / 2 - padding,
+        pixel.z - stemHeight - ascent - padding,
+        metrics.width + 2 * padding,
+        ascent + 2 * padding
+      );
+      ctx.beginPath();
+      ctx.fillStyle = "black";
+      ctx.fillText(
+        landmark.name,
+        pixel.x - metrics.width / 2,
+        pixel.z - stemHeight - padding
+      );
+    });
+
     ctx.restore();
     if (!loadingInProgress) {
       this.isRedrawNeeded = false;
     }
   }
-
-  private mipmapLevel(scale: number) {
-    //TODO
-    return 0;
-  }
-
+  
   componentDidMount() {
     const canvas = this.canvas?.current;
     if (!canvas) {
@@ -221,6 +349,15 @@ export class Main extends React.Component<{}, MainState> {
     const bx = state.center.x + dx * blocksPerPixel;
     const bz = state.center.z + dy * blocksPerPixel;
     return new Point(bx, bz);
+  }
+
+  private worldToClient(state: MainState, world: Point): Point {
+    const blocksPerPixel = state.blocksPerPixel;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const px = (world.x - state.center.x) / blocksPerPixel + cx;
+    const py = (world.z - state.center.z) / blocksPerPixel + cy;
+    return new Point(px, py);
   }
 
   private readonly onWheelEvent = (ev: WheelEvent) => {
