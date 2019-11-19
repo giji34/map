@@ -200,6 +200,7 @@ export class Main extends React.Component<{}, MainState> {
   private readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
+  private textMetricsCache = new Map<string, TextMetrics>();
 
   constructor(props: {}) {
     super(props);
@@ -288,7 +289,11 @@ export class Main extends React.Component<{}, MainState> {
       const padding = 5;
       const stemHeight = 6;
       ctx.font = `${fontSize}px 'YuGothic', sans-serif`;
-      const metrics = ctx.measureText(landmark.name);
+      let metrics = this.textMetricsCache.get(landmark.name);
+      if (metrics === void 0) {
+        metrics = ctx.measureText(landmark.name);
+        this.textMetricsCache.set(landmark.name, metrics);
+      }
       const ascent = fontSize;
       const tan = Math.tan(40 * Math.PI / 180);
 
