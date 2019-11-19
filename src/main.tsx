@@ -446,8 +446,12 @@ export class Main extends React.Component<{}, MainState> {
           height={height}
         />
         <div className="coordinateLabel">
-          <div className="coordinateValue" ref={this.xLabel} />
-          <div className="coordinateValue" ref={this.zLabel} />
+          <div className="coordinateValue" ref={this.xLabel}>
+            X:{" "}
+          </div>
+          <div className="coordinateValue" ref={this.zLabel}>
+            Z:{" "}
+          </div>
         </div>
       </>
     );
