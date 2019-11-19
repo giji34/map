@@ -284,26 +284,31 @@ export class Main extends React.Component<{}, MainState> {
         return;
       }
       const pixel = this.worldToClient(this.state, location);
-      ctx.beginPath();
-      ctx.moveTo(pixel.x, pixel.z);
-      ctx.lineTo(pixel.x, pixel.z - 10);
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = 2;
-      ctx.stroke();
       const fontSize = 16;
       const padding = 5;
-      const stemHeight = 10;
-      ctx.font = `${fontSize}px`;
-      ctx.beginPath();
+      const stemHeight = 6;
+      ctx.font = `${fontSize}px 'YuGothic', sans-serif`;
       const metrics = ctx.measureText(landmark.name);
       const ascent = fontSize;
+      const tan = Math.tan(40 * Math.PI / 180);
+
+      const path = new Path2D();
+      path.moveTo(pixel.x, pixel.z);
+      path.lineTo(pixel.x - stemHeight * tan, pixel.z - stemHeight);
+      path.lineTo(pixel.x - metrics.width / 2 - padding, pixel.z - stemHeight);
+      path.lineTo(pixel.x - metrics.width / 2 - padding, pixel.z - stemHeight - ascent - padding);
+      path.lineTo(pixel.x + metrics.width / 2 + padding, pixel.z - stemHeight - ascent - padding);
+      path.lineTo(pixel.x + metrics.width / 2 + padding, pixel.z - stemHeight);
+      path.lineTo(pixel.x + stemHeight * tan, pixel.z - stemHeight);
+      path.closePath();
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "black";
+      ctx.stroke(path);
+
       ctx.fillStyle = "white";
-      ctx.fillRect(
-        pixel.x - metrics.width / 2 - padding,
-        pixel.z - stemHeight - ascent - padding,
-        metrics.width + 2 * padding,
-        ascent + 2 * padding
-      );
+      ctx.fill(path);
+
       ctx.beginPath();
       ctx.fillStyle = "black";
       ctx.fillText(
