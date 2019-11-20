@@ -61,3 +61,46 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
+
+.billboardsLegendContainer {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  min-height: 100%;
+  width: var(--billboardLegendWidth);
+}
+
+.billboardsLegendSpacer {
+  flex-grow: 1;
+  width: 0;
+}
+
+.billboardsLegend {
+  display: flex;
+  flex-direction: column;
+  --billboardLegendWidth: 160px;
+  background-color: white;
+  width: var(--billboardLegendWidth);
+  height: 100px;
+  z-index: 999;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: solid 1px black;
+}
+
+.billboardsLegendCell {
+  margin: 5px;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.billboardsLegendColor {
+  width: 40px;
+  height: 20px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 5px;
+}

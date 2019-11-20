@@ -447,6 +447,37 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
           </div>
         </div>
+        {this.state.isBillboardsVisible && (
+          <div className="billboardsLegendContainer">
+            <div className="billboardsLegendSpacer" />
+            <div className="billboardsLegend">
+              <div
+                className="billboardsLegendCell"
+                style={{ fontWeight: "bold" }}
+              >
+                凡例
+              </div>
+              <div className="billboardsLegendCell" style={{ display: "flex" }}>
+                <div
+                  className="billboardsLegendColor"
+                  style={{
+                    backgroundColor: "#acf2bd"
+                  }}
+                ></div>
+                <div>再現作業完了</div>
+              </div>
+              <div className="billboardsLegendCell" style={{ display: "flex" }}>
+                <div
+                  className="billboardsLegendColor"
+                  style={{
+                    backgroundColor: "#fdb8c0"
+                  }}
+                ></div>
+                <div>再現作業中</div>
+              </div>
+            </div>
+          </div>
+        )}
       </>
     );
   }
