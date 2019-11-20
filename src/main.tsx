@@ -430,6 +430,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           height={height}
         />
         <div className="menu">
+          <div className="menuItem">minecraft: giji34.world</div>
           <div className="hspacer" />
           <div className="coordinateLabel">
             <div className="coordinateValue" ref={this.xLabel}>

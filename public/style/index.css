@@ -39,6 +39,16 @@ body {
   flex-grow: 1;
 }
 
+.menuItem {
+  line-height: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: midnightblue;
+  font-weight: bold;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .coordinateLabel {
   display: flex;
   flex-direction: column;
