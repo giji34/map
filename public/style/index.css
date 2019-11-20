@@ -90,6 +90,34 @@ body {
   border: solid 1px black;
 }
 
+.billboardsLegend-enter {
+  opacity: 0;
+}
+
+.billboardsLegend-enter-active {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.billboardsLegend-enter-done {
+  opacity: 1;
+}
+
+.billboardsLegend-exit {
+  opacity: 1;
+}
+
+.billboardsLegend-exit-active {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.billboardsLegend-exit-done {
+  opacity: 0;
+}
+
 .billboardsLegendCell {
   margin: 5px;
   font-size: 14px;

@@ -5,6 +5,7 @@ import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
 import { kFileList } from "./imagelist";
+import { CSSTransition } from "react-transition-group";
 
 type MainState = {
   center: Point;
@@ -447,9 +448,14 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
           </div>
         </div>
-        {this.state.isBillboardsVisible && (
-          <div className="billboardsLegendContainer">
-            <div className="billboardsLegendSpacer" />
+        <div className="billboardsLegendContainer">
+          <div className="billboardsLegendSpacer" />
+          <CSSTransition
+            timeout={300}
+            unmountOnExit={true}
+            in={this.state.isBillboardsVisible}
+            classNames={"billboardsLegend"}
+          >
             <div className="billboardsLegend">
               <div
                 className="billboardsLegendCell"
@@ -476,8 +482,8 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div>再現作業中</div>
               </div>
             </div>
-          </div>
-        )}
+          </CSSTransition>
+        </div>
       </>
     );
   }
