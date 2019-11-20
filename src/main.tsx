@@ -358,6 +358,7 @@ export class Main extends React.Component<{}, MainState> {
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
   private textMetricsCache = new Map<string, TextMetrics>();
+  private fragmentUpdateTimer: number | undefined;
 
   constructor(props: {}) {
     super(props);
@@ -528,6 +529,36 @@ export class Main extends React.Component<{}, MainState> {
     canvas.addEventListener("mouseleave", this.onMouseLeave);
     const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
+    const params = window.location.hash.split("&");
+    let x = this.state.center.x;
+    let z = this.state.center.z;
+    let blocksPerPixel = this.state.blocksPerPixel;
+    params.forEach(param => {
+      if (param.startsWith("#")) {
+        param = param.substr(1);
+      }
+      const keyAndValue = param.split("=");
+      if (keyAndValue.length !== 2) {
+        return;
+      }
+      const key = keyAndValue[0];
+      const value = parseFloat(keyAndValue[1]);
+      if (isNaN(value)) {
+        return;
+      }
+      if (key === "x") {
+        x = value;
+      } else if (key === "z") {
+        z = value;
+      } else if (key === "scale") {
+        blocksPerPixel = clamp(value, this.MIN_BLOCKS_PER_PIXEL, this.MAX_BLOCKS_PER_PIXEL);
+      }
+    });
+    this.setState(mergeMainState(this.state, {center: new Point(x, z), blocksPerPixel}));
+    this.fragmentUpdateTimer = window.setInterval(() => {
+      const hash = `#x=${this.state.center.x}&z=${this.state.center.z}&scale=${this.state.blocksPerPixel}`;
+      window.history.replaceState(void 0, "", hash);
+    }, 500);
   }
 
   componentDidUpdate(
