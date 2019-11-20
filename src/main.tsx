@@ -6,6 +6,7 @@ import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
 import { kFileList } from "./imagelist";
 import { CSSTransition } from "react-transition-group";
+import { sprintf } from "sprintf";
 
 type MainState = {
   center: Point;
@@ -324,7 +325,12 @@ export class MainComponent extends React.Component<{}, MainState> {
       mergeMainState(this.state, { center: new Point(x, z), blocksPerPixel })
     );
     this.fragmentUpdateTimer = window.setInterval(() => {
-      const hash = `#x=${this.state.center.x}&z=${this.state.center.z}&scale=${this.state.blocksPerPixel}`;
+      const hash = sprintf(
+        "#x=%.1f&z=%.1f&scale=%.2f",
+        this.state.center.x,
+        this.state.center.z,
+        this.state.blocksPerPixel
+      );
       window.history.replaceState(void 0, "", hash);
     }, 500);
   }
