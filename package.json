@@ -6,12 +6,15 @@
   "license": "MIT",
   "scripts": {
     "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'",
-    "landmarks": "ts-node src/landmark.ts > landmarks.tsv"
+    "landmarks": "ts-node src/landmark.ts > landmarks.tsv",
+    "imagemin": "node tool/imagemin.js"
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "express": "^4.17.1",
+    "imagemin": "^7.0.1",
+    "imagemin-zopfli": "^6.0.0",
     "prettier": "^1.19.1",
     "ts-config-webpack-plugin": "^1.4.0",
     "ts-node": "^8.5.2",
