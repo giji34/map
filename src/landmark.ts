@@ -1,4 +1,24 @@
-import { Point } from "./point";
+export class Point {
+  readonly x: number;
+  readonly z: number;
+
+  constructor(x: number, z: number) {
+    this.x = x;
+    this.z = z;
+  }
+
+  toString() {
+    return `[${this.x},${this.z}]`;
+  }
+
+  clone(): Point {
+    return new Point(this.x, this.z);
+  }
+
+  static distance(a: Point, b: Point): number {
+    return Math.hypot(a.x - b.x, a.z - b.z);
+  }
+}
 
 export type Landmark = {
   name: string;
@@ -224,3 +244,9 @@ export const kLandmarks: Landmark[] = [
     return a.location.z - b.location.z;
   }
 });
+
+if (typeof window === "undefined") {
+  kLandmarks.forEach(landmark => {
+    console.log(`${landmark.location.x}\t${landmark.location.z}`);
+  });
+}

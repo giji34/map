@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import { Point } from "./point";
+import { Point } from "./landmark";
 import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";

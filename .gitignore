@@ -3,3 +3,4 @@
 /.idea
 *.log
 /public/images
+/landmarks.tsv

@@ -5,7 +5,8 @@
   "author": "kbinani <kbinani.bt@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'"
+    "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'",
+    "landmarks": "ts-node src/landmark.ts > landmarks.tsv"
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
@@ -13,7 +14,7 @@
     "express": "^4.17.1",
     "prettier": "^1.19.1",
     "ts-config-webpack-plugin": "^1.4.0",
-    "ts-node": "^8.5.0",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
