@@ -348,7 +348,7 @@ type DownEvent = {
   center: Point;
 };
 
-export class Main extends React.Component<{}, MainState> {
+export class MainComponent extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
   private readonly xLabel: RefObject<HTMLDivElement>;
   private readonly zLabel: RefObject<HTMLDivElement>;
@@ -551,10 +551,16 @@ export class Main extends React.Component<{}, MainState> {
       } else if (key === "z") {
         z = value;
       } else if (key === "scale") {
-        blocksPerPixel = clamp(value, this.MIN_BLOCKS_PER_PIXEL, this.MAX_BLOCKS_PER_PIXEL);
+        blocksPerPixel = clamp(
+          value,
+          this.MIN_BLOCKS_PER_PIXEL,
+          this.MAX_BLOCKS_PER_PIXEL
+        );
       }
     });
-    this.setState(mergeMainState(this.state, {center: new Point(x, z), blocksPerPixel}));
+    this.setState(
+      mergeMainState(this.state, { center: new Point(x, z), blocksPerPixel })
+    );
     this.fragmentUpdateTimer = window.setInterval(() => {
       const hash = `#x=${this.state.center.x}&z=${this.state.center.z}&scale=${this.state.blocksPerPixel}`;
       window.history.replaceState(void 0, "", hash);
@@ -683,12 +689,15 @@ export class Main extends React.Component<{}, MainState> {
           width={width}
           height={height}
         />
-        <div className="coordinateLabel">
-          <div className="coordinateValue" ref={this.xLabel}>
-            X:{" "}
-          </div>
-          <div className="coordinateValue" ref={this.zLabel}>
-            Z:{" "}
+        <div className="menu">
+          <div className="hspacer" />
+          <div className="coordinateLabel">
+            <div className="coordinateValue" ref={this.xLabel}>
+              X:{" "}
+            </div>
+            <div className="coordinateValue" ref={this.zLabel}>
+              Z:{" "}
+            </div>
           </div>
         </div>
       </>
