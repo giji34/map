@@ -4,3 +4,5 @@
 *.log
 /public/images
 /landmarks.tsv
+/src/imagelist.ts
+/images

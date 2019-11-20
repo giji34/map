@@ -4,6 +4,7 @@ import { Point } from "./landmark";
 import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
+import { kFileList } from "./imagelist";
 
 type MainState = {
   center: Point;
@@ -59,6 +60,11 @@ class MipmapStorage {
     }
     this.queued.add(key);
     const url = this.getImageFilePath(v);
+    if (!kFileList.includes(url)) {
+      this.storage.set(key, null);
+      this.queued.delete(key);
+      return;
+    }
     promiseLoadImage(url)
       .then(image => {
         this.storage.set(key, image ? new Tile(image, Date.now()) : null);

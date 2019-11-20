@@ -7,7 +7,8 @@
   "scripts": {
     "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'",
     "landmarks": "ts-node src/landmark.ts > landmarks.tsv",
-    "imagemin": "node tool/imagemin.js"
+    "imagemin": "node tool/imagemin.js",
+    "imagelist": "sh tool/imagelist.sh"
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
