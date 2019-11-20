@@ -245,6 +245,25 @@ export const kLandmarks: Landmark[] = [
   }
 });
 
+const kLandmarkLeft = kLandmarks.reduce(
+  (accum, current) => Math.min(accum, current.location.x),
+  kLandmarks[0].location.x
+);
+const kLandmarkRight = kLandmarks.reduce(
+  (accum, current) => Math.max(accum, current.location.x),
+  kLandmarks[0].location.x
+);
+const kLandmarkTop = kLandmarks.reduce(
+  (accum, current) => Math.min(accum, current.location.z),
+  kLandmarks[0].location.z
+);
+const kLandmarkBototm = kLandmarks.reduce(
+  (accum, current) => Math.max(accum, current.location.z),
+  kLandmarks[0].location.z
+);
+export const kLandmarksTopLeft = new Point(kLandmarkLeft, kLandmarkTop);
+export const kLandmarksRightBottom = new Point(kLandmarkRight, kLandmarkBototm);
+
 if (typeof window === "undefined") {
   kLandmarks.forEach(landmark => {
     console.log(`${landmark.location.x}\t${landmark.location.z}`);

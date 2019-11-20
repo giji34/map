@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import { Point } from "./landmark";
+import { kLandmarksRightBottom, kLandmarksTopLeft, Point } from "./landmark";
 import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
@@ -32,6 +32,21 @@ function mergeMainState(
   current: MainState,
   update: Partial<MainState>
 ): MainState {
+  let center = update.center;
+  if (center) {
+    update.center = new Point(
+      clamp(center.x, kLandmarksTopLeft.x, kLandmarksRightBottom.x),
+      clamp(center.z, kLandmarksTopLeft.z, kLandmarksRightBottom.z)
+    );
+  }
+  let blocksPerPixel = update.blocksPerPixel;
+  if (blocksPerPixel) {
+    update.blocksPerPixel = clamp(
+      blocksPerPixel,
+      MainComponent.MIN_BLOCKS_PER_PIXEL,
+      MainComponent.MAX_BLOCKS_PER_PIXEL
+    );
+  }
   return Object.assign({}, current, update);
 }
 
@@ -100,8 +115,8 @@ export class MainComponent extends React.Component<{}, MainState> {
   private readonly xLabel: RefObject<HTMLDivElement>;
   private readonly zLabel: RefObject<HTMLDivElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
-  private readonly MIN_BLOCKS_PER_PIXEL = 0.25;
-  private readonly MAX_BLOCKS_PER_PIXEL = 4;
+  static readonly MIN_BLOCKS_PER_PIXEL = 0.25;
+  static readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
   private textMetricsCache = new Map<string, TextMetrics>();
@@ -300,8 +315,8 @@ export class MainComponent extends React.Component<{}, MainState> {
       } else if (key === "scale") {
         blocksPerPixel = clamp(
           value,
-          this.MIN_BLOCKS_PER_PIXEL,
-          this.MAX_BLOCKS_PER_PIXEL
+          MainComponent.MIN_BLOCKS_PER_PIXEL,
+          MainComponent.MAX_BLOCKS_PER_PIXEL
         );
       }
     });
@@ -356,8 +371,8 @@ export class MainComponent extends React.Component<{}, MainState> {
     const pivot = this.clientToWorld(state, client);
     const nextBlocksPerPixel = clamp(
       state.blocksPerPixel + ev.deltaY * 0.003,
-      this.MIN_BLOCKS_PER_PIXEL,
-      this.MAX_BLOCKS_PER_PIXEL
+      MainComponent.MIN_BLOCKS_PER_PIXEL,
+      MainComponent.MAX_BLOCKS_PER_PIXEL
     );
     const draft = createMainState(state.center, nextBlocksPerPixel);
     const pivotOfDraft = this.clientToWorld(draft, client);
@@ -469,7 +484,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   style={{
                     backgroundColor: "#acf2bd"
                   }}
-                ></div>
+                />
                 <div>再現作業完了</div>
               </div>
               <div className="billboardsLegendCell" style={{ display: "flex" }}>
@@ -478,7 +493,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   style={{
                     backgroundColor: "#fdb8c0"
                   }}
-                ></div>
+                />
                 <div>再現作業中</div>
               </div>
             </div>
