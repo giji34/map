@@ -157,11 +157,15 @@ export const kLandmarks: Landmark[] = [
   },
   { name: "駅", location: new Point(196, -57), finished: true },
   { name: "森中ランド", location: new Point(-80, 489), finished: false },
-  { name: "✿ンボ村", location: new Point(-4791, 4790), finished: false },
-  { name: "偽JK組ハウス", location: new Point(-30011, -20195) },
-  { name: "アパホテルの水", location: new Point(-30023, -20170) },
+  { name: "🌸ンボ村", location: new Point(-4791, 4790), finished: false },
+  { name: "偽JK組ハウス", location: new Point(-30011, -20205), finished: true },
+  {
+    name: "アパホテルの水",
+    location: new Point(-30023, -20188),
+    finished: true
+  },
   { name: "ボートレース場", location: new Point(-4603, 4777), finished: true },
-  { name: "✿ンボ宮殿", location: new Point(-4793, 4908), finished: true },
+  { name: "🌸ンボ宮殿", location: new Point(-4793, 4908), finished: true },
   {
     name: "舞元さん化石耐久配信現場",
     location: new Point(-383, -504),
