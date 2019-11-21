@@ -18,6 +18,10 @@ body {
   background-color: black;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .canvas {
   position: absolute;
   top: 0;
@@ -41,12 +45,31 @@ body {
 
 .menuItem {
   line-height: 40px;
-  padding-right: 10px;
-  padding-left: 10px;
   color: midnightblue;
   font-weight: bold;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.menuItemContent {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.menuItemBorder {
+  border-bottom: solid 1px midnightblue;
+}
+
+.menuItem:hover {
+  background-color: royalblue;
+}
+
+.dropdownMenu {
+  top: 40px;
+  display: flex;
+  border: solid 1px midnightblue;
+  background-color: cornflowerblue;
+  flex-direction: column;
 }
 
 .coordinateLabel {
@@ -132,4 +155,15 @@ body {
   margin-left: 10px;
   margin-right: 5px;
   border: solid 1px;
+}
+
+.pulldownMarker {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }

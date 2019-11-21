@@ -8,24 +8,29 @@ import { kFileList } from "./imagelist";
 import { CSSTransition } from "react-transition-group";
 import { sprintf } from "sprintf";
 
+type Menu = "jumpTo";
+
 type MainState = {
   center: Point;
   blocksPerPixel: number;
   isBillboardsVisible: boolean;
   billboardsVisibilityChangedTimestamp: number;
+  activeMenu: Menu | undefined;
 };
 
 function createMainState(
   center: Point = new Point(0, 0),
   blocksPerPixel: number = 1,
   isBillboardsVisible: boolean = true,
-  billboardsVisibilityChangedTimestamp: number = 0
-) {
+  billboardsVisibilityChangedTimestamp: number = 0,
+  activeMenu: Menu | undefined = void 0
+): MainState {
   return {
     center: center.clone(),
     blocksPerPixel,
     isBillboardsVisible,
-    billboardsVisibilityChangedTimestamp
+    billboardsVisibilityChangedTimestamp,
+    activeMenu
   };
 }
 
@@ -394,7 +399,11 @@ export class MainComponent extends React.Component<{}, MainState> {
   };
 
   private readonly onMouseDown = (ev: MouseEvent) => {
-    this.downEvent = { event: ev, center: this.state.center.clone() };
+    if (this.state.activeMenu !== void 0) {
+      this.setState(mergeMainState(this.state, { activeMenu: void 0 }));
+    } else {
+      this.downEvent = { event: ev, center: this.state.center.clone() };
+    }
   };
 
   private readonly onMouseMove = (ev: MouseEvent) => {
@@ -451,6 +460,45 @@ export class MainComponent extends React.Component<{}, MainState> {
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
+    const moveToCentralCity = () => {
+      this.setState(
+        mergeMainState(this.state, {
+          center: new Point(179, 24),
+          activeMenu: void 0
+        })
+      );
+    };
+    const moveToNewWorld = () => {
+      this.setState(
+        mergeMainState(this.state, {
+          center: new Point(-30022, -20180),
+          activeMenu: void 0
+        })
+      );
+    };
+    const moveToNijiSanjiPark = () => {
+      this.setState(
+        mergeMainState(this.state, {
+          center: new Point(-1496, 1395),
+          activeMenu: void 0
+        })
+      );
+    };
+    const moveToSakuraNboVillage = () => {
+      this.setState(
+        mergeMainState(this.state, {
+          center: new Point(-4781, 4843),
+          activeMenu: void 0
+        })
+      );
+    };
+    const onClickJumpTo = () => {
+      if (this.state.activeMenu === "jumpTo") {
+        this.setState(mergeMainState(this.state, { activeMenu: void 0 }));
+      } else {
+        this.setState(mergeMainState(this.state, { activeMenu: "jumpTo" }));
+      }
+    };
     return (
       <>
         <canvas
@@ -464,7 +512,49 @@ export class MainComponent extends React.Component<{}, MainState> {
           height={height}
         />
         <div className="menu">
-          <div className="menuItem">giji34.world</div>
+          <div className="menuItem">
+            <div className="menuItemContent">giji34.world</div>
+          </div>
+          <div style={{ width: "30px" }} />
+          <div className="menuItem clickable">
+            <div className="menuItemContent" onClick={onClickJumpTo}>
+              Jump to
+              <span className="pulldownMarker" />
+            </div>
+            {this.state.activeMenu === "jumpTo" && (
+              <div
+                className="dropdownMenu"
+                style={{ width: "200px", height: "160px" }}
+              >
+                <div className="menuItem menuItemBorder">
+                  <div className="menuItemContent" onClick={moveToCentralCity}>
+                    中央都市
+                  </div>
+                </div>
+                <div className="menuItem menuItemBorder">
+                  <div
+                    className="menuItemContent"
+                    onClick={moveToNijiSanjiPark}
+                  >
+                    にじさんじランド
+                  </div>
+                </div>
+                <div className="menuItem menuItemBorder">
+                  <div className="menuItemContent" onClick={moveToNewWorld}>
+                    新天地
+                  </div>
+                </div>
+                <div className="menuItem">
+                  <div
+                    className="menuItemContent"
+                    onClick={moveToSakuraNboVillage}
+                  >
+                    🌸ンボ村
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <div className="hspacer" />
           <div className="coordinateLabel">
             <div className="coordinateValue" ref={this.xLabel}>
