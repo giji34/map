@@ -464,7 +464,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           height={height}
         />
         <div className="menu">
-          <div className="menuItem">minecraft: giji34.world</div>
+          <div className="menuItem">giji34.world</div>
           <div className="hspacer" />
           <div className="coordinateLabel">
             <div className="coordinateValue" ref={this.xLabel}>
@@ -475,41 +475,59 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
           </div>
         </div>
-        <div className="billboardsLegendContainer">
-          <div className="billboardsLegendSpacer" />
-          <CSSTransition
-            timeout={300}
-            unmountOnExit={true}
-            in={this.state.isBillboardsVisible}
-            classNames={"billboardsLegend"}
-          >
-            <div className="billboardsLegend">
-              <div
-                className="billboardsLegendCell"
-                style={{ fontWeight: "bold" }}
-              >
-                凡例
-              </div>
-              <div className="billboardsLegendCell" style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            minWidth: "100%",
+            minHeight: "100%",
+            userSelect: "none",
+            pointerEvents: "none"
+          }}
+        >
+          <div style={{ flexGrow: 1 }} />
+          <div style={{ display: "flex" }}>
+            <div style={{ flexGrow: 1 }} />
+            <CSSTransition
+              timeout={300}
+              unmountOnExit={true}
+              in={this.state.isBillboardsVisible}
+              classNames={"billboardsLegend"}
+            >
+              <div className="billboardsLegend">
                 <div
-                  className="billboardsLegendColor"
-                  style={{
-                    backgroundColor: "#acf2bd"
-                  }}
-                />
-                <div>再現作業完了</div>
-              </div>
-              <div className="billboardsLegendCell" style={{ display: "flex" }}>
+                  className="billboardsLegendCell"
+                  style={{ fontWeight: "bold" }}
+                >
+                  凡例
+                </div>
                 <div
-                  className="billboardsLegendColor"
-                  style={{
-                    backgroundColor: "#fdb8c0"
-                  }}
-                />
-                <div>再現作業中</div>
+                  className="billboardsLegendCell"
+                  style={{ display: "flex" }}
+                >
+                  <div
+                    className="billboardsLegendColor"
+                    style={{
+                      backgroundColor: "#acf2bd"
+                    }}
+                  />
+                  <div>再現作業完了</div>
+                </div>
+                <div
+                  className="billboardsLegendCell"
+                  style={{ display: "flex" }}
+                >
+                  <div
+                    className="billboardsLegendColor"
+                    style={{
+                      backgroundColor: "#fdb8c0"
+                    }}
+                  />
+                  <div>再現作業中</div>
+                </div>
               </div>
-            </div>
-          </CSSTransition>
+            </CSSTransition>
+          </div>
         </div>
       </>
     );
