@@ -196,3 +196,21 @@ body {
 .fade-exit-done {
   opacity: 0;
 }
+
+.confirmButton {
+  width: 400px;
+  height: 50px;
+  background-color: hotpink;
+  line-height: 50px;
+  text-align: center;
+  margin: auto;
+  border: solid 2px mediumvioletred;
+  border-radius: 26px;
+  pointer-events: auto;
+}
+
+.confirmButton:active {
+  background-color: mediumvioletred;
+  border: solid 2px hotpink;
+  color: white;
+}

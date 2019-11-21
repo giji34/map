@@ -530,10 +530,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           in={this.state.attensionPopupVisible}
           classNames={"fade"}
         >
-          <div
-            className="attentionPopupBackground"
-            onClick={dismissAttentionPopup}
-          >
+          <div className="attentionPopupBackground">
             <div className="warningMessage">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ textAlign: "center" }}>
@@ -553,6 +550,14 @@ export class MainComponent extends React.Component<{}, MainState> {
                       この地図に関するコメント等を、ライバーさんの配信等のコメント欄に書き込むことはおやめください。
                     </li>
                   </ul>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div
+                    className="confirmButton clickable"
+                    onClick={dismissAttentionPopup}
+                  >
+                    OK
+                  </div>
                 </div>
               </div>
             </div>
