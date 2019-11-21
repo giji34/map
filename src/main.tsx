@@ -123,6 +123,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement>;
   private readonly xLabel: RefObject<HTMLDivElement>;
   private readonly zLabel: RefObject<HTMLDivElement>;
+  private readonly menu: RefObject<HTMLDivElement>;
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
   static readonly MIN_BLOCKS_PER_PIXEL = 0.25;
   static readonly MAX_BLOCKS_PER_PIXEL = 4;
@@ -136,6 +137,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     this.canvas = createRef();
     this.xLabel = createRef();
     this.zLabel = createRef();
+    this.menu = createRef();
     this.state = createMainState();
     window.addEventListener("resize", () => {
       this.setState(this.state);
@@ -342,7 +344,12 @@ export class MainComponent extends React.Component<{}, MainState> {
       );
       window.history.replaceState(void 0, "", hash);
     }, 500);
-    window.addEventListener("wheel", this.onWindowWheel);
+    window.addEventListener("wheel", this.wheelDisabledHandler, {
+      passive: false
+    });
+    this.menu.current!.addEventListener("wheel", this.wheelDisabledHandler, {
+      passive: false
+    });
   }
 
   componentDidUpdate(
@@ -461,7 +468,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     ev.preventDefault();
   };
 
-  private readonly onWindowWheel = (ev: MouseEvent) => {
+  private readonly wheelDisabledHandler = (ev: MouseEvent) => {
     ev.preventDefault();
     ev.stopPropagation();
   };
@@ -510,7 +517,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     };
     const dismissAttentionPopup = () => {
       console.log(1);
-      window.removeEventListener("wheel", this.onWindowWheel);
+      window.removeEventListener("wheel", this.wheelDisabledHandler);
       this.setState(
         mergeMainState(this.state, { attensionPopupVisible: false })
       );
@@ -529,10 +536,10 @@ export class MainComponent extends React.Component<{}, MainState> {
           >
             <div className="warningMessage">
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>
+                <div style={{ textAlign: "center" }}>
                   この地図は、マインクラフトにじさんじサーバーの地図ではございません。
                 </div>
-                <div>
+                <div style={{ textAlign: "center" }}>
                   にじさんじサーバー再現プロジェクトの、再現状況を公表するための地図です。
                 </div>
                 <br />
@@ -561,7 +568,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           width={width}
           height={height}
         />
-        <div className="menu">
+        <div className="menu" ref={this.menu}>
           <div className="menuItem">
             <div className="menuItemContent">giji34.world</div>
           </div>
