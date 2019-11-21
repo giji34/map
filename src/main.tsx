@@ -290,6 +290,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     canvas.addEventListener("mousemove", this.onMouseMove);
     canvas.addEventListener("mouseup", this.onMouseUp);
     canvas.addEventListener("mouseleave", this.onMouseLeave);
+    canvas.addEventListener("contextmenu", this.onContextMenu);
     const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
     const params = window.location.hash.split("&");
@@ -440,6 +441,11 @@ export class MainComponent extends React.Component<{}, MainState> {
 
   private readonly onMouseLeave = (ev: MouseEvent) => {
     this.downEvent = void 0;
+  };
+
+  private readonly onContextMenu = (ev: MouseEvent) => {
+    ev.stopPropagation();
+    ev.preventDefault();
   };
 
   render() {
