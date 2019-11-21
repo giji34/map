@@ -107,38 +107,10 @@ body {
   background-color: azure;
   width: var(--billboardLegendWidth);
   height: 100px;
-  z-index: 999;
+  z-index: 3;
   margin-right: 10px;
   margin-bottom: 10px;
   border: solid 1px black;
-}
-
-.billboardsLegend-enter {
-  opacity: 0;
-}
-
-.billboardsLegend-enter-active {
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 0.3s;
-}
-
-.billboardsLegend-enter-done {
-  opacity: 1;
-}
-
-.billboardsLegend-exit {
-  opacity: 1;
-}
-
-.billboardsLegend-exit-active {
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: 0.3s;
-}
-
-.billboardsLegend-exit-done {
-  opacity: 0;
 }
 
 .billboardsLegendCell {
@@ -166,4 +138,61 @@ body {
   border-top: 4px dashed;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
+}
+
+.attentionPopupBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.8);
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.warningMessage {
+  padding: 20px;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  background-color: pink;
+  pointer-events: none;
+}
+
+.fade {
+  opacity: 1;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.fade-enter-done {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.fade-exit-done {
+  opacity: 0;
 }

@@ -16,6 +16,7 @@ type MainState = {
   isBillboardsVisible: boolean;
   billboardsVisibilityChangedTimestamp: number;
   activeMenu: Menu | undefined;
+  attensionPopupVisible: boolean;
 };
 
 function createMainState(
@@ -23,14 +24,16 @@ function createMainState(
   blocksPerPixel: number = 1,
   isBillboardsVisible: boolean = true,
   billboardsVisibilityChangedTimestamp: number = 0,
-  activeMenu: Menu | undefined = void 0
+  activeMenu: Menu | undefined = void 0,
+  attensionPopupVisible: boolean = true
 ): MainState {
   return {
     center: center.clone(),
     blocksPerPixel,
     isBillboardsVisible,
     billboardsVisibilityChangedTimestamp,
-    activeMenu
+    activeMenu,
+    attensionPopupVisible
   };
 }
 
@@ -339,6 +342,7 @@ export class MainComponent extends React.Component<{}, MainState> {
       );
       window.history.replaceState(void 0, "", hash);
     }, 500);
+    window.addEventListener("wheel", this.onWindowWheel);
   }
 
   componentDidUpdate(
@@ -457,6 +461,11 @@ export class MainComponent extends React.Component<{}, MainState> {
     ev.preventDefault();
   };
 
+  private readonly onWindowWheel = (ev: MouseEvent) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
+
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -499,8 +508,49 @@ export class MainComponent extends React.Component<{}, MainState> {
         this.setState(mergeMainState(this.state, { activeMenu: "jumpTo" }));
       }
     };
+    const dismissAttentionPopup = () => {
+      console.log(1);
+      window.removeEventListener("wheel", this.onWindowWheel);
+      this.setState(
+        mergeMainState(this.state, { attensionPopupVisible: false })
+      );
+    };
     return (
       <>
+        <CSSTransition
+          timeout={300}
+          unmountOnExit={true}
+          in={this.state.attensionPopupVisible}
+          classNames={"fade"}
+        >
+          <div
+            className="attentionPopupBackground"
+            onClick={dismissAttentionPopup}
+          >
+            <div className="warningMessage">
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div>
+                  この地図は、マインクラフトにじさんじサーバーの地図ではございません。
+                </div>
+                <div>
+                  にじさんじサーバー再現プロジェクトの、再現状況を公表するための地図です。
+                </div>
+                <br />
+                <div>ご注意</div>
+                <div>
+                  <ul>
+                    <li>
+                      この地図を見て、にじさんじ関係者（ライバーさんを含む）に問い合わせすることはおやめください。
+                    </li>
+                    <li>
+                      この地図に関するコメント等を、ライバーさんの配信等のコメント欄に書き込むことはおやめください。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CSSTransition>
         <canvas
           className="canvas"
           ref={this.canvas}
@@ -582,7 +632,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               timeout={300}
               unmountOnExit={true}
               in={this.state.isBillboardsVisible}
-              classNames={"billboardsLegend"}
+              classNames={"fade"}
             >
               <div className="billboardsLegend">
                 <div
