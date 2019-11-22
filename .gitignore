@@ -2,7 +2,7 @@
 /public/dist
 /.idea
 *.log
-/public/images
+/public/images/0
 /landmarks.tsv
 /src/imagelist.ts
-/images
+/images/0
