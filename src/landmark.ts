@@ -240,7 +240,21 @@ export const kLandmarks: Landmark[] = [
     location: new Point(344, 95),
     finished: true
   },
-  { name: "山田トラップ", location: new Point(199, -131), finished: true }
+  { name: "山田トラップ", location: new Point(199, -131), finished: true },
+  { name: "クレアリゾート", location: new Point(629, -37), finished: true },
+  { name: "いちごの仮拠点", location: new Point(1025, 1416), finished: true },
+  {
+    name: "仮拠点(シスタークレア,20190422)",
+    location: new Point(-2368, 2263),
+    finished: true
+  },
+  {
+    name: "避難所(シスタークレア,20190814)",
+    location: new Point(1427, -164),
+    finished: true
+  },
+  { name: "ネザーゲート", location: new Point(1435, -144), finished: true },
+  { name: "HELP", location: new Point(-1746, 1076), finished: true }
 ].sort((a, b) => {
   if (a.location.z == b.location.z) {
     return a.location.x - b.location.z;
