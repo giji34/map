@@ -163,6 +163,10 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.save();
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    const scale = window.devicePixelRatio;
+    ctx.scale(scale, scale);
+
     const cx = this.state.center.x;
     const cz = this.state.center.z;
     const blocksPerPixel = this.state.blocksPerPixel;
@@ -553,8 +557,8 @@ export class MainComponent extends React.Component<{}, MainState> {
             width: `${width}px`,
             height: `${height}px`
           }}
-          width={width}
-          height={height}
+          width={width * window.devicePixelRatio}
+          height={height * window.devicePixelRatio}
         />
         <div className="menu" ref={this.menu}>
           <div className="menuItem">
