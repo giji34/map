@@ -510,7 +510,6 @@ export class MainComponent extends React.Component<{}, MainState> {
       }
     };
     const dismissAttentionPopup = () => {
-      console.log(1);
       window.removeEventListener("wheel", this.wheelDisabledHandler);
       this.setState(
         mergeMainState(this.state, { attensionPopupVisible: false })
