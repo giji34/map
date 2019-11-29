@@ -7,6 +7,7 @@ import { clamp } from "./number";
 import { kFileList } from "./imagelist";
 import { CSSTransition } from "react-transition-group";
 import { sprintf } from "sprintf";
+import * as Hammer from "hammerjs";
 
 type Menu = "jumpTo";
 
@@ -115,7 +116,7 @@ class MipmapStorage {
 }
 
 type DownEvent = {
-  event: MouseEvent;
+  client: Point;
   center: Point;
 };
 
@@ -129,8 +130,11 @@ export class MainComponent extends React.Component<{}, MainState> {
   static readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
+  private pinchStartBlocksPerPixel: number = 1;
+  private pinchEventDeltaTime: number = Number.MAX_VALUE;
   private textMetricsCache = new Map<string, TextMetrics>();
   private fragmentUpdateTimer: number | undefined;
+  private gestureRecognizer: any;
 
   constructor(props: {}) {
     super(props);
@@ -296,11 +300,40 @@ export class MainComponent extends React.Component<{}, MainState> {
       return;
     }
     canvas.addEventListener("wheel", this.onWheelEvent);
-    canvas.addEventListener("mousedown", this.onMouseDown);
-    canvas.addEventListener("mousemove", this.onMouseMove);
-    canvas.addEventListener("mouseup", this.onMouseUp);
-    canvas.addEventListener("mouseleave", this.onMouseLeave);
     canvas.addEventListener("contextmenu", this.onContextMenu);
+    this.gestureRecognizer = new Hammer(canvas);
+    this.gestureRecognizer.get("pinch").set({ enable: true });
+    this.gestureRecognizer.on("pan", ev => {
+      if (this.downEvent === void 0) {
+        this.downEvent = {
+          client: new Point(ev.center.x, ev.center.y),
+          center: this.state.center.clone()
+        };
+      }
+      this.onPan(new Point(ev.center.x, ev.center.y));
+      if (ev.isFinal) {
+        this.downEvent = void 0;
+      }
+    });
+    this.gestureRecognizer.on("pinch", ev => {
+      if (this.pinchEventDeltaTime > ev.deltaTime) {
+        this.pinchStartBlocksPerPixel = this.state.blocksPerPixel;
+      }
+      this.pinchEventDeltaTime = ev.deltaTime;
+      this.onScaleEvent(
+        ev.center.x,
+        ev.center.y,
+        this.pinchStartBlocksPerPixel / ev.scale
+      );
+    });
+    this.gestureRecognizer.on("tap", () => {
+      this.setState(
+        mergeMainState(this.state, {
+          isBillboardsVisible: !this.state.isBillboardsVisible,
+          billboardsVisibilityChangedTimestamp: Date.now()
+        })
+      );
+    });
     const ctx = canvas.getContext("2d")!;
     this.scheduleRender(ctx);
     const params = window.location.hash.split("&");
@@ -332,6 +365,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         );
       }
     });
+    this.pinchStartBlocksPerPixel = blocksPerPixel;
     this.setState(
       mergeMainState(this.state, { center: new Point(x, z), blocksPerPixel })
     );
@@ -386,14 +420,19 @@ export class MainComponent extends React.Component<{}, MainState> {
     if (ev.deltaMode !== ev.DOM_DELTA_PIXEL) {
       return;
     }
-    const client = new Point(ev.clientX, ev.clientY);
+    const scale = this.state.blocksPerPixel + ev.deltaY * 0.003;
+    this.onScaleEvent(ev.clientX, ev.clientY, scale);
+  };
+
+  private onScaleEvent(x: number, y: number, scale: number) {
+    const client = new Point(x, y);
     const state = this.state;
     if (!state) {
       return;
     }
     const pivot = this.clientToWorld(state, client);
     const nextBlocksPerPixel = clamp(
-      state.blocksPerPixel + ev.deltaY * 0.003,
+      scale,
       MainComponent.MIN_BLOCKS_PER_PIXEL,
       MainComponent.MAX_BLOCKS_PER_PIXEL
     );
@@ -407,21 +446,10 @@ export class MainComponent extends React.Component<{}, MainState> {
         blocksPerPixel: nextBlocksPerPixel
       })
     );
-  };
+  }
 
-  private readonly onMouseDown = (ev: MouseEvent) => {
-    if (this.state.activeMenu !== void 0) {
-      this.setState(mergeMainState(this.state, { activeMenu: void 0 }));
-    } else {
-      this.downEvent = { event: ev, center: this.state.center.clone() };
-    }
-  };
-
-  private readonly onMouseMove = (ev: MouseEvent) => {
-    const world = this.clientToWorld(
-      this.state,
-      new Point(ev.clientX, ev.clientY)
-    );
+  private onPan(pos: Point) {
+    const world = this.clientToWorld(this.state, pos);
     if (this.xLabel.current) {
       this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
     }
@@ -432,36 +460,13 @@ export class MainComponent extends React.Component<{}, MainState> {
     if (!down) {
       return;
     }
-    const dx = down.event.clientX - ev.clientX;
-    const dy = down.event.clientY - ev.clientY;
+    const dx = down.client.x - pos.x;
+    const dy = down.client.z - pos.z;
     const blocksPerPixel = this.state.blocksPerPixel;
     const x = down.center.x + dx * blocksPerPixel;
     const z = down.center.z + dy * blocksPerPixel;
     this.setState(mergeMainState(this.state, { center: new Point(x, z) }));
-  };
-
-  private readonly onMouseUp = (ev: MouseEvent) => {
-    if (this.downEvent === void 0) {
-      return;
-    }
-    const down = new Point(this.downEvent.event.x, this.downEvent.event.y);
-    this.downEvent = void 0;
-    const click = new Point(ev.x, ev.y);
-    const distance = Point.distance(down, click);
-    if (distance > 5) {
-      return;
-    }
-    this.setState(
-      mergeMainState(this.state, {
-        isBillboardsVisible: !this.state.isBillboardsVisible,
-        billboardsVisibilityChangedTimestamp: Date.now()
-      })
-    );
-  };
-
-  private readonly onMouseLeave = (ev: MouseEvent) => {
-    this.downEvent = void 0;
-  };
+  }
 
   private readonly onContextMenu = (ev: MouseEvent) => {
     ev.stopPropagation();
