@@ -381,7 +381,9 @@ export class MainComponent extends React.Component<{}, MainState> {
         this.state.center.z,
         this.state.blocksPerPixel
       );
-      window.history.replaceState(void 0, "", hash);
+      if (hash !== window.location.hash) {
+        window.history.replaceState(void 0, "", hash);
+      }
     }, 500);
     window.addEventListener("wheel", this.wheelDisabledHandler, {
       passive: false
