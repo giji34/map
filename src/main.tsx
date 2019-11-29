@@ -305,6 +305,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     }
     canvas.addEventListener("wheel", this.onWheelEvent);
     canvas.addEventListener("contextmenu", this.onContextMenu);
+    canvas.addEventListener("mousemove", this.onMouseMove);
     this.gestureRecognizer = new Hammer(canvas);
     this.gestureRecognizer.get("pinch").set({ enable: true });
     this.gestureRecognizer.on("pan", ev => {
@@ -418,6 +419,19 @@ export class MainComponent extends React.Component<{}, MainState> {
     return new Point(px, py);
   }
 
+  private readonly onMouseMove = (ev: MouseEvent) => {
+    const world = this.clientToWorld(
+      this.state,
+      new Point(ev.clientX, ev.clientY)
+    );
+    if (this.xLabel.current) {
+      this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
+    }
+    if (this.zLabel.current) {
+      this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
+    }
+  };
+
   private readonly onWheelEvent = (ev: WheelEvent) => {
     ev.stopPropagation();
     ev.preventDefault();
@@ -453,13 +467,6 @@ export class MainComponent extends React.Component<{}, MainState> {
   }
 
   private onPan(pos: Point) {
-    const world = this.clientToWorld(this.state, pos);
-    if (this.xLabel.current) {
-      this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
-    }
-    if (this.zLabel.current) {
-      this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
-    }
     const down = this.downEvent;
     if (!down) {
       return;
@@ -617,12 +624,8 @@ export class MainComponent extends React.Component<{}, MainState> {
           </div>
           <div className="hspacer" />
           <div className="coordinateLabel">
-            <div className="coordinateValue" ref={this.xLabel}>
-              X:{" "}
-            </div>
-            <div className="coordinateValue" ref={this.zLabel}>
-              Z:{" "}
-            </div>
+            <div className="coordinateValue" ref={this.xLabel} />
+            <div className="coordinateValue" ref={this.zLabel} />
           </div>
         </div>
         <div
