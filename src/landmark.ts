@@ -254,7 +254,51 @@ export const kLandmarks: Landmark[] = [
     finished: true
   },
   { name: "ネザーゲート", location: new Point(1435, -144), finished: true },
-  { name: "HELP", location: new Point(-1746, 1076), finished: true }
+  { name: "HELP", location: new Point(-1746, 1076), finished: true },
+  {
+    name: "にじさんじスタジアム",
+    location: new Point(638, 136),
+    finished: true
+  },
+  {
+    name: "ひまぐまんち(・ヮ・)",
+    location: new Point(-2448, 3408),
+    finished: false
+  },
+  { name: "ネザーゲート", location: new Point(-12223, -8011), finished: true },
+  { name: "ツリーハウス", location: new Point(555, 68), finished: false },
+  { name: "ネザーゲート", location: new Point(2717, -3906), finished: true },
+  {
+    name: "いちごが発見した村",
+    location: new Point(2305, -1791),
+    finished: true
+  },
+  {
+    name: "いちごと緑仙が発見した村",
+    location: new Point(2577, -3439),
+    finished: true
+  },
+  {
+    name: "いちごが発見した村",
+    location: new Point(2193, -2903),
+    finished: true
+  },
+  {
+    name: "いちごが発見したピラミッド",
+    location: new Point(2154, -2688),
+    finished: true
+  },
+  {
+    name: "いちごが発見した村",
+    location: new Point(2113, -2511),
+    finished: true
+  },
+  {
+    name: "クレアが発見した村",
+    location: new Point(1825, -1343),
+    finished: false
+  },
+  { name: "スライムカフェ", location: new Point(2160, -1653), finished: false }
 ].sort((a, b) => {
   if (a.location.z == b.location.z) {
     return a.location.x - b.location.z;

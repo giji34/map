@@ -476,37 +476,15 @@ export class MainComponent extends React.Component<{}, MainState> {
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const moveToCentralCity = () => {
-      this.setState(
-        mergeMainState(this.state, {
-          center: new Point(179, 24),
-          activeMenu: void 0
-        })
-      );
-    };
-    const moveToNewWorld = () => {
-      this.setState(
-        mergeMainState(this.state, {
-          center: new Point(-30022, -20180),
-          activeMenu: void 0
-        })
-      );
-    };
-    const moveToNijiSanjiPark = () => {
-      this.setState(
-        mergeMainState(this.state, {
-          center: new Point(-1496, 1395),
-          activeMenu: void 0
-        })
-      );
-    };
-    const moveToSakuraNboVillage = () => {
-      this.setState(
-        mergeMainState(this.state, {
-          center: new Point(-4781, 4843),
-          activeMenu: void 0
-        })
-      );
+    const moveTo = (point: Point) => {
+      return () => {
+        this.setState(
+          mergeMainState(this.state, {
+            center: point,
+            activeMenu: void 0
+          })
+        );
+      };
     };
     const onClickJumpTo = () => {
       if (this.state.activeMenu === "jumpTo") {
@@ -584,34 +562,45 @@ export class MainComponent extends React.Component<{}, MainState> {
               <span className="pulldownMarker" />
             </div>
             {this.state.activeMenu === "jumpTo" && (
-              <div
-                className="dropdownMenu"
-                style={{ width: "200px", height: "160px" }}
-              >
+              <div className="dropdownMenu">
                 <div className="menuItem menuItemBorder">
-                  <div className="menuItemContent" onClick={moveToCentralCity}>
+                  <div
+                    className="menuItemContent"
+                    onClick={moveTo(new Point(179, 24))}
+                  >
                     中央都市
                   </div>
                 </div>
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveToNijiSanjiPark}
+                    onClick={moveTo(new Point(-1496, 1395))}
                   >
                     にじさんじランド
                   </div>
                 </div>
                 <div className="menuItem menuItemBorder">
-                  <div className="menuItemContent" onClick={moveToNewWorld}>
+                  <div
+                    className="menuItemContent"
+                    onClick={moveTo(new Point(-30022, -20180))}
+                  >
                     新天地
+                  </div>
+                </div>
+                <div className="menuItem menuItemBorder">
+                  <div
+                    className="menuItemContent"
+                    onClick={moveTo(new Point(-4781, 4843))}
+                  >
+                    🌸ンボ村
                   </div>
                 </div>
                 <div className="menuItem">
                   <div
                     className="menuItemContent"
-                    onClick={moveToSakuraNboVillage}
+                    onClick={moveTo(new Point(-2448, 3408))}
                   >
-                    🌸ンボ村
+                    ひまぐまんち(・ヮ・)
                   </div>
                 </div>
               </div>
