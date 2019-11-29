@@ -16,3 +16,5 @@ yarn imagemin
 
 yarn imagelist
 yarn webpack
+
+find public -name '.DS_Store' | xargs rm
