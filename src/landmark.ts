@@ -307,6 +307,43 @@ export const kLandmarks: Landmark[] = [
   }
 });
 
+type Railway = { name: string; corners: Point[] };
+
+const kRailways: Railway[] = [
+  {
+    name: "うい覇道",
+    corners: [
+      new Point(-589, -94),
+      new Point(-589, -76),
+      new Point(-735, -76),
+      new Point(-735, 299),
+      new Point(-733, 299),
+      new Point(-733, 344)
+    ]
+  },
+  {
+    name: "花畑鉄道にじさんじランド線",
+    corners: [
+      new Point(-308, 783),
+      new Point(-885, 783),
+      new Point(-885, 781),
+      new Point(-997, 781),
+      new Point(-997, 783),
+      new Point(-1037, 783),
+      new Point(-1037, 941),
+      new Point(-1038, 941),
+      new Point(-1038, 1082),
+      new Point(-1044, 1082),
+      new Point(-1044, 1232),
+      new Point(-1067, 1232),
+      new Point(-1067, 1392),
+      new Point(-1199, 1392),
+      new Point(-1199, 1412),
+      new Point(-1449, 1412)
+    ]
+  }
+];
+
 const kLandmarkLeft = kLandmarks.reduce(
   (accum, current) => Math.min(accum, current.location.x),
   kLandmarks[0].location.x
@@ -329,5 +366,23 @@ export const kLandmarksRightBottom = new Point(kLandmarkRight, kLandmarkBototm);
 if (typeof window === "undefined") {
   kLandmarks.forEach(landmark => {
     console.log(`${landmark.location.x}\t${landmark.location.z}`);
+  });
+  kRailways.forEach(railway => {
+    for (let i = 1; i < railway.corners.length; i++) {
+      const c0 = railway.corners[i - 1];
+      const c1 = railway.corners[i];
+      if (c0.x !== c1.x && c0.z !== c1.z) {
+        return;
+      }
+      const dx = c1.x - c0.x;
+      const dz = c1.z - c0.z;
+      const length = Math.max(Math.abs(dx), Math.abs(dz));
+      const direction = new Point(Math.sign(dx), Math.sign(dz));
+      for (let j = 0; j < length; j++) {
+        const x = c0.x + j * direction.x;
+        const z = c0.z + j * direction.z;
+        console.log(`${x}\t${z}`);
+      }
+    }
   });
 }
