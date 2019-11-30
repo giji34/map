@@ -30,6 +30,7 @@ body {
   left: 0;
   min-width: 100%;
   min-height: 100%;
+  cursor: crosshair;
 }
 
 .menu {
@@ -77,6 +78,7 @@ body {
 .coordinateLabel {
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
 }
 
 .coordinateValue {

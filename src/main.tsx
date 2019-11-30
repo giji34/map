@@ -18,6 +18,7 @@ type MainState = {
   billboardsVisibilityChangedTimestamp: number;
   activeMenu: Menu | undefined;
   attensionPopupVisible: boolean;
+  coordinateLabelVisible: boolean;
 };
 
 function createMainState(
@@ -26,7 +27,8 @@ function createMainState(
   isBillboardsVisible: boolean = true,
   billboardsVisibilityChangedTimestamp: number = 0,
   activeMenu: Menu | undefined = void 0,
-  attensionPopupVisible: boolean = true
+  attensionPopupVisible: boolean = true,
+  coordinateLabelVisible: boolean = true
 ): MainState {
   return {
     center: center.clone(),
@@ -34,7 +36,8 @@ function createMainState(
     isBillboardsVisible,
     billboardsVisibilityChangedTimestamp,
     activeMenu,
-    attensionPopupVisible
+    attensionPopupVisible,
+    coordinateLabelVisible
   };
 }
 
@@ -126,6 +129,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private readonly zLabel: RefObject<HTMLDivElement> = createRef();
   private readonly menu: RefObject<HTMLDivElement> = createRef();
   private readonly reticule: RefObject<HTMLDivElement> = createRef();
+  private readonly coordinateLabel: RefObject<HTMLDivElement> = createRef();
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
   static readonly MIN_BLOCKS_PER_PIXEL = 0.125;
   static readonly MAX_BLOCKS_PER_PIXEL = 4;
@@ -135,8 +139,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private pinchEventDeltaTime: number = Number.MAX_VALUE;
   private textMetricsCache = new Map<string, TextMetrics>();
   private fragmentUpdateTimer: number | undefined;
-  private gestureRecognizer: any;
-  private mouseDetected: boolean = false;
+  private touchEventDetected: boolean = false;
 
   constructor(props: {}) {
     super(props);
@@ -304,9 +307,12 @@ export class MainComponent extends React.Component<{}, MainState> {
     canvas.addEventListener("wheel", this.onWheelEvent);
     canvas.addEventListener("contextmenu", this.onContextMenu);
     canvas.addEventListener("mousemove", this.onMouseMove);
-    this.gestureRecognizer = new Hammer(canvas);
-    this.gestureRecognizer.get("pinch").set({ enable: true });
-    this.gestureRecognizer.on("pan", ev => {
+    canvas.addEventListener("touchmove", () => {
+      this.touchEventDetected = true;
+    });
+    const canvasGestureRecognizer = new Hammer(canvas);
+    canvasGestureRecognizer.get("pinch").set({ enable: true });
+    canvasGestureRecognizer.on("pan", ev => {
       if (this.downEvent === void 0) {
         this.downEvent = {
           client: new Point(ev.center.x, ev.center.y),
@@ -318,7 +324,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         this.downEvent = void 0;
       }
     });
-    this.gestureRecognizer.on("pinch", ev => {
+    canvasGestureRecognizer.on("pinch", ev => {
       if (this.pinchEventDeltaTime > ev.deltaTime) {
         this.pinchStartBlocksPerPixel = this.state.blocksPerPixel;
       }
@@ -329,7 +335,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         this.pinchStartBlocksPerPixel / ev.scale
       );
     });
-    this.gestureRecognizer.on("tap", () => {
+    canvasGestureRecognizer.on("tap", () => {
       this.setState(
         mergeMainState(this.state, {
           isBillboardsVisible: !this.state.isBillboardsVisible,
@@ -389,6 +395,14 @@ export class MainComponent extends React.Component<{}, MainState> {
     this.menu.current!.addEventListener("wheel", this.wheelDisabledHandler, {
       passive: false
     });
+    const menuGestureRecognizer = new Hammer(this.coordinateLabel.current!);
+    menuGestureRecognizer.on("tap", () => {
+      this.setState(
+        mergeMainState(this.state, {
+          coordinateLabelVisible: !this.state.coordinateLabelVisible
+        })
+      );
+    });
   }
 
   componentDidUpdate(
@@ -424,21 +438,14 @@ export class MainComponent extends React.Component<{}, MainState> {
       this.state,
       new Point(ev.clientX, ev.clientY)
     );
-    if (this.xLabel.current) {
-      this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
+    if (!this.touchEventDetected) {
+      if (this.xLabel.current) {
+        this.xLabel.current.innerHTML = `X: ${Math.floor(world.x)}`;
+      }
+      if (this.zLabel.current) {
+        this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
+      }
     }
-    if (this.zLabel.current) {
-      this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
-    }
-    const reticule = this.reticule.current;
-    if (reticule) {
-      reticule.style.display = "none";
-    }
-    const canvas = this.canvas.current;
-    if (canvas) {
-      canvas.style.cursor = "crosshair";
-    }
-    this.mouseDetected = true;
   };
 
   private readonly onWheelEvent = (ev: WheelEvent) => {
@@ -581,7 +588,16 @@ export class MainComponent extends React.Component<{}, MainState> {
           width={width * window.devicePixelRatio}
           height={height * window.devicePixelRatio}
         />
-        <div className="reticule" ref={this.reticule}>
+        <div
+          className="reticule"
+          ref={this.reticule}
+          style={{
+            opacity:
+              this.state.coordinateLabelVisible && this.touchEventDetected
+                ? 1
+                : 0
+          }}
+        >
           <div
             style={{
               position: "absolute",
@@ -680,7 +696,11 @@ export class MainComponent extends React.Component<{}, MainState> {
             )}
           </div>
           <div className="hspacer" />
-          <div className="coordinateLabel">
+          <div
+            className="coordinateLabel"
+            ref={this.coordinateLabel}
+            style={{ opacity: this.state.coordinateLabelVisible ? 1 : 0 }}
+          >
             <div className="coordinateValue" ref={this.xLabel} />
             <div className="coordinateValue" ref={this.zLabel} />
           </div>
