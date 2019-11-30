@@ -121,12 +121,13 @@ type DownEvent = {
 };
 
 export class MainComponent extends React.Component<{}, MainState> {
-  private readonly canvas: RefObject<HTMLCanvasElement>;
-  private readonly xLabel: RefObject<HTMLDivElement>;
-  private readonly zLabel: RefObject<HTMLDivElement>;
-  private readonly menu: RefObject<HTMLDivElement>;
+  private readonly canvas: RefObject<HTMLCanvasElement> = createRef();
+  private readonly xLabel: RefObject<HTMLDivElement> = createRef();
+  private readonly zLabel: RefObject<HTMLDivElement> = createRef();
+  private readonly menu: RefObject<HTMLDivElement> = createRef();
+  private readonly reticule: RefObject<HTMLDivElement> = createRef();
   private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
-  static readonly MIN_BLOCKS_PER_PIXEL = 0.25;
+  static readonly MIN_BLOCKS_PER_PIXEL = 0.125;
   static readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
@@ -135,13 +136,10 @@ export class MainComponent extends React.Component<{}, MainState> {
   private textMetricsCache = new Map<string, TextMetrics>();
   private fragmentUpdateTimer: number | undefined;
   private gestureRecognizer: any;
+  private mouseDetected: boolean = false;
 
   constructor(props: {}) {
     super(props);
-    this.canvas = createRef();
-    this.xLabel = createRef();
-    this.zLabel = createRef();
-    this.menu = createRef();
     this.state = createMainState();
     window.addEventListener("resize", () => {
       this.setState(this.state);
@@ -432,6 +430,15 @@ export class MainComponent extends React.Component<{}, MainState> {
     if (this.zLabel.current) {
       this.zLabel.current.innerHTML = `Z: ${Math.floor(world.z)}`;
     }
+    const reticule = this.reticule.current;
+    if (reticule) {
+      reticule.style.display = "none";
+    }
+    const canvas = this.canvas.current;
+    if (canvas) {
+      canvas.style.cursor = "crosshair";
+    }
+    this.mouseDetected = true;
   };
 
   private readonly onWheelEvent = (ev: WheelEvent) => {
@@ -478,6 +485,12 @@ export class MainComponent extends React.Component<{}, MainState> {
     const blocksPerPixel = this.state.blocksPerPixel;
     const x = down.center.x + dx * blocksPerPixel;
     const z = down.center.z + dy * blocksPerPixel;
+    if (this.xLabel.current) {
+      this.xLabel.current.innerHTML = `X: ${Math.floor(x)}`;
+    }
+    if (this.zLabel.current) {
+      this.zLabel.current.innerHTML = `Z: ${Math.floor(z)}`;
+    }
     this.setState(mergeMainState(this.state, { center: new Point(x, z) }));
   }
 
@@ -568,6 +581,49 @@ export class MainComponent extends React.Component<{}, MainState> {
           width={width * window.devicePixelRatio}
           height={height * window.devicePixelRatio}
         />
+        <div className="reticule" ref={this.reticule}>
+          <div
+            style={{
+              position: "absolute",
+              top: "calc(-1 * var(--reticule-size) - 1px)",
+              left: "-1px",
+              height: "calc(2 * var(--reticule-size) + 2px)",
+              width: "3px",
+              backgroundColor: "white"
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "-1px",
+              left: "calc(-1 * var(--reticule-size) - 1px)",
+              width: "calc(2 * var(--reticule-size) + 2px)",
+              height: "3px",
+              backgroundColor: "white"
+            }}
+          />
+
+          <div
+            style={{
+              position: "absolute",
+              top: "calc(-1 * var(--reticule-size))",
+              left: 0,
+              height: "calc(2 * var(--reticule-size))",
+              width: "1px",
+              backgroundColor: "black"
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: "calc(-1 * var(--reticule-size))",
+              width: "calc(2 * var(--reticule-size))",
+              height: "1px",
+              backgroundColor: "black"
+            }}
+          />
+        </div>
         <div className="menu" ref={this.menu}>
           <div className="menuItem">
             <div className="menuItemContent">giji34.world</div>

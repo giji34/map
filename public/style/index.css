@@ -214,3 +214,12 @@ body {
   border: solid 2px hotpink;
   color: white;
 }
+
+.reticule {
+  --reticule-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  overflow: visible;
+}
