@@ -208,7 +208,7 @@ export const kLandmarks: Landmark[] = [
     finished: false,
     xOffset: 100
   },
-  { name: "chima kakurega", location: new Point(-117, -205), finished: false },
+  { name: "chima kakurega", location: new Point(-113, -215), finished: false },
   {
     name: "うさぎの像(作者不明)",
     location: new Point(-928, -1502),
@@ -298,7 +298,9 @@ export const kLandmarks: Landmark[] = [
     location: new Point(1825, -1343),
     finished: false
   },
-  { name: "スライムカフェ", location: new Point(2160, -1653), finished: false }
+  { name: "スライムカフェ", location: new Point(2160, -1653), finished: false },
+  { name: "しばハウス3", location: new Point(-154, -66), finished: true },
+  { name: "ギル様の家", location: new Point(724, 53), finished: true }
 ].sort((a, b) => {
   if (a.location.z == b.location.z) {
     return a.location.x - b.location.z;
