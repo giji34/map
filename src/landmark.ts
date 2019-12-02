@@ -300,7 +300,13 @@ export const kLandmarks: Landmark[] = [
   },
   { name: "スライムカフェ", location: new Point(2160, -1653), finished: false },
   { name: "しばハウス3", location: new Point(-154, -66), finished: true },
-  { name: "ギル様の家", location: new Point(724, 53), finished: true }
+  { name: "ギル様の家", location: new Point(724, 53), finished: true },
+  { name: "夢月ロアの拠点", location: new Point(412, 107), finished: false },
+  {
+    name: "マグマの滝の家(作者不明)",
+    location: new Point(452, 792),
+    finished: false
+  }
 ].sort((a, b) => {
   if (a.location.z == b.location.z) {
     return a.location.x - b.location.z;
