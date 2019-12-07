@@ -2,11 +2,11 @@ import * as React from "react";
 import { createRef, RefObject } from "react";
 import {
   Dimension,
+  kLandmarks,
   kLandmarksRightBottom,
   kLandmarksTopLeft,
   Point
 } from "./landmark";
-import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
 import { kFileList } from "./imagelist";
@@ -543,11 +543,12 @@ export class MainComponent extends React.Component<{}, MainState> {
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const moveTo = (point: Point) => {
+    const moveTo = (point: Point, dimension: Dimension) => {
       return () => {
         this.setState(
           mergeMainState(this.state, {
             center: point,
+            dimension,
             activeMenu: void 0
           })
         );
@@ -684,7 +685,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(179, 24))}
+                    onClick={moveTo(new Point(179, 24), Dimension.Overworld)}
                   >
                     中央都市
                   </div>
@@ -692,7 +693,10 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(-1496, 1395))}
+                    onClick={moveTo(
+                      new Point(-1496, 1395),
+                      Dimension.Overworld
+                    )}
                   >
                     にじさんじランド
                   </div>
@@ -700,7 +704,10 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(-30022, -20180))}
+                    onClick={moveTo(
+                      new Point(-30022, -20180),
+                      Dimension.Overworld
+                    )}
                   >
                     新天地
                   </div>
@@ -708,7 +715,10 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(-4781, 4843))}
+                    onClick={moveTo(
+                      new Point(-4781, 4843),
+                      Dimension.Overworld
+                    )}
                   >
                     🌸ンボ村
                   </div>
@@ -716,7 +726,10 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(-2448, 3408))}
+                    onClick={moveTo(
+                      new Point(-2448, 3408),
+                      Dimension.Overworld
+                    )}
                   >
                     ひまぐまんち(・ヮ・)
                   </div>
