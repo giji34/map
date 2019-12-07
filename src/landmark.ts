@@ -28,7 +28,7 @@ export class Point3 {
   }
 }
 
-enum Dimension {
+export enum Dimension {
   TheNether = -1,
   Overworld = 0,
   TheEnd = 1

@@ -1,6 +1,11 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import { kLandmarksRightBottom, kLandmarksTopLeft, Point } from "./landmark";
+import {
+  Dimension,
+  kLandmarksRightBottom,
+  kLandmarksTopLeft,
+  Point
+} from "./landmark";
 import { kLandmarks } from "./landmark";
 import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
@@ -19,6 +24,7 @@ type MainState = {
   activeMenu: Menu | undefined;
   attensionPopupVisible: boolean;
   coordinateLabelVisible: boolean;
+  dimension: Dimension;
 };
 
 function createMainState(
@@ -28,7 +34,8 @@ function createMainState(
   billboardsVisibilityChangedTimestamp: number = 0,
   activeMenu: Menu | undefined = void 0,
   attensionPopupVisible: boolean = true,
-  coordinateLabelVisible: boolean = true
+  coordinateLabelVisible: boolean = true,
+  dimension: Dimension = Dimension.Overworld
 ): MainState {
   return {
     center: center.clone(),
@@ -37,7 +44,8 @@ function createMainState(
     billboardsVisibilityChangedTimestamp,
     activeMenu,
     attensionPopupVisible,
-    coordinateLabelVisible
+    coordinateLabelVisible,
+    dimension
   };
 }
 
@@ -225,6 +233,9 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.globalAlpha = alpha;
     if (this.state.isBillboardsVisible || elapsed < fadeInSeconds) {
       kLandmarks.forEach(landmark => {
+        if (landmark.dimension !== this.state.dimension) {
+          return;
+        }
         const location = landmark.markerLocation;
         if (
           location.x < minBlockX ||
@@ -349,6 +360,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     let x = this.state.center.x;
     let z = this.state.center.z;
     let blocksPerPixel = this.state.blocksPerPixel;
+    let dimension = this.state.dimension;
     params.forEach(param => {
       if (param.startsWith("#")) {
         param = param.substr(1);
@@ -372,18 +384,35 @@ export class MainComponent extends React.Component<{}, MainState> {
           MainComponent.MIN_BLOCKS_PER_PIXEL,
           MainComponent.MAX_BLOCKS_PER_PIXEL
         );
+      } else if (key === "dimension") {
+        switch (value) {
+          case 0:
+            dimension = Dimension.Overworld;
+            break;
+          case 1:
+            dimension = Dimension.TheEnd;
+            break;
+          case -1:
+            dimension = Dimension.TheNether;
+            break;
+        }
       }
     });
     this.pinchStartBlocksPerPixel = blocksPerPixel;
     this.setState(
-      mergeMainState(this.state, { center: new Point(x, z), blocksPerPixel })
+      mergeMainState(this.state, {
+        center: new Point(x, z),
+        blocksPerPixel,
+        dimension
+      })
     );
     this.fragmentUpdateTimer = window.setInterval(() => {
       const hash = sprintf(
-        "#x=%.1f&z=%.1f&scale=%.2f",
+        "#x=%.1f&z=%.1f&scale=%.2f&dimension=%d",
         this.state.center.x,
         this.state.center.z,
-        this.state.blocksPerPixel
+        this.state.blocksPerPixel,
+        this.state.dimension
       );
       if (hash !== window.location.hash) {
         window.history.replaceState(void 0, "", hash);
