@@ -225,7 +225,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.globalAlpha = alpha;
     if (this.state.isBillboardsVisible || elapsed < fadeInSeconds) {
       kLandmarks.forEach(landmark => {
-        const location = landmark.location;
+        const location = landmark.markerLocation;
         if (
           location.x < minBlockX ||
           maxBlockX < location.x ||
