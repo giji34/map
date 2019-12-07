@@ -851,7 +851,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(518, 69, 132),
     markerLocation: new Point(518, 116),
     wikiIndex: 170,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "JK組(偽)ハウス",
