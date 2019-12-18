@@ -203,6 +203,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "シスター・クレアの家",
+    prefix: "s",
+    location: new Point3(248, 75, 712),
+    markerLocation: new Point(248, 712),
+    wikiIndex: 33,
+    finished: false
+  }),
+  createLandmark({
     name: "温泉(森中温泉)",
     prefix: ["o", "m"],
     location: new Point3(278, 70, 112),
