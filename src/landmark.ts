@@ -1347,9 +1347,11 @@ export const kLandmarksTopLeft = new Point(kLandmarkLeft, kLandmarkTop);
 export const kLandmarksRightBottom = new Point(kLandmarkRight, kLandmarkBototm);
 
 if (typeof window === "undefined") {
-  kLandmarks.forEach(landmark => {
-    console.log(`${landmark.markerLocation.x}\t${landmark.markerLocation.z}`);
-  });
+  kLandmarks
+    .filter(it => it.dimension === Dimension.Overworld)
+    .forEach(landmark => {
+      console.log(`${landmark.markerLocation.x}\t${landmark.markerLocation.z}`);
+    });
   kRailways.forEach(railway => {
     for (let i = 1; i < railway.corners.length; i++) {
       const c0 = railway.corners[i - 1];
