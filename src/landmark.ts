@@ -55,18 +55,18 @@ function createLandmark(params: {
   markerLocation: Point;
   xOffset?: number;
   finished: boolean;
-  dimension: Dimension;
+  dimension?: Dimension;
   wikiIndex: number;
   debug?: number;
 }): Landmark {
-  return params;
+  const dimension = params.dimension || Dimension.Overworld;
+  return { ...params, dimension };
 }
 
 export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "共有ハウス",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(185, 70, 30),
     markerLocation: new Point(175, 17),
     wikiIndex: 1,
@@ -75,7 +75,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "静凛の家",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(838, 71, 71),
     markerLocation: new Point(842, 72),
     wikiIndex: 2,
@@ -84,7 +83,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "静凛の村",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(1621, 71, 292),
     markerLocation: new Point(1620, 255),
     wikiIndex: 3,
@@ -93,7 +91,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ドラひまハウス",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(383, 66, 9),
     markerLocation: new Point(382, -9),
     wikiIndex: 5,
@@ -102,7 +99,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ハジメ村",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(-383, 66, 18),
     markerLocation: new Point(-423, 17),
     wikiIndex: 7,
@@ -111,7 +107,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "リリかざハウス",
     prefix: "r",
-    dimension: Dimension.Overworld,
     location: new Point3(206, 71, 66),
     markerLocation: new Point(214, 56),
     wikiIndex: 9,
@@ -120,7 +115,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "叶の家",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(206, 72, -83),
     markerLocation: new Point(208, -106),
     xOffset: -30,
@@ -130,7 +124,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "舞ハウス",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(80, 63, 179),
     markerLocation: new Point(73, 162),
     wikiIndex: 15,
@@ -139,7 +132,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ちーかざちーハウス",
     prefix: "c",
-    dimension: Dimension.Overworld,
     location: new Point3(15, 64, -86),
     markerLocation: new Point(-1, -98),
     wikiIndex: 18,
@@ -148,7 +140,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "Kyoko's seacret house",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(243, 63, -120),
     markerLocation: new Point(243, -120),
     xOffset: 80,
@@ -158,7 +149,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちご大墳墓",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(325, 64, 638),
     markerLocation: new Point(323, 631),
     wikiIndex: 21,
@@ -167,7 +157,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "森の羊羹",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(4319, 87, 5423),
     markerLocation: new Point(4282, 5398),
     wikiIndex: 23,
@@ -176,7 +165,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "舞元啓介の家",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(322, 63, -11),
     markerLocation: new Point(323, -42),
     wikiIndex: 24,
@@ -185,7 +173,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "でびリオンハウス",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(124, 71, -55),
     markerLocation: new Point(124, -63),
     wikiIndex: 27,
@@ -194,7 +181,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "アキくんはし",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(33, 63, 16),
     markerLocation: new Point(24, 15),
     wikiIndex: 30,
@@ -203,7 +189,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "夕陽リリの家",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(749, 71, -3),
     markerLocation: new Point(747, -37),
     wikiIndex: 31,
@@ -212,7 +197,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "アズカバン",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(387, 63, 71),
     markerLocation: new Point(423, 63),
     wikiIndex: 32,
@@ -221,7 +205,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "温泉(森中温泉)",
     prefix: ["o", "m"],
-    dimension: Dimension.Overworld,
     location: new Point3(278, 70, 112),
     markerLocation: new Point(274, 118),
     wikiIndex: 35,
@@ -230,7 +213,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ギル様の家",
     prefix: "g",
-    dimension: Dimension.Overworld,
     location: new Point3(732, 64, 56),
     markerLocation: new Point(724, 53),
     wikiIndex: 36,
@@ -239,7 +221,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "✞黒の要塞✞",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(242, 63, -41),
     markerLocation: new Point(242, -41),
     wikiIndex: 37,
@@ -248,7 +229,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "神社",
     prefix: "j",
-    dimension: Dimension.Overworld,
     location: new Point3(245, 70, 31),
     markerLocation: new Point(262, 23),
     wikiIndex: 40,
@@ -257,7 +237,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しずくしま神社",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(880, 63, 41),
     markerLocation: new Point(868, 26),
     wikiIndex: 41,
@@ -266,7 +245,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "魔界ノりりむの家",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(262, 70, 106),
     markerLocation: new Point(255, 102),
     wikiIndex: 42,
@@ -275,7 +253,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "世界地図",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(148, 72, 0),
     markerLocation: new Point(144, -9),
     wikiIndex: 43,
@@ -284,7 +261,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "陰キャ帝国",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(407, 65, 203),
     markerLocation: new Point(404, 223),
     wikiIndex: 45,
@@ -293,7 +269,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しばと凛月のおうち",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(158, 70, -110),
     markerLocation: new Point(137, -118),
     wikiIndex: 46,
@@ -302,7 +277,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "モルパレス",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(78, 64, 75),
     markerLocation: new Point(61, 78),
     wikiIndex: 47,
@@ -311,7 +285,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "シスター・クレアの教会",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(310, 66, 73),
     markerLocation: new Point(323, 66),
     wikiIndex: 48,
@@ -320,7 +293,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "川の下の渓谷",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(151, 24, 98),
     markerLocation: new Point(151, 98),
     wikiIndex: 52,
@@ -329,7 +301,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "桜第一惑星",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(128, 67, -147),
     markerLocation: new Point(128, -168),
     wikiIndex: 55,
@@ -339,7 +310,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "リボルバー",
     prefix: "r",
-    dimension: Dimension.Overworld,
     location: new Point3(-238, 79, 909),
     markerLocation: new Point(-227, 906),
     wikiIndex: 60,
@@ -348,7 +318,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "闘技場",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(231, 17, -83),
     markerLocation: new Point(231, -83),
     finished: true,
@@ -357,7 +326,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ヒモと財布ハウス",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(179, 75, 306),
     markerLocation: new Point(174, 302),
     finished: true,
@@ -367,7 +335,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "カリスマ三姉妹の像",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(264, 69, 67),
     markerLocation: new Point(260, 64),
     wikiIndex: 65,
@@ -376,7 +343,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ひまぐまんち(・ヮ・)",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(-2448, 75, 3408),
     markerLocation: new Point(-2448, 3408),
     wikiIndex: 66,
@@ -385,7 +351,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "カ◯ン塔",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(308, 69, 130),
     markerLocation: new Point(308, 100),
     wikiIndex: 67,
@@ -394,7 +359,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "狂犬ズハウス",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-89, 64, 19),
     markerLocation: new Point(-89, 19),
     wikiIndex: 68,
@@ -403,7 +367,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "サクラダ・ファミリア",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(86, 64, 17),
     markerLocation: new Point(63, -7),
     finished: false,
@@ -413,7 +376,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "競馬場予定地",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-270, 69, -35),
     markerLocation: new Point(-288, -104),
     wikiIndex: 70,
@@ -422,7 +384,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ゆめおのライブハウス",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(-183, 64, 30),
     markerLocation: new Point(-195, 22),
     wikiIndex: 71,
@@ -431,7 +392,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "とうふ",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(327, 63, 636),
     markerLocation: new Point(323, 632),
     wikiIndex: 72,
@@ -440,7 +400,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "クレアリゾート",
     prefix: "c",
-    dimension: Dimension.Overworld,
     location: new Point3(620, 63, -30),
     markerLocation: new Point(629, -37),
     wikiIndex: 73,
@@ -449,7 +408,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しばハウス2",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(197, 63, 127),
     markerLocation: new Point(206, 124),
     wikiIndex: 75,
@@ -458,7 +416,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "矢車りねの家",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(116, 86, 284),
     markerLocation: new Point(116, 284),
     wikiIndex: 76,
@@ -467,7 +424,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "立ち退き反対ハウス",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(-326, 69, -21),
     markerLocation: new Point(-327, -54),
     wikiIndex: 79,
@@ -476,7 +432,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "「たけし」と「さわるな危険」",
     prefix: ["t", "s"],
-    dimension: Dimension.Overworld,
     location: new Point3(169, 67, 70),
     markerLocation: new Point(177, 64),
     wikiIndex: 80,
@@ -486,7 +441,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "BLハウス",
     prefix: "b",
-    dimension: Dimension.Overworld,
     location: new Point3(271, 68, 82),
     markerLocation: new Point(271, 73),
     wikiIndex: 85,
@@ -496,7 +450,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "神田笑一の仮拠点",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-5, 76, 294),
     markerLocation: new Point(-5, 294),
     wikiIndex: 88,
@@ -505,7 +458,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "新宿駅",
     prefix: ["s", "e"],
-    dimension: Dimension.Overworld,
     location: new Point3(194, 70, -4),
     markerLocation: new Point(196, -57),
     wikiIndex: 89,
@@ -514,7 +466,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "緑仙の家",
     prefix: "r",
-    dimension: Dimension.Overworld,
     location: new Point3(407, 105, 765),
     markerLocation: new Point(411, 767),
     wikiIndex: 90,
@@ -523,7 +474,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "神田笑一の家",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(4, 71, 315),
     markerLocation: new Point(4, 315),
     wikiIndex: 91,
@@ -532,7 +482,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "くまさんランド",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(305, 72, 169),
     markerLocation: new Point(306, 171),
     wikiIndex: 92,
@@ -541,7 +490,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ヘアピン像",
     prefix: ["m", "h"],
-    dimension: Dimension.Overworld,
     location: new Point3(87, 64, 5),
     markerLocation: new Point(87, 0),
     wikiIndex: 95,
@@ -550,7 +498,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "DERAS HOUSE",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(-184, 64, 73),
     markerLocation: new Point(-197, 55),
     wikiIndex: 98,
@@ -559,7 +506,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "新・笹木像",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(429, 87, 871),
     markerLocation: new Point(429, 871),
     wikiIndex: 99,
@@ -568,7 +514,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "セブンイレブン",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-185, 64, 100),
     markerLocation: new Point(-190, 93),
     wikiIndex: 100,
@@ -577,7 +522,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "🌸ンボ族村",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-4792, 63, 4860),
     markerLocation: new Point(-4791, 4790),
     wikiIndex: 102,
@@ -586,7 +530,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "花見会場",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(151, 79, 199),
     markerLocation: new Point(151, 188),
     wikiIndex: 103,
@@ -595,7 +538,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "遠北千南のマジックツリーハウス",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(53, 62, 489),
     markerLocation: new Point(58, 476),
     wikiIndex: 104,
@@ -604,7 +546,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "資材ワールドゲート",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(128, 64, 49),
     markerLocation: new Point(128, 49),
     wikiIndex: 105,
@@ -613,7 +554,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "時計塔(噴水)",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(779, 89, 90),
     markerLocation: new Point(779, 90),
     wikiIndex: 108,
@@ -622,7 +562,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "静凛ニュータウン",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(806, 66, 70),
     markerLocation: new Point(806, 70),
     wikiIndex: 109,
@@ -631,7 +570,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "メイド喫茶",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(-159, 63, 20),
     markerLocation: new Point(-154, 25),
     wikiIndex: 112,
@@ -640,7 +578,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "久遠千歳の一時拠点",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(58, 63, -55),
     markerLocation: new Point(58, -55),
     wikiIndex: 114,
@@ -649,7 +586,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "にじさんじランド",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(-1400, 68, 1412),
     markerLocation: new Point(-1496, 1395),
     wikiIndex: 116,
@@ -658,7 +594,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "松本さんの墓(農業コンビナート爆破跡地)",
     prefix: ["m", "n"],
-    dimension: Dimension.Overworld,
     location: new Point3(668, 64, 142),
     markerLocation: new Point(669, 140),
     wikiIndex: 120,
@@ -667,7 +602,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "夢月ロアの拠点",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(410, 56, 113),
     markerLocation: new Point(412, 107),
     wikiIndex: 121,
@@ -675,7 +609,6 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "現代アート・『世界』(Hello World)",
-    dimension: Dimension.Overworld,
     prefix: ["g", "s", "h"],
     location: new Point3(78, 63, -84),
     markerLocation: new Point(62, -90),
@@ -685,7 +618,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ラブラブ島",
     prefix: "l",
-    dimension: Dimension.Overworld,
     location: new Point3(543, 63, 361),
     markerLocation: new Point(543, 359),
     wikiIndex: 126,
@@ -694,7 +626,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "取引所",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(565, 63, 343),
     markerLocation: new Point(576, 333),
     wikiIndex: 128,
@@ -703,7 +634,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "🌸ンボ宮殿",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-4792, 63, 4891),
     markerLocation: new Point(-4793, 4908),
     wikiIndex: 129,
@@ -712,7 +642,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しば城",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-130, 62, 72),
     markerLocation: new Point(-130, 72),
     wikiIndex: 137,
@@ -721,7 +650,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "黒井神社",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-86, 65, 3),
     markerLocation: new Point(-86, -29),
     wikiIndex: 139,
@@ -730,7 +658,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "にじさんじスタジアム",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(640, 64, 133),
     markerLocation: new Point(638, 136),
     wikiIndex: 140,
@@ -739,7 +666,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "城下町ネザーゲートのある島(仮称)",
     prefix: "j",
-    dimension: Dimension.Overworld,
     location: new Point3(506, 63, 319),
     markerLocation: new Point(501, 316),
     wikiIndex: 141,
@@ -748,7 +674,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "物述有栖の家(仮)",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(-139, 63, 15),
     markerLocation: new Point(-140, 3),
     wikiIndex: 142,
@@ -757,7 +682,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "笹木咲の水族館(仮)",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(371, 63, 212),
     markerLocation: new Point(362, 213),
     wikiIndex: 147,
@@ -766,7 +690,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "学校",
     prefix: "g",
-    dimension: Dimension.Overworld,
     location: new Point3(-229, 71, 680),
     markerLocation: new Point(-211, 654),
     wikiIndex: 148,
@@ -775,7 +698,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ネコカフェ",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(352, 67, 166),
     markerLocation: new Point(357, 160),
     wikiIndex: 150,
@@ -784,7 +706,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "にじさんじ一期生のお家",
     prefix: ["n", "i"],
-    dimension: Dimension.Overworld,
     location: new Point3(597, 63, 302),
     markerLocation: new Point(603, 275),
     wikiIndex: 153,
@@ -793,7 +714,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "らぶらぶ♡ホテル",
     prefix: "l",
-    dimension: Dimension.Overworld,
     location: new Point3(131, 63, 413),
     markerLocation: new Point(131, 413),
     wikiIndex: 154,
@@ -802,7 +722,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "風雲さんばか城",
     prefix: ["h", "s"],
-    dimension: Dimension.Overworld,
     location: new Point3(-271, 94, 767),
     markerLocation: new Point(-261, 758),
     wikiIndex: 156,
@@ -811,7 +730,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "あほあほハウス",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(101, 67, -247),
     markerLocation: new Point(92, -260),
     wikiIndex: 158,
@@ -820,7 +738,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "森中ランド",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(-47, 63, 507),
     markerLocation: new Point(-80, 489),
     wikiIndex: 161,
@@ -829,7 +746,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ハワイ",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(537, 63, 269),
     markerLocation: new Point(528, 260),
     wikiIndex: 162,
@@ -838,7 +754,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "旅の井戸",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(143, 64, 50),
     markerLocation: new Point(137, 45),
     wikiIndex: 163,
@@ -847,7 +762,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "みれいハウス",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(518, 69, 132),
     markerLocation: new Point(518, 116),
     wikiIndex: 170,
@@ -856,7 +770,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "JK組(偽)ハウス",
     prefix: "j",
-    dimension: Dimension.Overworld,
     location: new Point3(-30011, 69, -20195),
     markerLocation: new Point(-30011, -20205),
     wikiIndex: 171,
@@ -865,7 +778,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "トニー・スタークのおうち",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(-184, 65, 145),
     markerLocation: new Point(-200, 143),
     wikiIndex: 174,
@@ -874,7 +786,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "お祭り会場",
     prefix: "o",
-    dimension: Dimension.Overworld,
     location: new Point3(-60, 64, 17),
     markerLocation: new Point(-60, 17),
     wikiIndex: 180,
@@ -883,7 +794,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "chimakakurega",
     prefix: "c",
-    dimension: Dimension.Overworld,
     location: new Point3(-107, 63, -156),
     markerLocation: new Point(-113, -215),
     wikiIndex: 187,
@@ -892,7 +802,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "テント",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(-300, 69, 431),
     markerLocation: new Point(-303, 424),
     wikiIndex: 189,
@@ -901,7 +810,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "チャイカの理想のお家",
     prefix: "c",
-    dimension: Dimension.Overworld,
     location: new Point3(8, 63, 26),
     markerLocation: new Point(8, 29),
     xOffset: 40,
@@ -911,7 +819,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "青氷ボートレース場",
     prefix: ["a", "b"],
-    dimension: Dimension.Overworld,
     location: new Point3(-4681, 63, 4796),
     markerLocation: new Point(-4603, 4777),
     wikiIndex: 191,
@@ -920,7 +827,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "加賀美インダストリアル仮社屋",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(57, 63, 328),
     markerLocation: new Point(57, 328),
     wikiIndex: 192,
@@ -929,7 +835,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ぶるーずの巣",
     prefix: "b",
-    dimension: Dimension.Overworld,
     location: new Point3(38, 67, 302),
     markerLocation: new Point(45, 299),
     wikiIndex: 193,
@@ -938,7 +843,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "アルスの森",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(555, 68, 83),
     markerLocation: new Point(555, 68),
     wikiIndex: 194,
@@ -947,7 +851,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "太陽",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(195, 256, 5),
     markerLocation: new Point(195, -1),
     wikiIndex: 198,
@@ -965,7 +868,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "BIG WOOD HAYAMA HOUSE",
     prefix: "b",
-    dimension: Dimension.Overworld,
     location: new Point3(352, 63, 185),
     markerLocation: new Point(380, 178),
     wikiIndex: 203,
@@ -974,7 +876,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "うんち",
     prefix: "u",
-    dimension: Dimension.Overworld,
     location: new Point3(227, 70, 19),
     markerLocation: new Point(229, 6),
     wikiIndex: 210,
@@ -983,7 +884,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "氷マンション(仮)",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(117, 63, 73),
     markerLocation: new Point(107, 73),
     wikiIndex: 216,
@@ -992,7 +892,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "山田太郎",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(405, 134, 202),
     markerLocation: new Point(400, 198),
     wikiIndex: 218,
@@ -1001,7 +900,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ラトナ・プティの家(仮)",
     prefix: "r",
-    dimension: Dimension.Overworld,
     location: new Point3(455, 63, 344),
     markerLocation: new Point(455, 344),
     wikiIndex: 224,
@@ -1010,7 +908,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "暗黒城(仮)",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(-4973, 70, 4915),
     markerLocation: new Point(-4964, 4917),
     wikiIndex: 228,
@@ -1019,7 +916,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "月",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(137, 216, 60),
     markerLocation: new Point(137, 52),
     wikiIndex: 229,
@@ -1028,7 +924,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "謎の建造物(兎)",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(-920, 64, -1496),
     markerLocation: new Point(-928, -1502),
     wikiIndex: 238,
@@ -1037,7 +932,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "山田太郎のおうち",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(198, 72, -120),
     markerLocation: new Point(199, -131),
     wikiIndex: 239,
@@ -1049,7 +943,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "弓道場",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(106, 68, -149),
     markerLocation: new Point(107, -203),
 
@@ -1060,7 +953,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ド葛本社",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(382, 63, 46),
     markerLocation: new Point(367, 37),
     wikiIndex: -1,
@@ -1069,7 +961,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "セーフハウス",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-172, 65, 16),
     markerLocation: new Point(-171, 8),
     wikiIndex: -1,
@@ -1078,7 +969,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "鈴谷アキの仮拠点",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-266, 76, 217),
     markerLocation: new Point(-270, 211),
     wikiIndex: -1,
@@ -1087,7 +977,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "キリトの剣取らないで",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-467, 73, 543),
     markerLocation: new Point(-465, 540),
     wikiIndex: -1,
@@ -1096,7 +985,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "アパホテル",
     prefix: "a",
-    dimension: Dimension.Overworld,
     location: new Point3(-30023, 69, -20170),
     markerLocation: new Point(-30023, -20188),
     wikiIndex: -1,
@@ -1105,7 +993,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "舞元さん化石耐久配信現場",
     prefix: "m",
-    dimension: Dimension.Overworld,
     location: new Point3(-383, 40, -504),
     markerLocation: new Point(-383, -504),
     wikiIndex: -1,
@@ -1114,7 +1001,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "葛葉さん遭難跡地",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-298, 44, 1076),
     markerLocation: new Point(-298, 1071),
     wikiIndex: -1,
@@ -1123,7 +1009,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ベルさん海底神殿攻略拠点",
     prefix: "b",
-    dimension: Dimension.Overworld,
     location: new Point3(597, 75, 7875),
     markerLocation: new Point(591, 7863),
     wikiIndex: -1,
@@ -1132,7 +1017,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "静凛サンゴ礁仮拠点",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(0, 64, 5418),
     markerLocation: new Point(0, 5411),
     wikiIndex: -1,
@@ -1141,7 +1025,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "エンド要塞(静凛)",
     prefix: "e",
-    dimension: Dimension.Overworld,
     location: new Point3(5870, 43, 5746),
     markerLocation: new Point(5870, 5746),
     wikiIndex: -1,
@@ -1150,7 +1033,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "骨バイオーム",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(24, 69, 190),
     markerLocation: new Point(20, 176),
     wikiIndex: -1,
@@ -1159,7 +1041,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "液",
     prefix: "e",
-    dimension: Dimension.Overworld,
     location: new Point3(253, 70, 309),
     markerLocation: new Point(253, 301),
     wikiIndex: -1,
@@ -1168,7 +1049,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "うい覇道",
     prefix: "u",
-    dimension: Dimension.Overworld,
     location: new Point3(-736, 71, 347),
     markerLocation: new Point(-735, -77),
     corners: [
@@ -1185,7 +1065,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "神田ロード",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(8, 65.5, 428),
     markerLocation: new Point(13, 389),
     finished: false,
@@ -1195,7 +1074,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "矢車監視事務局",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(187, 72, 318),
     markerLocation: new Point(187, 319),
     finished: true,
@@ -1205,7 +1083,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "シスター・クレアの仮家",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(340, 67, 112),
     markerLocation: new Point(344, 95),
     wikiIndex: -1,
@@ -1214,7 +1091,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごの仮拠点",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(1025, 67, 1416),
     markerLocation: new Point(1025, 1416),
     wikiIndex: -1,
@@ -1223,7 +1099,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "仮拠点(シスタークレア,20190422)",
     prefix: "k",
-    dimension: Dimension.Overworld,
     location: new Point3(-2365, 63, 2287),
     markerLocation: new Point(-2368, 2263),
     wikiIndex: -1,
@@ -1232,7 +1107,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "避難所(シスタークレア,20190814)",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(1427, 62, -164),
     markerLocation: new Point(1427, -164),
     wikiIndex: -1,
@@ -1241,7 +1115,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ネザーゲート(1437,-141)",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(1437, 69, -141),
     markerLocation: new Point(1435, -144),
     wikiIndex: -1,
@@ -1250,7 +1123,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "HELP",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(-1735, 69, 1096),
     markerLocation: new Point(-1746, 1076),
     wikiIndex: -1,
@@ -1259,7 +1131,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ネザーゲート(パンダ運搬用)",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(-12223, 64, -8011),
     markerLocation: new Point(-12223, -8011),
     wikiIndex: -1,
@@ -1268,7 +1139,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ネザーゲート(2717,-3906)",
     prefix: "n",
-    dimension: Dimension.Overworld,
     location: new Point3(2717, 63, -3906),
     markerLocation: new Point(2717, -3906),
     wikiIndex: -1,
@@ -1277,7 +1147,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごが発見した村",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(2305, 64, -1791),
     markerLocation: new Point(2305, -1791),
     wikiIndex: -1,
@@ -1286,7 +1155,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごと緑仙が発見した村",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(2577, 71, -3439),
     markerLocation: new Point(2577, -3439),
     wikiIndex: -1,
@@ -1295,7 +1163,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごが発見した村",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(2193, 63, -2903),
     markerLocation: new Point(2193, -2903),
     wikiIndex: -1,
@@ -1304,7 +1171,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごが発見したピラミッド",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(2154, 65, -2688),
     markerLocation: new Point(2154, -2688),
     wikiIndex: -1,
@@ -1313,7 +1179,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "いちごが発見した村",
     prefix: "i",
-    dimension: Dimension.Overworld,
     location: new Point3(2113, 69, -2511),
 
     markerLocation: new Point(2113, -2511),
@@ -1323,7 +1188,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "クレアが発見した村",
     prefix: "c",
-    dimension: Dimension.Overworld,
     location: new Point3(1825, 68, -1343),
     markerLocation: new Point(1825, -1343),
     wikiIndex: -1,
@@ -1332,7 +1196,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "スライムカフェ",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(2160, 66, -1653),
     markerLocation: new Point(2160, -1653),
     wikiIndex: -1,
@@ -1341,7 +1204,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しばハウス3",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(-146, 69, -55),
     markerLocation: new Point(-154, -66),
     wikiIndex: -1,
@@ -1350,7 +1212,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "採掘入口",
     prefix: "s",
-    dimension: Dimension.Overworld,
     location: new Point3(338, 62, 469),
     markerLocation: new Point(338, 469),
     wikiIndex: -1,
@@ -1359,7 +1220,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "閉鎖中",
     prefix: "h",
-    dimension: Dimension.Overworld,
     location: new Point3(353, 63, 557),
     markerLocation: new Point(353, 557),
     wikiIndex: -1,
@@ -1368,7 +1228,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "第一隠れ家(跡地)",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(324, 63, 278),
     markerLocation: new Point(322, 272),
     wikiIndex: -1,
@@ -1377,7 +1236,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "ゆきしろBOX",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(-30193, 63, -20153),
     markerLocation: new Point(-30193, -20153),
     wikiIndex: -1,
@@ -1395,7 +1253,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "夕陽リリの塔跡地",
     prefix: "y",
-    dimension: Dimension.Overworld,
     location: new Point3(-570, 80, 456),
     markerLocation: new Point(-570, 456),
     wikiIndex: -1,
@@ -1404,7 +1261,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "炭鉱入口",
     prefix: "t",
-    dimension: Dimension.Overworld,
     location: new Point3(753, 63, 682),
     markerLocation: new Point(753, 682),
     wikiIndex: -1,
@@ -1413,7 +1269,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "誰かの犬",
     prefix: "d",
-    dimension: Dimension.Overworld,
     location: new Point3(246, 63, 565),
     markerLocation: new Point(246, 565),
     wikiIndex: -1,
@@ -1422,7 +1277,6 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "エンド要塞(桜凛月)",
     prefix: "e",
-    dimension: Dimension.Overworld,
     location: new Point3(-3625, 28, 3862),
     markerLocation: new Point(-3625, 3862),
     wikiIndex: -1,
