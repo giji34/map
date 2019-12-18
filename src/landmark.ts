@@ -1400,6 +1400,33 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-570, 456),
     wikiIndex: -1,
     finished: true
+  }),
+  createLandmark({
+    name: "炭鉱入口",
+    prefix: "t",
+    dimension: Dimension.Overworld,
+    location: new Point3(753, 63, 682),
+    markerLocation: new Point(753, 682),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "誰かの犬",
+    prefix: "d",
+    dimension: Dimension.Overworld,
+    location: new Point3(246, 63, 565),
+    markerLocation: new Point(246, 565),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "エンド要塞(桜凛月)",
+    prefix: "e",
+    dimension: Dimension.Overworld,
+    location: new Point3(-3625, 28, 3862),
+    markerLocation: new Point(-3625, 3862),
+    wikiIndex: -1,
+    finished: false
   })
 ].sort((a, b) => {
   if (a.markerLocation.z == b.markerLocation.z) {
