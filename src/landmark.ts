@@ -688,6 +688,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "タージ・マハル",
+    prefix: "t",
+    location: new Point3(542, 65, 178),
+    markerLocation: new Point(542, 173),
+    wikiIndex: 146,
+    finished: false
+  }),
+  createLandmark({
     name: "笹木咲の水族館(仮)",
     prefix: "s",
     location: new Point3(371, 63, 212),
