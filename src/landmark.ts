@@ -873,6 +873,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "謎の建造物",
+    prefix: "n",
+    location: new Point3(-962, 64, 279),
+    markerLocation: new Point(-970, 252),
+    wikiIndex: 199,
+    finished: true
+  }),
+  createLandmark({
     name: "配慮ロード",
     prefix: "h",
     dimension: Dimension.TheNether,
@@ -922,6 +930,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "夜見の家（本荘）",
+    prefix: "y",
+    location: new Point3(654, 64, 14),
+    markerLocation: new Point(667, 6),
+    wikiIndex: 225,
+    finished: false
+  }),
+  createLandmark({
     name: "暗黒城(仮)",
     prefix: "a",
     location: new Point3(-4973, 70, 4915),
@@ -952,6 +968,136 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(199, -131),
     wikiIndex: 239,
     finished: true
+  }),
+
+  // にじさんじランド
+  createLandmark({
+    name: "陽キャ池",
+    prefix: "y",
+    location: new Point3(-1490, 70, 1422),
+    markerLocation: new Point(-1490, 1410),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "入場ゲート",
+    prefix: "n",
+    location: new Point3(-1478, 70, 1435),
+    markerLocation: new Point(-1478, 1435),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "イッツアしいなワールド！",
+    prefix: "i",
+    location: new Point3(-1466, 70, 1450),
+    markerLocation: new Point(-1452, 1434),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "アラジンシアター",
+    prefix: "a",
+    location: new Point3(-1458, 70, 1487),
+    markerLocation: new Point(-1451, 1474),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "チュロス",
+    prefix: "c",
+    location: new Point3(-1464, 70, 1474),
+    markerLocation: new Point(-1464, 1474),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "チュロスワゴン",
+    prefix: "c",
+    location: new Point3(-1471, 70, 1501),
+    markerLocation: new Point(-1468, 1497),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "ンッディ",
+    prefix: "n",
+    location: new Point3(-1486, 70, 1491),
+    markerLocation: new Point(-1486, 1491),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "プ○さんのハニーハ○ト",
+    prefix: "p",
+    location: new Point3(-1517, 70, 1487),
+    markerLocation: new Point(-1517, 1487),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "ビッグサンボーマウンテン",
+    prefix: "b",
+    location: new Point3(-1612, 63, 1496),
+    markerLocation: new Point(-1642, 1469),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "にじさんじ城",
+    prefix: "n",
+    location: new Point3(-1517, 70, 1429),
+    markerLocation: new Point(-1564, 1385),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "空飛ぶゾウ",
+    prefix: "s",
+    location: new Point3(-1546, 70, 1377),
+    markerLocation: new Point(-1566, 1359),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "タワ一オブテラ一",
+    prefix: "t",
+    location: new Point3(-1593, 63, 1352),
+    markerLocation: new Point(-1603, 1339),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "カ○ブの海賊",
+    prefix: "k",
+    location: new Point3(-1554, 70, 1353),
+    markerLocation: new Point(-1564, 1306),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "水山",
+    prefix: ["m", "s"],
+    location: new Point3(-1507, 64, 1337),
+    markerLocation: new Point(-1495, 1308),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "レストラン",
+    prefix: "r",
+    location: new Point3(-1522, 70, 1400),
+    markerLocation: new Point(-1520, 1373),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "火山コースター",
+    prefix: "k",
+    location: new Point3(-1641, 63, 1411),
+    markerLocation: new Point(-1651, 1408),
+    wikiIndex: -1,
+    finished: false
   }),
 
   // 以下 wiki に無い建築物
