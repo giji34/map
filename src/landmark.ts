@@ -576,6 +576,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "ここが僕の家だけどみんな僕のことすき？",
+    prefix: "k",
+    location: new Point3(587, 63, 196),
+    markerLocation: new Point(584, 190),
+    wikiIndex: 111,
+    finished: true
+  }),
+  createLandmark({
     name: "メイド喫茶",
     prefix: "m",
     location: new Point3(-159, 63, 20),
@@ -712,6 +720,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "メサの小屋（仮）",
+    prefix: "m",
+    location: new Point3(7971, 94, 8498),
+    markerLocation: new Point(7976, 8502),
+    wikiIndex: 149,
+    finished: true
+  }),
+  createLandmark({
     name: "ネコカフェ",
     prefix: "n",
     location: new Point3(352, 67, 166),
@@ -750,6 +766,14 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(92, -260),
     wikiIndex: 158,
     finished: true
+  }),
+  createLandmark({
+    name: "UFO",
+    prefix: "u",
+    location: new Point3(160, 63, -305),
+    markerLocation: new Point(160, -355),
+    wikiIndex: 160,
+    finished: false
   }),
   createLandmark({
     name: "森中ランド",
@@ -1441,6 +1465,41 @@ export const kLandmarks: Landmark[] = [
     prefix: "e",
     location: new Point3(-3625, 28, 3862),
     markerLocation: new Point(-3625, 3862),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "ネザーゲート(メサ)",
+    prefix: "n",
+    location: new Point3(7822, 85, 8715),
+    markerLocation: new Point(7822, 8715),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "ネザーゲート(メサ行き)",
+    prefix: "n",
+    dimension: Dimension.TheNether,
+    location: new Point3(970, 83, 1072),
+    markerLocation: new Point(970, 1072),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "誰かの拠点",
+    prefix: "d",
+    location: new Point3(-257, 63, 992),
+    markerLocation: new Point(-257, 992),
+    wikiIndex: -1,
+    finished: true
+  }),
+
+  // 沈没船
+  createLandmark({
+    name: "沈没船(アルス・アルマル)",
+    prefix: "c",
+    location: new Point3(3400, 64, 3132),
+    markerLocation: new Point(3400, 3132),
     wikiIndex: -1,
     finished: false
   })
