@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'",
-    "landmarks": "ts-node src/landmark.ts > landmarks.tsv",
+    "landmarks": "ts-node src/landmark.ts mca2png > landmarks.tsv",
     "imagemin": "node tool/imagemin.js",
     "imagelist": "sh tool/imagelist.sh",
     "dev": "ts-node dev.ts"

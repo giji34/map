@@ -1508,28 +1508,64 @@ const kLandmarkBototm = kLandmarks.reduce(
 export const kLandmarksTopLeft = new Point(kLandmarkLeft, kLandmarkTop);
 export const kLandmarksRightBottom = new Point(kLandmarkRight, kLandmarkBototm);
 
-if (typeof window === "undefined") {
-  kLandmarks
-    .filter(it => it.dimension === Dimension.Overworld)
-    .forEach(landmark => {
-      console.log(`${landmark.markerLocation.x}\t${landmark.markerLocation.z}`);
+if (require.main === module) {
+  const argv = [...process.argv];
+  argv.shift();
+  argv.shift();
+  if (argv[0] === "mca2png") {
+    kLandmarks
+      .filter(it => it.dimension === Dimension.Overworld)
+      .forEach(landmark => {
+        console.log(
+          `${landmark.markerLocation.x}\t${landmark.markerLocation.z}`
+        );
+      });
+    kRailways.forEach(railway => {
+      for (let i = 1; i < railway.corners.length; i++) {
+        const c0 = railway.corners[i - 1];
+        const c1 = railway.corners[i];
+        if (c0.x !== c1.x && c0.z !== c1.z) {
+          return;
+        }
+        const dx = c1.x - c0.x;
+        const dz = c1.z - c0.z;
+        const length = Math.max(Math.abs(dx), Math.abs(dz));
+        const direction = new Point(Math.sign(dx), Math.sign(dz));
+        for (let j = 0; j < length; j++) {
+          const x = c0.x + j * direction.x;
+          const z = c0.z + j * direction.z;
+          console.log(`${x}\t${z}`);
+        }
+      }
     });
-  kRailways.forEach(railway => {
-    for (let i = 1; i < railway.corners.length; i++) {
-      const c0 = railway.corners[i - 1];
-      const c1 = railway.corners[i];
-      if (c0.x !== c1.x && c0.z !== c1.z) {
-        return;
+  } else if (argv[0] === "server") {
+    const worldUIDOverworld = argv[1];
+    const worldUIDNether = argv[2];
+    const worldUIDTheEnd = argv[3];
+    kLandmarks.forEach(landmark => {
+      let prefix: string[];
+      if (typeof landmark.prefix === "string") {
+        prefix = [landmark.prefix];
+      } else {
+        prefix = landmark.prefix;
       }
-      const dx = c1.x - c0.x;
-      const dz = c1.z - c0.z;
-      const length = Math.max(Math.abs(dx), Math.abs(dz));
-      const direction = new Point(Math.sign(dx), Math.sign(dz));
-      for (let j = 0; j < length; j++) {
-        const x = c0.x + j * direction.x;
-        const z = c0.z + j * direction.z;
-        console.log(`${x}\t${z}`);
+      const name = landmark.name.replace(" ", "_");
+      const { x, y, z } = landmark.location;
+      let dimension: string;
+      switch (landmark.dimension) {
+        case Dimension.Overworld:
+          dimension = worldUIDOverworld;
+          break;
+        case Dimension.TheEnd:
+          dimension = worldUIDTheEnd;
+          break;
+        case Dimension.TheNether:
+          dimension = worldUIDNether;
+          break;
       }
-    }
-  });
+      prefix.forEach(p => {
+        console.log(`${p}-${name}\t${x}\t${y}\t${z}\t${dimension}`);
+      });
+    });
+  }
 }
