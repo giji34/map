@@ -13,6 +13,7 @@ import { kFileList } from "./imagelist";
 import { CSSTransition } from "react-transition-group";
 import { sprintf } from "sprintf";
 import * as Hammer from "hammerjs";
+import { OverScroller } from "./scroller";
 
 type Menu = "jumpTo";
 
@@ -185,6 +186,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private textMetricsCache = new Map<string, TextMetrics>();
   private fragmentUpdateTimer: number | undefined;
   private touchEventDetected: boolean = false;
+  private readonly scroller = new OverScroller();
 
   constructor(props: {}) {
     super(props);
@@ -197,6 +199,16 @@ export class MainComponent extends React.Component<{}, MainState> {
   private scheduleRender(ctx: CanvasRenderingContext2D) {
     let updateAndRender = () => {};
     updateAndRender = () => {
+      if (this.scroller.computeScrollOffset()) {
+        if (this.scroller.isFinished()) {
+          const x = this.scroller.getCurrX();
+          const y = this.scroller.getCurrY();
+          const center = new Point(x, y);
+          this.setState(mergeMainState(this.state, { center }));
+        } else {
+          this.isRedrawNeeded = true;
+        }
+      }
       if (this.isRedrawNeeded) {
         this.draw(ctx);
       }
@@ -213,8 +225,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     const scale = window.devicePixelRatio;
     ctx.scale(scale, scale);
 
-    const cx = this.state.center.x;
-    const cz = this.state.center.z;
+    const { x: cx, z: cz } = this.center;
     const blocksPerPixel = this.state.blocksPerPixel;
     const width = window.innerWidth * blocksPerPixel;
     const height = window.innerHeight * blocksPerPixel;
@@ -348,6 +359,17 @@ export class MainComponent extends React.Component<{}, MainState> {
     }
   }
 
+  private abortScroller() {
+    if (this.scroller.isFinished()) {
+      return;
+    }
+    this.scroller.computeScrollOffset();
+    const x = this.scroller.getCurrX();
+    const z = this.scroller.getCurrY();
+    this.scroller.forceFinished(true);
+    this.setState(mergeMainState(this.state, { center: new Point(x, z) }));
+  }
+
   componentDidMount() {
     const canvas = this.canvas?.current;
     if (!canvas) {
@@ -363,6 +385,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     canvasGestureRecognizer.get("pinch").set({ enable: true });
     canvasGestureRecognizer.on("pan", ev => {
       if (this.downEvent === void 0) {
+        this.abortScroller();
         this.downEvent = {
           client: new Point(ev.center.x, ev.center.y),
           center: this.state.center.clone()
@@ -371,9 +394,23 @@ export class MainComponent extends React.Component<{}, MainState> {
       this.onPan(new Point(ev.center.x, ev.center.y));
       if (ev.isFinal) {
         this.downEvent = void 0;
+        const millisecondsPerSecond = 1000;
+        const scale = millisecondsPerSecond * this.state.blocksPerPixel;
+        const { x, z } = this.state.center;
+        this.scroller.fling(
+          x,
+          z,
+          -ev.velocityX * scale,
+          -ev.velocityY * scale,
+          kLandmarksTopLeft.x,
+          kLandmarksRightBottom.x,
+          kLandmarksTopLeft.z,
+          kLandmarksRightBottom.z
+        );
       }
     });
     canvasGestureRecognizer.on("pinch", ev => {
+      this.abortScroller();
       if (this.pinchEventDeltaTime > ev.deltaTime) {
         this.pinchStartBlocksPerPixel = this.state.blocksPerPixel;
       }
@@ -480,23 +517,33 @@ export class MainComponent extends React.Component<{}, MainState> {
     this.isRedrawNeeded = true;
   }
 
+  private get center(): Point {
+    if (this.scroller.isFinished()) {
+      return this.state.center;
+    } else {
+      return new Point(this.scroller.getCurrX(), this.scroller.getCurrY());
+    }
+  }
+
   private clientToWorld(state: MainState, client: Point): Point {
+    const center = this.center;
     const blocksPerPixel = state.blocksPerPixel;
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
     const dx = client.x - cx;
     const dy = client.z - cy;
-    const bx = state.center.x + dx * blocksPerPixel;
-    const bz = state.center.z + dy * blocksPerPixel;
+    const bx = center.x + dx * blocksPerPixel;
+    const bz = center.z + dy * blocksPerPixel;
     return new Point(bx, bz);
   }
 
   private worldToClient(state: MainState, world: Point): Point {
+    const center = this.center;
     const blocksPerPixel = state.blocksPerPixel;
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
-    const px = (world.x - state.center.x) / blocksPerPixel + cx;
-    const py = (world.z - state.center.z) / blocksPerPixel + cy;
+    const px = (world.x - center.x) / blocksPerPixel + cx;
+    const py = (world.z - center.z) / blocksPerPixel + cy;
     return new Point(px, py);
   }
 
