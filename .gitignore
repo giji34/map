@@ -2,7 +2,12 @@
 /public/dist
 /.idea
 *.log
-/public/images/0
+/public/images/o
+/public/images/n
+/public/images/e
 /landmarks.tsv
 /src/imagelist.ts
-/images/0
+/images/o
+/images/n
+/images/e
+/Makefile

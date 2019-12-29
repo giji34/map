@@ -68,6 +68,16 @@ function mergeMainState(
       MainComponent.MAX_BLOCKS_PER_PIXEL
     );
   }
+  let dimension = update.dimension;
+  if (dimension !== void 0) {
+    if (
+      dimension !== Dimension.Overworld &&
+      dimension !== Dimension.TheNether &&
+      dimension !== Dimension.TheEnd
+    ) {
+      delete update.dimension;
+    }
+  }
   return Object.assign({}, current, update);
 }
 
@@ -78,10 +88,17 @@ class Tile {
   ) {}
 }
 
-class MipmapStorage {
+class TextureStorage {
   private readonly storage = new Map<string, Tile | null>();
   private readonly queued = new Set<string>();
-  private readonly level: number = 0;
+  private _dimension: Dimension = Dimension.Overworld;
+  setDimension(d: Dimension) {
+    if (this._dimension === d) {
+      return;
+    }
+    this._dimension = d;
+    this.clear();
+  }
 
   get(v: Point, loadIfNotExists: boolean = true): Tile | undefined {
     const key = v.toString();
@@ -102,19 +119,39 @@ class MipmapStorage {
       this.queued.delete(key);
       return;
     }
+    const d = this._dimension;
     promiseLoadImage(url)
       .then(image => {
+        if (d !== this._dimension) {
+          return;
+        }
         this.storage.set(key, image ? new Tile(image, Date.now()) : null);
         this.queued.delete(key);
       })
       .catch(e => {
+        if (d !== this._dimension) {
+          return;
+        }
         this.storage.set(key, null);
         this.queued.delete(key);
       });
   }
 
   private getImageFilePath(v: Point): string {
-    return `images/${this.level}/r.${v.x}.${v.z}.png`;
+    let c = "o";
+    switch (this._dimension) {
+      case Dimension.Overworld:
+        c = "o";
+        break;
+      case Dimension.TheNether:
+        c = "n";
+        break;
+      case Dimension.TheEnd:
+        c = "e";
+        break;
+    }
+
+    return `images/${c}/r.${v.x}.${v.z}.png`;
   }
 
   delete(v: Point) {
@@ -138,7 +175,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private readonly menu: RefObject<HTMLDivElement> = createRef();
   private readonly reticule: RefObject<HTMLDivElement> = createRef();
   private readonly coordinateLabel: RefObject<HTMLDivElement> = createRef();
-  private mipmaps = Array.from({ length: 1 }, v => new MipmapStorage());
+  private textures = new TextureStorage();
   static readonly MIN_BLOCKS_PER_PIXEL = 0.125;
   static readonly MAX_BLOCKS_PER_PIXEL = 4;
   private isRedrawNeeded = true;
@@ -196,9 +233,10 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.imageSmoothingEnabled = blocksPerPixel > 1;
     ctx.imageSmoothingQuality = "high";
     let loadingInProgress = false;
+    this.textures.setDimension(this.state.dimension);
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
       for (let z = minMipmapZ; z <= maxMipmapZ; z++) {
-        const tile = this.mipmaps[0].get(new Point(x, z));
+        const tile = this.textures.get(new Point(x, z));
         if (!tile) {
           loadingInProgress = true;
           continue;

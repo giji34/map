@@ -1572,13 +1572,11 @@ if (require.main === module) {
   argv.shift();
   argv.shift();
   if (argv[0] === "mca2png") {
-    kLandmarks
-      .filter(it => it.dimension === Dimension.Overworld)
-      .forEach(landmark => {
-        console.log(
-          `${landmark.markerLocation.x}\t${landmark.markerLocation.z}`
-        );
-      });
+    kLandmarks.forEach(landmark => {
+      console.log(
+        `${landmark.dimension}\t${landmark.markerLocation.x}\t${landmark.markerLocation.z}`
+      );
+    });
     kRailways.forEach(railway => {
       for (let i = 1; i < railway.corners.length; i++) {
         const c0 = railway.corners[i - 1];

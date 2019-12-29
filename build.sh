@@ -6,12 +6,14 @@ set -eu
 
 yarn landmarks
 
-rm -rf images/0
-mkdir -p images/0
-../mca2png/build/mca2png -w "$BACKUP_DIR/world" -o images/0 -l ./landmarks.tsv
+rm -rf images/{o,n,e}
+mkdir -p images/{o,n,e}
+../mca2png/build/mca2png -w "$BACKUP_DIR/world"              -o images/o -l ./landmarks.tsv -d 0
+../mca2png/build/mca2png -w "$BACKUP_DIR/world_nether/DIM-1" -o images/n -l ./landmarks.tsv -d -- -1
+../mca2png/build/mca2png -w "$BACKUP_DIR/world_the_end/DIM1" -o images/e -l ./landmarks.tsv -d 1
 
-rm -rf public/images/0
-mkdir -p public/images/0
+rm -rf public/images/{o,n,e}
+mkdir -p public/images/{o,n,e}
 yarn imagemin
 
 yarn imagelist
