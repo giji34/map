@@ -54,21 +54,6 @@ function mergeMainState(
   current: MainState,
   update: Partial<MainState>
 ): MainState {
-  let center = update.center;
-  if (center) {
-    update.center = new Point(
-      clamp(center.x, kLandmarksTopLeft.x, kLandmarksRightBottom.x),
-      clamp(center.z, kLandmarksTopLeft.z, kLandmarksRightBottom.z)
-    );
-  }
-  let blocksPerPixel = update.blocksPerPixel;
-  if (blocksPerPixel) {
-    update.blocksPerPixel = clamp(
-      blocksPerPixel,
-      MainComponent.MIN_BLOCKS_PER_PIXEL,
-      MainComponent.MAX_BLOCKS_PER_PIXEL
-    );
-  }
   let dimension = update.dimension;
   if (dimension !== void 0) {
     if (
@@ -78,6 +63,24 @@ function mergeMainState(
     ) {
       delete update.dimension;
     }
+  }
+  dimension = update.dimension || current.dimension;
+  let center = update.center;
+  if (center) {
+    const topLeft = kLandmarksTopLeft.get(dimension)!;
+    const rightBottom = kLandmarksRightBottom.get(dimension)!;
+    update.center = new Point(
+      clamp(center.x, topLeft.x, rightBottom.x),
+      clamp(center.z, topLeft.z, rightBottom.z)
+    );
+  }
+  let blocksPerPixel = update.blocksPerPixel;
+  if (blocksPerPixel) {
+    update.blocksPerPixel = clamp(
+      blocksPerPixel,
+      MainComponent.MIN_BLOCKS_PER_PIXEL,
+      MainComponent.MAX_BLOCKS_PER_PIXEL
+    );
   }
   return Object.assign({}, current, update);
 }
@@ -397,15 +400,17 @@ export class MainComponent extends React.Component<{}, MainState> {
         const millisecondsPerSecond = 1000;
         const scale = millisecondsPerSecond * this.state.blocksPerPixel;
         const { x, z } = this.state.center;
+        const topLeft = kLandmarksTopLeft.get(this.state.dimension)!;
+        const rightBottom = kLandmarksRightBottom.get(this.state.dimension)!;
         this.scroller.fling(
           x,
           z,
           -ev.velocityX * scale,
           -ev.velocityY * scale,
-          kLandmarksTopLeft.x,
-          kLandmarksRightBottom.x,
-          kLandmarksTopLeft.z,
-          kLandmarksRightBottom.z
+          topLeft.x,
+          rightBottom.x,
+          topLeft.z,
+          rightBottom.z
         );
       }
     });
@@ -808,7 +813,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                     🌸ンボ村
                   </div>
                 </div>
-                <div className="menuItem">
+                <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
                     onClick={moveTo(
@@ -817,6 +822,22 @@ export class MainComponent extends React.Component<{}, MainState> {
                     )}
                   >
                     ひまぐまんち(・ヮ・)
+                  </div>
+                </div>
+                <div className="menuItem menuItemBorder">
+                  <div
+                    className="menuItemContent"
+                    onClick={moveTo(new Point(0, 0), Dimension.TheNether)}
+                  >
+                    ネザー
+                  </div>
+                </div>
+                <div className="menuItem">
+                  <div
+                    className="menuItemContent"
+                    onClick={moveTo(new Point(0, 0), Dimension.TheEnd)}
+                  >
+                    ジ・エンド
                   </div>
                 </div>
               </div>

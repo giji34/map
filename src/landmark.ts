@@ -1605,24 +1605,35 @@ const kRailways: Railway[] = [
   }
 ];
 
-const kLandmarkLeft = kLandmarks.reduce(
-  (accum, current) => Math.min(accum, current.markerLocation.x),
-  kLandmarks[0].markerLocation.x
+const landmarks: { dimension: Dimension; position: Point }[] = [];
+if (landmarks.length === 0) {
+  kLandmarks.forEach(l => {
+    landmarks.push({ dimension: l.dimension, position: l.markerLocation });
+  });
+  kRailways.forEach(r => {
+    r.corners.forEach(position => {
+      landmarks.push({ dimension: r.dimension, position });
+    });
+  });
+}
+
+export const kLandmarksTopLeft: Map<Dimension, Point> = new Map();
+export const kLandmarksRightBottom: Map<Dimension, Point> = new Map();
+[Dimension.Overworld, Dimension.TheNether, Dimension.TheEnd].forEach(
+  dimension => {
+    const dimensionLandmarks = landmarks.filter(it => it.dimension === dimension);
+    const minX = dimensionLandmarks
+      .reduce((accum, current) => Math.min(accum, current.position.x), 0);
+    const maxX = dimensionLandmarks
+      .reduce((accum, current) => Math.max(accum, current.position.x), 0);
+    const minZ = dimensionLandmarks
+      .reduce((accum, current) => Math.min(accum, current.position.z), 0);
+    const maxZ = dimensionLandmarks
+      .reduce((accum, current) => Math.max(accum, current.position.z), 0);
+    kLandmarksTopLeft.set(dimension, new Point(minX, minZ));
+    kLandmarksRightBottom.set(dimension, new Point(maxX, maxZ));
+  }
 );
-const kLandmarkRight = kLandmarks.reduce(
-  (accum, current) => Math.max(accum, current.markerLocation.x),
-  kLandmarks[0].markerLocation.x
-);
-const kLandmarkTop = kLandmarks.reduce(
-  (accum, current) => Math.min(accum, current.markerLocation.z),
-  kLandmarks[0].markerLocation.z
-);
-const kLandmarkBototm = kLandmarks.reduce(
-  (accum, current) => Math.max(accum, current.markerLocation.z),
-  kLandmarks[0].markerLocation.z
-);
-export const kLandmarksTopLeft = new Point(kLandmarkLeft, kLandmarkTop);
-export const kLandmarksRightBottom = new Point(kLandmarkRight, kLandmarkBototm);
 
 if (require.main === module) {
   const argv = [...process.argv];
