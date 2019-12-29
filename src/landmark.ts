@@ -1621,19 +1621,53 @@ export const kLandmarksTopLeft: Map<Dimension, Point> = new Map();
 export const kLandmarksRightBottom: Map<Dimension, Point> = new Map();
 [Dimension.Overworld, Dimension.TheNether, Dimension.TheEnd].forEach(
   dimension => {
-    const dimensionLandmarks = landmarks.filter(it => it.dimension === dimension);
-    const minX = dimensionLandmarks
-      .reduce((accum, current) => Math.min(accum, current.position.x), 0);
-    const maxX = dimensionLandmarks
-      .reduce((accum, current) => Math.max(accum, current.position.x), 0);
-    const minZ = dimensionLandmarks
-      .reduce((accum, current) => Math.min(accum, current.position.z), 0);
-    const maxZ = dimensionLandmarks
-      .reduce((accum, current) => Math.max(accum, current.position.z), 0);
+    const dimensionLandmarks = landmarks.filter(
+      it => it.dimension === dimension
+    );
+    const minX = dimensionLandmarks.reduce(
+      (accum, current) => Math.min(accum, current.position.x),
+      0
+    );
+    const maxX = dimensionLandmarks.reduce(
+      (accum, current) => Math.max(accum, current.position.x),
+      0
+    );
+    const minZ = dimensionLandmarks.reduce(
+      (accum, current) => Math.min(accum, current.position.z),
+      0
+    );
+    const maxZ = dimensionLandmarks.reduce(
+      (accum, current) => Math.max(accum, current.position.z),
+      0
+    );
     kLandmarksTopLeft.set(dimension, new Point(minX, minZ));
     kLandmarksRightBottom.set(dimension, new Point(maxX, maxZ));
   }
 );
+
+function bresenham(
+  x0: number,
+  x1: number,
+  y0: number,
+  y1: number,
+  plot: (x, y) => void
+) {
+  const deltax = x1 - x0;
+  const deltay = y1 - y0;
+  let error = 0;
+  const deltaerr = Math.abs(deltay / deltax);
+  let y = y0;
+  const sign = Math.sign(deltax);
+  for (let i = 0; i < Math.abs(deltax); i++) {
+    const x = x0 + sign * i;
+    plot(x, y);
+    error = error + deltaerr;
+    if (error >= 0.5) {
+      y = y + 1;
+      error = error - 1.0;
+    }
+  }
+}
 
 if (require.main === module) {
   const argv = [...process.argv];
@@ -1650,16 +1684,19 @@ if (require.main === module) {
         const c0 = railway.corners[i - 1];
         const c1 = railway.corners[i];
         if (c0.x !== c1.x && c0.z !== c1.z) {
-          return;
-        }
-        const dx = c1.x - c0.x;
-        const dz = c1.z - c0.z;
-        const length = Math.max(Math.abs(dx), Math.abs(dz));
-        const direction = new Point(Math.sign(dx), Math.sign(dz));
-        for (let j = 0; j < length; j++) {
-          const x = c0.x + j * direction.x;
-          const z = c0.z + j * direction.z;
-          console.log(`${railway.dimension}\t${x}\t${z}`);
+          bresenham(c0.x, c1.x, c0.z, c1.z, (x, z) => {
+            console.log(`${railway.dimension}\t${x}\t${z}`);
+          });
+        } else {
+          const dx = c1.x - c0.x;
+          const dz = c1.z - c0.z;
+          const length = Math.max(Math.abs(dx), Math.abs(dz));
+          const direction = new Point(Math.sign(dx), Math.sign(dz));
+          for (let j = 0; j < length; j++) {
+            const x = c0.x + j * direction.x;
+            const z = c0.z + j * direction.z;
+            console.log(`${railway.dimension}\t${x}\t${z}`);
+          }
         }
       }
     });
