@@ -1511,7 +1511,7 @@ export const kLandmarks: Landmark[] = [
   }
 });
 
-type Railway = { name: string; corners: Point[] };
+type Railway = { name: string; corners: Point[]; dimension: Dimension };
 
 const kRailways: Railway[] = [
   {
@@ -1523,7 +1523,8 @@ const kRailways: Railway[] = [
       new Point(-735, 299),
       new Point(-733, 299),
       new Point(-733, 344)
-    ]
+    ],
+    dimension: Dimension.Overworld
   },
   {
     name: "花畑鉄道にじさんじランド線",
@@ -1544,7 +1545,63 @@ const kRailways: Railway[] = [
       new Point(-1199, 1392),
       new Point(-1199, 1412),
       new Point(-1449, 1412)
-    ]
+    ],
+    dimension: Dimension.Overworld
+  },
+  {
+    name: "叶さんの通路(1)",
+    corners: [new Point(103, 0), new Point(1109, 0), new Point(1109, 17)],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "叶さんの通路(2)",
+    corners: [new Point(1507, -111), new Point(1546, -111)],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "叶さんの通路(3)",
+    corners: [
+      new Point(1580, -94),
+      new Point(1625, -94),
+      new Point(1625, -82),
+      new Point(1634, -82)
+    ],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "叶さんの通路(4)",
+    corners: [new Point(2032, -88), new Point(2154, -88)],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "叶さんの通路(5)",
+    corners: [
+      new Point(2240, -35),
+      new Point(2240, 21),
+      new Point(2251, 21),
+      new Point(2251, 33)
+    ],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "ベルさんの通路(1)",
+    corners: [new Point(56, 45), new Point(56, 1013)],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "ベルさんの通路(2)",
+    corners: [
+      new Point(106, 1068),
+      new Point(106, 1087),
+      new Point(207, 1087),
+      new Point(207, 1110)
+    ],
+    dimension: Dimension.TheEnd
+  },
+  {
+    name: "配慮ロード",
+    corners: [new Point(19, 17), new Point(-59, 94)],
+    dimension: Dimension.TheNether
   }
 ];
 
@@ -1591,7 +1648,7 @@ if (require.main === module) {
         for (let j = 0; j < length; j++) {
           const x = c0.x + j * direction.x;
           const z = c0.z + j * direction.z;
-          console.log(`${x}\t${z}`);
+          console.log(`${railway.dimension}\t${x}\t${z}`);
         }
       }
     });
