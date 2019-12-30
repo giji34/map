@@ -386,6 +386,10 @@ export class MainComponent extends React.Component<{}, MainState> {
     });
     const canvasGestureRecognizer = new Hammer(canvas);
     canvasGestureRecognizer.get("pinch").set({ enable: true });
+    canvasGestureRecognizer.get("doubletap").set({ enable: false });
+    canvasGestureRecognizer.get("press").set({ enable: false });
+    canvasGestureRecognizer.get("swipe").set({ enable: false });
+    canvasGestureRecognizer.get("pan").set({ direction: Hammer.DIRECTION_ALL });
     canvasGestureRecognizer.on("pan", ev => {
       if (this.downEvent === void 0) {
         this.abortScroller();
