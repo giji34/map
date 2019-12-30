@@ -1,5 +1,11 @@
+import * as Hammer from "hammerjs";
 import * as React from "react";
 import { createRef, RefObject } from "react";
+import { CSSTransition } from "react-transition-group";
+import { sprintf } from "sprintf";
+
+import { promiseLoadImage } from "./image";
+import { kFileList } from "./imagelist";
 import {
   Dimension,
   kLandmarks,
@@ -7,12 +13,7 @@ import {
   kLandmarksTopLeft,
   Point
 } from "./landmark";
-import { promiseLoadImage } from "./image";
 import { clamp } from "./number";
-import { kFileList } from "./imagelist";
-import { CSSTransition } from "react-transition-group";
-import { sprintf } from "sprintf";
-import * as Hammer from "hammerjs";
 import { OverScroller } from "./scroller";
 
 type Menu = "jumpTo";
@@ -203,14 +204,13 @@ export class MainComponent extends React.Component<{}, MainState> {
     let updateAndRender = () => {};
     updateAndRender = () => {
       if (this.scroller.computeScrollOffset()) {
+        const x = this.scroller.getCurrX();
+        const y = this.scroller.getCurrY();
         if (this.scroller.isFinished()) {
-          const x = this.scroller.getCurrX();
-          const y = this.scroller.getCurrY();
           const center = new Point(x, y);
           this.setState(mergeMainState(this.state, { center }));
-        } else {
-          this.isRedrawNeeded = true;
         }
+        this.isRedrawNeeded = true;
       }
       if (this.isRedrawNeeded) {
         this.draw(ctx);
@@ -524,6 +524,13 @@ export class MainComponent extends React.Component<{}, MainState> {
     snapshot?: any
   ): void {
     this.isRedrawNeeded = true;
+    const center = this.center;
+    if (this.xLabel.current) {
+      this.xLabel.current.innerHTML = `X: ${Math.floor(center.x)}`;
+    }
+    if (this.zLabel.current) {
+      this.zLabel.current.innerHTML = `Z: ${Math.floor(center.z)}`;
+    }
   }
 
   private get center(): Point {
