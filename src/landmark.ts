@@ -59,7 +59,8 @@ function createLandmark(params: {
   wikiIndex: number;
   debug?: number;
 }): Landmark {
-  const dimension = params.dimension || Dimension.Overworld;
+  const dimension =
+    params.dimension === void 0 ? Dimension.Overworld : params.dimension;
   return { ...params, dimension };
 }
 
@@ -1477,8 +1478,8 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
-    name: "ネザーゲート(メサ行き)",
-    prefix: "n",
+    name: "メサ",
+    prefix: "m",
     dimension: Dimension.TheNether,
     location: new Point3(970, 83, 1072),
     markerLocation: new Point(970, 1072),
@@ -1492,6 +1493,129 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-257, 992),
     wikiIndex: -1,
     finished: true
+  }),
+  createLandmark({
+    name: "静凛の羊羹",
+    prefix: "s",
+    dimension: Dimension.TheNether,
+    location: new Point3(550, 39, 681),
+    markerLocation: new Point(550, 681),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "静凛の村",
+    prefix: "s",
+    dimension: Dimension.TheNether,
+    location: new Point3(202, 51, 43),
+    markerLocation: new Point(202, 43),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "静凛の本拠地",
+    prefix: "s",
+    dimension: Dimension.TheNether,
+    location: new Point3(109, 86, 14),
+    markerLocation: new Point(109, 14),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "一期生ハウス",
+    prefix: "i",
+    dimension: Dimension.TheNether,
+    location: new Point3(64, 63, 38),
+    markerLocation: new Point(64, 38),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "にじさんじランド",
+    prefix: "n",
+    dimension: Dimension.TheNether,
+    location: new Point3(-185, 49, 173),
+    markerLocation: new Point(-185, 173),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "いちご大墳墓",
+    prefix: "i",
+    dimension: Dimension.TheNether,
+    location: new Point3(28, 55, 75),
+    markerLocation: new Point(28, 75),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "風雲さんばか城",
+    prefix: ["h", "s"],
+    dimension: Dimension.TheNether,
+    location: new Point3(-42, 68, 94),
+    markerLocation: new Point(-42, 94),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "ネザー要塞(ドラひま)",
+    prefix: "n",
+    dimension: Dimension.TheNether,
+    location: new Point3(273, 38, 596),
+    markerLocation: new Point(273, 596),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "ネザー要塞(ドラひま)",
+    prefix: "n",
+    location: new Point3(2161, 54, 4748),
+    markerLocation: new Point(2161, 4748),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "夢幻炭鉱",
+    prefix: "m",
+    dimension: Dimension.TheNether,
+    location: new Point3(-23, 46, 29),
+    markerLocation: new Point(-23, 29),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "メサ(ベルさん)",
+    prefix: "m",
+    location: new Point3(2901, 69, 11925),
+    markerLocation: new Point(2901, 11925),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "メサ(ベルさん)",
+    prefix: "m",
+    dimension: Dimension.TheNether,
+    location: new Point3(359, 75, 1497),
+    markerLocation: new Point(359, 1497),
+    wikiIndex: -1,
+    finished: false
+  }),
+  createLandmark({
+    name: "キツネ小屋(ベルさん)",
+    prefix: "k",
+    location: new Point3(3033, 65, 8627),
+    markerLocation: new Point(3033, 8627),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "キツネ小屋(ベルさん)",
+    prefix: "k",
+    dimension: Dimension.TheNether,
+    location: new Point3(377, 75, 1082),
+    markerLocation: new Point(377, 1082),
+    wikiIndex: -1,
+    finished: false
   }),
 
   // 沈没船
@@ -1549,33 +1673,19 @@ const kRailways: Railway[] = [
     dimension: Dimension.Overworld
   },
   {
-    name: "叶さんの通路(1)",
-    corners: [new Point(103, 0), new Point(1109, 0), new Point(1109, 17)],
-    dimension: Dimension.TheEnd
-  },
-  {
-    name: "叶さんの通路(2)",
-    corners: [new Point(1507, -111), new Point(1546, -111)],
-    dimension: Dimension.TheEnd
-  },
-  {
-    name: "叶さんの通路(3)",
+    name: "叶さんの通路",
     corners: [
+      new Point(103, 0),
+      new Point(1109, 0),
+      new Point(1109, 17),
+      new Point(1507, -111),
+      new Point(1546, -111),
       new Point(1580, -94),
       new Point(1625, -94),
       new Point(1625, -82),
-      new Point(1634, -82)
-    ],
-    dimension: Dimension.TheEnd
-  },
-  {
-    name: "叶さんの通路(4)",
-    corners: [new Point(2032, -88), new Point(2154, -88)],
-    dimension: Dimension.TheEnd
-  },
-  {
-    name: "叶さんの通路(5)",
-    corners: [
+      new Point(1634, -82),
+      new Point(2032, -88),
+      new Point(2154, -88),
       new Point(2240, -35),
       new Point(2240, 21),
       new Point(2251, 21),
@@ -1584,13 +1694,10 @@ const kRailways: Railway[] = [
     dimension: Dimension.TheEnd
   },
   {
-    name: "ベルさんの通路(1)",
-    corners: [new Point(56, 45), new Point(56, 1013)],
-    dimension: Dimension.TheEnd
-  },
-  {
-    name: "ベルさんの通路(2)",
+    name: "ベルさんの通路",
     corners: [
+      new Point(56, 45),
+      new Point(56, 1013),
       new Point(106, 1068),
       new Point(106, 1087),
       new Point(207, 1087),
@@ -1599,9 +1706,75 @@ const kRailways: Railway[] = [
     dimension: Dimension.TheEnd
   },
   {
-    name: "配慮ロード",
-    corners: [new Point(19, 17), new Point(-59, 94)],
+    name: "静凛のネザー鉄道",
+    corners: [
+      new Point(21, -14),
+      new Point(21, 14),
+      new Point(118, 14),
+      new Point(118, 12),
+      new Point(192, 12),
+      new Point(192, 46),
+      new Point(191, 46) // 羊羹へ
+    ],
     dimension: Dimension.TheNether
+  },
+  {
+    name: "静凛ネザー鉄道(仮)",
+
+    corners: [
+      new Point(323, 603), // 要塞(ドラひま) ここから先ができていない
+      new Point(323, 131) // ここから羊羹側ができていない
+    ],
+    dimension: Dimension.TheNether
+  },
+  {
+    name: "静凛ネザー鉄道(仮)",
+    corners: [
+      new Point(544, 682) // 羊羹側始点
+    ],
+    dimension: Dimension.TheNether
+  },
+  {
+    name: "どらひま要塞への通路",
+    corners: [
+      new Point(273, 615), // 要塞
+      new Point(273, 248),
+      new Point(299, 248),
+      new Point(299, 164) // ここから拠点側がまだ
+    ],
+    dimension: Dimension.TheNether
+  },
+  {
+    name: "宇志海いちごのネザー鉄道",
+    corners: [
+      new Point(55, 83), // 始点
+      new Point(330, 83), // 分岐
+      new Point(330, -485),
+      new Point(347, -483) // 要塞
+    ],
+    dimension: Dimension.TheNether
+  },
+  {
+    name: "配慮ロード",
+    corners: [
+      new Point(19, 17),
+      new Point(-145, 181),
+      new Point(-174, 181),
+      new Point(-174, 174),
+      new Point(-185, 174)
+    ],
+    dimension: Dimension.TheNether
+  },
+  {
+    name: "静凛のエンド通路",
+    corners: [
+      new Point(1375, -247),
+      new Point(1375, -329),
+      new Point(1369, -390),
+      new Point(1369, -473),
+      new Point(1357, -473)
+    ],
+    dimension: Dimension.TheEnd
   }
 ];
 
@@ -1711,7 +1884,7 @@ if (require.main === module) {
       } else {
         prefix = landmark.prefix;
       }
-      const name = landmark.name.replace(" ", "_");
+      const name = landmark.name.replace(/ /g, "_");
       const { x, y, z } = landmark.location;
       let dimension: string;
       switch (landmark.dimension) {
