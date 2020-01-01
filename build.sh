@@ -14,7 +14,7 @@ mkdir -p images/{o,n,e}
 
 rm -rf public/images/{o,n,e}
 mkdir -p public/images/{o,n,e}
-yarn imagemin
+bash tool/imagemin.sh
 
 yarn imagelist
 yarn webpack
