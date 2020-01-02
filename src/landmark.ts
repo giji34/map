@@ -590,7 +590,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-159, 63, 20),
     markerLocation: new Point(-154, 25),
     wikiIndex: 112,
-    finished: true
+    finished: false
   }),
   createLandmark({
     name: "久遠千歳の一時拠点",
@@ -718,7 +718,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-229, 71, 680),
     markerLocation: new Point(-211, 654),
     wikiIndex: 148,
-    finished: true
+    finished: false
   }),
   createLandmark({
     name: "メサの小屋（仮）",
@@ -1617,6 +1617,14 @@ export const kLandmarks: Landmark[] = [
     wikiIndex: -1,
     finished: false
   }),
+  createLandmark({
+    name: "モルルの領土",
+    prefix: "m",
+    location: new Point3(-641, 63, -190),
+    markerLocation: new Point(-660, -224),
+    wikiIndex: -1,
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
@@ -1785,7 +1793,7 @@ const kRailways: Railway[] = [
       new Point(1115, -1390),
       new Point(1082, -1390),
       new Point(958, -1605),
-      new Point(972, -1605),
+      new Point(972, -1605)
     ],
     dimension: Dimension.TheEnd
   }
