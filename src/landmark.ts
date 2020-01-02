@@ -249,7 +249,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(880, 63, 41),
     markerLocation: new Point(868, 26),
     wikiIndex: 41,
-    finished: true
+    finished: false
   }),
   createLandmark({
     name: "魔界ノりりむの家",
@@ -1772,7 +1772,20 @@ const kRailways: Railway[] = [
       new Point(1375, -329),
       new Point(1369, -390),
       new Point(1369, -473),
-      new Point(1357, -473)
+      new Point(1357, -473),
+      new Point(1221, -764),
+      new Point(1221, -847),
+      new Point(1217, -943),
+      new Point(1183, -943),
+      new Point(1196, -1168),
+      new Point(1236, -1168),
+      new Point(1236, -1232),
+      new Point(1212, -1307),
+      new Point(1212, -1358),
+      new Point(1115, -1390),
+      new Point(1082, -1390),
+      new Point(958, -1605),
+      new Point(972, -1605),
     ],
     dimension: Dimension.TheEnd
   }
