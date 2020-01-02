@@ -4,19 +4,22 @@ set -eu
 
 (cd "$BACKUP_DIR" && git pull --ff-only origin master)
 
-yarn landmarks
+cd "$(dirname "$0")" && (
 
-rm -rf images/{o,n,e}
-mkdir -p images/{o,n,e}
-../mca2png/build/mca2png -w "$BACKUP_DIR/world"              -o images/o -l ./landmarks.tsv -d o
-../mca2png/build/mca2png -w "$BACKUP_DIR/world_nether/DIM-1" -o images/n -l ./landmarks.tsv -d n
-../mca2png/build/mca2png -w "$BACKUP_DIR/world_the_end/DIM1" -o images/e -l ./landmarks.tsv -d e
+  yarn landmarks
 
-rm -rf public/images/{o,n,e}
-mkdir -p public/images/{o,n,e}
-bash tool/imagemin.sh
+  rm -rf images/{o,n,e}
+  mkdir -p images/{o,n,e}
+  ../mca2png/build/mca2png -w "$BACKUP_DIR/world"              -o images/o -l ./landmarks.tsv -d o
+  ../mca2png/build/mca2png -w "$BACKUP_DIR/world_nether/DIM-1" -o images/n -l ./landmarks.tsv -d n
+  ../mca2png/build/mca2png -w "$BACKUP_DIR/world_the_end/DIM1" -o images/e -l ./landmarks.tsv -d e
 
-yarn imagelist
-yarn webpack
+  rm -rf public/images/{o,n,e}
+  mkdir -p public/images/{o,n,e}
+  bash tool/imagemin.sh
 
-find public -name '.DS_Store' | xargs rm
+  yarn imagelist
+  yarn webpack
+
+  find public -name '.DS_Store' -print0 | xargs -0 rm -f
+)
