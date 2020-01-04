@@ -52,7 +52,7 @@ function createLandmark(params: {
   prefix: string | string[];
   location: Point3;
   corners?: Point[];
-  markerLocation: Point;
+  markerLocation?: Point;
   xOffset?: number;
   finished: boolean;
   dimension?: Dimension;
@@ -61,7 +61,11 @@ function createLandmark(params: {
 }): Landmark {
   const dimension =
     params.dimension === void 0 ? Dimension.Overworld : params.dimension;
-  return { ...params, dimension };
+  const markerLocation =
+    params.markerLocation || new Point(params.location.x, params.location.z);
+  delete params.dimension;
+  delete params.markerLocation;
+  return { ...params, dimension, markerLocation };
 }
 
 export const kLandmarks: Landmark[] = [
@@ -142,7 +146,6 @@ export const kLandmarks: Landmark[] = [
     name: "Kyoko's seacret house",
     prefix: "k",
     location: new Point3(243, 63, -120),
-    markerLocation: new Point(243, -120),
     xOffset: 80,
     wikiIndex: 20,
     finished: true
@@ -207,7 +210,6 @@ export const kLandmarks: Landmark[] = [
     name: "シスター・クレアの家",
     prefix: "s",
     location: new Point3(248, 75, 712),
-    markerLocation: new Point(248, 712),
     wikiIndex: 33,
     finished: false
   }),
@@ -231,7 +233,6 @@ export const kLandmarks: Landmark[] = [
     name: "✞黒の要塞✞",
     prefix: "k",
     location: new Point3(242, 63, -41),
-    markerLocation: new Point(242, -41),
     wikiIndex: 37,
     finished: true
   }),
@@ -303,7 +304,6 @@ export const kLandmarks: Landmark[] = [
     name: "川の下の渓谷",
     prefix: "k",
     location: new Point3(151, 24, 98),
-    markerLocation: new Point(151, 98),
     wikiIndex: 52,
     finished: true
   }),
@@ -328,7 +328,6 @@ export const kLandmarks: Landmark[] = [
     name: "闘技場",
     prefix: "t",
     location: new Point3(231, 17, -83),
-    markerLocation: new Point(231, -83),
     finished: true,
     wikiIndex: 62
   }),
@@ -353,7 +352,6 @@ export const kLandmarks: Landmark[] = [
     name: "ひまぐまんち(・ヮ・)",
     prefix: "h",
     location: new Point3(-2448, 75, 3408),
-    markerLocation: new Point(-2448, 3408),
     wikiIndex: 66,
     finished: false
   }),
@@ -369,7 +367,6 @@ export const kLandmarks: Landmark[] = [
     name: "狂犬ズハウス",
     prefix: "k",
     location: new Point3(-89, 64, 19),
-    markerLocation: new Point(-89, 19),
     wikiIndex: 68,
     finished: false
   }),
@@ -426,7 +423,6 @@ export const kLandmarks: Landmark[] = [
     name: "矢車りねの家",
     prefix: "y",
     location: new Point3(116, 86, 284),
-    markerLocation: new Point(116, 284),
     wikiIndex: 76,
     finished: false
   }),
@@ -460,7 +456,6 @@ export const kLandmarks: Landmark[] = [
     name: "神田笑一の仮拠点",
     prefix: "k",
     location: new Point3(-5, 76, 294),
-    markerLocation: new Point(-5, 294),
     wikiIndex: 88,
     finished: false
   }),
@@ -484,7 +479,6 @@ export const kLandmarks: Landmark[] = [
     name: "神田笑一の家",
     prefix: "k",
     location: new Point3(4, 71, 315),
-    markerLocation: new Point(4, 315),
     wikiIndex: 91,
     finished: false
   }),
@@ -516,7 +510,6 @@ export const kLandmarks: Landmark[] = [
     name: "新・笹木像",
     prefix: "s",
     location: new Point3(429, 87, 871),
-    markerLocation: new Point(429, 871),
     wikiIndex: 99,
     finished: true
   }),
@@ -556,7 +549,6 @@ export const kLandmarks: Landmark[] = [
     name: "資材ワールドゲート",
     prefix: "s",
     location: new Point3(128, 64, 49),
-    markerLocation: new Point(128, 49),
     wikiIndex: 105,
     finished: true
   }),
@@ -564,7 +556,6 @@ export const kLandmarks: Landmark[] = [
     name: "時計塔(噴水)",
     prefix: "t",
     location: new Point3(779, 89, 90),
-    markerLocation: new Point(779, 90),
     wikiIndex: 108,
     finished: true
   }),
@@ -572,7 +563,6 @@ export const kLandmarks: Landmark[] = [
     name: "静凛ニュータウン",
     prefix: "s",
     location: new Point3(806, 66, 70),
-    markerLocation: new Point(806, 70),
     wikiIndex: 109,
     finished: true
   }),
@@ -596,7 +586,6 @@ export const kLandmarks: Landmark[] = [
     name: "久遠千歳の一時拠点",
     prefix: "k",
     location: new Point3(58, 63, -55),
-    markerLocation: new Point(58, -55),
     wikiIndex: 114,
     finished: true
   }),
@@ -660,7 +649,6 @@ export const kLandmarks: Landmark[] = [
     name: "しば城",
     prefix: "s",
     location: new Point3(-130, 62, 72),
-    markerLocation: new Point(-130, 72),
     wikiIndex: 137,
     finished: true
   }),
@@ -748,7 +736,6 @@ export const kLandmarks: Landmark[] = [
     name: "らぶらぶ♡ホテル",
     prefix: "l",
     location: new Point3(131, 63, 413),
-    markerLocation: new Point(131, 413),
     wikiIndex: 154,
     finished: false
   }),
@@ -828,7 +815,6 @@ export const kLandmarks: Landmark[] = [
     name: "お祭り会場",
     prefix: "o",
     location: new Point3(-60, 64, 17),
-    markerLocation: new Point(-60, 17),
     wikiIndex: 180,
     finished: false
   }),
@@ -869,7 +855,6 @@ export const kLandmarks: Landmark[] = [
     name: "加賀美インダストリアル仮社屋",
     prefix: "k",
     location: new Point3(57, 63, 328),
-    markerLocation: new Point(57, 328),
     wikiIndex: 192,
     finished: false
   }),
@@ -910,7 +895,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "h",
     dimension: Dimension.TheNether,
     location: new Point3(19, 70, 16),
-    markerLocation: new Point(19, 16),
     wikiIndex: 201,
     finished: true
   }),
@@ -950,7 +934,6 @@ export const kLandmarks: Landmark[] = [
     name: "ラトナ・プティの家(仮)",
     prefix: "r",
     location: new Point3(455, 63, 344),
-    markerLocation: new Point(455, 344),
     wikiIndex: 224,
     finished: true
   }),
@@ -1008,7 +991,6 @@ export const kLandmarks: Landmark[] = [
     name: "入場ゲート",
     prefix: "n",
     location: new Point3(-1478, 70, 1435),
-    markerLocation: new Point(-1478, 1435),
     wikiIndex: -1,
     finished: true
   }),
@@ -1032,7 +1014,6 @@ export const kLandmarks: Landmark[] = [
     name: "チュロス",
     prefix: "c",
     location: new Point3(-1464, 70, 1474),
-    markerLocation: new Point(-1464, 1474),
     wikiIndex: -1,
     finished: false
   }),
@@ -1048,7 +1029,6 @@ export const kLandmarks: Landmark[] = [
     name: "ンッディ",
     prefix: "n",
     location: new Point3(-1486, 70, 1491),
-    markerLocation: new Point(-1486, 1491),
     wikiIndex: -1,
     finished: true
   }),
@@ -1056,7 +1036,6 @@ export const kLandmarks: Landmark[] = [
     name: "プ○さんのハニーハ○ト",
     prefix: "p",
     location: new Point3(-1517, 70, 1487),
-    markerLocation: new Point(-1517, 1487),
     wikiIndex: -1,
     finished: false
   }),
@@ -1181,7 +1160,6 @@ export const kLandmarks: Landmark[] = [
     name: "舞元さん化石耐久配信現場",
     prefix: "m",
     location: new Point3(-383, 40, -504),
-    markerLocation: new Point(-383, -504),
     wikiIndex: -1,
     finished: false
   }),
@@ -1213,7 +1191,6 @@ export const kLandmarks: Landmark[] = [
     name: "エンド要塞(静凛)",
     prefix: "e",
     location: new Point3(5870, 43, 5746),
-    markerLocation: new Point(5870, 5746),
     wikiIndex: -1,
     finished: true
   }),
@@ -1279,7 +1256,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごの仮拠点",
     prefix: "i",
     location: new Point3(1025, 67, 1416),
-    markerLocation: new Point(1025, 1416),
     wikiIndex: -1,
     finished: true
   }),
@@ -1295,7 +1271,6 @@ export const kLandmarks: Landmark[] = [
     name: "避難所(シスタークレア,20190814)",
     prefix: "h",
     location: new Point3(1427, 62, -164),
-    markerLocation: new Point(1427, -164),
     wikiIndex: -1,
     finished: true
   }),
@@ -1303,7 +1278,6 @@ export const kLandmarks: Landmark[] = [
     name: "ネザーゲート(1437,-141)",
     prefix: "n",
     location: new Point3(1437, 69, -141),
-    markerLocation: new Point(1435, -144),
     wikiIndex: -1,
     finished: true
   }),
@@ -1319,7 +1293,6 @@ export const kLandmarks: Landmark[] = [
     name: "ネザーゲート(パンダ運搬用)",
     prefix: "n",
     location: new Point3(-12223, 64, -8011),
-    markerLocation: new Point(-12223, -8011),
     wikiIndex: -1,
     finished: true
   }),
@@ -1327,7 +1300,6 @@ export const kLandmarks: Landmark[] = [
     name: "ネザーゲート(2717,-3906)",
     prefix: "n",
     location: new Point3(2717, 63, -3906),
-    markerLocation: new Point(2717, -3906),
     wikiIndex: -1,
     finished: true
   }),
@@ -1335,7 +1307,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごが発見した村",
     prefix: "i",
     location: new Point3(2305, 64, -1791),
-    markerLocation: new Point(2305, -1791),
     wikiIndex: -1,
     finished: true
   }),
@@ -1343,7 +1314,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごと緑仙が発見した村",
     prefix: "i",
     location: new Point3(2577, 71, -3439),
-    markerLocation: new Point(2577, -3439),
     wikiIndex: -1,
     finished: true
   }),
@@ -1351,7 +1321,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごが発見した村",
     prefix: "i",
     location: new Point3(2193, 63, -2903),
-    markerLocation: new Point(2193, -2903),
     wikiIndex: -1,
     finished: true
   }),
@@ -1359,7 +1328,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごが発見したピラミッド",
     prefix: "i",
     location: new Point3(2154, 65, -2688),
-    markerLocation: new Point(2154, -2688),
     wikiIndex: -1,
     finished: true
   }),
@@ -1367,8 +1335,6 @@ export const kLandmarks: Landmark[] = [
     name: "いちごが発見した村",
     prefix: "i",
     location: new Point3(2113, 69, -2511),
-
-    markerLocation: new Point(2113, -2511),
     wikiIndex: -1,
     finished: true
   }),
@@ -1376,7 +1342,6 @@ export const kLandmarks: Landmark[] = [
     name: "クレアが発見した村",
     prefix: "c",
     location: new Point3(1825, 68, -1343),
-    markerLocation: new Point(1825, -1343),
     wikiIndex: -1,
     finished: false
   }),
@@ -1384,7 +1349,6 @@ export const kLandmarks: Landmark[] = [
     name: "スライムカフェ",
     prefix: "s",
     location: new Point3(2160, 66, -1653),
-    markerLocation: new Point(2160, -1653),
     wikiIndex: -1,
     finished: false
   }),
@@ -1400,7 +1364,6 @@ export const kLandmarks: Landmark[] = [
     name: "採掘入口",
     prefix: "s",
     location: new Point3(338, 62, 469),
-    markerLocation: new Point(338, 469),
     wikiIndex: -1,
     finished: true
   }),
@@ -1408,7 +1371,6 @@ export const kLandmarks: Landmark[] = [
     name: "閉鎖中",
     prefix: "h",
     location: new Point3(353, 63, 557),
-    markerLocation: new Point(353, 557),
     wikiIndex: -1,
     finished: false
   }),
@@ -1424,7 +1386,6 @@ export const kLandmarks: Landmark[] = [
     name: "ゆきしろBOX",
     prefix: "y",
     location: new Point3(-30193, 63, -20153),
-    markerLocation: new Point(-30193, -20153),
     wikiIndex: -1,
     finished: false
   }),
@@ -1433,7 +1394,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "e",
     dimension: Dimension.TheEnd,
     location: new Point3(2291, 58, 30),
-    markerLocation: new Point(2291, 30),
     wikiIndex: -1,
     finished: false
   }),
@@ -1441,7 +1401,6 @@ export const kLandmarks: Landmark[] = [
     name: "夕陽リリの塔跡地",
     prefix: "y",
     location: new Point3(-570, 80, 456),
-    markerLocation: new Point(-570, 456),
     wikiIndex: -1,
     finished: true
   }),
@@ -1449,7 +1408,6 @@ export const kLandmarks: Landmark[] = [
     name: "炭鉱入口",
     prefix: "t",
     location: new Point3(753, 63, 682),
-    markerLocation: new Point(753, 682),
     wikiIndex: -1,
     finished: true
   }),
@@ -1457,7 +1415,6 @@ export const kLandmarks: Landmark[] = [
     name: "誰かの犬",
     prefix: "d",
     location: new Point3(246, 63, 565),
-    markerLocation: new Point(246, 565),
     wikiIndex: -1,
     finished: true
   }),
@@ -1465,7 +1422,6 @@ export const kLandmarks: Landmark[] = [
     name: "エンド要塞(桜凛月)",
     prefix: "e",
     location: new Point3(-3625, 28, 3862),
-    markerLocation: new Point(-3625, 3862),
     wikiIndex: -1,
     finished: false
   }),
@@ -1473,7 +1429,6 @@ export const kLandmarks: Landmark[] = [
     name: "ネザーゲート(メサ)",
     prefix: "n",
     location: new Point3(7822, 85, 8715),
-    markerLocation: new Point(7822, 8715),
     wikiIndex: -1,
     finished: true
   }),
@@ -1482,7 +1437,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "m",
     dimension: Dimension.TheNether,
     location: new Point3(970, 83, 1072),
-    markerLocation: new Point(970, 1072),
     wikiIndex: -1,
     finished: true
   }),
@@ -1490,7 +1444,6 @@ export const kLandmarks: Landmark[] = [
     name: "誰かの拠点",
     prefix: "d",
     location: new Point3(-257, 63, 992),
-    markerLocation: new Point(-257, 992),
     wikiIndex: -1,
     finished: true
   }),
@@ -1499,7 +1452,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "s",
     dimension: Dimension.TheNether,
     location: new Point3(550, 39, 681),
-    markerLocation: new Point(550, 681),
     wikiIndex: -1,
     finished: false
   }),
@@ -1508,7 +1460,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "s",
     dimension: Dimension.TheNether,
     location: new Point3(202, 51, 43),
-    markerLocation: new Point(202, 43),
     wikiIndex: -1,
     finished: true
   }),
@@ -1517,7 +1468,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "s",
     dimension: Dimension.TheNether,
     location: new Point3(109, 86, 14),
-    markerLocation: new Point(109, 14),
     wikiIndex: -1,
     finished: true
   }),
@@ -1526,7 +1476,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "i",
     dimension: Dimension.TheNether,
     location: new Point3(64, 63, 38),
-    markerLocation: new Point(64, 38),
     wikiIndex: -1,
     finished: true
   }),
@@ -1535,7 +1484,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "n",
     dimension: Dimension.TheNether,
     location: new Point3(-185, 49, 173),
-    markerLocation: new Point(-185, 173),
     wikiIndex: -1,
     finished: true
   }),
@@ -1544,7 +1492,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "i",
     dimension: Dimension.TheNether,
     location: new Point3(28, 55, 75),
-    markerLocation: new Point(28, 75),
     wikiIndex: -1,
     finished: true
   }),
@@ -1553,7 +1500,6 @@ export const kLandmarks: Landmark[] = [
     prefix: ["h", "s"],
     dimension: Dimension.TheNether,
     location: new Point3(-42, 68, 94),
-    markerLocation: new Point(-42, 94),
     wikiIndex: -1,
     finished: true
   }),
@@ -1562,7 +1508,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "n",
     dimension: Dimension.TheNether,
     location: new Point3(273, 38, 596),
-    markerLocation: new Point(273, 596),
     wikiIndex: -1,
     finished: true
   }),
@@ -1570,7 +1515,6 @@ export const kLandmarks: Landmark[] = [
     name: "ネザー要塞(ドラひま)",
     prefix: "n",
     location: new Point3(2161, 54, 4748),
-    markerLocation: new Point(2161, 4748),
     wikiIndex: -1,
     finished: true
   }),
@@ -1579,7 +1523,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "m",
     dimension: Dimension.TheNether,
     location: new Point3(-23, 46, 29),
-    markerLocation: new Point(-23, 29),
     wikiIndex: -1,
     finished: false
   }),
@@ -1587,7 +1530,6 @@ export const kLandmarks: Landmark[] = [
     name: "メサ(ベルさん)",
     prefix: "m",
     location: new Point3(2901, 69, 11925),
-    markerLocation: new Point(2901, 11925),
     wikiIndex: -1,
     finished: true
   }),
@@ -1596,7 +1538,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "m",
     dimension: Dimension.TheNether,
     location: new Point3(359, 75, 1497),
-    markerLocation: new Point(359, 1497),
     wikiIndex: -1,
     finished: false
   }),
@@ -1604,7 +1545,6 @@ export const kLandmarks: Landmark[] = [
     name: "キツネ小屋(ベルさん)",
     prefix: "k",
     location: new Point3(3033, 65, 8627),
-    markerLocation: new Point(3033, 8627),
     wikiIndex: -1,
     finished: true
   }),
@@ -1613,7 +1553,6 @@ export const kLandmarks: Landmark[] = [
     prefix: "k",
     dimension: Dimension.TheNether,
     location: new Point3(377, 75, 1082),
-    markerLocation: new Point(377, 1082),
     wikiIndex: -1,
     finished: false
   }),
@@ -1629,7 +1568,6 @@ export const kLandmarks: Landmark[] = [
     name: "誰かのチェスト",
     prefix: "d",
     location: new Point3(87, 64, 1109),
-    markerLocation: new Point(87, 1109),
     wikiIndex: -1,
     finished: true
   }),
@@ -1637,7 +1575,6 @@ export const kLandmarks: Landmark[] = [
     name: "SMC組採掘拠点",
     prefix: "s",
     location: new Point3(-197, 63, 1277),
-    markerLocation: new Point(-197, 1277),
     wikiIndex: -1,
     finished: false
   }),
@@ -1647,7 +1584,6 @@ export const kLandmarks: Landmark[] = [
     name: "沈没船(アルス・アルマル)",
     prefix: "c",
     location: new Point3(3400, 64, 3132),
-    markerLocation: new Point(3400, 3132),
     wikiIndex: -1,
     finished: false
   })
