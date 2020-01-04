@@ -1625,6 +1625,22 @@ export const kLandmarks: Landmark[] = [
     wikiIndex: -1,
     finished: false
   }),
+  createLandmark({
+    name: "誰かのチェスト",
+    prefix: "d",
+    location: new Point3(87, 64, 1109),
+    markerLocation: new Point(87, 1109),
+    wikiIndex: -1,
+    finished: true
+  }),
+  createLandmark({
+    name: "SMC組採掘拠点",
+    prefix: "s",
+    location: new Point3(-197, 63, 1277),
+    markerLocation: new Point(-197, 1277),
+    wikiIndex: -1,
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
