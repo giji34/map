@@ -252,7 +252,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(880, 63, 41),
     markerLocation: new Point(868, 26),
     wikiIndex: 41,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "魔界ノりりむの家",
@@ -933,6 +933,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "葉加瀬冬雪の研究所",
+    prefix: "h",
+    location: new Point3(-363, 70, 120),
+    markerLocation: new Point(-355, 124),
+    wikiIndex: 222,
+    finished: false
+  }),
+  createLandmark({
     name: "ラトナ・プティの家(仮)",
     prefix: "r",
     location: new Point3(455, 63, 344),
@@ -1604,7 +1612,6 @@ const kRailways: Railway[] = [
   },
   {
     name: "静凛ネザー鉄道(仮)",
-
     corners: [
       new Point(323, 603), // 要塞(ドラひま) ここから先ができていない
       new Point(323, 131) // ここから羊羹側ができていない
