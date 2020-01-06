@@ -182,7 +182,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   private readonly coordinateLabel: RefObject<HTMLDivElement> = createRef();
   private textures = new TextureStorage();
   static readonly MIN_BLOCKS_PER_PIXEL = 0.125;
-  static readonly MAX_BLOCKS_PER_PIXEL = 4;
+  static readonly MAX_BLOCKS_PER_PIXEL = 32;
   private isRedrawNeeded = true;
   private downEvent: DownEvent | undefined;
   private pinchStartBlocksPerPixel: number = 1;
