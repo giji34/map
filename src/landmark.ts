@@ -1097,6 +1097,13 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-1651, 1408),
     finished: false
   }),
+  createLandmark({
+    name: "ケープ○ッドクッ○オフ",
+    prefix: "k",
+    location: new Point3(-1553, 70, 1505),
+    markerLocation: new Point(-1566, 1497),
+    finished: true
+  }),
 
   // 以下 wiki に無い建築物
 
