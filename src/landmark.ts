@@ -600,6 +600,13 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "不老不死ハウセ",
+    prefix: "h",
+    location: new Point3(442, 64, 179),
+    wikiIndex: 117,
+    finished: false
+  }),
+  createLandmark({
     name: "松本さんの墓(農業コンビナート爆破跡地)",
     prefix: ["m", "n"],
     location: new Point3(668, 64, 142),
@@ -821,6 +828,13 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "イド",
+    prefix: "i",
+    location: new Point3(436, 64, 187),
+    wikiIndex: 186,
+    finished: false
+  }),
+  createLandmark({
     name: "chimakakurega",
     prefix: "c",
     location: new Point3(-107, 63, -156),
@@ -909,12 +923,34 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "	ハナミズキ",
+    prefix: "h",
+    location: new Point3(415, 64, 156),
+    markerLocation: new Point(415, 149),
+    wikiIndex: 209,
+    finished: true
+  }),
+  createLandmark({
     name: "うんち",
     prefix: "u",
     location: new Point3(227, 70, 19),
     markerLocation: new Point(229, 6),
     wikiIndex: 210,
     finished: true
+  }),
+  createLandmark({
+    name: "ちとせとろあのお墓",
+    prefix: ["c", "t"],
+    location: new Point3(458, 64, 186),
+    wikiIndex: 212,
+    finished: false
+  }),
+  createLandmark({
+    name: "白い巨トゥ",
+    prefix: "s",
+    location: new Point3(634, 63, 236),
+    wikiIndex: 213,
+    finished: false
   }),
   createLandmark({
     name: "氷マンション(仮)",
@@ -980,12 +1016,41 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "ンボザウルスの化石",
+    prefix: "n",
+    location: new Point3(-4961, 48.5, 4940),
+    wikiIndex: 238,
+    finished: true
+  }),
+  createLandmark({
     name: "山田太郎のおうち",
     prefix: "y",
     location: new Point3(198, 72, -120),
     markerLocation: new Point(199, -131),
     wikiIndex: 239,
     finished: true
+  }),
+  createLandmark({
+    name: "猫ハウス",
+    prefix: "n",
+    location: new Point3(526, 63, 154),
+    wikiIndex: 240,
+    finished: false
+  }),
+  createLandmark({
+    name: "デートスポット",
+    prefix: "d",
+    location: new Point3(-186, 63, 684),
+    markerLocation: new Point(-48, 716),
+    wikiIndex: 251,
+    finished: false
+  }),
+  createLandmark({
+    name: "スノードーム",
+    prefix: "s",
+    location: new Point3(-1383, 67, 1410),
+    wikiIndex: 252,
+    finished: false
   }),
 
   // にじさんじランド
