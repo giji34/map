@@ -923,7 +923,7 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "	ハナミズキ",
+    name: "ハナミズキ",
     prefix: "h",
     location: new Point3(415, 64, 156),
     markerLocation: new Point(415, 149),
