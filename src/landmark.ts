@@ -249,8 +249,8 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "しずくしま神社",
     prefix: "s",
-    location: new Point3(880, 63, 41),
-    markerLocation: new Point(868, 26),
+    location: new Point3(821, 63, 41),
+    markerLocation: new Point(961, 17),
     wikiIndex: 41,
     finished: true
   }),
@@ -1050,6 +1050,14 @@ export const kLandmarks: Landmark[] = [
     prefix: "s",
     location: new Point3(-1383, 67, 1410),
     wikiIndex: 252,
+    finished: false
+  }),
+  createLandmark({
+    name: "しずくしま神社駅",
+    prefix: "s",
+    location: new Point3(787, 68, 40),
+    markerLocation: new Point(787, 34),
+    wikiIndex: 257,
     finished: false
   }),
 
