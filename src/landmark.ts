@@ -961,6 +961,13 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "夜見れなの村",
+    prefix: "y",
+    location: new Point3(-30385, 68, -22344),
+    wikiIndex: 217,
+    finished: false
+  }),
+  createLandmark({
     name: "山田太郎",
     prefix: "y",
     location: new Point3(405, 134, 202),
@@ -1058,7 +1065,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(787, 68, 40),
     markerLocation: new Point(787, 34),
     wikiIndex: 257,
-    finished: false
+    finished: true
   }),
 
   // にじさんじランド
@@ -1591,6 +1598,26 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-197, 63, 1277),
     finished: false
   }),
+  createLandmark({
+    name: "ネザーゲート(旅の井戸新天地側)",
+    prefix: "n",
+    dimension: Dimension.TheNether,
+    location: new Point3(-3756, 58, -2516),
+    finished: false
+  }),
+  createLandmark({
+    name: "ネザーゲート(キノコバイオーム)",
+    prefix: "n",
+    location: new Point3(-28710, 75, -19221),
+    finished: true
+  }),
+  createLandmark({
+    name: "夜見れなの村",
+    prefix: "y",
+    dimension: Dimension.TheNether,
+    location: new Point3(-3797, 67, -2810),
+    finished: true
+  }),
 
   // 沈没船
   createLandmark({
@@ -1759,6 +1786,20 @@ const kRailways: Railway[] = [
       new Point(972, -1605)
     ],
     dimension: Dimension.TheEnd
+  },
+  {
+    name: "夜見れなのネザー通路",
+    corners: [
+      new Point(-3797, -2805),
+      new Point(-3797, -2661),
+      new Point(-3867, -2661),
+      new Point(-3867, -2584), // T字路. 以下は東(+x)向き
+      new Point(-3758, -2584),
+      new Point(-3758, -2572), // 下に降りる
+      new Point(-3756, -2572), // 以下は南(+z)へ
+      new Point(-3756, -2515) // ポータル前(旅の井戸新天地側)
+    ],
+    dimension: Dimension.TheNether
   }
 ];
 
