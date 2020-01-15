@@ -984,6 +984,14 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "ニュイ・ソシエールの家（仮）",
+    prefix: "n",
+    location: new Point3(326, 69, 266),
+    markerLocation: new Point(332, 228),
+    wikiIndex: 223,
+    finished: false
+  }),
+  createLandmark({
     name: "ラトナ・プティの家(仮)",
     prefix: "r",
     location: new Point3(455, 63, 344),
@@ -1485,8 +1493,8 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
-    name: "静凛の羊羹",
-    prefix: "s",
+    name: "森の羊羹",
+    prefix: "m",
     dimension: Dimension.TheNether,
     location: new Point3(550, 39, 681),
     finished: false
@@ -1616,6 +1624,13 @@ export const kLandmarks: Landmark[] = [
     prefix: "y",
     dimension: Dimension.TheNether,
     location: new Point3(-3797, 67, -2810),
+    finished: true
+  }),
+  createLandmark({
+    name: "UFO",
+    prefix: "u",
+    dimension: Dimension.TheNether,
+    location: new Point3(20, 78, -53),
     finished: true
   }),
 
