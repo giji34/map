@@ -734,6 +734,13 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "愛園小屋",
+    prefix: "a",
+    location: new Point3(443, 69, 295),
+    wikiIndex: 151,
+    finished: false
+  }),
+  createLandmark({
     name: "にじさんじ一期生のお家",
     prefix: ["n", "i"],
     location: new Point3(597, 63, 302),
@@ -1030,12 +1037,11 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
-    name: "謎の建造物(兎)",
-    prefix: "n",
-    location: new Point3(-920, 64, -1496),
-    markerLocation: new Point(-928, -1502),
-    wikiIndex: 238,
-    finished: true
+    name: "エリー・コニファーの家（仮）",
+    prefix: "e",
+    location: new Point3(429, 69, 301),
+    wikiIndex: 235,
+    finished: false
   }),
   createLandmark({
     name: "ンボザウルスの化石",
@@ -1045,10 +1051,10 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
-    name: "山田太郎のおうち",
-    prefix: "y",
-    location: new Point3(198, 72, -120),
-    markerLocation: new Point(199, -131),
+    name: "謎の建造物(兎)",
+    prefix: "n",
+    location: new Point3(-920, 64, -1496),
+    markerLocation: new Point(-928, -1502),
     wikiIndex: 239,
     finished: true
   }),
@@ -1058,6 +1064,14 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(526, 63, 154),
     wikiIndex: 240,
     finished: false
+  }),
+  createLandmark({
+    name: "山田太郎のおうち",
+    prefix: "y",
+    location: new Point3(198, 72, -120),
+    markerLocation: new Point(199, -131),
+    wikiIndex: 241,
+    finished: true
   }),
   createLandmark({
     name: "デートスポット",
@@ -1646,6 +1660,12 @@ export const kLandmarks: Landmark[] = [
     dimension: Dimension.TheNether,
     location: new Point3(20, 78, -53),
     finished: true
+  }),
+  createLandmark({
+    name: "線路のある謎の地下空間",
+    prefix: "s",
+    location: new Point3(399, 44, 306),
+    finished: false
   }),
 
   // 沈没船
