@@ -446,6 +446,14 @@ export const kLandmarks: Landmark[] = [
     xOffset: 60
   }),
   createLandmark({
+    name: "モルパレス2号店",
+    prefix: "m",
+    location: new Point3(404, 64, 402),
+    markerLocation: new Point(415, 389),
+    wikiIndex: 82,
+    finished: true
+  }),
+  createLandmark({
     name: "BLハウス",
     prefix: "b",
     location: new Point3(271, 68, 82),
@@ -988,6 +996,13 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(400, 198),
     wikiIndex: 218,
     finished: true
+  }),
+  createLandmark({
+    name: "いずもるる採掘所",
+    prefix: "i",
+    location: new Point3(415, 63, 412),
+    wikiIndex: 219,
+    finished: false
   }),
   createLandmark({
     name: "葉加瀬冬雪の研究所",
