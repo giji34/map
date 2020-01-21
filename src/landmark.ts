@@ -1089,6 +1089,13 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "デイビット",
+    prefix: "d",
+    location: new Point3(409, 71, 213),
+    wikiIndex: 244,
+    finished: false
+  }),
+  createLandmark({
     name: "デートスポット",
     prefix: "d",
     location: new Point3(-186, 63, 684),
@@ -1680,6 +1687,12 @@ export const kLandmarks: Landmark[] = [
     name: "線路のある謎の地下空間",
     prefix: "s",
     location: new Point3(399, 44, 306),
+    finished: false
+  }),
+  createLandmark({
+    name: "ミトとカエデの像",
+    prefix: "m",
+    location: new Point3(-1349, 67, 1440),
     finished: false
   }),
 
