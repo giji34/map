@@ -1111,11 +1111,11 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "巨大な鏡餅",
-    prefix: "k",
+    name: "巨大な鏡餅(プティ餅)",
+    prefix: ["k", "p"],
     location: new Point3(384, 69, 398),
     wikiIndex: 254,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "しずくしま神社駅",
@@ -1694,6 +1694,13 @@ export const kLandmarks: Landmark[] = [
     prefix: "m",
     location: new Point3(-1349, 67, 1440),
     finished: false
+  }),
+  createLandmark({
+    name: "足湯",
+    prefix: "a",
+    location: new Point3(153, 66, 63),
+    markerLocation: new Point(159, 60),
+    finished: true
   }),
 
   // 沈没船
