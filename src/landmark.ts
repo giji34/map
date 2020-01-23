@@ -1993,6 +1993,9 @@ if (require.main === module) {
       } else {
         prefix = landmark.prefix;
       }
+      if (landmark.wikiIndex) {
+        prefix.push(`${landmark.wikiIndex}`);
+      }
       const name = landmark.name.replace(/ /g, "_");
       const { x, y, z } = landmark.location;
       let dimension: string;
