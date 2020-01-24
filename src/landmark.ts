@@ -2000,7 +2000,7 @@ if (require.main === module) {
       } else {
         prefix = landmark.prefix;
       }
-      if (landmark.wikiIndex) {
+      if (landmark.wikiIndex > 0) {
         prefix.push(`${landmark.wikiIndex}`);
       }
       const name = landmark.name.replace(/ /g, "_");
