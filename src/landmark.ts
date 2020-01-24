@@ -1702,6 +1702,13 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(159, 60),
     finished: true
   }),
+  createLandmark({
+    name: "巨大オスガール像「自由のグウェル」",
+    prefix: ["k", "j"],
+    location: new Point3(309, 63, -86),
+    markerLocation: new Point(323, -147),
+    finished: true
+  }),
 
   // 沈没船
   createLandmark({
