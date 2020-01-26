@@ -610,9 +610,10 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "不老不死ハウセ",
     prefix: "h",
-    location: new Point3(442, 64, 179),
+    location: new Point3(429, 64, 168),
+    markerLocation: new Point(432, 169),
     wikiIndex: 117,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "松本さんの墓(農業コンビナート爆破跡地)",
@@ -938,6 +939,13 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "カメ観察所",
+    prefix: "k",
+    location: new Point3(-92, 63, -690),
+    wikiIndex: 207,
+    finished: true
+  }),
+  createLandmark({
     name: "天宮こころの家（仮）",
     prefix: "a",
     location: new Point3(424, 74, 263),
@@ -964,6 +972,7 @@ export const kLandmarks: Landmark[] = [
     name: "ちとせとろあのお墓",
     prefix: ["c", "t"],
     location: new Point3(458, 64, 186),
+    markerLocation: new Point(481, 170),
     wikiIndex: 212,
     finished: false
   }),
