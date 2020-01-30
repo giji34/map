@@ -13,13 +13,18 @@ fi
 (
   cd "$BACKUP_DIR"
   git config diff.renameLimit 2147483647
-  COMMIT_HASH_BEGIN=$(git rev-parse HEAD)
-  COMMIT_HASH_END=HEAD
-  git pull --ff-only origin master
-  git diff --name-only $COMMIT_HASH_BEGIN $COMMIT_HASH_END \
-    | grep \.nbt\.z$ \
-    | sed 's:\(.*\)/c[.]\([0-9-]*\)[.]\([0-9-]*\)[.]nbt[.]z:\1 \2 \3:g' \
-    | awk 'function c2r(x) { if (x >= 0) { return int(x / 32) } else { return int(x / 32) - 1 } } {print $1, c2r($1), c2r($2)}' \
+  (
+    if [ "$1" = "all" ]; then
+      find world world_nether/DIM-1 world_the_end/DIM1 -name '*\.nbt\.z'
+    else
+      COMMIT_HASH_BEGIN=$(git rev-parse HEAD)
+      COMMIT_HASH_END=HEAD
+      git pull --ff-only origin master
+      git diff --name-only $COMMIT_HASH_BEGIN $COMMIT_HASH_END \
+        | grep \.nbt\.z$
+    fi
+  ) | sed 's:\(.*\)/c[.]\([0-9-]*\)[.]\([0-9-]*\)[.]nbt[.]z:\1 \2 \3:g' \
+    | awk 'function c2r(x) { if (x >= 0) { return int(x / 32) } else { return int(x / 32) - 1 } } {print $1, c2r($2), c2r($3)}' \
     | sort \
     | uniq \
     > $CHANGED_REGIONS
@@ -29,6 +34,9 @@ cd "$(dirname "$0")" && (
 
   yarn landmarks
 
+  if [ "$1" = "all" ]; then
+    rm -rf images/{o,n,e}
+  fi
   mkdir -p images/{o,n,e}
 
   ARGFILE=$(mktemp)
