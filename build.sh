@@ -4,6 +4,11 @@ set -eu
 
 COMMIT_HASH_BEGIN=
 CHANGED_REGIONS=$(mktemp)
+if type nproc 2>&1 >/dev/null; then
+  NPROC=$(nproc)
+else
+  NPROC=$(getconf _NPROCESSORS_ONLN)
+fi
 
 (
   cd "$BACKUP_DIR"
@@ -26,22 +31,17 @@ cd "$(dirname "$0")" && (
 
   mkdir -p images/{o,n,e}
 
-  function call_mca2png() {
-    local expected_dir=$1
-    local dimension=$2
-    local dir=$3
-    local rx=$4
-    local rz=$5
-    if [ "$dir" = "$expected_dir/chunk" ]; then
-      ../mca2png/build/mca2png -w "$BACKUP_DIR/$expected_dir" -x $rx -z $rz -o images/$dimension -l ./landmarks.tsv -d $dimension
-    fi
-  }
-
-  while read line; do
-    call_mca2png world o $line
-    call_mca2png world_nether/DIM-1 n $line
-    call_mca2png world_the_end/DIM1 e $line
-  done < $CHANGED_REGIONS
+  ARGFILE=$(mktemp)
+  for spec in world=o world_nether/DIM-1=n world_the_end/DIM1=e; do
+    WORLD=$(echo $spec | cut -f1 -d=)
+    DIMENSION=$(echo $spec | cut -f2 -d=)
+    cat "$CHANGED_REGIONS" \
+      | grep "$WORLD/chunk" \
+      | awk "{print \"-w $BACKUP_DIR/$WORLD\", \"-x\", \$2, \"-z\", \$3, \"-o images/$DIMENSION\", \"-l ./landmarks.tsv\", \"-d $DIMENSION\"""}" \
+      >> $ARGFILE
+  done
+  cat "$ARGFILE" | xargs -L 1 -P $NPROC ../mca2png/build/mca2png
+  rm -f "$ARGFILE"
 
   rm -rf public/images/{o,n,e}
   mkdir -p public/images/{o,n,e}
