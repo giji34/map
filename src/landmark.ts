@@ -211,7 +211,8 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "シスター・クレアの家",
     prefix: "s",
-    location: new Point3(248, 75, 712),
+    location: new Point3(247, 76, 718),
+    markerLocation: new Point(247, 736),
     wikiIndex: 33,
     finished: false
   }),
@@ -1717,6 +1718,12 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(309, 63, -86),
     markerLocation: new Point(323, -147),
     finished: true
+  }),
+  createLandmark({
+    name: "ベルさんの仮拠点",
+    prefix: "b",
+    location: new Point3(-194, 67, 808),
+    finished: false
   }),
 
   // 沈没船
