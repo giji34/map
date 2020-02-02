@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "japanese": "^1.2.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-transition-group": "^4.3.0",

@@ -1,3 +1,5 @@
+import { romanize } from "./romanize";
+
 export class Point {
   readonly x: number;
   readonly z: number;
@@ -1981,7 +1983,7 @@ function bresenham(
   }
 }
 
-function explodeYomi(landmark: Landmark, japanese: any): string[] {
+function explodeYomi(landmark: Landmark): string[] {
   let base: string[];
   if (typeof landmark.yomi === "string") {
     base = [landmark.yomi];
@@ -1996,23 +1998,15 @@ function explodeYomi(landmark: Landmark, japanese: any): string[] {
   }
   const result = new Set<string>(base);
   result.add(landmark.name);
-  for (const y of yomi) {
-    for (const config of [
-      "wikipedia",
-      "traditional hepburn",
-      "modified hepburn",
-      "kunrei",
-      "nihon"
-    ]) {
-      const r = japanese.romanize(y, config);
+  for (const b of base) {
+    romanize(b).forEach(r => {
       result.add(r);
-    }
+    });
   }
   return [...result];
 }
 
 if (require.main === module) {
-  const japanese = require("japanese");
   const argv = [...process.argv];
   argv.shift();
   argv.shift();
@@ -2048,7 +2042,6 @@ if (require.main === module) {
     const worldUIDNether = argv[2];
     const worldUIDTheEnd = argv[3];
     kLandmarks.forEach(landmark => {
-      const yomi = explodeYomi(landmark, japanese);
       const name = landmark.name.replace(/ /g, "_");
       const { x, y, z } = landmark.location;
       let dimension: string;
@@ -2063,10 +2056,9 @@ if (require.main === module) {
           dimension = worldUIDNether;
           break;
       }
-      yomi.forEach(yo => {
-        if (yo.length > 0) {
-          console.log(`${yo}\t${x}\t${y}\t${z}\t${dimension}`);
-        }
+      const yomiList = explodeYomi(landmark);
+      yomiList.forEach(yo => {
+        console.log(`${name}\t${yo}\t${x}\t${y}\t${z}\t${dimension}`);
       });
     });
   }
