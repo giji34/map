@@ -1981,7 +1981,38 @@ function bresenham(
   }
 }
 
+function explodeYomi(landmark: Landmark, japanese: any): string[] {
+  let base: string[];
+  if (typeof landmark.yomi === "string") {
+    base = [landmark.yomi];
+  } else {
+    base = landmark.yomi;
+  }
+  const yomi: string[] = [...base];
+  if (landmark.wikiIndex > 0) {
+    for (const b of base) {
+      yomi.push(`${landmark.wikiIndex}-${b}`);
+    }
+  }
+  const result = new Set<string>(base);
+  result.add(landmark.name);
+  for (const y of yomi) {
+    for (const config of [
+      "wikipedia",
+      "traditional hepburn",
+      "modified hepburn",
+      "kunrei",
+      "nihon"
+    ]) {
+      const r = japanese.romanize(y, config);
+      result.add(r);
+    }
+  }
+  return [...result];
+}
+
 if (require.main === module) {
+  const japanese = require("japanese");
   const argv = [...process.argv];
   argv.shift();
   argv.shift();
@@ -2017,15 +2048,7 @@ if (require.main === module) {
     const worldUIDNether = argv[2];
     const worldUIDTheEnd = argv[3];
     kLandmarks.forEach(landmark => {
-      let prefix: string[];
-      if (typeof landmark.prefix === "string") {
-        prefix = [landmark.prefix];
-      } else {
-        prefix = landmark.prefix;
-      }
-      if (landmark.wikiIndex > 0) {
-        prefix.push(`${landmark.wikiIndex}`);
-      }
+      const yomi = explodeYomi(landmark, japanese);
       const name = landmark.name.replace(/ /g, "_");
       const { x, y, z } = landmark.location;
       let dimension: string;
@@ -2040,8 +2063,10 @@ if (require.main === module) {
           dimension = worldUIDNether;
           break;
       }
-      prefix.forEach(p => {
-        console.log(`${p}-${name}\t${x}\t${y}\t${z}\t${dimension}`);
+      yomi.forEach(yo => {
+        if (yo.length > 0) {
+          console.log(`${yo}\t${x}\t${y}\t${z}\t${dimension}`);
+        }
       });
     });
   }
