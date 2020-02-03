@@ -1991,17 +1991,15 @@ function explodeYomi(landmark: Landmark): string[] {
     base = landmark.yomi;
   }
   const yomi: string[] = [...base];
-  if (landmark.wikiIndex > 0) {
-    for (const b of base) {
-      yomi.push(`${landmark.wikiIndex}-${b}`);
-    }
-  }
   const result = new Set<string>(base);
   result.add(landmark.name);
   for (const b of base) {
     romanize(b).forEach(r => {
       result.add(r);
     });
+  }
+  if (landmark.wikiIndex > 0) {
+    result.add(`${landmark.wikiIndex}-${landmark.name}`);
   }
   return [...result];
 }
