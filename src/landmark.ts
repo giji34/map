@@ -1266,6 +1266,33 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-1566, 1497),
     finished: true
   }),
+  createLandmark({
+    name: "メリーゴーランド",
+    yomi: ["めりーごーらんど", "merrygoround"],
+    location: new Point3(-1534, 63, 1287),
+    markerLocation: new Point(1534, 1267),
+    finished: true
+  }),
+  createLandmark({
+    name: "石塔駅(北東)",
+    yomi: "せきとうえきほくとう",
+    location: new Point3(-1426, 64, 1372),
+    markerLocation: new Point(-1426, 1355),
+    finished: true
+  }),
+  createLandmark({
+    name: "石塔駅(西)",
+    yomi: "せきとうえきにし",
+    location: new Point3(-1690, 63, 1399),
+    markerLocation: new Point(-1701, 1391),
+    finished: true
+  }),
+  createLandmark({
+    name: "石塔駅(南)",
+    yomi: "せきとうえきみなみ",
+    location: new Point3(-1548, 65, 1519),
+    finished: true
+  }),
 
   // 以下 wiki に無い建築物
 
@@ -1739,6 +1766,13 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-194, 67, 808),
     finished: false
   }),
+  createLandmark({
+    name: "アンジュんち",
+    yomi: ["あんじゅんち", "angeんち"],
+    location: new Point3(-262, 79, 583),
+    markerLocation: new Point(-268, 576),
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
@@ -1995,7 +2029,6 @@ function explodeYomi(landmark: Landmark): string[] {
   } else {
     base = landmark.yomi;
   }
-  const yomi: string[] = [...base];
   const result = new Set<string>(base);
   result.add(landmark.name);
   for (const b of base) {
