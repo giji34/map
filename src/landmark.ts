@@ -75,7 +75,7 @@ function createLandmark(params: {
 export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "共有ハウス",
-    yomi: ["きょうゆうはうす", "きょうゆうhouse"],
+    yomi: ["きょうゆうはうす", "きょうゆうhouse", "みんなのおうち"],
     location: new Point3(185, 70, 30),
     markerLocation: new Point(175, 17),
     wikiIndex: 1,
@@ -155,7 +155,11 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "Kyoko's seacret house",
-    yomi: ["きょうこずしーくれっとはうす", "kyokossecrethouse"],
+    yomi: [
+      "きょうこずしーくれっとはうす",
+      "kyokosseacrethouse",
+      "kyokossecrethouse"
+    ],
     location: new Point3(243, 63, -120),
     xOffset: 80,
     wikiIndex: 20,
@@ -481,7 +485,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "新宿駅",
-    yomi: ["しんじゅっくえき", "えき"],
+    yomi: ["しんじゅくえき", "えき"],
     location: new Point3(194, 70, -4),
     markerLocation: new Point(196, -57),
     wikiIndex: 89,
@@ -528,7 +532,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "新・笹木像",
-    yomi: "しんささきぞう",
+    yomi: ["しんささきぞう", "ささきぞう"],
     location: new Point3(429, 87, 871),
     wikiIndex: 99,
     finished: true
@@ -543,7 +547,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "🌸ンボ族村",
-    yomi: "さくらんぼぞくむら",
+    yomi: ["さくらんぼぞくむら", "んぼぞくむら"],
     location: new Point3(-4792, 63, 4860),
     markerLocation: new Point(-4791, 4790),
     wikiIndex: 102,
@@ -616,7 +620,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "にじさんじランド",
-    yomi: ["にじさんじらんど", "にじさんじland"],
+    yomi: ["にじさんじらんど", "にじさんじland", "land"],
     location: new Point3(-1400, 68, 1412),
     markerLocation: new Point(-1496, 1395),
     wikiIndex: 116,
@@ -648,7 +652,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "現代アート・『世界』(Hello World)",
-    yomi: ["げんだいあーと", "せかい", "helloworld"],
+    yomi: ["げんだいあーとせかい", "せかい", "helloworld"],
     location: new Point3(78, 63, -84),
     markerLocation: new Point(62, -90),
     wikiIndex: 123,
@@ -672,11 +676,19 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "🌸ンボ宮殿",
-    yomi: "さくらんぼきゅうでん",
+    yomi: ["さくらんぼきゅうでん", "んぼきゅうでん"],
     location: new Point3(-4792, 63, 4891),
     markerLocation: new Point(-4793, 4908),
     wikiIndex: 129,
     finished: true
+  }),
+  createLandmark({
+    name: "ガンダーラ・ブホテル",
+    yomi: "がんだーらぶほてる",
+    location: new Point3(-1042, 70, 1185),
+    markerLocation: new Point(-1036, 1179),
+    wikiIndex: 131,
+    finished: false
   }),
   createLandmark({
     name: "しば城",
@@ -762,6 +774,13 @@ export const kLandmarks: Landmark[] = [
     yomi: "あいぞのごや",
     location: new Point3(443, 69, 295),
     wikiIndex: 151,
+    finished: false
+  }),
+  createLandmark({
+    name: "愛園愛美の第二拠点",
+    yomi: "あいぞのまなみのだいにきょてん",
+    location: new Point3(-1001, 72, 1380),
+    wikiIndex: 152,
     finished: false
   }),
   createLandmark({
@@ -915,7 +934,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "アルスの森",
-    yomi: "あるすのもり",
+    yomi: ["あるすのもり", "arsのもり"],
     location: new Point3(555, 68, 83),
     markerLocation: new Point(555, 68),
     wikiIndex: 194,
@@ -1046,7 +1065,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "ラトナ・プティの家(仮)",
-    yomi: "らとなぷてぃのいえ",
+    yomi: ["らとなぷてぃのいえ", "ratnapetitのいえ"],
     location: new Point3(455, 63, 344),
     wikiIndex: 224,
     finished: true
@@ -1240,14 +1259,14 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "水山",
-    yomi: ["みずやま", "すぷらっしゅまうんてん"],
+    yomi: ["みずやま", "すぷらっしゅまうんてん", "splashmountain"],
     location: new Point3(-1507, 64, 1337),
     markerLocation: new Point(-1495, 1308),
     finished: false
   }),
   createLandmark({
     name: "レストラン",
-    yomi: "れすとらん",
+    yomi: ["れすとらん", "restaurant"],
     location: new Point3(-1522, 70, 1400),
     markerLocation: new Point(-1520, 1373),
     finished: true
@@ -1270,7 +1289,7 @@ export const kLandmarks: Landmark[] = [
     name: "メリーゴーランド",
     yomi: ["めりーごーらんど", "merrygoround"],
     location: new Point3(-1534, 63, 1287),
-    markerLocation: new Point(1534, 1267),
+    markerLocation: new Point(-1534, 1267),
     finished: true
   }),
   createLandmark({
@@ -1293,6 +1312,13 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-1548, 65, 1519),
     finished: true
   }),
+  createLandmark({
+    name: "帆船",
+    yomi: "はんせん",
+    location: new Point3(-1618, 161, 1459),
+    markerLocation: new Point(-1618, 1425),
+    finished: false
+  }),
 
   // 以下 wiki に無い建築物
 
@@ -1314,7 +1340,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "セーフハウス",
-    yomi: "せーふはうす",
+    yomi: ["せーふはうす", "safehouse"],
     location: new Point3(-172, 65, 16),
     markerLocation: new Point(-171, 8),
     finished: true
@@ -1335,7 +1361,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "アパホテル",
-    yomi: "あぱほてる",
+    yomi: ["あぱほてる", "apahotel"],
     location: new Point3(-30023, 69, -20170),
     markerLocation: new Point(-30023, -20188),
     finished: true
@@ -1623,7 +1649,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "にじさんじランド",
-    yomi: ["にじさんじらんど", "にじさんじland"],
+    yomi: ["にじさんじらんど", "にじさんじland", "land"],
     dimension: Dimension.TheNether,
     location: new Point3(-185, 49, 173),
     finished: true
