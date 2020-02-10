@@ -1220,14 +1220,14 @@ export const kLandmarks: Landmark[] = [
     name: "プ○さんのハニーハ○ト",
     yomi: "ぷーさんのはにーはんと",
     location: new Point3(-1517, 70, 1487),
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "ビッグサンボーマウンテン",
     yomi: ["びっぐさんぼーまうんてん", "bigsanbo-mountain"],
     location: new Point3(-1612, 63, 1496),
     markerLocation: new Point(-1642, 1469),
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "にじさんじ城",
@@ -1315,7 +1315,7 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "帆船",
     yomi: "はんせん",
-    location: new Point3(-1618, 161, 1459),
+    location: new Point3(-1616, 145, 1460),
     markerLocation: new Point(-1618, 1425),
     finished: false
   }),
@@ -1347,7 +1347,7 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "鈴谷アキの仮拠点",
-    yomi: "すずやあきのかりきょてｎ",
+    yomi: "すずやあきのかりきょてん",
     location: new Point3(-266, 76, 217),
     markerLocation: new Point(-270, 211),
     finished: true
