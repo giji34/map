@@ -1,66 +1,5 @@
 const kKanaToRomanMap: Map<string, string[]>[] = [
   new Map([
-    ["っきゃ", ["kkya"]],
-    ["っきぃ", ["kkyi"]],
-    ["っきゅ", ["kkyu"]],
-    ["っきぇ", ["kkye"]],
-    ["っきょ", ["kkyo"]],
-    ["っぎゃ", ["ggya"]],
-    ["っぎぃ", ["ggyi"]],
-    ["っぎゅ", ["ggyu"]],
-    ["っぎぇ", ["ggye"]],
-    ["っぎょ", ["ggyo"]],
-    ["っしゃ", ["ssha"]],
-    ["っしぃ", ["ssyi"]],
-    ["っしゅ", ["sshu"]],
-    ["っしぇ", ["sshe"]],
-    ["っしょ", ["ssho"]],
-    ["っじゃ", ["jja"]],
-    ["っじぃ", ["jjyi"]],
-    ["っじゅ", ["jju"]],
-    ["っじぇ", ["jje"]],
-    ["っじょ", ["jjo"]],
-    ["っちゃ", ["tcha"]],
-    ["っちぃ", ["ttyi"]],
-    ["っちゅ", ["tchu"]],
-    ["っちぇ", ["tche"]],
-    ["っちょ", ["tcho"]],
-    ["っぢゃ", ["ddya"]],
-    ["っぢぃ", ["ddyi"]],
-    ["っぢゅ", ["ddyu"]],
-    ["っぢぇ", ["ddye"]],
-    ["っぢょ", ["ddyo"]],
-    ["っひゃ", ["hhya"]],
-    ["っひい", ["hhyi"]],
-    ["っひゅ", ["hhyu"]],
-    ["っひぇ", ["hhye"]],
-    ["っひょ", ["hhyo"]],
-    ["っびゃ", ["bbya"]],
-    ["っびぃ", ["bbyi"]],
-    ["っびゅ", ["bbyu"]],
-    ["っびぇ", ["bbye"]],
-    ["っびょ", ["bbyo"]],
-    ["っぴゃ", ["ppya"]],
-    ["っぴぃ", ["ppyi"]],
-    ["っぴゅ", ["ppyu"]],
-    ["っぴぇ", ["ppye"]],
-    ["っぴょ", ["ppyo"]],
-    ["っふぁ", ["ffa"]],
-    ["っふぃ", ["ffi"]],
-    ["っふぇ", ["ffe"]],
-    ["っふぉ", ["ffo"]],
-    ["っみゃ", ["mmya"]],
-    ["っみぃ", ["mmyi"]],
-    ["っみゅ", ["mmyu"]],
-    ["っみぇ", ["mmye"]],
-    ["っみょ", ["mmyo"]],
-    ["っりゃ", ["rrya"]],
-    ["っりぃ", ["rryi"]],
-    ["っりゅ", ["rryu"]],
-    ["っりぇ", ["rrye"]],
-    ["っりょ", ["rryo"]]
-  ]),
-  new Map([
     ["きゃ", ["kya"]],
     ["きぃ", ["kyi"]],
     ["きゅ", ["kyu"]],
@@ -162,68 +101,6 @@ const kKanaToRomanMap: Map<string, string[]>[] = [
     ["ふぃ", ["fi"]],
     ["ふぇ", ["fe"]],
     ["ふぉ", ["fo"]],
-    ["っか", ["kka"]],
-    ["っき", ["kki"]],
-    ["っく", ["kku"]],
-    ["っけ", ["kke"]],
-    ["っこ", ["kko"]],
-    ["っが", ["gga"]],
-    ["っぎ", ["ggi"]],
-    ["っぐ", ["ggu"]],
-    ["っげ", ["gge"]],
-    ["っご", ["ggo"]],
-    ["っさ", ["ssa"]],
-    ["っし", ["sshi"]],
-    ["っす", ["ssu"]],
-    ["っせ", ["sse"]],
-    ["っそ", ["sso"]],
-    ["っざ", ["zza"]],
-    ["っじ", ["jji"]],
-    ["っず", ["zzu"]],
-    ["っぜ", ["zze"]],
-    ["っぞ", ["zzo"]],
-    ["った", ["tta"]],
-    ["っち", ["tchi"]],
-    ["っつ", ["ttsu"]],
-    ["って", ["tte"]],
-    ["っと", ["tto"]],
-    ["っだ", ["dda"]],
-    ["っぢ", ["ddi"]],
-    ["っづ", ["ddu"]],
-    ["っで", ["dde"]],
-    ["っど", ["ddo"]],
-    ["っは", ["hha"]],
-    ["っひ", ["hhi"]],
-    ["っふ", ["ffu"]],
-    ["っへ", ["hhe"]],
-    ["っほ", ["hho"]],
-    ["っば", ["bba"]],
-    ["っび", ["bbi"]],
-    ["っぶ", ["bbu"]],
-    ["っべ", ["bbe"]],
-    ["っぼ", ["bbo"]],
-    ["っぱ", ["ppa"]],
-    ["っぴ", ["ppi"]],
-    ["っぷ", ["ppu"]],
-    ["っぺ", ["ppe"]],
-    ["っぽ", ["ppo"]],
-    ["っま", ["mma"]],
-    ["っみ", ["mmi"]],
-    ["っむ", ["mmu"]],
-    ["っめ", ["mme"]],
-    ["っも", ["mmo"]],
-    ["っや", ["yya"]],
-    ["っゆ", ["yyu"]],
-    ["っよ", ["yyo"]],
-    ["っら", ["rra"]],
-    ["っり", ["rri"]],
-    ["っる", ["rru"]],
-    ["っれ", ["rre"]],
-    ["っろ", ["rro"]],
-    ["っわ", ["wwa"]],
-    ["っゐ", ["wwi"]],
-    ["っゑ", ["wwe"]],
-    ["っを", ["wwo"]],
     ["いぇ", ["ye"]],
     ["うぁ", ["wha"]],
     ["うぃ", ["whi", "wi"]],
@@ -266,7 +143,6 @@ const kKanaToRomanMap: Map<string, string[]>[] = [
     ["つ", ["tsu", "tu"]],
     ["て", ["te"]],
     ["と", ["to"]],
-    ["っ", ["xtsu", "ltu", "ltsu"]],
     ["だ", ["da"]],
     ["ぢ", ["di"]],
     ["づ", ["du"]],
@@ -345,7 +221,54 @@ export function romanize(s: string): string[] {
       index++;
     }
   }
+  const xtu = ["xtu", "xtsu", "ltu", "ltsu"];
+  while (true) {
+    const idx = findLastIndex(chars, it => it.length === 1 && it[0] === "っ");
+    if (idx < 0) {
+      break;
+    }
+
+    let begin = idx;
+    const end = idx + 1;
+    for (let i = begin - 1; i >= 0; i--) {
+      if (chars[i].length === 1 && chars[i][0] === "っ") {
+        begin = i;
+      } else {
+        break;
+      }
+    }
+
+    if (idx + 1 < chars.length) {
+      const firstLetter = chars[idx + 1].map(it => it.substr(0, 1));
+      if (firstLetter.every(it => !["a", "i", "u", "e", "o"].includes(it))) {
+        for (let i = begin; i < end; i++) {
+          chars[i] = [];
+        }
+        chars[idx + 1] = chars[idx + 1].map(it => {
+          const l = it.substr(0, 1);
+          return l + it;
+        });
+      } else {
+        for (let i = begin; i < end; i++) {
+          chars[i] = xtu;
+        }
+      }
+    } else {
+      for (let i = begin; i < end; i++) {
+        chars[i] = xtu;
+      }
+    }
+  }
   return explode(chars);
+}
+
+function findLastIndex<T>(arr: T[], predicate: (v: T) => boolean) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (predicate(arr[i])) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 function explode(chars: string[][]): string[] {
