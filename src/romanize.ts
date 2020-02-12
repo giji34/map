@@ -155,7 +155,7 @@ const kKanaToRomanMap: Map<string, string[]>[] = [
     ["の", ["no"]],
     ["は", ["ha"]],
     ["ひ", ["hi"]],
-    ["ふ", ["fu"]],
+    ["ふ", ["fu", "hu"]],
     ["へ", ["he"]],
     ["ほ", ["ho"]],
     ["ば", ["ba"]],
