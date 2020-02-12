@@ -1319,6 +1319,13 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-1618, 1425),
     finished: false
   }),
+  createLandmark({
+    name: "二匹のリスの家",
+    yomi: "にひきのりすのいえ",
+    location: new Point3(-1534, 70, 1484),
+    markerLocation: new Point(-1541, 1469),
+    finished: false
+  }),
 
   // 以下 wiki に無い建築物
 
@@ -1327,7 +1334,6 @@ export const kLandmarks: Landmark[] = [
     yomi: "きゅうどうじょう",
     location: new Point3(106, 68, -149),
     markerLocation: new Point(107, -203),
-
     xOffset: 20,
     finished: true
   }),
@@ -1797,6 +1803,13 @@ export const kLandmarks: Landmark[] = [
     yomi: ["あんじゅんち", "angeんち"],
     location: new Point3(-262, 79, 583),
     markerLocation: new Point(-268, 576),
+    finished: false
+  }),
+  createLandmark({
+    name: "全ブロックピラミッド",
+    yomi: "ぜんぶろっくぴらみっど",
+    location: new Point3(-165, 78, -221),
+    markerLocation: new Point(-177, -231),
     finished: false
   }),
 
