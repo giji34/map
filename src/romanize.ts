@@ -245,8 +245,8 @@ export function romanize(s: string): string[] {
           chars[i] = [];
         }
         chars[idx + 1] = chars[idx + 1].map(it => {
-          const l = it.substr(0, 1);
-          return l + it;
+          const consonant = it.substr(0, 1);
+          return consonant.repeat(end - begin) + it;
         });
       } else {
         for (let i = begin; i < end; i++) {
