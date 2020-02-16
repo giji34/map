@@ -956,6 +956,14 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "ぶるーず拠点(chocolate house)",
+    yomi: ["ぶるーずきょてん", "ちょこれーとはうす", "chocolatehouse"],
+    location: new Point3(-193, 81, -252),
+    markerLocation: new Point(-206, -262),
+    wikiIndex: 195,
+    finished: false
+  }),
+  createLandmark({
     name: "太陽",
     yomi: "たいよう",
     location: new Point3(195, 256, 5),
@@ -1163,8 +1171,9 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "スノードーム",
-    yomi: ["すのーどーむ", "snowdome"],
-    location: new Point3(-1383, 67, 1410),
+    yomi: ["すのーどーむ", "snowdome", "dome"],
+    location: new Point3(-1378, 67, 1410),
+    markerLocation: new Point(-1377, 1347),
     wikiIndex: 252,
     finished: false
   }),
@@ -1591,13 +1600,6 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "エンドシップ(叶)",
-    yomi: "えんどしっぷ",
-    dimension: Dimension.TheEnd,
-    location: new Point3(2291, 58, 30),
-    finished: false
-  }),
-  createLandmark({
     name: "夕陽リリの塔跡地",
     yomi: "ゆうひりりのとうあとち",
     location: new Point3(-570, 80, 456),
@@ -1833,12 +1835,43 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(486, 63, -688),
     finished: false
   }),
+  createLandmark({
+    name: "ランド建設業者に襲撃された村",
+    yomi: "らんどけんせつぎょうしゃにしゅうげきされたむら",
+    location: new Point3(1090, 66, 2754),
+    markerLocation: new Point(1103, 2727),
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
-    name: "沈没船(アルス・アルマル)",
+    name: "沈没船(アルスさん)",
     yomi: "ちんぼつせん",
     location: new Point3(3400, 64, 3132),
+    finished: false
+  }),
+
+  // 前哨基地
+  createLandmark({
+    name: "前哨基地(花畑さん)",
+    yomi: "ぜんしょうきち",
+    location: new Point3(28535, 64, 1232),
+    finished: false
+  }),
+
+  // エンドシティ
+  createLandmark({
+    name: "エンドシティ(叶さん)",
+    yomi: "えんどしてぃ",
+    dimension: Dimension.TheEnd,
+    location: new Point3(2291, 58, 30),
+    finished: false
+  }),
+  createLandmark({
+    name: "エンドシティ(花畑さん)",
+    yomi: "えんどぃてぃ",
+    dimension: Dimension.TheEnd,
+    location: new Point3(-2188, 62, 31),
     finished: false
   })
 ].sort((a, b) => {
