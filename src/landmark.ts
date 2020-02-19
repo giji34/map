@@ -603,6 +603,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "童田家",
+    yomi: "わらべだけ",
+    location: new Point3(242, 70, 337),
+    markerLocation: new Point(235, 333),
+    wikiIndex: 110,
+    finished: true
+  }),
+  createLandmark({
     name: "ここが僕の家だけどみんな僕のことすき？",
     yomi: "ここがぼくのいえだけどみんなぼくのことすき",
     location: new Point3(587, 63, 196),
@@ -639,6 +647,18 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(429, 64, 168),
     markerLocation: new Point(432, 169),
     wikiIndex: 117,
+    finished: true
+  }),
+  createLandmark({
+    name: "泌尿器内科　膀胱炎の部屋",
+    yomi: [
+      "ひにょうきないかぼうこうえんのへや",
+      "ひにょうきないか",
+      "ぼうこうえんのへや"
+    ],
+    location: new Point3(-545, 69, -280),
+    markerLocation: new Point(-560, -290),
+    wikiIndex: 118,
     finished: true
   }),
   createLandmark({
@@ -695,7 +715,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-1042, 70, 1185),
     markerLocation: new Point(-1036, 1179),
     wikiIndex: 131,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "しば城",
@@ -1160,6 +1180,21 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(409, 71, 213),
     wikiIndex: 244,
     finished: false
+  }),
+  createLandmark({
+    name: "高層マンション",
+    yomi: "こうそうまんしょん",
+    location: new Point3(-99, 63, -80),
+    markerLocation: new Point(-99, -102),
+    wikiIndex: 248,
+    finished: false
+  }),
+  createLandmark({
+    name: "タワー型ポテト農園",
+    yomi: ["たわーがたぽてとのうえん", "ぽてとのうえん"],
+    location: new Point3(-122, 67, -55),
+    wikiIndex: 250,
+    finished: true
   }),
   createLandmark({
     name: "デートスポット",
