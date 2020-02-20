@@ -882,6 +882,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "雪城城",
+    yomi: "ゆきしろじょう",
+    location: new Point3(-351, 78, 381),
+    markerLocation: new Point(-357, 374),
+    wikiIndex: 168,
+    finished: false
+  }),
+  createLandmark({
     name: "みれいハウス",
     yomi: "みれいはうす",
     location: new Point3(518, 69, 132),
@@ -1059,6 +1067,19 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(634, 63, 236),
     wikiIndex: 213,
     finished: false
+  }),
+  createLandmark({
+    name: "雪城ロード",
+    yomi: "ゆきしろろーど",
+    location: new Point3(-355, 68, 73),
+    wikiIndex: 214,
+    finished: true,
+    corners: [
+      new Point(-355, 73),
+      new Point(-355, 361),
+      new Point(-365, 361),
+      new Point(-365, 374)
+    ]
   }),
   createLandmark({
     name: "氷マンション(仮)",
