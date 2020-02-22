@@ -35,9 +35,9 @@ cd "$(dirname "$0")" && (
   yarn landmarks
 
   if [ "$1" = "all" ]; then
-    rm -rf images/{o,n,e}
+    rm -rf public/images/{o,n,e}
   fi
-  mkdir -p images/{o,n,e}
+  mkdir -p public/images/{o,n,e}
 
   ARGFILE=$(mktemp)
   for spec in world=o world_nether/DIM-1=n world_the_end/DIM1=e; do
@@ -45,15 +45,11 @@ cd "$(dirname "$0")" && (
     DIMENSION=$(echo $spec | cut -f2 -d=)
     cat "$CHANGED_REGIONS" \
       | grep "$WORLD/chunk" \
-      | awk "{print \"-w $BACKUP_DIR/$WORLD\", \"-x\", \$2, \"-z\", \$3, \"-o images/$DIMENSION\", \"-l ./landmarks.tsv\", \"-d $DIMENSION\"""}" \
+      | awk "{print \"-w $BACKUP_DIR/$WORLD\", \"-x\", \$2, \"-z\", \$3, \"-o public/images/$DIMENSION\", \"-l ./landmarks.tsv\", \"-d $DIMENSION\"""}" \
       >> $ARGFILE
   done
   cat "$ARGFILE" | xargs -L 1 -P $NPROC ../mca2png/build/mca2png
   rm -f "$ARGFILE"
-
-  rm -rf public/images/{o,n,e}
-  mkdir -p public/images/{o,n,e}
-  bash tool/imagemin.sh
 
   yarn imagelist
   yarn webpack
