@@ -227,7 +227,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(247, 76, 718),
     markerLocation: new Point(247, 736),
     wikiIndex: 33,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "温泉(森中温泉)",
@@ -882,6 +882,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "愛のオブジェ",
+    yomi: "あいのおぶじぇ",
+    location: new Point3(-179, 70, 301),
+    markerLocation: new Point(-176, 289),
+    wikiIndex: 166,
+    finished: false
+  }),
+  createLandmark({
     name: "雪城城",
     yomi: "ゆきしろじょう",
     location: new Point3(-351, 78, 381),
@@ -918,6 +926,14 @@ export const kLandmarks: Landmark[] = [
     yomi: "おまつりかいじょう",
     location: new Point3(-60, 64, 17),
     wikiIndex: 180,
+    finished: false
+  }),
+  createLandmark({
+    name: "レヴィ・エリファ拠点",
+    yomi: ["れゔぃえりふぁきょてん", "levieliphaきょてん"],
+    location: new Point3(-72, 78, 331),
+    markerLocation: new Point(-67, 325),
+    wikiIndex: 185,
     finished: false
   }),
   createLandmark({
