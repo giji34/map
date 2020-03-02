@@ -146,6 +146,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "RKSアジト",
+    yomi: ["RKSあじと", "あーるけーえすあじと"],
+    location: new Point3(329, 63, -207),
+    markerLocation: new Point(320, -218),
+    wikiIndex: 16,
+    finished: true
+  }),
+  createLandmark({
     name: "ちーかざちーハウス",
     yomi: "ちーかざちーはうす",
     location: new Point3(15, 64, -86),
@@ -227,6 +235,13 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(247, 76, 718),
     markerLocation: new Point(247, 736),
     wikiIndex: 33,
+    finished: true
+  }),
+  createLandmark({
+    name: "轟京子と名伽尾アズマの家",
+    yomi: "とどろききょうことなかおあずまのいえ",
+    location: new Point3(-134, 64, -365),
+    wikiIndex: 34,
     finished: true
   }),
   createLandmark({
@@ -934,7 +949,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-72, 78, 331),
     markerLocation: new Point(-67, 325),
     wikiIndex: 185,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "イド",
