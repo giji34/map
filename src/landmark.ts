@@ -1936,14 +1936,11 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "もちもちアクアライン",
-    yomi: ["もちもちあくあらいん", "あくあらいん"],
+    name: "アクアライン",
+    yomi: "あくあらいん",
     location: new Point3(594, 63, 17),
     markerLocation: new Point(594, -386),
-    corners: [
-      new Point(594, -386),
-      new Point(594, -335) // 仮
-    ],
+    corners: [new Point(594, -386), new Point(594, -710), new Point(577, -710)],
     finished: false
   }),
 
