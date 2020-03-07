@@ -1935,6 +1935,17 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-30063, 84, -20884),
     finished: false
   }),
+  createLandmark({
+    name: "もちもちアクアライン",
+    yomi: ["もちもちあくあらいん", "あくあらいん"],
+    location: new Point3(594, 63, 17),
+    markerLocation: new Point(594, -386),
+    corners: [
+      new Point(594, -386),
+      new Point(594, -335) // 仮
+    ],
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
