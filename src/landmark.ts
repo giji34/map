@@ -1044,7 +1044,14 @@ export const kLandmarks: Landmark[] = [
     dimension: Dimension.TheNether,
     location: new Point3(19, 70, 16),
     wikiIndex: 201,
-    finished: true
+    finished: true,
+    corners: [
+      new Point(19, 17),
+      new Point(-145, 181),
+      new Point(-174, 181),
+      new Point(-174, 174),
+      new Point(-185, 174)
+    ]
   }),
   createLandmark({
     name: "BIG WOOD HAYAMA HOUSE",
@@ -1987,18 +1994,6 @@ type Railway = { name: string; corners: Point[]; dimension: Dimension };
 
 const kRailways: Railway[] = [
   {
-    name: "うい覇道",
-    corners: [
-      new Point(-589, -94),
-      new Point(-589, -76),
-      new Point(-735, -76),
-      new Point(-735, 299),
-      new Point(-733, 299),
-      new Point(-733, 344)
-    ],
-    dimension: Dimension.Overworld
-  },
-  {
     name: "花畑鉄道にじさんじランド線",
     corners: [
       new Point(-308, 783),
@@ -2098,17 +2093,6 @@ const kRailways: Railway[] = [
       new Point(330, 83), // 分岐
       new Point(330, -485),
       new Point(347, -483) // 要塞
-    ],
-    dimension: Dimension.TheNether
-  },
-  {
-    name: "配慮ロード",
-    corners: [
-      new Point(19, 17),
-      new Point(-145, 181),
-      new Point(-174, 181),
-      new Point(-174, 174),
-      new Point(-185, 174)
     ],
     dimension: Dimension.TheNether
   },
