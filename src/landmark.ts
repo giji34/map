@@ -2241,12 +2241,20 @@ if (require.main === module) {
   argv.shift();
   argv.shift();
   if (argv[0] === "mca2png") {
+    const railways = [...kRailways];
     kLandmarks.forEach(landmark => {
       console.log(
         `${landmark.dimension}\t${landmark.markerLocation.x}\t${landmark.markerLocation.z}`
       );
+      if (landmark.corners) {
+        railways.push({
+          name: landmark.name,
+          dimension: landmark.dimension,
+          corners: landmark.corners
+        });
+      }
     });
-    kRailways.forEach(railway => {
+    railways.forEach(railway => {
       for (let i = 1; i < railway.corners.length; i++) {
         const c0 = railway.corners[i - 1];
         const c1 = railway.corners[i];
