@@ -1947,8 +1947,8 @@ export const kLandmarks: Landmark[] = [
     yomi: ["あくあらいん", "aqualine"],
     location: new Point3(594, 63, 17),
     markerLocation: new Point(594, -386),
-    corners: [new Point(594, -386), new Point(594, -710), new Point(577, -710)],
-    finished: false
+    corners: [new Point(594, 17), new Point(594, -710), new Point(577, -710)],
+    finished: true
   }),
 
   // 沈没船
