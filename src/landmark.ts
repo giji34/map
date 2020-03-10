@@ -499,6 +499,14 @@ export const kLandmarks: Landmark[] = [
     xOffset: 40
   }),
   createLandmark({
+    name: "出雲水族館(研究所）",
+    yomi: "いずもすいぞくかん",
+    location: new Point3(435, 55, -78),
+    markerLocation: new Point(453, -93),
+    wikiIndex: 87,
+    finished: false
+  }),
+  createLandmark({
     name: "神田笑一の仮拠点",
     yomi: "かんだしょういちのかりきょてん",
     location: new Point3(-5, 76, 294),
