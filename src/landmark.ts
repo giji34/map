@@ -1287,6 +1287,13 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "夜見の家(地下)",
+    yomi: "よるみのいえちか",
+    location: new Point3(310, 63, 252),
+    wikiIndex: 253,
+    finished: false
+  }),
+  createLandmark({
     name: "巨大な鏡餅(プティ餅)",
     yomi: ["きょだいなかがみもち", "ぷてぃもち"],
     location: new Point3(384, 69, 398),
@@ -1927,6 +1934,18 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(594, -386),
     corners: [new Point(594, 17), new Point(594, -710), new Point(577, -710)],
     finished: true
+  }),
+  createLandmark({
+    name: "夜見監視塔(鳩時計)",
+    yomi: ["はとどけい", "よるみかんしとう"],
+    location: new Point3(240, 69, 147),
+    finished: false
+  }),
+  createLandmark({
+    name: "魔使マオの家",
+    yomi: "まつかいまおのいえ",
+    location: new Point3(187, 70, 157),
+    finished: false
   }),
 
   // 沈没船
