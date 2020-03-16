@@ -1947,6 +1947,12 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(187, 70, 157),
     finished: false
   }),
+  createLandmark({
+    name: "SOS",
+    yomi: ["sos", "えすおーえす", "505"],
+    location: new Point3(-29159, 67, -19776),
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
