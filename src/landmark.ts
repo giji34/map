@@ -1938,7 +1938,8 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "夜見監視塔(鳩時計)",
     yomi: ["はとどけい", "よるみかんしとう"],
-    location: new Point3(240, 69, 147),
+    location: new Point3(234, 69, 143),
+    markerLocation: new Point(251, 130),
     finished: false
   }),
   createLandmark({
@@ -1952,6 +1953,21 @@ export const kLandmarks: Landmark[] = [
     yomi: ["sos", "えすおーえす", "505"],
     location: new Point3(-29159, 67, -19776),
     finished: false
+  }),
+  createLandmark({
+    name: "夜見ロード",
+    yomi: "よるみろーど",
+    dimension: Dimension.TheNether,
+    location: new Point3(-3796, 67, -2805),
+    corners: [
+      new Point(-3796, -2805),
+      new Point(-3796, -2585),
+      new Point(-3758, -2585),
+      new Point(-3758, -2572),
+      new Point(-3756, -2572),
+      new Point(-3756, -2519)
+    ],
+    finished: true
   }),
 
   // 沈没船
@@ -2027,9 +2043,23 @@ export const kLandmarks: Landmark[] = [
   }),
   createLandmark({
     name: "エンドシティ(花畑さん)",
-    yomi: "えんどぃてぃ",
+    yomi: "えんどしてぃ",
     dimension: Dimension.TheEnd,
     location: new Point3(-2188, 62, 31),
+    finished: false
+  }),
+  createLandmark({
+    name: "エンドシティ(夜見②)",
+    yomi: "えんどしてぃ",
+    dimension: Dimension.TheEnd,
+    location: new Point3(2629, 61, 1963),
+    finished: false
+  }),
+  createLandmark({
+    name: "エンドシティ(夜見さん)",
+    yomi: "えんどしてぃ",
+    dimension: Dimension.TheEnd,
+    location: new Point3(2311, 63, 1967),
     finished: false
   })
 ].sort((a, b) => {
@@ -2169,20 +2199,6 @@ const kRailways: Railway[] = [
       new Point(972, -1605)
     ],
     dimension: Dimension.TheEnd
-  },
-  {
-    name: "夜見れなのネザー通路",
-    corners: [
-      new Point(-3797, -2805),
-      new Point(-3797, -2661),
-      new Point(-3867, -2661),
-      new Point(-3867, -2584), // T字路. 以下は東(+x)向き
-      new Point(-3758, -2584),
-      new Point(-3758, -2572), // 下に降りる
-      new Point(-3756, -2572), // 以下は南(+z)へ
-      new Point(-3756, -2515) // ポータル前(旅の井戸新天地側)
-    ],
-    dimension: Dimension.TheNether
   }
 ];
 
