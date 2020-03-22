@@ -1308,6 +1308,14 @@ export const kLandmarks: Landmark[] = [
     wikiIndex: 257,
     finished: true
   }),
+  createLandmark({
+    name: "はかせと魔使の幸福理論協会",
+    yomi: "はかせとまつかいのこうふくりろんきょうかい",
+    location: new Point3(-209, 67, 509),
+    markerLocation: new Point(-249, 502),
+    wikiIndex: 262,
+    finished: false
+  }),
 
   // にじさんじランド
   createLandmark({
@@ -1967,6 +1975,12 @@ export const kLandmarks: Landmark[] = [
       new Point(-3756, -2572),
       new Point(-3756, -2519)
     ],
+    finished: true
+  }),
+  createLandmark({
+    name: "誰かの作業台",
+    yomi: "だれかのさぎょうだい",
+    location: new Point3(684, 65, 677),
     finished: true
   }),
 
