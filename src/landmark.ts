@@ -341,7 +341,7 @@ export const kLandmarks: Landmark[] = [
   createLandmark({
     name: "桜第一惑星",
     yomi: "さくらだいいちわくせい",
-    location: new Point3(128, 67, -147),
+    location: new Point3(128, 68, -147),
     markerLocation: new Point(128, -168),
     wikiIndex: 55,
     finished: true,
@@ -884,7 +884,7 @@ export const kLandmarks: Landmark[] = [
     name: "森中ランド",
     yomi: "もりなからんど",
     location: new Point3(-47, 63, 507),
-    markerLocation: new Point(-80, 489),
+    markerLocation: new Point(-97, 447),
     wikiIndex: 161,
     finished: false
   }),
