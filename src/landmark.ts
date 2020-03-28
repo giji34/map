@@ -1216,7 +1216,7 @@ export const kLandmarks: Landmark[] = [
     yomi: "えりーこにふぁーのいえ",
     location: new Point3(429, 69, 301),
     wikiIndex: 235,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "出雲霞《case:01》のお墓",
@@ -1321,7 +1321,7 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(-209, 67, 509),
     markerLocation: new Point(-249, 502),
     wikiIndex: 262,
-    finished: false
+    finished: true
   }),
 
   // にじさんじランド
