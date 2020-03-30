@@ -2017,6 +2017,13 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-201, 519),
     finished: false
   }),
+  createLandmark({
+    name: "桜神社",
+    yomi: "さくらじんじゃ",
+    location: new Point3(-4664, 63, 4881),
+    markerLocation: new Point(-4632, 4859),
+    finished: false
+  }),
 
   // 沈没船
   createLandmark({
