@@ -794,6 +794,14 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "ガーディアントラップ",
+    yomi: "がーでぃあんとらっぷ",
+    location: new Point3(-3830, 63, 6742),
+    markerLocation: new Point(-3791, 6701),
+    wikiIndex: 144,
+    finished: false
+  }),
+  createLandmark({
     name: "タージ・マハル",
     yomi: "たーじまはる",
     location: new Point3(542, 65, 178),
@@ -860,7 +868,7 @@ export const kLandmarks: Landmark[] = [
     yomi: ["lovelovehotel", "らぶらぶほてる"],
     location: new Point3(131, 63, 413),
     wikiIndex: 154,
-    finished: false
+    finished: true
   }),
   createLandmark({
     name: "風雲さんばか城",
@@ -2030,6 +2038,13 @@ export const kLandmarks: Landmark[] = [
     location: new Point3(601, 100, 881),
     markerLocation: new Point(599, 867),
     finished: false
+  }),
+  createLandmark({
+    name: "ドレイクぬいぐるみもしくはタイトーステーション",
+    yomi: "どれいくぬいぐるみもしくはたいとーすてーしょん",
+    location: new Point3(460, 63, -1),
+    markerLocation: new Point(452, -13),
+    finished: true
   }),
 
   // 沈没船
