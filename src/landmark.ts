@@ -671,6 +671,14 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "夢月ロアの秘密基地",
+    yomi: "ゆづきろあのひみつきち",
+    location: new Point3(-475, 69, -38),
+    markerLocation: new Point(-481, -44),
+    wikiIndex: 115,
+    finished: false
+  }),
+  createLandmark({
     name: "にじさんじランド",
     yomi: ["にじさんじらんど", "にじさんじland", "land"],
     location: new Point3(-1400, 68, 1412),
@@ -2059,6 +2067,13 @@ export const kLandmarks: Landmark[] = [
     yomi: "えりーこにふぁーのしろ",
     location: new Point3(338, 63, 375),
     markerLocation: new Point(278, 362),
+    finished: false
+  }),
+  createLandmark({
+    name: "早瀬走の別荘",
+    yomi: "はやせそうのべっそう",
+    location: new Point3(-192, 63, -133),
+    markerLocation: new Point(-198, -152),
     finished: false
   }),
 
