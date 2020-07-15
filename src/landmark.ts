@@ -2121,6 +2121,20 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(136, -760),
     finished: false
   }),
+  createLandmark({
+    name: "事故物件",
+    yomi: "じこぶっけん",
+    location: new Point3(18, 69, -445),
+    markerLocation: new Point(19, -463),
+    finished: true
+  }),
+  createLandmark({
+    name: "ドラウンド湧き層",
+    yomi: "どらうんどわきそう",
+    location: new Point3(-40, 63, -337),
+    markerLocation: new Point(-30, -358),
+    finished: true
+  }),
 
   // 沈没船
   createLandmark({
