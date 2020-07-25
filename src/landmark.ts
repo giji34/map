@@ -1203,6 +1203,14 @@ export const kLandmarks: Landmark[] = [
     ]
   }),
   createLandmark({
+    name: "小野町旅館",
+    yomi: "おのまちりょかん",
+    location: new Point3(-586, 63, 532),
+    markerLocation: new Point(-602, 510),
+    wikiIndex: 215,
+    finished: false
+  }),
+  createLandmark({
     name: "氷マンション(仮)",
     yomi: "こおりまんしょん",
     location: new Point3(117, 63, 73),
@@ -1230,6 +1238,13 @@ export const kLandmarks: Landmark[] = [
     yomi: "いずもるるさいくつじょ",
     location: new Point3(415, 63, 412),
     wikiIndex: 219,
+    finished: false
+  }),
+  createLandmark({
+    name: "三枝明那の拠点",
+    yomi: "さえぐさあきなのきょてん",
+    location: new Point3(33, 67, -132),
+    wikiIndex: 221,
     finished: false
   }),
   createLandmark({
@@ -2149,6 +2164,12 @@ export const kLandmarks: Landmark[] = [
     yomi: "どらうんどわきそう",
     location: new Point3(-40, 63, -337),
     markerLocation: new Point(-30, -358),
+    finished: true
+  }),
+  createLandmark({
+    name: "boku no ie yoteiti",
+    yomi: "bokunoieyoteiti",
+    location: new Point3(452, 63, 453),
     finished: true
   }),
 
