@@ -2180,9 +2180,15 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
-    name: "誰かの家",
-    yomi: "だれかのいえ",
+    name: "ハニートラップ♡",
+    yomi: "はにーとらっぷ",
     location: new Point3(-248, 71, 422),
+    finished: false
+  }),
+  createLandmark({
+    name: "雪城眞尋の仮拠点",
+    yomi: "ゆきしろまひろのかりきょてん",
+    location: new Point3(-582, 67, -324),
     finished: true
   }),
 
@@ -2240,39 +2246,46 @@ export const kLandmarks: Landmark[] = [
 
   // ネザーゲート(nether)
   createLandmark({
-    name: "ネザーゲート(旅の井戸新天地側)",
-    yomi: "ねざーげーと",
+    name: "旅の井戸(新天地側)ネザーゲート",
+    yomi: "たびのいどしんてんちがわねざーげーと",
     dimension: Dimension.TheNether,
     location: new Point3(-3756, 58, -2516),
     finished: false
   }),
   createLandmark({
-    name: "ネザーゲート(新天地キノコバイオーム)",
-    yomi: "ねざーげーと",
+    name: "新天地キノコバイオーム)",
+    yomi: "しんてんちきのこばいおーむ",
     dimension: Dimension.TheNether,
     location: new Point3(-3586, 77, -2407),
     finished: false
   }),
   createLandmark({
-    name: "ネザーゲート(小野町村)",
-    yomi: "ねざーげーと",
+    name: "小野町村",
+    yomi: "おのまちむら",
     dimension: Dimension.TheNether,
     location: new Point3(-3534, 73, -2471),
     finished: false
   }),
   createLandmark({
-    name: "ネザーゲート(夜見ゲート)",
-    yomi: "ねざーげーと",
+    name: "夜見ゲート",
+    yomi: "よるみげーと",
     dimension: Dimension.TheNether,
     location: new Point3(-39, 82, 27),
     finished: true
   }),
   createLandmark({
-    name: "ネザーゲート(小野町旅館の離れ)",
-    yomi: "ねざーげーと",
+    name: "小野町旅館の離れ",
+    yomi: "おのまちりょかんのはなれ",
     dimension: Dimension.TheNether,
     location: new Point3(-22, 68, 45),
     finished: false
+  }),
+  createLandmark({
+    name: "小野町旅館",
+    yomi: "おのまちりょかん",
+    dimension: Dimension.TheNether,
+    location: new Point3(-70, 67, 65),
+    finished: true
   }),
 
   // 前哨基地
