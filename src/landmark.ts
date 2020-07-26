@@ -2186,8 +2186,8 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "雪城眞尋の仮拠点",
-    yomi: "ゆきしろまひろのかりきょてん",
+    name: "雪城眞尋の初期拠点",
+    yomi: "ゆきしろまひろのしょききょてん",
     location: new Point3(-582, 67, -324),
     finished: true
   }),
