@@ -346,6 +346,13 @@ export const kLandmarks: Landmark[] = [
     finished: true
   }),
   createLandmark({
+    name: "ぺぺレスト",
+    yomi: "ぺぺれすと",
+    location: new Point3(632, 102, 370),
+    wikiIndex: 54,
+    finished: false
+  }),
+  createLandmark({
     name: "桜第一惑星",
     yomi: "さくらだいいちわくせい",
     location: new Point3(128, 68, -147),
@@ -1279,6 +1286,14 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
+    name: "ぷりん",
+    yomi: "ぷりん",
+    location: new Point3(-182, 76, -278),
+    markerLocation: new Point(-216, -320),
+    wikiIndex: 227,
+    finished: false
+  }),
+  createLandmark({
     name: "暗黒城(仮)",
     yomi: "あんこくじょう",
     location: new Point3(-4973, 70, 4915),
@@ -2189,6 +2204,12 @@ export const kLandmarks: Landmark[] = [
     name: "雪城眞尋の初期拠点",
     yomi: "ゆきしろまひろのしょききょてん",
     location: new Point3(-582, 67, -324),
+    finished: true
+  }),
+  createLandmark({
+    name: "誰かの仮拠点",
+    yomi: "だれかのかりきょてん",
+    location: new Point3(755, 73, 319),
     finished: true
   }),
 
