@@ -1289,7 +1289,7 @@ export const kLandmarks: Landmark[] = [
     name: "ぷりん",
     yomi: "ぷりん",
     location: new Point3(-182, 76, -278),
-    markerLocation: new Point(-216, -320),
+    markerLocation: new Point(-227, -328),
     wikiIndex: 227,
     finished: false
   }),
@@ -1458,6 +1458,67 @@ export const kLandmarks: Landmark[] = [
     markerLocation: new Point(-201, 519),
     wikiIndex: 265,
     finished: false
+  }),
+  createLandmark({
+    name: "狂犬ズハウス第2",
+    yomi: "きょうけんずはうすだいに",
+    location: new Point3(143, 105, -722),
+    markerLocation: new Point(136, -760),
+    wikiIndex: 266,
+    finished: false
+  }),
+  createLandmark({
+    name: "ねこ島",
+    yomi: ["ねこしま", "ねこじま", "ねことう"],
+    location: new Point3(486, 63, -688),
+    wikiIndex: 274,
+    finished: false
+  }),
+  createLandmark({
+    name: "全ブロックピラミッド",
+    yomi: "ぜんぶろっくぴらみっど",
+    location: new Point3(-165, 78, -221),
+    markerLocation: new Point(-177, -231),
+    wikiIndex: 277,
+    finished: true
+  }),
+  createLandmark({
+    name: "道の駅『みんなの湯』",
+    yomi: "みちのえきみんなのゆ",
+    location: new Point3(153, 66, 63),
+    markerLocation: new Point(159, 60),
+    wikiIndex: 278,
+    finished: true
+  }),
+  createLandmark({
+    name: "boku no ie yoteiti",
+    yomi: "bokunoieyoteiti",
+    location: new Point3(452, 63, 453),
+    wikiIndex: 285,
+    finished: true
+  }),
+  createLandmark({
+    name: "魔使マオの家",
+    yomi: "まつかいまおのいえ",
+    location: new Point3(187, 70, 156),
+    wikiIndex: 287,
+    finished: true
+  }),
+  createLandmark({
+    name: "オスガール城",
+    yomi: "おすがーるじょう",
+    location: new Point3(-302, 76, 257),
+    markerLocation: new Point(-313, 247),
+    wikiIndex: 291,
+    finished: false
+  }),
+  createLandmark({
+    name: "巨大オスガール像「自由のグウェル」",
+    yomi: ["きょだいおすがーるじょう", "じゆうのぐうぇる"],
+    location: new Point3(309, 63, -86),
+    markerLocation: new Point(323, -147),
+    wikiIndex: 292,
+    finished: true
   }),
 
   // にじさんじランド
@@ -2026,20 +2087,6 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "足湯",
-    yomi: "あしゆ",
-    location: new Point3(153, 66, 63),
-    markerLocation: new Point(159, 60),
-    finished: true
-  }),
-  createLandmark({
-    name: "巨大オスガール像「自由のグウェル」",
-    yomi: ["きょだいおすがーるじょう", "じゆうのぐうぇる"],
-    location: new Point3(309, 63, -86),
-    markerLocation: new Point(323, -147),
-    finished: true
-  }),
-  createLandmark({
     name: "ベルさんの仮拠点",
     yomi: "べるさんのかりきょてん",
     location: new Point3(-194, 67, 808),
@@ -2050,19 +2097,6 @@ export const kLandmarks: Landmark[] = [
     yomi: ["あんじゅんち", "angeんち"],
     location: new Point3(-262, 79, 583),
     markerLocation: new Point(-268, 576),
-    finished: false
-  }),
-  createLandmark({
-    name: "全ブロックピラミッド",
-    yomi: "ぜんぶろっくぴらみっど",
-    location: new Point3(-165, 78, -221),
-    markerLocation: new Point(-177, -231),
-    finished: true
-  }),
-  createLandmark({
-    name: "ねこ島",
-    yomi: ["ねこしま", "ねこじま", "ねことう"],
-    location: new Point3(486, 63, -688),
     finished: false
   }),
   createLandmark({
@@ -2091,12 +2125,6 @@ export const kLandmarks: Landmark[] = [
     yomi: ["はとどけい", "よるみかんしとう"],
     location: new Point3(234, 69, 143),
     markerLocation: new Point(251, 130),
-    finished: true
-  }),
-  createLandmark({
-    name: "魔使マオの家",
-    yomi: "まつかいまおのいえ",
-    location: new Point3(187, 70, 156),
     finished: true
   }),
   createLandmark({
@@ -2168,13 +2196,6 @@ export const kLandmarks: Landmark[] = [
     finished: false
   }),
   createLandmark({
-    name: "しばちまハウス",
-    yomi: "しばちまはうす",
-    location: new Point3(143, 105, -722),
-    markerLocation: new Point(136, -760),
-    finished: false
-  }),
-  createLandmark({
     name: "事故物件",
     yomi: "じこぶっけん",
     location: new Point3(18, 69, -445),
@@ -2186,12 +2207,6 @@ export const kLandmarks: Landmark[] = [
     yomi: "どらうんどわきそう",
     location: new Point3(-40, 63, -337),
     markerLocation: new Point(-30, -358),
-    finished: true
-  }),
-  createLandmark({
-    name: "boku no ie yoteiti",
-    yomi: "bokunoieyoteiti",
-    location: new Point3(452, 63, 453),
     finished: true
   }),
   createLandmark({
