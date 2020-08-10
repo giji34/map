@@ -2218,8 +2218,8 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false
   }),
   make({
-    name: "夜見ゲート",
-    yomi: "よるみげーと",
+    name: "夜見予定地",
+    yomi: "よるみよていち",
     location: new Point3(-249, 70, 291),
     finished: true
   }),
@@ -2247,8 +2247,8 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false
   }),
   make({
-    name: "夜見ゲート",
-    yomi: "よるみげーと",
+    name: "夜見予定地",
+    yomi: "よるみよていち",
     dimension: Dimension.TheNether,
     location: new Point3(-39, 82, 27),
     finished: true
