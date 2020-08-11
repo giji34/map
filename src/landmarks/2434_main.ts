@@ -2334,7 +2334,8 @@ export const k2434MainRailways: Railway[] = [
       new Point(-1199, 1412),
       new Point(-1449, 1412)
     ],
-    dimension: Dimension.Overworld
+    dimension: Dimension.Overworld,
+    world: "2434_main"
   },
   {
     name: "叶さんの通路",
@@ -2355,7 +2356,8 @@ export const k2434MainRailways: Railway[] = [
       new Point(2251, 21),
       new Point(2251, 33)
     ],
-    dimension: Dimension.TheEnd
+    dimension: Dimension.TheEnd,
+    world: "2434_main"
   },
   {
     name: "ベルさんの通路",
@@ -2367,7 +2369,8 @@ export const k2434MainRailways: Railway[] = [
       new Point(207, 1087),
       new Point(207, 1110)
     ],
-    dimension: Dimension.TheEnd
+    dimension: Dimension.TheEnd,
+    world: "2434_main"
   },
   {
     name: "静凛のネザー鉄道",
@@ -2380,7 +2383,8 @@ export const k2434MainRailways: Railway[] = [
       new Point(192, 46),
       new Point(191, 46) // 羊羹へ
     ],
-    dimension: Dimension.TheNether
+    dimension: Dimension.TheNether,
+    world: "2434_main"
   },
   {
     name: "静凛ネザー鉄道(仮)",
@@ -2388,24 +2392,27 @@ export const k2434MainRailways: Railway[] = [
       new Point(323, 603), // 要塞(ドラひま) ここから先ができていない
       new Point(323, 131) // ここから羊羹側ができていない
     ],
-    dimension: Dimension.TheNether
+    dimension: Dimension.TheNether,
+    world: "2434_main"
   },
   {
     name: "静凛ネザー鉄道(仮)",
     corners: [
       new Point(544, 682) // 羊羹側始点
     ],
-    dimension: Dimension.TheNether
+    dimension: Dimension.TheNether,
+    world: "2434_main"
   },
   {
-    name: "どらひま要塞への通路",
+    name: "どらひま要塞への通路",
     corners: [
       new Point(273, 615), // 要塞
       new Point(273, 248),
       new Point(299, 248),
       new Point(299, 164) // ここから拠点側がまだ
     ],
-    dimension: Dimension.TheNether
+    dimension: Dimension.TheNether,
+    world: "2434_main"
   },
   {
     name: "宇志海いちごのネザー鉄道",
@@ -2415,7 +2422,8 @@ export const k2434MainRailways: Railway[] = [
       new Point(330, -485),
       new Point(347, -483) // 要塞
     ],
-    dimension: Dimension.TheNether
+    dimension: Dimension.TheNether,
+    world: "2434_main"
   },
   {
     name: "静凛のエンド通路",
@@ -2439,6 +2447,7 @@ export const k2434MainRailways: Railway[] = [
       new Point(958, -1605),
       new Point(972, -1605)
     ],
-    dimension: Dimension.TheEnd
+    dimension: Dimension.TheEnd,
+    world: "2434_main"
   }
 ];

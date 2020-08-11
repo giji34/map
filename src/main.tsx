@@ -10,15 +10,14 @@ import {
   Dimension,
   kLandmarks,
   kLandmarksRightBottom,
-  kLandmarksTopLeft, World
+  kLandmarksTopLeft,
+  World
 } from "./landmark";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
 import { Point } from "./point";
 
-const kFileList = new Map<World, string[]>([
-  ["2434_main", kFileList2434Main]]
-);
+const kFileList = new Map<World, string[]>([["2434_main", kFileList2434Main]]);
 
 type Menu = "jumpTo";
 
@@ -807,7 +806,11 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main", new Point(179, 24), Dimension.Overworld)}
+                    onClick={moveTo(
+                      "2434_main",
+                      new Point(179, 24),
+                      Dimension.Overworld
+                    )}
                   >
                     中央都市
                   </div>
@@ -827,7 +830,8 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main",
+                    onClick={moveTo(
+                      "2434_main",
                       new Point(-30022, -20180),
                       Dimension.Overworld
                     )}
@@ -838,7 +842,8 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main",
+                    onClick={moveTo(
+                      "2434_main",
                       new Point(-4781, 4843),
                       Dimension.Overworld
                     )}
@@ -849,7 +854,8 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main",
+                    onClick={moveTo(
+                      "2434_main",
                       new Point(-2448, 3408),
                       Dimension.Overworld
                     )}
@@ -860,7 +866,11 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main",new Point(0, 0), Dimension.TheNether)}
+                    onClick={moveTo(
+                      "2434_main",
+                      new Point(0, 0),
+                      Dimension.TheNether
+                    )}
                   >
                     ネザー
                   </div>
@@ -868,7 +878,11 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo("2434_main",new Point(0, 0), Dimension.TheEnd)}
+                    onClick={moveTo(
+                      "2434_main",
+                      new Point(0, 0),
+                      Dimension.TheEnd
+                    )}
                   >
                     ジ・エンド
                   </div>

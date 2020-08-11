@@ -24,7 +24,12 @@ export type Landmark = {
   debug?: number;
 };
 
-export type Railway = { name: string; corners: Point[]; dimension: Dimension, world: World };
+export type Railway = {
+  name: string;
+  corners: Point[];
+  dimension: Dimension;
+  world: World;
+};
 
 export function createLandmark(params: {
   name: string;
