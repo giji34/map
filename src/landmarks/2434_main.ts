@@ -306,6 +306,13 @@ export const k2434MainLandmarks: Landmark[] = [
     xOffset: 40
   }),
   make({
+    name: "モルちーさいくつきょてん",
+    yomi: "もるちーさいくつきょてん",
+    location: new Point3(680, 11, 341),
+    wikiIndex: 59,
+    finished: true
+  }),
+  make({
     name: "リボルバー",
     yomi: ["りぼるばー", "revolver"],
     location: new Point3(-238, 79, 909),
@@ -1041,8 +1048,8 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false
   }),
   make({
-    name: "アルスの森",
-    yomi: ["あるすのもり", "arsのもり"],
+    name: "忘却の森",
+    yomi: ["あるすのもり", "arsのもり", "ぼうきゃくのもり"],
     location: new Point3(555, 68, 83),
     markerLocation: new Point(555, 68),
     wikiIndex: 194,
@@ -1410,6 +1417,13 @@ export const k2434MainLandmarks: Landmark[] = [
     markerLocation: new Point(136, -760),
     wikiIndex: 266,
     finished: false
+  }),
+  make({
+    name: "新規ワールドゲート",
+    yomi: "しんきわーるどげーと",
+    location: new Point3(171, 65, 122),
+    wikiIndex: 269,
+    finished: true
   }),
   make({
     name: "ねこ島",

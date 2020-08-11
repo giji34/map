@@ -1,4 +1,3 @@
-import { romanize } from "./romanize";
 import { Point, Point3 } from "./point";
 
 export enum Dimension {
@@ -7,7 +6,7 @@ export enum Dimension {
   TheEnd = 1
 }
 
-export type World = "2434_main";
+export type World = "2434_main" | "2434_world06" | "hololive_01";
 
 export type Landmark = {
   name: string;

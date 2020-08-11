@@ -1,8 +1,14 @@
 import { k2434MainLandmarks, k2434MainRailways } from "./2434_main";
 import { Dimension } from "../landmark";
 import { Point } from "../point";
+import { k2434World06Landmarks } from "./2434_world06";
+import { kHololive01Landmarks } from "./hololive_01";
 
-export const kLandmarks = [...k2434MainLandmarks];
+export const kLandmarks = [
+  ...k2434MainLandmarks,
+  ...k2434World06Landmarks,
+  ...kHololive01Landmarks
+];
 export const kRailways = [...k2434MainRailways];
 
 export const kLandmarksTopLeft: Map<Dimension, Point> = new Map();
