@@ -5,16 +5,20 @@ import { CSSTransition } from "react-transition-group";
 import { sprintf } from "sprintf";
 
 import { promiseLoadImage } from "./image";
-import { kFileList } from "./imagelist";
+import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
 import {
   Dimension,
   kLandmarks,
   kLandmarksRightBottom,
-  kLandmarksTopLeft
+  kLandmarksTopLeft, World
 } from "./landmark";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
 import { Point } from "./point";
+
+const kFileList = new Map<World, string[]>([
+  ["2434_main", kFileList2434Main]]
+);
 
 type Menu = "jumpTo";
 
@@ -27,6 +31,7 @@ type MainState = {
   attensionPopupVisible: boolean;
   coordinateLabelVisible: boolean;
   dimension: Dimension;
+  world: World;
 };
 
 function createMainState(
@@ -37,7 +42,8 @@ function createMainState(
   activeMenu: Menu | undefined = void 0,
   attensionPopupVisible: boolean = true,
   coordinateLabelVisible: boolean = true,
-  dimension: Dimension = Dimension.Overworld
+  dimension: Dimension = Dimension.Overworld,
+  world: World = "2434_main"
 ): MainState {
   return {
     center: center.clone(),
@@ -47,7 +53,8 @@ function createMainState(
     activeMenu,
     attensionPopupVisible,
     coordinateLabelVisible,
-    dimension
+    dimension,
+    world
   };
 }
 
@@ -97,11 +104,19 @@ class TextureStorage {
   private readonly storage = new Map<string, Tile | null>();
   private readonly queued = new Set<string>();
   private _dimension: Dimension = Dimension.Overworld;
+  private _world: World = "2434_main";
   setDimension(d: Dimension) {
     if (this._dimension === d) {
       return;
     }
     this._dimension = d;
+    this.clear();
+  }
+  setWorld(w: World) {
+    if (this._world === w) {
+      return;
+    }
+    this._world = w;
     this.clear();
   }
 
@@ -119,7 +134,8 @@ class TextureStorage {
     }
     this.queued.add(key);
     const url = this.getImageFilePath(v);
-    if (!kFileList.includes(url)) {
+    const list = kFileList.get(this._world);
+    if (!list?.includes(url)) {
       this.storage.set(key, null);
       this.queued.delete(key);
       return;
@@ -156,7 +172,7 @@ class TextureStorage {
         break;
     }
 
-    return `images/${c}/r.${v.x}.${v.z}.png`;
+    return `images/${this._world}/${c}/r.${v.x}.${v.z}.png`;
   }
 
   delete(v: Point) {
@@ -248,6 +264,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.imageSmoothingQuality = "high";
     let loadingInProgress = false;
     this.textures.setDimension(this.state.dimension);
+    this.textures.setWorld(this.state.world);
     for (let x = minMipmapX; x <= maxMipmapX; x++) {
       for (let z = minMipmapZ; z <= maxMipmapZ; z++) {
         const tile = this.textures.get(new Point(x, z));
@@ -285,6 +302,9 @@ export class MainComponent extends React.Component<{}, MainState> {
     ctx.globalAlpha = alpha;
     if (this.state.isBillboardsVisible || elapsed < fadeInSeconds) {
       kLandmarks.forEach(landmark => {
+        if (landmark.world !== this.state.world) {
+          return;
+        }
         if (landmark.dimension !== this.state.dimension) {
           return;
         }
@@ -492,7 +512,8 @@ export class MainComponent extends React.Component<{}, MainState> {
     );
     this.fragmentUpdateTimer = window.setInterval(() => {
       const hash = sprintf(
-        "#x=%.1f&z=%.1f&scale=%.2f&dimension=%d",
+        "#world=%s&x=%.1f&z=%.1f&scale=%.2f&dimension=%d",
+        this.state.world,
         this.state.center.x,
         this.state.center.z,
         this.state.blocksPerPixel,
@@ -644,7 +665,7 @@ export class MainComponent extends React.Component<{}, MainState> {
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const moveTo = (point: Point, dimension: Dimension) => {
+    const moveTo = (world: string, point: Point, dimension: Dimension) => {
       return () => {
         this.setState(
           mergeMainState(this.state, {
@@ -786,7 +807,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(179, 24), Dimension.Overworld)}
+                    onClick={moveTo("2434_main", new Point(179, 24), Dimension.Overworld)}
                   >
                     中央都市
                   </div>
@@ -795,6 +816,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   <div
                     className="menuItemContent"
                     onClick={moveTo(
+                      "2434_main",
                       new Point(-1496, 1395),
                       Dimension.Overworld
                     )}
@@ -805,7 +827,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(
+                    onClick={moveTo("2434_main",
                       new Point(-30022, -20180),
                       Dimension.Overworld
                     )}
@@ -816,7 +838,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(
+                    onClick={moveTo("2434_main",
                       new Point(-4781, 4843),
                       Dimension.Overworld
                     )}
@@ -827,7 +849,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(
+                    onClick={moveTo("2434_main",
                       new Point(-2448, 3408),
                       Dimension.Overworld
                     )}
@@ -838,7 +860,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem menuItemBorder">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(0, 0), Dimension.TheNether)}
+                    onClick={moveTo("2434_main",new Point(0, 0), Dimension.TheNether)}
                   >
                     ネザー
                   </div>
@@ -846,7 +868,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                 <div className="menuItem">
                   <div
                     className="menuItemContent"
-                    onClick={moveTo(new Point(0, 0), Dimension.TheEnd)}
+                    onClick={moveTo("2434_main",new Point(0, 0), Dimension.TheEnd)}
                   >
                     ジ・エンド
                   </div>

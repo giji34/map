@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# input:
+#   env:
+#     BACKUP_DIR
+#     WORLD_NAME
+
 set -eu
 
 COMMIT_HASH_BEGIN=
@@ -32,12 +37,12 @@ fi
 
 cd "$(dirname "$0")" && (
 
-  yarn landmarks
+  yarn landmarks $WORLD_NAME
 
   if [ "$1" = "all" ]; then
-    rm -rf public/images/{o,n,e}
+    rm -rf public/images/$WORLD_NAME/{o,n,e}
   fi
-  mkdir -p public/images/{o,n,e}
+  mkdir -p public/images/$WORLD_NAME/{o,n,e}
 
   ARGFILE=$(mktemp)
   for spec in world=o world_nether/DIM-1=n world_the_end/DIM1=e; do
@@ -45,14 +50,13 @@ cd "$(dirname "$0")" && (
     DIMENSION=$(echo $spec | cut -f2 -d=)
     cat "$CHANGED_REGIONS" \
       | grep "$WORLD/chunk" \
-      | awk "{print \"-w $BACKUP_DIR/$WORLD\", \"-x\", \$2, \"-z\", \$3, \"-o public/images/$DIMENSION\", \"-l ./landmarks.tsv\", \"-d $DIMENSION\"""}" \
+      | awk "{print \"-w $BACKUP_DIR/$WORLD\", \"-x\", \$2, \"-z\", \$3, \"-o public/images/$WORLD_NAME/$DIMENSION\", \"-l ./landmarks.tsv\", \"-d $DIMENSION\"""}" \
       >> $ARGFILE
   done
   cat "$ARGFILE" | xargs -L 1 -P $NPROC ../mca2png/build/mca2png
   rm -f "$ARGFILE"
 
-  yarn imagelist
-  yarn webpack
+  yarn imagelist $WORLD_NAME
 
   find public -name '.DS_Store' -print0 | xargs -0 rm -f
 )

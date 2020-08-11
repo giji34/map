@@ -8,6 +8,8 @@ export enum Dimension {
   TheEnd = 1
 }
 
+export type World = "2434_main";
+
 export type Landmark = {
   name: string;
   yomi: string | string[]; // name のローマ字表記. 別名がある場合は配列にする
@@ -16,13 +18,13 @@ export type Landmark = {
   markerLocation: Point; // 地図アプリに billboard を表示する位置
   xOffset?: number; // 地図アプリに billboard を表示する時の, フキダシのオフセット量(block単位)
   finished: boolean; // 再現作業が完了しているかどうか
-  world: string; // ワールド名. 2434_main, 2434_world06, hololive_01 など
+  world: World; // ワールド名. 2434_main, 2434_world06, hololive_01 など
   dimension: Dimension;
   wikiIndex: number; // 非公式 wiki「施設一覧」で番号
   debug?: number;
 };
 
-export type Railway = { name: string; corners: Point[]; dimension: Dimension };
+export type Railway = { name: string; corners: Point[]; dimension: Dimension, world: World };
 
 export function createLandmark(params: {
   name: string;
@@ -32,7 +34,7 @@ export function createLandmark(params: {
   markerLocation?: Point;
   xOffset?: number;
   finished: boolean;
-  world: string;
+  world: World;
   dimension?: Dimension;
   wikiIndex?: number;
   debug?: number;
@@ -139,14 +141,20 @@ if (require.main === module) {
   const argv = [...process.argv];
   argv.shift();
   argv.shift();
-  if (argv[0] === "mca2png") {
+  const type = argv[0];
+  const world = argv[1];
+  if (type === "mca2png") {
     const railways = [...kRailways];
     kLandmarks.forEach(landmark => {
+      if (landmark.world !== world) {
+        return;
+      }
       console.log(
         `${landmark.dimension}\t${landmark.markerLocation.x}\t${landmark.markerLocation.z}`
       );
       if (landmark.corners) {
         railways.push({
+          world: landmark.world,
           name: landmark.name,
           dimension: landmark.dimension,
           corners: landmark.corners
@@ -154,6 +162,9 @@ if (require.main === module) {
       }
     });
     railways.forEach(railway => {
+      if (railway.world !== world) {
+        return;
+      }
       for (let i = 1; i < railway.corners.length; i++) {
         const c0 = railway.corners[i - 1];
         const c1 = railway.corners[i];
@@ -174,11 +185,14 @@ if (require.main === module) {
         }
       }
     });
-  } else if (argv[0] === "server") {
-    const worldUIDOverworld = argv[1];
-    const worldUIDNether = argv[2];
-    const worldUIDTheEnd = argv[3];
+  } else if (type === "server") {
+    const worldUIDOverworld = argv[2];
+    const worldUIDNether = argv[3];
+    const worldUIDTheEnd = argv[4];
     kLandmarks.forEach(landmark => {
+      if (landmark.world !== world) {
+        return;
+      }
       const name = landmark.name.replace(/ /g, "_");
       const { x, y, z } = landmark.location;
       let dimension: string;
