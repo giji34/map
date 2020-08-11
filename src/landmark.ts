@@ -1,6 +1,6 @@
 import { romanize } from "./romanize";
 import { Point, Point3 } from "./point";
-import { k2434MainLandmarks, k2434MainRailways } from "./landmark/2434_main";
+import { k2434MainLandmarks, k2434MainRailways } from "./landmarks/2434_main";
 
 export enum Dimension {
   TheNether = -1,
@@ -48,7 +48,7 @@ export function createLandmark(params: {
   return { ...params, dimension, markerLocation, wikiIndex };
 }
 
-const kLandmarks = [...k2434MainLandmarks];
+export const kLandmarks = [...k2434MainLandmarks];
 const kRailways = [...k2434MainRailways];
 
 const landmarks: { dimension: Dimension; position: Point }[] = [];

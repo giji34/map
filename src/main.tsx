@@ -10,11 +10,11 @@ import {
   Dimension,
   kLandmarks,
   kLandmarksRightBottom,
-  kLandmarksTopLeft,
-  Point
+  kLandmarksTopLeft
 } from "./landmark";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
+import { Point } from "./point";
 
 type Menu = "jumpTo";
 
