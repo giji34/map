@@ -6,13 +6,12 @@ import { sprintf } from "sprintf";
 
 import { promiseLoadImage } from "./image";
 import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
+import { Dimension, World } from "./landmark";
 import {
-  Dimension,
   kLandmarks,
   kLandmarksRightBottom,
-  kLandmarksTopLeft,
-  World
-} from "./landmark";
+  kLandmarksTopLeft
+} from "./landmarks/const";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
 import { Point } from "./point";
