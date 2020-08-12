@@ -7,6 +7,7 @@ import { sprintf } from "sprintf";
 import { promiseLoadImage } from "./image";
 import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
 import { kFileList as kFileList2434World06 } from "./imagelists/2434_world06";
+import { kFileList as kFileListHololive01 } from "./imagelists/hololive_01";
 import { Dimension, World } from "./landmark";
 import {
   kLandmarks,
@@ -19,7 +20,8 @@ import { Point } from "./point";
 
 const kFileList = new Map<World, string[]>([
   ["2434_main", kFileList2434Main],
-  ["2434_world06", kFileList2434World06]
+  ["2434_world06", kFileList2434World06],
+  ["hololive_01", kFileListHololive01]
 ]);
 
 type Menu = "jumpTo";
@@ -750,6 +752,12 @@ export class MainComponent extends React.Component<{}, MainState> {
         location: new Point(61, -174),
         dimension: Dimension.Overworld,
         label: "新規ワールド"
+      },
+      {
+        world: "hololive_01",
+        location: new Point(268, -204),
+        dimension: Dimension.Overworld,
+        label: "新ホロ鯖"
       }
     ];
     return (
