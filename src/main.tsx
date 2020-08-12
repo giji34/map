@@ -6,6 +6,7 @@ import { sprintf } from "sprintf";
 
 import { promiseLoadImage } from "./image";
 import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
+import { kFileList as kFileList2434World06 } from "./imagelists/2434_world06";
 import { Dimension, World } from "./landmark";
 import {
   kLandmarks,
@@ -16,7 +17,10 @@ import { clamp } from "./number";
 import { OverScroller } from "./scroller";
 import { Point } from "./point";
 
-const kFileList = new Map<World, string[]>([["2434_main", kFileList2434Main]]);
+const kFileList = new Map<World, string[]>([
+  ["2434_main", kFileList2434Main],
+  ["2434_world06", kFileList2434World06]
+]);
 
 type Menu = "jumpTo";
 
