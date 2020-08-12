@@ -71,10 +71,11 @@ function mergeMainState(
     }
   }
   dimension = update.dimension || current.dimension;
+  const world: World = update.world || current.world;
   let center = update.center;
   if (center) {
-    const topLeft = kLandmarksTopLeft.get(dimension)!;
-    const rightBottom = kLandmarksRightBottom.get(dimension)!;
+    const topLeft = kLandmarksTopLeft.get(world)!.get(dimension)!;
+    const rightBottom = kLandmarksRightBottom.get(world)!.get(dimension)!;
     update.center = new Point(
       clamp(center.x, topLeft.x, rightBottom.x),
       clamp(center.z, topLeft.z, rightBottom.z)
@@ -422,8 +423,12 @@ export class MainComponent extends React.Component<{}, MainState> {
         const millisecondsPerSecond = 1000;
         const scale = millisecondsPerSecond * this.state.blocksPerPixel;
         const { x, z } = this.state.center;
-        const topLeft = kLandmarksTopLeft.get(this.state.dimension)!;
-        const rightBottom = kLandmarksRightBottom.get(this.state.dimension)!;
+        const topLeft = kLandmarksTopLeft
+          .get(this.state.world)!
+          .get(this.state.dimension)!;
+        const rightBottom = kLandmarksRightBottom
+          .get(this.state.world)!
+          .get(this.state.dimension)!;
         this.scroller.fling(
           x,
           z,
@@ -663,13 +668,14 @@ export class MainComponent extends React.Component<{}, MainState> {
   render() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const moveTo = (world: string, point: Point, dimension: Dimension) => {
+    const moveTo = (world: World, point: Point, dimension: Dimension) => {
       return () => {
         this.setState(
           mergeMainState(this.state, {
             center: point,
             dimension,
-            activeMenu: void 0
+            activeMenu: void 0,
+            world
           })
         );
       };
@@ -687,6 +693,61 @@ export class MainComponent extends React.Component<{}, MainState> {
         mergeMainState(this.state, { attensionPopupVisible: false })
       );
     };
+    const buttons: {
+      world: World;
+      location: Point;
+      label: string;
+      dimension: Dimension;
+    }[] = [
+      {
+        world: "2434_main",
+        location: new Point(179, 24),
+        dimension: Dimension.Overworld,
+        label: "中央都市"
+      },
+      {
+        world: "2434_main",
+        location: new Point(-1496, 1395),
+        dimension: Dimension.Overworld,
+        label: "にじさんじランド"
+      },
+      {
+        world: "2434_main",
+        location: new Point(-30022, -20180),
+        dimension: Dimension.Overworld,
+        label: "新天地"
+      },
+      {
+        world: "2434_main",
+        location: new Point(-4781, 4843),
+        dimension: Dimension.Overworld,
+        label: "🌸ンボ村"
+      },
+      {
+        world: "2434_main",
+        location: new Point(-2448, 3408),
+        dimension: Dimension.Overworld,
+        label: "ひまぐまんち(・ヮ・)"
+      },
+      {
+        world: "2434_main",
+        location: new Point(0, 0),
+        dimension: Dimension.TheNether,
+        label: "ネザー"
+      },
+      {
+        world: "2434_main",
+        location: new Point(0, 0),
+        dimension: Dimension.TheEnd,
+        label: "ジ・エンド"
+      },
+      {
+        world: "2434_world06",
+        location: new Point(61, -174),
+        dimension: Dimension.Overworld,
+        label: "新規ワールド"
+      }
+    ];
     return (
       <>
         <CSSTransition
@@ -802,90 +863,20 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
             {this.state.activeMenu === "jumpTo" && (
               <div className="dropdownMenu">
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(179, 24),
-                      Dimension.Overworld
-                    )}
-                  >
-                    中央都市
+                {buttons.map(button => (
+                  <div className="menuItem">
+                    <div
+                      className="menuItemContent menuItemBorder"
+                      onClick={moveTo(
+                        button.world,
+                        button.location,
+                        button.dimension
+                      )}
+                    >
+                      {button.label}
+                    </div>
                   </div>
-                </div>
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(-1496, 1395),
-                      Dimension.Overworld
-                    )}
-                  >
-                    にじさんじランド
-                  </div>
-                </div>
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(-30022, -20180),
-                      Dimension.Overworld
-                    )}
-                  >
-                    新天地
-                  </div>
-                </div>
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(-4781, 4843),
-                      Dimension.Overworld
-                    )}
-                  >
-                    🌸ンボ村
-                  </div>
-                </div>
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(-2448, 3408),
-                      Dimension.Overworld
-                    )}
-                  >
-                    ひまぐまんち(・ヮ・)
-                  </div>
-                </div>
-                <div className="menuItem menuItemBorder">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(0, 0),
-                      Dimension.TheNether
-                    )}
-                  >
-                    ネザー
-                  </div>
-                </div>
-                <div className="menuItem">
-                  <div
-                    className="menuItemContent"
-                    onClick={moveTo(
-                      "2434_main",
-                      new Point(0, 0),
-                      Dimension.TheEnd
-                    )}
-                  >
-                    ジ・エンド
-                  </div>
-                </div>
+                ))}
               </div>
             )}
           </div>
