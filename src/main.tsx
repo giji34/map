@@ -78,8 +78,12 @@ function mergeMainState(
   }
   dimension = update.dimension || current.dimension;
   const world: World = update.world || current.world;
-  let center = update.center;
-  if (center) {
+  if (
+    update.center ||
+    world !== current.world ||
+    dimension !== current.dimension
+  ) {
+    let center = update.center || current.center;
     const topLeft = kLandmarksTopLeft.get(world)!.get(dimension)!;
     const rightBottom = kLandmarksRightBottom.get(world)!.get(dimension)!;
     update.center = new Point(

@@ -17,14 +17,18 @@ export const kLandmarksRightBottom: Map<
   Map<Dimension, Point>
 > = new Map();
 
-const landmarks: { dimension: Dimension; position: Point }[] = [];
+const landmarks: { dimension: Dimension; position: Point; world: World }[] = [];
 if (landmarks.length === 0) {
   kLandmarks.forEach(l => {
-    landmarks.push({ dimension: l.dimension, position: l.markerLocation });
+    landmarks.push({
+      dimension: l.dimension,
+      position: l.markerLocation,
+      world: l.world
+    });
   });
   kRailways.forEach(r => {
     r.corners.forEach(position => {
-      landmarks.push({ dimension: r.dimension, position });
+      landmarks.push({ dimension: r.dimension, position, world: r.world });
     });
   });
 }
@@ -38,7 +42,7 @@ if (landmarks.length === 0) {
     Dimension.TheEnd
   ]) {
     const dimensionLandmarks = landmarks.filter(
-      it => it.dimension === dimension
+      it => it.dimension === dimension && it.world === world
     );
     const minX = dimensionLandmarks.reduce(
       (accum, current) => Math.min(accum, current.position.x),
