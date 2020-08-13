@@ -24,7 +24,7 @@ const kFileList = new Map<World, string[]>([
   ["hololive_01", kFileListHololive01]
 ]);
 
-type Menu = "jumpTo";
+type Menu = World;
 
 type MainState = {
   center: Point;
@@ -197,6 +197,74 @@ type DownEvent = {
   client: Point;
   center: Point;
 };
+
+type JumpToButton = {
+  world: World;
+  location: Point;
+  label: string;
+  dimension: Dimension;
+};
+
+const k2434MainButtons: JumpToButton[] = [
+  {
+    world: "2434_main",
+    location: new Point(179, 24),
+    dimension: Dimension.Overworld,
+    label: "中央都市"
+  },
+  {
+    world: "2434_main",
+    location: new Point(-1496, 1395),
+    dimension: Dimension.Overworld,
+    label: "にじさんじランド"
+  },
+  {
+    world: "2434_main",
+    location: new Point(-30022, -20180),
+    dimension: Dimension.Overworld,
+    label: "新天地"
+  },
+  {
+    world: "2434_main",
+    location: new Point(-4781, 4843),
+    dimension: Dimension.Overworld,
+    label: "🌸ンボ村"
+  },
+  {
+    world: "2434_main",
+    location: new Point(-2448, 3408),
+    dimension: Dimension.Overworld,
+    label: "ひまぐまんち(・ヮ・)"
+  },
+  {
+    world: "2434_main",
+    location: new Point(0, 0),
+    dimension: Dimension.TheNether,
+    label: "ネザー"
+  },
+  {
+    world: "2434_main",
+    location: new Point(0, 0),
+    dimension: Dimension.TheEnd,
+    label: "ジ・エンド"
+  }
+];
+const k2434World06Buttons: JumpToButton[] = [
+  {
+    world: "2434_world06",
+    location: new Point(61, -174),
+    dimension: Dimension.Overworld,
+    label: "オーバーワールド"
+  }
+];
+const kHololive01Buttons: JumpToButton[] = [
+  {
+    world: "hololive_01",
+    location: new Point(268, -204),
+    dimension: Dimension.Overworld,
+    label: "オーバーワールド"
+  }
+];
 
 export class MainComponent extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement> = createRef();
@@ -690,11 +758,11 @@ export class MainComponent extends React.Component<{}, MainState> {
         );
       };
     };
-    const onClickJumpTo = () => {
-      if (this.state.activeMenu === "jumpTo") {
+    const onClickJumpTo = (world: World) => () => {
+      if (this.state.activeMenu === world) {
         this.setState(mergeMainState(this.state, { activeMenu: void 0 }));
       } else {
-        this.setState(mergeMainState(this.state, { activeMenu: "jumpTo" }));
+        this.setState(mergeMainState(this.state, { activeMenu: world }));
       }
     };
     const dismissAttentionPopup = () => {
@@ -703,67 +771,6 @@ export class MainComponent extends React.Component<{}, MainState> {
         mergeMainState(this.state, { attensionPopupVisible: false })
       );
     };
-    const buttons: {
-      world: World;
-      location: Point;
-      label: string;
-      dimension: Dimension;
-    }[] = [
-      {
-        world: "2434_main",
-        location: new Point(179, 24),
-        dimension: Dimension.Overworld,
-        label: "中央都市"
-      },
-      {
-        world: "2434_main",
-        location: new Point(-1496, 1395),
-        dimension: Dimension.Overworld,
-        label: "にじさんじランド"
-      },
-      {
-        world: "2434_main",
-        location: new Point(-30022, -20180),
-        dimension: Dimension.Overworld,
-        label: "新天地"
-      },
-      {
-        world: "2434_main",
-        location: new Point(-4781, 4843),
-        dimension: Dimension.Overworld,
-        label: "🌸ンボ村"
-      },
-      {
-        world: "2434_main",
-        location: new Point(-2448, 3408),
-        dimension: Dimension.Overworld,
-        label: "ひまぐまんち(・ヮ・)"
-      },
-      {
-        world: "2434_main",
-        location: new Point(0, 0),
-        dimension: Dimension.TheNether,
-        label: "ネザー"
-      },
-      {
-        world: "2434_main",
-        location: new Point(0, 0),
-        dimension: Dimension.TheEnd,
-        label: "ジ・エンド"
-      },
-      {
-        world: "2434_world06",
-        location: new Point(61, -174),
-        dimension: Dimension.Overworld,
-        label: "新規ワールド"
-      },
-      {
-        world: "hololive_01",
-        location: new Point(268, -204),
-        dimension: Dimension.Overworld,
-        label: "新ホロ鯖"
-      }
-    ];
     return (
       <>
         <CSSTransition
@@ -873,13 +880,72 @@ export class MainComponent extends React.Component<{}, MainState> {
           </div>
           <div style={{ width: "30px" }} />
           <div className="menuItem clickable">
-            <div className="menuItemContent" onClick={onClickJumpTo}>
-              Jump to
+            <div
+              className="menuItemContent"
+              onClick={onClickJumpTo("2434_main")}
+            >
+              2434メイン
               <span className="pulldownMarker" />
             </div>
-            {this.state.activeMenu === "jumpTo" && (
+            {this.state.activeMenu === "2434_main" && (
               <div className="dropdownMenu">
-                {buttons.map(button => (
+                {k2434MainButtons.map(button => (
+                  <div className="menuItem">
+                    <div
+                      className="menuItemContent menuItemBorder"
+                      onClick={moveTo(
+                        button.world,
+                        button.location,
+                        button.dimension
+                      )}
+                    >
+                      {button.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div style={{ width: "10px" }} />
+          <div className="menuItem clickable">
+            <div
+              className="menuItemContent"
+              onClick={onClickJumpTo("2434_world06")}
+            >
+              2434新規ワールド
+              <span className="pulldownMarker" />
+            </div>
+            {this.state.activeMenu === "2434_world06" && (
+              <div className="dropdownMenu">
+                {k2434World06Buttons.map(button => (
+                  <div className="menuItem">
+                    <div
+                      className="menuItemContent menuItemBorder"
+                      onClick={moveTo(
+                        button.world,
+                        button.location,
+                        button.dimension
+                      )}
+                    >
+                      {button.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div style={{ width: "10px" }} />
+          <div className="menuItem clickable">
+            <div
+              className="menuItemContent"
+              onClick={onClickJumpTo("hololive_01")}
+            >
+              新ホロ鯖
+              <span className="pulldownMarker" />
+            </div>
+            {this.state.activeMenu === "hololive_01" && (
+              <div className="dropdownMenu">
+                {kHololive01Buttons.map(button => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"
