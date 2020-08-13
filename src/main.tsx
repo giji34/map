@@ -12,7 +12,7 @@ import { Dimension, World } from "./landmark";
 import {
   kLandmarks,
   kLandmarksRightBottom,
-  kLandmarksTopLeft
+  kLandmarksTopLeft,
 } from "./landmarks/const";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
@@ -21,7 +21,7 @@ import { Point } from "./point";
 const kFileList = new Map<World, string[]>([
   ["2434_main", kFileList2434Main],
   ["2434_world06", kFileList2434World06],
-  ["hololive_01", kFileListHololive01]
+  ["hololive_01", kFileListHololive01],
 ]);
 
 type Menu = World;
@@ -58,7 +58,7 @@ function createMainState(
     attensionPopupVisible,
     coordinateLabelVisible,
     dimension,
-    world
+    world,
   };
 }
 
@@ -151,14 +151,14 @@ class TextureStorage {
     }
     const d = this._dimension;
     promiseLoadImage(url)
-      .then(image => {
+      .then((image) => {
         if (d !== this._dimension) {
           return;
         }
         this.storage.set(key, image ? new Tile(image, Date.now()) : null);
         this.queued.delete(key);
       })
-      .catch(e => {
+      .catch((e) => {
         if (d !== this._dimension) {
           return;
         }
@@ -210,60 +210,60 @@ const k2434MainButtons: JumpToButton[] = [
     world: "2434_main",
     location: new Point(179, 24),
     dimension: Dimension.Overworld,
-    label: "中央都市"
+    label: "中央都市",
   },
   {
     world: "2434_main",
     location: new Point(-1496, 1395),
     dimension: Dimension.Overworld,
-    label: "にじさんじランド"
+    label: "にじさんじランド",
   },
   {
     world: "2434_main",
     location: new Point(-30022, -20180),
     dimension: Dimension.Overworld,
-    label: "新天地"
+    label: "新天地",
   },
   {
     world: "2434_main",
     location: new Point(-4781, 4843),
     dimension: Dimension.Overworld,
-    label: "🌸ンボ村"
+    label: "🌸ンボ村",
   },
   {
     world: "2434_main",
     location: new Point(-2448, 3408),
     dimension: Dimension.Overworld,
-    label: "ひまぐまんち(・ヮ・)"
+    label: "ひまぐまんち(・ヮ・)",
   },
   {
     world: "2434_main",
     location: new Point(0, 0),
     dimension: Dimension.TheNether,
-    label: "ネザー"
+    label: "ネザー",
   },
   {
     world: "2434_main",
     location: new Point(0, 0),
     dimension: Dimension.TheEnd,
-    label: "ジ・エンド"
-  }
+    label: "ジ・エンド",
+  },
 ];
 const k2434World06Buttons: JumpToButton[] = [
   {
     world: "2434_world06",
     location: new Point(61, -174),
     dimension: Dimension.Overworld,
-    label: "オーバーワールド"
-  }
+    label: "オーバーワールド",
+  },
 ];
 const kHololive01Buttons: JumpToButton[] = [
   {
     world: "hololive_01",
     location: new Point(268, -204),
     dimension: Dimension.Overworld,
-    label: "オーバーワールド"
-  }
+    label: "オーバーワールド",
+  },
 ];
 
 export class MainComponent extends React.Component<{}, MainState> {
@@ -378,7 +378,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     loadingInProgress = loadingInProgress || alpha < 1;
     ctx.globalAlpha = alpha;
     if (this.state.isBillboardsVisible || elapsed < fadeInSeconds) {
-      kLandmarks.forEach(landmark => {
+      kLandmarks.forEach((landmark) => {
         if (landmark.world !== this.state.world) {
           return;
         }
@@ -487,12 +487,12 @@ export class MainComponent extends React.Component<{}, MainState> {
     canvasGestureRecognizer.get("press").set({ enable: false });
     canvasGestureRecognizer.get("swipe").set({ enable: false });
     canvasGestureRecognizer.get("pan").set({ direction: Hammer.DIRECTION_ALL });
-    canvasGestureRecognizer.on("pan", ev => {
+    canvasGestureRecognizer.on("pan", (ev) => {
       if (this.downEvent === void 0) {
         this.abortScroller();
         this.downEvent = {
           client: new Point(ev.center.x, ev.center.y),
-          center: this.state.center.clone()
+          center: this.state.center.clone(),
         };
       }
       this.onPan(new Point(ev.center.x, ev.center.y));
@@ -519,7 +519,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         );
       }
     });
-    canvasGestureRecognizer.on("pinch", ev => {
+    canvasGestureRecognizer.on("pinch", (ev) => {
       this.abortScroller();
       if (this.pinchEventDeltaTime > ev.deltaTime) {
         this.pinchStartBlocksPerPixel = this.state.blocksPerPixel;
@@ -535,7 +535,7 @@ export class MainComponent extends React.Component<{}, MainState> {
       this.setState(
         mergeMainState(this.state, {
           isBillboardsVisible: !this.state.isBillboardsVisible,
-          billboardsVisibilityChangedTimestamp: Date.now()
+          billboardsVisibilityChangedTimestamp: Date.now(),
         })
       );
     });
@@ -546,7 +546,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     let z = this.state.center.z;
     let blocksPerPixel = this.state.blocksPerPixel;
     let dimension = this.state.dimension;
-    params.forEach(param => {
+    params.forEach((param) => {
       if (param.startsWith("#")) {
         param = param.substr(1);
       }
@@ -588,7 +588,7 @@ export class MainComponent extends React.Component<{}, MainState> {
       mergeMainState(this.state, {
         center: new Point(x, z),
         blocksPerPixel,
-        dimension
+        dimension,
       })
     );
     this.fragmentUpdateTimer = window.setInterval(() => {
@@ -605,16 +605,16 @@ export class MainComponent extends React.Component<{}, MainState> {
       }
     }, 500);
     window.addEventListener("wheel", this.wheelDisabledHandler, {
-      passive: false
+      passive: false,
     });
     this.menu.current!.addEventListener("wheel", this.wheelDisabledHandler, {
-      passive: false
+      passive: false,
     });
     const menuGestureRecognizer = new Hammer(this.coordinateLabel.current!);
     menuGestureRecognizer.on("tap", () => {
       this.setState(
         mergeMainState(this.state, {
-          coordinateLabelVisible: !this.state.coordinateLabelVisible
+          coordinateLabelVisible: !this.state.coordinateLabelVisible,
         })
       );
     });
@@ -709,7 +709,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     this.setState(
       mergeMainState(this.state, {
         center: new Point(state.center.x - dx, state.center.z - dz),
-        blocksPerPixel: nextBlocksPerPixel
+        blocksPerPixel: nextBlocksPerPixel,
       })
     );
   }
@@ -753,7 +753,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             center: point,
             dimension,
             activeMenu: void 0,
-            world
+            world,
           })
         );
       };
@@ -817,7 +817,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           ref={this.canvas}
           style={{
             width: `${width}px`,
-            height: `${height}px`
+            height: `${height}px`,
           }}
           width={width * window.devicePixelRatio}
           height={height * window.devicePixelRatio}
@@ -829,7 +829,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             opacity:
               this.state.coordinateLabelVisible && this.touchEventDetected
                 ? 1
-                : 0
+                : 0,
           }}
         >
           <div
@@ -839,7 +839,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               left: "-1px",
               height: "calc(2 * var(--reticule-size) + 2px)",
               width: "3px",
-              backgroundColor: "white"
+              backgroundColor: "white",
             }}
           />
           <div
@@ -849,7 +849,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               left: "calc(-1 * var(--reticule-size) - 1px)",
               width: "calc(2 * var(--reticule-size) + 2px)",
               height: "3px",
-              backgroundColor: "white"
+              backgroundColor: "white",
             }}
           />
 
@@ -860,7 +860,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               left: 0,
               height: "calc(2 * var(--reticule-size))",
               width: "1px",
-              backgroundColor: "black"
+              backgroundColor: "black",
             }}
           />
           <div
@@ -870,7 +870,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               left: "calc(-1 * var(--reticule-size))",
               width: "calc(2 * var(--reticule-size))",
               height: "1px",
-              backgroundColor: "black"
+              backgroundColor: "black",
             }}
           />
         </div>
@@ -889,7 +889,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
             {this.state.activeMenu === "2434_main" && (
               <div className="dropdownMenu">
-                {k2434MainButtons.map(button => (
+                {k2434MainButtons.map((button) => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"
@@ -917,7 +917,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
             {this.state.activeMenu === "2434_world06" && (
               <div className="dropdownMenu">
-                {k2434World06Buttons.map(button => (
+                {k2434World06Buttons.map((button) => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"
@@ -945,7 +945,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             </div>
             {this.state.activeMenu === "hololive_01" && (
               <div className="dropdownMenu">
-                {kHololive01Buttons.map(button => (
+                {kHololive01Buttons.map((button) => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"
@@ -979,7 +979,7 @@ export class MainComponent extends React.Component<{}, MainState> {
             minWidth: "100%",
             minHeight: "100%",
             userSelect: "none",
-            pointerEvents: "none"
+            pointerEvents: "none",
           }}
         >
           <div style={{ flexGrow: 1 }} />
@@ -1005,7 +1005,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   <div
                     className="billboardsLegendColor"
                     style={{
-                      backgroundColor: "#acf2bd"
+                      backgroundColor: "#acf2bd",
                     }}
                   />
                   <div>再現作業完了</div>
@@ -1017,7 +1017,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   <div
                     className="billboardsLegendColor"
                     style={{
-                      backgroundColor: "#fdb8c0"
+                      backgroundColor: "#fdb8c0",
                     }}
                   />
                   <div>再現作業中</div>

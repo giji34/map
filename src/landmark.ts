@@ -3,7 +3,7 @@ import { Point, Point3 } from "./point";
 export enum Dimension {
   TheNether = -1,
   Overworld = 0,
-  TheEnd = 1
+  TheEnd = 1,
 }
 
 export type World = "2434_main" | "2434_world06" | "hololive_01";

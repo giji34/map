@@ -481,7 +481,7 @@ class SplineOverScroller {
   // A context-specific coefficient adjusted to physical values.
   mPhysicalCoeff = 0;
 
-  static _staticFunc = (function() {
+  static _staticFunc = (function () {
     let x_min = 0.0;
     let y_min = 0.0;
     for (let i = 0; i < SplineOverScroller.NB_SAMPLES; i++) {

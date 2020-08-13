@@ -7,7 +7,7 @@ import { kHololive01Landmarks } from "./hololive_01";
 export const kLandmarks = [
   ...k2434MainLandmarks,
   ...k2434World06Landmarks,
-  ...kHololive01Landmarks
+  ...kHololive01Landmarks,
 ];
 export const kRailways = [...k2434MainRailways];
 
@@ -19,15 +19,15 @@ export const kLandmarksRightBottom: Map<
 
 const landmarks: { dimension: Dimension; position: Point; world: World }[] = [];
 if (landmarks.length === 0) {
-  kLandmarks.forEach(l => {
+  kLandmarks.forEach((l) => {
     landmarks.push({
       dimension: l.dimension,
       position: l.markerLocation,
-      world: l.world
+      world: l.world,
     });
   });
-  kRailways.forEach(r => {
-    r.corners.forEach(position => {
+  kRailways.forEach((r) => {
+    r.corners.forEach((position) => {
       landmarks.push({ dimension: r.dimension, position, world: r.world });
     });
   });
@@ -39,10 +39,10 @@ if (landmarks.length === 0) {
   for (const dimension of [
     Dimension.Overworld,
     Dimension.TheNether,
-    Dimension.TheEnd
+    Dimension.TheEnd,
   ]) {
     const dimensionLandmarks = landmarks.filter(
-      it => it.dimension === dimension && it.world === world
+      (it) => it.dimension === dimension && it.world === world
     );
     const minX = dimensionLandmarks.reduce(
       (accum, current) => Math.min(accum, current.position.x),

@@ -22,13 +22,13 @@ export const k2434World06Landmarks: Landmark[] = [
     yomi: "しんきわーるどげーと",
     location: new Point3(161, 80, -174),
     wikiIndex: 269,
-    finished: true
+    finished: true,
   }),
   make({
     name: "弦月藤士郎の風車小屋",
     yomi: "げんつきとうしろうのふうしゃごや",
     location: new Point3(57, 78, 2),
     wikiIndex: 295,
-    finished: false
-  })
+    finished: false,
+  }),
 ];

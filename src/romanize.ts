@@ -105,7 +105,7 @@ const kKanaToRomanMap: Map<string, string[]>[] = [
     ["うぁ", ["wha"]],
     ["うぃ", ["whi", "wi"]],
     ["うぇ", ["whe", "we"]],
-    ["うぉ", ["who"]]
+    ["うぉ", ["who"]],
   ]),
   new Map([
     ["あ", ["a"]],
@@ -192,8 +192,8 @@ const kKanaToRomanMap: Map<string, string[]>[] = [
     ["ん", ["n"]],
     ["ー", ["-"]],
     ["、", [","]],
-    ["。", ["."]]
-  ])
+    ["。", ["."]],
+  ]),
 ];
 
 export function romanize(s: string): string[] {
@@ -223,7 +223,7 @@ export function romanize(s: string): string[] {
   }
   const xtu = ["xtu", "xtsu", "ltu", "ltsu"];
   while (true) {
-    const idx = findLastIndex(chars, it => it.length === 1 && it[0] === "っ");
+    const idx = findLastIndex(chars, (it) => it.length === 1 && it[0] === "っ");
     if (idx < 0) {
       break;
     }
@@ -239,12 +239,12 @@ export function romanize(s: string): string[] {
     }
 
     if (idx + 1 < chars.length) {
-      const firstLetter = chars[idx + 1].map(it => it.substr(0, 1));
-      if (firstLetter.every(it => !["a", "i", "u", "e", "o"].includes(it))) {
+      const firstLetter = chars[idx + 1].map((it) => it.substr(0, 1));
+      if (firstLetter.every((it) => !["a", "i", "u", "e", "o"].includes(it))) {
         for (let i = begin; i < end; i++) {
           chars[i] = [];
         }
-        chars[idx + 1] = chars[idx + 1].map(it => {
+        chars[idx + 1] = chars[idx + 1].map((it) => {
           const consonant = it.substr(0, 1);
           return consonant.repeat(end - begin) + it;
         });
@@ -272,7 +272,7 @@ function findLastIndex<T>(arr: T[], predicate: (v: T) => boolean) {
 }
 
 function explode(chars: string[][]): string[] {
-  chars = chars.filter(it => it.length > 0);
+  chars = chars.filter((it) => it.length > 0);
   if (chars.length < 1) {
     return [];
   }
@@ -280,8 +280,8 @@ function explode(chars: string[][]): string[] {
   for (let i = 1; i < chars.length; i++) {
     const ch = chars[i];
     const next: string[] = [];
-    result.forEach(r => {
-      ch.forEach(c => {
+    result.forEach((r) => {
+      ch.forEach((c) => {
         next.push(r + c);
       });
     });

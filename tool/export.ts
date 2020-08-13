@@ -38,7 +38,7 @@ function explodeYomi(landmark: Landmark): string[] {
   const result = new Set<string>(base);
   result.add(landmark.name);
   for (const b of base) {
-    romanize(b).forEach(r => {
+    romanize(b).forEach((r) => {
       result.add(r);
     });
   }
@@ -56,7 +56,7 @@ if (require.main === module) {
   const world = argv[1];
   if (type === "mca2png") {
     const railways = [...kRailways];
-    kLandmarks.forEach(landmark => {
+    kLandmarks.forEach((landmark) => {
       if (landmark.world !== world) {
         return;
       }
@@ -68,11 +68,11 @@ if (require.main === module) {
           world: landmark.world,
           name: landmark.name,
           dimension: landmark.dimension,
-          corners: landmark.corners
+          corners: landmark.corners,
         });
       }
     });
-    railways.forEach(railway => {
+    railways.forEach((railway) => {
       if (railway.world !== world) {
         return;
       }
@@ -100,7 +100,7 @@ if (require.main === module) {
     const worldUIDOverworld = argv[2];
     const worldUIDNether = argv[3];
     const worldUIDTheEnd = argv[4];
-    kLandmarks.forEach(landmark => {
+    kLandmarks.forEach((landmark) => {
       if (landmark.world !== world) {
         return;
       }
@@ -119,7 +119,7 @@ if (require.main === module) {
           break;
       }
       const yomiList = explodeYomi(landmark);
-      yomiList.forEach(yo => {
+      yomiList.forEach((yo) => {
         console.log(`${name}\t${yo}\t${x}\t${y}\t${z}\t${dimension}`);
       });
     });

@@ -6,7 +6,7 @@ export function promiseLoadImage(
     image.onload = () => {
       resolve(image);
     };
-    image.onerror = e => {
+    image.onerror = (e) => {
       resolve(void 0);
     };
     image.src = url;
