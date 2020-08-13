@@ -2,7 +2,7 @@ import * as Hammer from "hammerjs";
 import * as React from "react";
 import { createRef, RefObject } from "react";
 import { CSSTransition } from "react-transition-group";
-import { sprintf } from "sprintf";
+import { sprintf } from "sprintf-js";
 
 import { promiseLoadImage } from "./image";
 import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
