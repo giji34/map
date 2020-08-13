@@ -134,4 +134,19 @@ export const kHololive01Landmarks: Landmark[] = [
     wikiIndex: 60,
     finished: true,
   }),
+  make({
+    name: "ロボ子さんの離島の別荘",
+    yomi: "ろぼこさんのりとうのべっそう",
+    location: new Point3(-7794, 64, -1388),
+    markerLocation: new Point(-7797, -1410),
+    wikiIndex: 58,
+    finished: true,
+  }),
+
+  make({
+    name: "るしあの別荘",
+    yomi: "るしあのべっそう",
+    location: new Point3(-7873, 65, -1299),
+    finished: true,
+  }),
 ];
