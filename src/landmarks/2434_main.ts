@@ -1478,6 +1478,14 @@ export const k2434MainLandmarks: Landmark[] = [
     wikiIndex: 292,
     finished: true,
   }),
+  make({
+    name: "クリーパートラップ",
+    yomi: "くりーぱーとらっぷ",
+    location: new Point3(113, 212, -8866),
+    markerLocation: new Point(186, --8876),
+    wikiIndex: 297,
+    finished: true,
+  }),
 
   // にじさんじランド
   make({
@@ -2237,6 +2245,12 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(-249, 70, 291),
     finished: true,
   }),
+  make({
+    name: "ネザーゲート",
+    yomi: "ねざーげーと",
+    location: new Point3(2860, 76, -8996),
+    finished: false,
+  }),
 
   // ネザーゲート(nether)
   make({
@@ -2280,6 +2294,24 @@ export const k2434MainLandmarks: Landmark[] = [
     dimension: Dimension.TheNether,
     location: new Point3(-70, 67, 65),
     finished: true,
+  }),
+  make({
+    name: "クリーパートラップ",
+    yomi: "くりーぱーとらっぷ",
+    dimension: Dimension.TheNether,
+    location: new Point3(16, 38, -1121),
+    finished: true,
+  }),
+  make({
+    name: "氷ボート通路",
+    yomi: "こおりぼーとつうろ",
+    dimension: Dimension.TheNether,
+    location: new Point3(11, 38, -3),
+    corners: [
+      new Point(11, -3), // 夢幻炭鉱
+      new Point(11, -1117), // クリーパートラップ
+    ],
+    finished: false,
   }),
 
   // 前哨基地
