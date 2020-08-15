@@ -790,6 +790,19 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "勇気ちひろの線路",
+    yomi: "ゆうきちひろのせんろ",
+    dimension: Dimension.TheNether,
+    location: new Point3(201, 50, 54),
+    corners: [
+      new Point(202, 54), // 始点
+      new Point(330, 54),
+      new Point(330, -311), // ここから北が不明
+    ],
+    wikiIndex: 143,
+    finished: false,
+  }),
+  make({
     name: "ガーディアントラップ",
     yomi: "がーでぃあんとらっぷ",
     location: new Point3(-3830, 63, 6742),
