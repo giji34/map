@@ -1494,9 +1494,16 @@ export const k2434MainLandmarks: Landmark[] = [
   make({
     name: "クリーパートラップ",
     yomi: "くりーぱーとらっぷ",
-    location: new Point3(113, 212, -8866),
+    location: new Point3(181, 212, -8865),
     markerLocation: new Point(186, -8876),
     wikiIndex: 297,
+    finished: true,
+  }),
+  make({
+    name: "アイアンゴーレムトラップ",
+    yomi: "あいあんごーれむとらっぷ",
+    location: new Point3(109, 212, -8850),
+    wikiIndex: 298,
     finished: true,
   }),
 
