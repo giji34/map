@@ -2213,6 +2213,37 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(755, 73, 319),
     finished: true,
   }),
+  make({
+    name: "ベルモンドの洋館",
+    yomi: "べるもんどのようかん",
+    location: new Point3(-10031, 70, 8482),
+    markerLocation: new Point(-10037, 8405),
+    finished: false,
+  }),
+  make({
+    name: "🌸ンボ村行き氷ボート通路",
+    yomi: "さくらんぼむらいきこおりぼーとつうろ",
+    location: new Point3(19, 78, -54),
+    corners: [
+      new Point(20, -51), // UFO
+      new Point(-592, -51), // 曲がり角
+      new Point(-592, 607), // 母船
+    ],
+    dimension: Dimension.TheNether,
+    finished: true,
+  }),
+  make({
+    name: "🌸ンボ村からエンド要塞への通路",
+    yomi: "さくらんぼむらからえんどようさいへのつうろ",
+    location: new Point3(-568, 73, 613),
+    dimension: Dimension.TheNether,
+    corners: [
+      new Point(-567, 613), // 🌸ンボ村
+      new Point(-453, 613), // 曲がり角
+      new Point(-453, 486), // エンド要塞
+    ],
+    finished: false,
+  }),
 
   // 沈没船
   make({
@@ -2332,6 +2363,20 @@ export const k2434MainLandmarks: Landmark[] = [
       new Point(11, -1117), // クリーパートラップ
     ],
     finished: false,
+  }),
+  make({
+    name: "エンド要塞(桜凛月)",
+    yomi: "えんどようさい",
+    location: new Point3(-454, 73, 485),
+    dimension: Dimension.TheNether,
+    finished: false,
+  }),
+  make({
+    name: "母船",
+    yomi: "ぼせん",
+    location: new Point3(-591, 78, 608),
+    dimension: Dimension.TheNether,
+    finished: true,
   }),
 
   // 前哨基地
