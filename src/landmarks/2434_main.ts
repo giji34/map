@@ -1332,6 +1332,14 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false,
   }),
   make({
+    name: "復元ンボザウルス",
+    yomi: "ふくげんんぼざうるす",
+    location: new Point3(-5083, 74, 4864),
+    markerLocation: new Point(-5112, 4824),
+    wikiIndex: 246,
+    finished: false,
+  }),
+  make({
     name: "高層マンション",
     yomi: "こうそうまんしょん",
     location: new Point3(-99, 63, -80),
