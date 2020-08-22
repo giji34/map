@@ -751,6 +751,13 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "スライムカフェ",
+    yomi: "すらいむかふぇ",
+    location: new Point3(2160, 66, -1653),
+    wikiIndex: 134,
+    finished: true,
+  }),
+  make({
     name: "しば城",
     yomi: "しばじょう",
     location: new Point3(-130, 62, 72),
@@ -1866,12 +1873,6 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "スライムカフェ",
-    yomi: "すらいむかふぇ",
-    location: new Point3(2160, 66, -1653),
-    finished: false,
-  }),
-  make({
     name: "しばハウス3",
     yomi: "しばはうす3",
     location: new Point3(-146, 69, -55),
@@ -2252,6 +2253,27 @@ export const k2434MainLandmarks: Landmark[] = [
     ],
     finished: false,
   }),
+  make({
+    name: "いちご大墳墓からスライムカフェへの通路",
+    yomi: "いちごだいふんぼからすらいむかふぇへのつうろ",
+    dimension: Dimension.TheNether,
+    location: new Point3(37, 50, 79),
+    corners: [
+      new Point(37, 79), // いちご大墳墓
+      new Point(37, 72),
+      new Point(42, 72),
+      new Point(42, 21),
+      new Point(62, 21),
+      new Point(62, 7),
+      new Point(207, 7),
+      new Point(207, 1),
+      new Point(270, 1),
+      new Point(270, -197),
+      new Point(267, -197),
+      new Point(267, -202), // スライムカフェ
+    ],
+    finished: false,
+  }),
 
   // 沈没船
   make({
@@ -2385,6 +2407,13 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(-591, 78, 608),
     dimension: Dimension.TheNether,
     finished: true,
+  }),
+  make({
+    name: "スライムカフェ",
+    yomi: "すらいむかふぇ",
+    dimension: Dimension.TheNether,
+    location: new Point3(268, 52, -206),
+    finished: false,
   }),
 
   // 前哨基地
