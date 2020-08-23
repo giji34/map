@@ -25,6 +25,13 @@ export const k2434World06Landmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "ひよこハウス",
+    yomi: "ひよこはうす",
+    location: new Point3(214, 79, -51),
+    wikiIndex: 293,
+    finished: true,
+  }),
+  make({
     name: "弦月藤士郎の風車小屋",
     yomi: "げんつきとうしろうのふうしゃごや",
     location: new Point3(57, 78, 2),
