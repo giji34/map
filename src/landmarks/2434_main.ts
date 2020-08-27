@@ -555,8 +555,8 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "🌸ンボ族村",
-    yomi: ["さくらんぼぞくむら", "んぼぞくむら"],
+    name: "🌸ンボ村",
+    yomi: ["さくらんぼむら", "んぼむら"],
     location: new Point3(-4792, 63, 4860),
     markerLocation: new Point(-4791, 4790),
     wikiIndex: 102,
@@ -1340,9 +1340,9 @@ export const k2434MainLandmarks: Landmark[] = [
   }),
   make({
     name: "復元ンボザウルス",
-    yomi: "ふくげんんぼざうるす",
-    location: new Point3(-5083, 74, 4864),
-    markerLocation: new Point(-5112, 4824),
+    yomi: ["ふくげんんぼざうるす", "んぼざうるす"],
+    location: new Point3(-5103, 83, 4866),
+    markerLocation: new Point(-5116, 4847),
     wikiIndex: 246,
     finished: false,
   }),
