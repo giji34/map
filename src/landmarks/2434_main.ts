@@ -89,6 +89,13 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "にじさんじレジス胆尊アジト(跡地)",
+    yomi: "にじさんじれじすたんそんあじと",
+    location: new Point3(60, 63, 192),
+    wikiIndex: 14,
+    finished: true,
+  }),
+  make({
     name: "舞ハウス",
     yomi: ["まいはうす", "まいhouse"],
     location: new Point3(80, 63, 179),
@@ -105,11 +112,26 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "夢幻炭鉱",
+    yomi: "むげんたんこう",
+    dimension: Dimension.TheNether,
+    location: new Point3(-23, 46, 29),
+    wikiIndex: 17,
+    finished: false,
+  }),
+  make({
     name: "ちーかざちーハウス",
     yomi: "ちーかざちーはうす",
     location: new Point3(15, 64, -86),
     markerLocation: new Point(-1, -98),
     wikiIndex: 18,
+    finished: true,
+  }),
+  make({
+    name: "詫びケーキ(跡地)",
+    yomi: "わびけーき",
+    location: new Point3(232, 70, 22),
+    wikiIndex: 19,
     finished: true,
   }),
   make({
@@ -146,6 +168,13 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(322, 63, -11),
     markerLocation: new Point(323, -42),
     wikiIndex: 24,
+    finished: true,
+  }),
+  make({
+    name: "和式便器(跡地)",
+    yomi: "わしきべんき",
+    location: new Point3(224, 70, -2),
+    wikiIndex: 26,
     finished: true,
   }),
   make({
@@ -189,7 +218,7 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "轟京子と名伽尾アズマの家",
+    name: "轟京子と名伽尾アズマの家(跡地)",
     yomi: "とどろききょうことなかおあずまのいえ",
     location: new Point3(-134, 64, -365),
     wikiIndex: 34,
@@ -204,7 +233,7 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "ギル様の家",
+    name: "ギル様の家(跡地)",
     yomi: "ぎるさまのいえ",
     location: new Point3(732, 64, 56),
     markerLocation: new Point(724, 53),
@@ -219,7 +248,15 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "神社",
+    name: "チャイカスライダー",
+    yomi: "ちゃいかすらいだー",
+    location: new Point3(51, 105, 254),
+    markerLocation: new Point(113, 172),
+    wikiIndex: 38,
+    finished: true,
+  }),
+  make({
+    name: "ガチクズ神社",
     yomi: ["じんじゃ", "がちくずじんじゃ"],
     location: new Point3(245, 70, 31),
     markerLocation: new Point(262, 23),
@@ -228,7 +265,7 @@ export const k2434MainLandmarks: Landmark[] = [
   }),
   make({
     name: "しずくしま神社",
-    yomi: "しずくしまじんじゃ",
+    yomi: ["じんじゃ", "しずくしまじんじゃ"],
     location: new Point3(821, 63, 41),
     markerLocation: new Point(961, 17),
     wikiIndex: 41,
@@ -248,6 +285,14 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(148, 72, 0),
     markerLocation: new Point(144, -9),
     wikiIndex: 43,
+    finished: true,
+  }),
+  make({
+    name: "葛葉の家(跡地)",
+    yomi: "くずはのいえ",
+    location: new Point3(324, 63, 278),
+    markerLocation: new Point(322, 272),
+    wikiIndex: 44,
     finished: true,
   }),
   make({
@@ -283,10 +328,25 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "ちひろのひみつきち",
+    yomi: "ちひろのひみつきち",
+    location: new Point3(711, 109, 341),
+    wikiIndex: 51,
+    finished: false,
+  }),
+  make({
     name: "川の下の渓谷",
     yomi: "かわのしたのけいこく",
     location: new Point3(151, 24, 98),
     wikiIndex: 52,
+    finished: true,
+  }),
+  make({
+    name: "トラップタワー",
+    yomi: "とらっぷたわー",
+    location: new Point3(88, 62, 183),
+    markerLocation: new Point(83, 184),
+    wikiIndex: 53,
     finished: true,
   }),
   make({
@@ -304,6 +364,13 @@ export const k2434MainLandmarks: Landmark[] = [
     wikiIndex: 55,
     finished: true,
     xOffset: 40,
+  }),
+  make({
+    name: "秘密基地",
+    yomi: "ひみつきち",
+    location: new Point3(-231, 82, 919),
+    wikiIndex: 58,
+    finished: false,
   }),
   make({
     name: "モルちーさいくつきょてん",
@@ -412,6 +479,7 @@ export const k2434MainLandmarks: Landmark[] = [
     yomi: "まちたちまのらぴゅた",
     location: new Point3(-99, 98, 67),
     markerLocation: new Point(-96, 56),
+    wikiIndex: 74,
     finished: false,
   }),
   make({
@@ -428,6 +496,14 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(116, 86, 284),
     wikiIndex: 76,
     finished: false,
+  }),
+  make({
+    name: "馬場タクシー宅跡地",
+    yomi: "ばばたくしーたくあとち",
+    location: new Point3(-157, 66, 188),
+    markerLocation: new Point(-162, 183),
+    wikiIndex: 78,
+    finished: true,
   }),
   make({
     name: "立ち退き反対ハウス",
@@ -812,7 +888,7 @@ export const k2434MainLandmarks: Landmark[] = [
   make({
     name: "ガーディアントラップ",
     yomi: "がーでぃあんとらっぷ",
-    location: new Point3(-3830, 63, 6742),
+    location: new Point3(-3791, 6, 6746),
     markerLocation: new Point(-3791, 6701),
     wikiIndex: 144,
     finished: false,
@@ -1461,6 +1537,14 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false,
   }),
   make({
+    name: "シークワーサーハウス",
+    yomi: "しーくわーさーはうす",
+    location: new Point3(383, 64, 158),
+    markerLocation: new Point(380, 139),
+    wikiIndex: 275,
+    finished: true,
+  }),
+  make({
     name: "全ブロックピラミッド",
     yomi: "ぜんぶろっくぴらみっど",
     location: new Point3(-165, 78, -221),
@@ -1474,6 +1558,14 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(153, 66, 63),
     markerLocation: new Point(159, 60),
     wikiIndex: 278,
+    finished: true,
+  }),
+  make({
+    name: "お祭り会場2020",
+    yomi: "おまつりかいじょう2020",
+    location: new Point3(-4683, 63, 4944),
+    markerLocation: new Point(-4679, 4897),
+    wikiIndex: 283,
     finished: true,
   }),
   make({
@@ -1892,13 +1984,6 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "第一隠れ家(跡地)",
-    yomi: "だいいちかくれがあとち",
-    location: new Point3(324, 63, 278),
-    markerLocation: new Point(322, 272),
-    finished: true,
-  }),
-  make({
     name: "ゆきしろBOX",
     yomi: ["ゆきしろぼっくす", "ゆきしろbox"],
     location: new Point3(-30193, 63, -20153),
@@ -2002,13 +2087,6 @@ export const k2434MainLandmarks: Landmark[] = [
     yomi: "ねざーようさいどらひま",
     location: new Point3(2161, 54, 4748),
     finished: true,
-  }),
-  make({
-    name: "夢幻炭鉱",
-    yomi: "むげんたんこう",
-    dimension: Dimension.TheNether,
-    location: new Point3(-23, 46, 29),
-    finished: false,
   }),
   make({
     name: "メサ(ベルさん)",
@@ -2157,7 +2235,7 @@ export const k2434MainLandmarks: Landmark[] = [
   }),
   make({
     name: "桜神社",
-    yomi: "さくらじんじゃ",
+    yomi: ["じんじゃ", "さくらじんじゃ"],
     location: new Point3(-4664, 63, 4881),
     markerLocation: new Point(-4632, 4859),
     finished: false,

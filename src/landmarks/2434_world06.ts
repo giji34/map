@@ -25,6 +25,14 @@ export const k2434World06Landmarks: Landmark[] = [
     finished: true,
   }),
   make({
+    name: "漆黒のモダンハウス",
+    yomi: "しっこくのもだんはうす",
+    location: new Point3(351, 75, -140),
+    markerLocation: new Point(352, -161),
+    wikiIndex: 287,
+    finished: false,
+  }),
+  make({
     name: "ひよこハウス",
     yomi: "ひよこはうす",
     location: new Point3(214, 79, -51),
