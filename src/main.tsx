@@ -264,6 +264,12 @@ const kHololive01Buttons: JumpToButton[] = [
     dimension: Dimension.Overworld,
     label: "オーバーワールド",
   },
+  {
+    world: "hololive_01",
+    location: new Point(42, -60),
+    dimension: Dimension.TheNether,
+    label: "ネザー",
+  },
 ];
 
 export class MainComponent extends React.Component<{}, MainState> {
