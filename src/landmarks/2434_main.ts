@@ -1420,7 +1420,7 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(-5103, 83, 4866),
     markerLocation: new Point(-5116, 4847),
     wikiIndex: 246,
-    finished: false,
+    finished: true,
   }),
   make({
     name: "高層マンション",

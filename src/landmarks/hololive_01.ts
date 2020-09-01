@@ -616,4 +616,62 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(260, 41, -293),
     finished: true,
   }),
+
+  // 以下 wiki に無い建築物
+
+  make({
+    name: "ドクロ型の家",
+    yomi: "どくろがたのいえ",
+    location: new Point3(244, 77, -11),
+    finished: true,
+  }),
+  make({
+    name: "優勝トロフィー",
+    yomi: "ゆうしょうとろふぃー",
+    location: new Point3(75, 64, -444),
+    finished: true,
+  }),
+  make({
+    name: "プレゼントボックス",
+    yomi: "ぷれぜんとぼっくす",
+    location: new Point3(78, 64, -460),
+    finished: true,
+  }),
+  make({
+    name: "かたた氏の監視部屋",
+    yomi: ["かなたしのかんしべや", "かたたしのかんしべや"],
+    location: new Point3(158, 66, -108),
+    finished: true,
+  }),
+  make({
+    name: "レンガのおうち",
+    yomi: "れんがのおうち",
+    location: new Point3(133, 69, -140),
+    markerLocation: new Point(124, -145),
+    finished: false,
+  }),
+  make({
+    name: "羊毛でできた目印のタワー",
+    yomi: "ようもうでできためじるしのたわー",
+    location: new Point3(20, 64, -601),
+    finished: true,
+  }),
+  make({
+    name: "誰かの作業台",
+    yomi: "だれかのさぎょうだい",
+    location: new Point3(-69, 70, -688),
+    finished: true,
+  }),
+  make({
+    name: "ちょこ先生とるしあさんの建てた家",
+    yomi: "ちょこせんせいとるしあさんのたてたいえ",
+    location: new Point3(-527, 64, -435),
+    finished: true,
+  }),
+  make({
+    name: "キャンプファイヤー",
+    yomi: "きゃんぷふぁいやー",
+    location: new Point3(-125, 71, -705),
+    finished: false,
+  }),
 ];
