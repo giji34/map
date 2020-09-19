@@ -799,12 +799,13 @@ export class MainComponent extends React.Component<{}, MainState> {
                   再現プロジェクトの、再現状況を公表するための地図です。
                 </div>
                 <div className="warningMessageLine">
-                  <div
+                  <button
                     className="confirmButton clickable"
                     onClick={dismissAttentionPopup}
+                    autoFocus={true}
                   >
                     OK
-                  </div>
+                  </button>
                 </div>
                 <div className="flexSpacer" />
               </div>
