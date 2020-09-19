@@ -55,6 +55,7 @@ body {
 }
 
 .menuItemContent {
+  font-size: 16px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -167,6 +168,12 @@ body {
   left: 25%;
   background-color: pink;
   pointer-events: none;
+  font-size: 25px;
+}
+
+.warningMessageLine {
+  text-align: center;
+  margin: 10px;
 }
 
 .fade {
@@ -226,4 +233,8 @@ body {
   left: 50%;
   pointer-events: none;
   overflow: visible;
+}
+
+.flexSpacer {
+  flex-grow: 1;
 }

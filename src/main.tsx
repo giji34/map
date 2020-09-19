@@ -232,12 +232,6 @@ const k2434MainButtons: JumpToButton[] = [
   },
   {
     world: "2434_main",
-    location: new Point(-2448, 3408),
-    dimension: Dimension.Overworld,
-    label: "ひまぐまんち(・ヮ・)",
-  },
-  {
-    world: "2434_main",
     location: new Point(0, 0),
     dimension: Dimension.TheNether,
     label: "ネザー",
@@ -787,26 +781,24 @@ export class MainComponent extends React.Component<{}, MainState> {
         >
           <div className="attentionPopupBackground">
             <div className="warningMessage">
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ textAlign: "center" }}>
-                  この地図は、マインクラフトにじさんじサーバーの地図ではございません。
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                }}
+              >
+                <div className="flexSpacer" />
+                <div className="warningMessageLine">
+                  本サイトの地図は、マインクラフトにじさんじサーバー・ホロライブサーバーの地図ではございません。
                 </div>
-                <div style={{ textAlign: "center" }}>
-                  にじさんじサーバー再現プロジェクトの、再現状況を公表するための地図です。
+                <div className="warningMessageLine">
+                  再現プロジェクトの、再現状況を公表するための地図です。
                 </div>
-                <br />
-                <div>ご注意</div>
-                <div>
-                  <ul>
-                    <li>
-                      この地図を見て、にじさんじ関係者（ライバーさんを含む）に問い合わせすることはおやめください。
-                    </li>
-                    <li>
-                      この地図に関するコメント等を、ライバーさんの配信等のコメント欄に書き込むことはおやめください。
-                    </li>
-                  </ul>
-                </div>
-                <div style={{ textAlign: "center" }}>
+                <div className="warningMessageLine">
                   <div
                     className="confirmButton clickable"
                     onClick={dismissAttentionPopup}
@@ -814,6 +806,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                     OK
                   </div>
                 </div>
+                <div className="flexSpacer" />
               </div>
             </div>
           </div>
@@ -882,7 +875,9 @@ export class MainComponent extends React.Component<{}, MainState> {
         </div>
         <div className="menu" ref={this.menu}>
           <div className="menuItem">
-            <div className="menuItemContent">giji34.world</div>
+            <div className="menuItemContent" style={{ fontSize: 18 }}>
+              giji34.world
+            </div>
           </div>
           <div style={{ width: "30px" }} />
           <div className="menuItem clickable">
@@ -890,7 +885,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               className="menuItemContent"
               onClick={onClickJumpTo("2434_main")}
             >
-              2434メイン
+              にじ鯖メイン
               <span className="pulldownMarker" />
             </div>
             {this.state.activeMenu === "2434_main" && (
@@ -918,7 +913,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               className="menuItemContent"
               onClick={onClickJumpTo("2434_world06")}
             >
-              2434新規ワールド
+              にじ鯖新規ワールド
               <span className="pulldownMarker" />
             </div>
             {this.state.activeMenu === "2434_world06" && (
