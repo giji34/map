@@ -435,7 +435,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         if (landmark.finished === void 0) {
           color = "red";
         } else if (landmark.finished) {
-          color = "#acf2bd";
+          color = "#8ba6ca";
         } else {
           color = "#fdb8c0";
         }
@@ -1007,7 +1007,7 @@ export class MainComponent extends React.Component<{}, MainState> {
                   <div
                     className="billboardsLegendColor"
                     style={{
-                      backgroundColor: "#acf2bd",
+                      backgroundColor: "#8ba6ca",
                     }}
                   />
                   <div>再現作業完了</div>
