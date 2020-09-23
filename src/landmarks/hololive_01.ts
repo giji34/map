@@ -694,4 +694,25 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(157, 64, -565),
     finished: false,
   }),
+  make({
+    name: "そらマウンテン跡地",
+    yomi: "そらまうんてんあとち",
+    location: new Point3(96, 64, -632),
+    markerLocation: new Point(109, -671),
+    finished: true,
+  }),
+  make({
+    name: "HOLOLIVE INDONESIA DORM",
+    yomi: "HOLOLIVE INDONESIA DORM",
+    location: new Point3(112, 71, -202),
+    markerLocation: new Point(95, -210),
+    finished: false,
+  }),
+  make({
+    name: "ドン・ゴクーラ",
+    yomi: "どんごくーら",
+    location: new Point3(-76, 64, -740),
+    markerLocation: new Point(-71, -740),
+    finished: true,
+  }),
 ];
