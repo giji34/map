@@ -1024,17 +1024,6 @@ export class MainComponent extends React.Component<{}, MainState> {
                   />
                   <div>再現作業中</div>
                 </div>
-                <div style={{ opacity: 0.2 }}>
-                  <a
-                    className="github-fork-ribbon left-bottom fixed"
-                    href="https://github.com/giji34/map"
-                    data-ribbon="Fork me on GitHub"
-                    title="Fork me on GitHub"
-                    target={"_blank"}
-                  >
-                    Fork me on GitHub
-                  </a>
-                </div>
               </div>
             </CSSTransition>
           </div>
