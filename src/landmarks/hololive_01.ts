@@ -676,8 +676,8 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "フェスティバルーナの家",
-    yomi: "ふぇすてぃばるーなのいえ",
+    name: "LOVE HOUSE まつりちゃ先輩とルーナの愛の巣",
+    yomi: "love house まつりちゃせんぱいとるーなのあいのす",
     location: new Point3(512, 72, -446),
     markerLocation: new Point(515, -465),
     finished: false,
@@ -714,5 +714,12 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(-76, 64, -740),
     markerLocation: new Point(-71, -740),
     finished: true,
+  }),
+  make({
+    name: "hololive 5 Star Barn",
+    yomi: "hololive 5 star barn",
+    location: new Point3(110, 76, -171),
+    markerLocation: new Point(103, -182),
+    finished: false,
   }),
 ];
