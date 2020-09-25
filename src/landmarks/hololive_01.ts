@@ -216,6 +216,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "ケーキのトラップハウス",
     yomi: "けーきのとらっぷはうす",
     location: new Point3(245, 69, -260),
+    markerLocation: new Point(246, -269),
     wikiIndex: 27,
     finished: true,
   }),
@@ -546,6 +547,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "あくあダンジョン",
     yomi: "あくあだんじょん",
     location: new Point3(257, 63, -177),
+    markerLocation: new Point(257, -152),
     finished: false,
   }),
   make({
@@ -720,6 +722,45 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "hololive 5 star barn",
     location: new Point3(110, 76, -171),
     markerLocation: new Point(103, -182),
+    finished: false,
+  }),
+  make({
+    name: "自動羊毛回収機",
+    yomi: "じどうようもうかいしゅうき",
+    location: new Point3(423, 69, -148),
+    finished: true,
+  }),
+  make({
+    name: "UPSIDE DOWN HOUSE",
+    yomi: "upside down house",
+    location: new Point3(90, 70, -146),
+    finished: false,
+  }),
+  make({
+    name: "YAGOO像(南)",
+    yomi: "yagooぞう",
+    location: new Point3(257, 63, -168),
+    finished: true,
+  }),
+  make({
+    name: "観覧車",
+    yomi: "かんらんしゃ",
+    location: new Point3(292, 72, -365),
+    finished: true,
+  }),
+  make({
+    name: "フライパンから召喚されるはあちゃまの像とガンギマリ羊の像",
+    yomi:
+      "ふらいぱんからしょうかんされるはあちゃまのぞうとがんぎまりひつじのぞう",
+    location: new Point3(153, 67, -226),
+    markerLocation: new Point(158, -250),
+    finished: true,
+  }),
+  make({
+    name: "あんぽんたん姉妹の拠点",
+    yomi: "あんぽんたんしまいのきょてん",
+    location: new Point3(191, 80, -85),
+    markerLocation: new Point(191, -111),
     finished: false,
   }),
 ];
