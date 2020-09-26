@@ -763,4 +763,23 @@ export const kHololive01Landmarks: Landmark[] = [
     markerLocation: new Point(191, -111),
     finished: false,
   }),
+  make({
+    name: "常闇ウォーターパーク",
+    yomi: "とこやみうぉーたーぱーく",
+    location: new Point3(131, 68, -96),
+    finished: false,
+  }),
+  make({
+    name: "尾丸ポルカの像",
+    yomi: "おまるぽるかのぞう",
+    location: new Point3(136, 70, -189),
+    markerLocation: new Point(132, -201),
+    finished: true,
+  }),
+  make({
+    name: "スライムトラップ",
+    yomi: "すらいむとらっぷ",
+    location: new Point3(-88, 64, -741),
+    finished: false,
+  }),
 ];
