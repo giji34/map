@@ -782,4 +782,36 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(-88, 64, -741),
     finished: false,
   }),
+  make({
+    name: "LOVE♥LOVE AQUAMARINEGO! ボロ寮舎",
+    yomi: "らぶらぶあくあまりんごうぼろりょうしゃ",
+    location: new Point3(105, 63, -387),
+    markerLocation: new Point(107, -399),
+    finished: false,
+  }),
+  make({
+    name: "LOVE♥LOVE AQUA MARINE GO!",
+    yomi: "らぶらぶあくあまりんごう",
+    location: new Point3(75, 64, -397),
+    finished: false,
+  }),
+  make({
+    name: "紫シオンの新居",
+    yomi: "むらさきしおんのしんきょ",
+    location: new Point3(638, 93, -128),
+    finished: false,
+  }),
+  make({
+    name: "不知火フレアの新居",
+    yomi: "しらぬいふれあのしんきょ",
+    location: new Point3(298, 71, -480),
+    markerLocation: new Point(292, -503),
+    finished: false,
+  }),
+  make({
+    name: "5期生ビルジング建設予定地",
+    yomi: "ごきせいびるじんぐけんせつよていち",
+    location: new Point3(176, 82, -514),
+    finished: false,
+  }),
 ];
