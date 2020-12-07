@@ -50,7 +50,7 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "紫シオンの家",
+    name: "紫咲シオンの家",
     yomi: "むらさきしおんのいえ",
     location: new Point3(288, 69, -275),
     wikiIndex: 6,
@@ -790,7 +790,7 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "紫シオンの新居",
+    name: "紫咲シオンの新居",
     yomi: "むらさきしおんのしんきょ",
     location: new Point3(638, 93, -128),
     finished: false,
