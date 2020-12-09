@@ -940,4 +940,16 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(264, 77, -127),
     finished: true,
   }),
+  make({
+    name: "ガーディアントラップ",
+    yomi: "がーでぃあんとらっぷ",
+    location: new Point3(-5377, 180, -462),
+    finished: true,
+  }),
+  make({
+    name: "ドラウンドトラップ(ドラミングタワー)",
+    yomi: ["どらうんどとらっぷ", "どらみんぐたわー"],
+    location: new Point3(507, 63, 547),
+    finished: false,
+  }),
 ];
