@@ -546,6 +546,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     let z = this.state.center.z;
     let blocksPerPixel = this.state.blocksPerPixel;
     let dimension = this.state.dimension;
+    let world = this.state.world;
     params.forEach((param) => {
       if (param.startsWith("#")) {
         param = param.substr(1);
@@ -555,31 +556,42 @@ export class MainComponent extends React.Component<{}, MainState> {
         return;
       }
       const key = keyAndValue[0];
-      const value = parseFloat(keyAndValue[1]);
-      if (isNaN(value)) {
-        return;
-      }
-      if (key === "x") {
-        x = value;
-      } else if (key === "z") {
-        z = value;
-      } else if (key === "scale") {
-        blocksPerPixel = clamp(
-          value,
-          MainComponent.MIN_BLOCKS_PER_PIXEL,
-          MainComponent.MAX_BLOCKS_PER_PIXEL
-        );
-      } else if (key === "dimension") {
+      if (key === "world") {
+        const value = keyAndValue[1];
         switch (value) {
-          case 0:
-            dimension = Dimension.Overworld;
+          case "2434_main":
+          case "2434_world06":
+          case "hololive_01":
+            world = value;
             break;
-          case 1:
-            dimension = Dimension.TheEnd;
-            break;
-          case -1:
-            dimension = Dimension.TheNether;
-            break;
+        }
+      } else {
+        const value = parseFloat(keyAndValue[1]);
+        if (isNaN(value)) {
+          return;
+        }
+        if (key === "x") {
+          x = value;
+        } else if (key === "z") {
+          z = value;
+        } else if (key === "scale") {
+          blocksPerPixel = clamp(
+            value,
+            MainComponent.MIN_BLOCKS_PER_PIXEL,
+            MainComponent.MAX_BLOCKS_PER_PIXEL
+          );
+        } else if (key === "dimension") {
+          switch (value) {
+            case 0:
+              dimension = Dimension.Overworld;
+              break;
+            case 1:
+              dimension = Dimension.TheEnd;
+              break;
+            case -1:
+              dimension = Dimension.TheNether;
+              break;
+          }
         }
       }
     });
@@ -589,6 +601,7 @@ export class MainComponent extends React.Component<{}, MainState> {
         center: new Point(x, z),
         blocksPerPixel,
         dimension,
+        world,
       })
     );
     this.fragmentUpdateTimer = window.setInterval(() => {
