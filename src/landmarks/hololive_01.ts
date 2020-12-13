@@ -952,4 +952,10 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(507, 63, 547),
     finished: false,
   }),
+  make({
+    name: "バベルの塔",
+    yomi: "ばべるのとう",
+    location: new Point3(469, 72, -776),
+    finished: false,
+  }),
 ];
