@@ -949,7 +949,7 @@ export const kHololive01Landmarks: Landmark[] = [
   make({
     name: "ドラウンドトラップ(ドラミングタワー)",
     yomi: ["どらうんどとらっぷ", "どらみんぐたわー"],
-    location: new Point3(507, 63, 547),
+    location: new Point3(536, 222, 510),
     finished: false,
   }),
   make({
@@ -989,7 +989,7 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "空とぶ牛丼",
+    name: "空飛ぶ牛丼",
     yomi: ["そらとぶぎゅうどん", "ぎゅうどん"],
     location: new Point3(361, 77, -536),
     finished: true,
@@ -1001,15 +1001,57 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: true,
   }),
   make({
-    name: "桜の大樹",
-    yomi: "さくらのたいじゅ",
-    location: new Point3(334, 93, -85),
-    finished: false,
-  }),
-  make({
     name: "チェストに座ったころね先輩の像",
     yomi: "ちぇすとにすわったころねせんぱいのぞう",
     location: new Point3(69, 70, -146),
     finished: false,
+  }),
+  make({
+    name: "キング・オブ・ハーチャマ",
+    yomi: "きんぐおぶはーちゃま",
+    location: new Point3(-6, 64, -575),
+    markerLocation: new Point(-23, -592),
+    finished: true,
+  }),
+  make({
+    name: "ネザーゲート(赤井ホテル, ロボ子さんの浜辺の別荘)",
+    yomi: "ねざーげーと",
+    location: new Point3(-606, 79, -111),
+    dimension: Dimension.TheNether,
+    finished: false,
+  }),
+  make({
+    name: "ネザーゲート(ガーディアントラップ)",
+    yomi: "ねざーげーと",
+    location: new Point3(-676, 119, -59),
+    dimension: Dimension.TheNether,
+    finished: true,
+  }),
+  make({
+    name: "ネザーゲート(兎田ぺこら仮拠点)",
+    yomi: "ねざーげーと",
+    location: new Point3(3414, 69, 8020),
+    finished: true,
+  }),
+  make({
+    name: "ネザーゲート(兎田ぺこら仮拠点)",
+    yomi: "ねざーげーと",
+    location: new Point3(425, 52, 1004),
+    dimension: Dimension.TheNether,
+    finished: false,
+  }),
+  make({
+    name: "ロボ子さんの離島の別荘",
+    yomi: "ろぼこさんのりとうのべっそう",
+    location: new Point3(-971, 81, -159),
+    dimension: Dimension.TheNether,
+    finished: true,
+  }),
+  make({
+    name: "エンドポータルの部屋",
+    yomi: "エンドポータルの部屋",
+    location: new Point3(196, 34, -133),
+    dimension: Dimension.TheNether,
+    finished: true,
   }),
 ];
