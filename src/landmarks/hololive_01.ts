@@ -1054,4 +1054,10 @@ export const kHololive01Landmarks: Landmark[] = [
     dimension: Dimension.TheNether,
     finished: true,
   }),
+  make({
+    name: "地下帝国",
+    yomi: "ちかていこく",
+    location: new Point3(-428, 26, -778),
+    finished: false,
+  }),
 ];
