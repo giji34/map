@@ -1070,6 +1070,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "村人運搬用地下鉄",
     yomi: "むらびとうんぱんようちかてつ",
     location: new Point3(13, 63, -389),
+    markerLocation: new Point(-343, -352),
     corners: [
       new Point(13, -389),
       new Point(22, -389),
