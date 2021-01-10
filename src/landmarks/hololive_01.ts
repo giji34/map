@@ -1060,4 +1060,32 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(-428, 26, -778),
     finished: false,
   }),
+  make({
+    name: "サーカス団のテント",
+    yomi: "さーかすだんのてんと",
+    location: new Point3(106, 64, -595),
+    finished: false,
+  }),
+  make({
+    name: "村人運搬用地下鉄",
+    yomi: "むらびとうんぱんようちかてつ",
+    location: new Point3(13, 63, -389),
+    corners: [
+      new Point(13, -389),
+      new Point(22, -389),
+      new Point(22, -338),
+      new Point(-324, -338),
+      new Point(-324, -363),
+      new Point(-515, -363),
+      new Point(-515, -364),
+      new Point(-577, -364),
+    ],
+    finished: true,
+  }),
+  make({
+    name: "アイアンゴーレムトラップ",
+    yomi: "あいあんごーれむとらっぷ",
+    location: new Point3(7, 63, -370),
+    finished: true,
+  }),
 ];
