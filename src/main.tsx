@@ -315,8 +315,7 @@ export class MainComponent extends React.Component<{}, MainState> {
 
   private draw(ctx: CanvasRenderingContext2D) {
     ctx.save();
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     const scale = window.devicePixelRatio;
     ctx.scale(scale, scale);
