@@ -266,6 +266,21 @@ const kHololive01Buttons: JumpToButton[] = [
   },
 ];
 
+const kEnHololiveButtons: JumpToButton[] = [
+  {
+    world: "en_hololive",
+    location: new Point(350, -501),
+    dimension: Dimension.Overworld,
+    label: "オーバーワールド",
+  },
+  {
+    world: "en_hololive",
+    location: new Point(49, -58),
+    dimension: Dimension.TheNether,
+    label: "ネザー",
+  },
+];
+
 export class MainComponent extends React.Component<{}, MainState> {
   private readonly canvas: RefObject<HTMLCanvasElement> = createRef();
   private readonly xLabel: RefObject<HTMLDivElement> = createRef();
@@ -561,6 +576,7 @@ export class MainComponent extends React.Component<{}, MainState> {
           case "2434_main":
           case "2434_world06":
           case "hololive_01":
+          case "en_hololive":
             world = value;
             break;
         }
@@ -805,7 +821,7 @@ export class MainComponent extends React.Component<{}, MainState> {
               >
                 <div className="flexSpacer" />
                 <div className="warningMessageLine">
-                  本サイトの地図は、マインクラフトにじさんじサーバー・ホロライブサーバーの地図ではございません。
+                  本サイトの地図は、マインクラフトにじさんじサーバー・ホロライブサーバー・ENホロライブサーバーの地図ではございません。
                 </div>
                 <div className="warningMessageLine">
                   再現プロジェクトの、再現状況を公表するための地図です。
@@ -960,6 +976,34 @@ export class MainComponent extends React.Component<{}, MainState> {
             {this.state.activeMenu === "hololive_01" && (
               <div className="dropdownMenu">
                 {kHololive01Buttons.map((button) => (
+                  <div className="menuItem">
+                    <div
+                      className="menuItemContent menuItemBorder"
+                      onClick={moveTo(
+                        button.world,
+                        button.location,
+                        button.dimension
+                      )}
+                    >
+                      {button.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div style={{ width: "10px" }} />
+          <div className="menuItem clickable">
+            <div
+              className="menuItemContent"
+              onClick={onClickJumpTo("en_hololive")}
+            >
+              ENホロ鯖
+              <span className="pulldownMarker" />
+            </div>
+            {this.state.activeMenu === "en_hololive" && (
+              <div className="dropdownMenu">
+                {kEnHololiveButtons.map((button) => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"

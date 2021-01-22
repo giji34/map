@@ -6,7 +6,11 @@ export enum Dimension {
   TheEnd = 1,
 }
 
-export type World = "2434_main" | "2434_world06" | "hololive_01";
+export type World =
+  | "2434_main"
+  | "2434_world06"
+  | "hololive_01"
+  | "en_hololive";
 
 export type Landmark = {
   name: string;

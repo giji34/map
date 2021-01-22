@@ -3,11 +3,13 @@ import { Dimension, World } from "../landmark";
 import { Point } from "../point";
 import { k2434World06Landmarks } from "./2434_world06";
 import { kHololive01Landmarks } from "./hololive_01";
+import { kEnHololiveLandmarks } from "./en_hololive";
 
 export const kLandmarks = [
   ...k2434MainLandmarks,
   ...k2434World06Landmarks,
   ...kHololive01Landmarks,
+  ...kEnHololiveLandmarks,
 ];
 export const kRailways = [...k2434MainRailways];
 
@@ -33,37 +35,39 @@ if (landmarks.length === 0) {
   });
 }
 
-["2434_main", "2434_world06", "hololive_01"].forEach((world: World) => {
-  const topLeft = new Map<Dimension, Point>();
-  const rightBottom = new Map<Dimension, Point>();
-  for (const dimension of [
-    Dimension.Overworld,
-    Dimension.TheNether,
-    Dimension.TheEnd,
-  ]) {
-    const dimensionLandmarks = landmarks.filter(
-      (it) => it.dimension === dimension && it.world === world
-    );
-    const minX = dimensionLandmarks.reduce(
-      (accum, current) => Math.min(accum, current.position.x),
-      0
-    );
-    const maxX = dimensionLandmarks.reduce(
-      (accum, current) => Math.max(accum, current.position.x),
-      0
-    );
-    const minZ = dimensionLandmarks.reduce(
-      (accum, current) => Math.min(accum, current.position.z),
-      0
-    );
-    const maxZ = dimensionLandmarks.reduce(
-      (accum, current) => Math.max(accum, current.position.z),
-      0
-    );
+["2434_main", "2434_world06", "hololive_01", "en_hololive"].forEach(
+  (world: World) => {
+    const topLeft = new Map<Dimension, Point>();
+    const rightBottom = new Map<Dimension, Point>();
+    for (const dimension of [
+      Dimension.Overworld,
+      Dimension.TheNether,
+      Dimension.TheEnd,
+    ]) {
+      const dimensionLandmarks = landmarks.filter(
+        (it) => it.dimension === dimension && it.world === world
+      );
+      const minX = dimensionLandmarks.reduce(
+        (accum, current) => Math.min(accum, current.position.x),
+        0
+      );
+      const maxX = dimensionLandmarks.reduce(
+        (accum, current) => Math.max(accum, current.position.x),
+        0
+      );
+      const minZ = dimensionLandmarks.reduce(
+        (accum, current) => Math.min(accum, current.position.z),
+        0
+      );
+      const maxZ = dimensionLandmarks.reduce(
+        (accum, current) => Math.max(accum, current.position.z),
+        0
+      );
 
-    topLeft.set(dimension, new Point(minX, minZ));
-    rightBottom.set(dimension, new Point(maxX, maxZ));
+      topLeft.set(dimension, new Point(minX, minZ));
+      rightBottom.set(dimension, new Point(maxX, maxZ));
+    }
+    kLandmarksTopLeft.set(world, topLeft);
+    kLandmarksRightBottom.set(world, rightBottom);
   }
-  kLandmarksTopLeft.set(world, topLeft);
-  kLandmarksRightBottom.set(world, rightBottom);
-});
+);
