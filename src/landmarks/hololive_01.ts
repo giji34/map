@@ -1126,4 +1126,16 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(103, 76, -233),
     finished: false,
   }),
+  make({
+    name: "ネザーゲート",
+    yomi: "ねざーげーと",
+    location: new Point3(-7794, 70, -1251),
+    finished: true,
+  }),
+  make({
+    name: "麺屋ぼたんの看板",
+    yomi: "めんやぼたんのかんばん",
+    location: new Point3(-4609, 69, 1339),
+    finished: false,
+  }),
 ];
