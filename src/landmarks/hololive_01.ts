@@ -1135,7 +1135,29 @@ export const kHololive01Landmarks: Landmark[] = [
   make({
     name: "麺屋ぼたんの看板",
     yomi: "めんやぼたんのかんばん",
-    location: new Point3(-4609, 69, 1339),
+    location: new Point3(-4607, 71, 1409),
+    markerLocation: new Point(-4609, 1339),
+    finished: false,
+  }),
+  make({
+    name: "ポルカの酒場",
+    yomi: "ぽるかのさかば",
+    location: new Point3(201, 68, -434),
+    finished: false,
+  }),
+  make({
+    name: "AKUKIN建設本社",
+    yomi: ["あくきんけんせつほんしゃ", "akukinけんせつほんしゃ"],
+    location: new Point3(-246, 71, -532),
+    markerLocation: new Point(-267, -558),
+    corners: [
+      new Point(68, -416), // 旧事務所前
+      new Point(68, -457),
+      new Point(-93, -457),
+      new Point(-93, -515),
+      new Point(-245, -515),
+      new Point(-245, -533), // 本社前
+    ],
     finished: false,
   }),
 ];
