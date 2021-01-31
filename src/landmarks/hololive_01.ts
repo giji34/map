@@ -1172,4 +1172,38 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(592, 64, -234),
     finished: false,
   }),
+  make({
+    name: "Haachama Death Coaster",
+    yomi: "haachama death coaster",
+    location: new Point3(295, 126, -362),
+    corners: [
+      new Point(299, -366), // 観覧車
+      new Point(299, -435), // "地獄と地獄"
+      new Point(25, -435), // 桐生ココの新居上空
+      new Point(25, -534), // ぺこダム上空
+      new Point(-27, -534),
+      new Point(-27, -599), // キングオブハアチャマ上空
+      new Point(-426, -599),
+      new Point(-426, -644),
+      new Point(-428, -644),
+      new Point(-428, -656),
+      new Point(-430, -656),
+      new Point(-430, -785), // 地下帝国上空
+    ],
+    finished: true,
+  }),
+  make({
+    name: "BIGGEST AMAZING MAZE",
+    yomi: "biggest amazing maze",
+    location: new Point3(533, 64, -356),
+    markerLocation: new Point(533, -398),
+    finished: false,
+  }),
+  make({
+    name: "大空建設本社",
+    yomi: "おおぞらけんせつほんしゃ",
+    location: new Point3(-53, 67, -603),
+    markerLocation: new Point(-56, -613),
+    finished: true,
+  }),
 ];
