@@ -803,8 +803,8 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "5期生ビルジング",
-    yomi: "ごきせいびるじんぐ",
+    name: "ねぽらぽビル",
+    yomi: ["ごきせいびるじんぐ", "ねぽらぽびる"],
     location: new Point3(184, 69, -478),
     finished: false,
   }),
@@ -1218,5 +1218,19 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "だれかのかりきょてん",
     location: new Point3(696, 70, -268),
     finished: true,
+  }),
+  make({
+    name: "不知火建設地上絵",
+    yomi: "しらぬいけんせつちじょうえ",
+    location: new Point3(-4994, 74, 2181),
+    markerLocation: new Point(-4994, 2110),
+    finished: false,
+  }),
+  make({
+    name: "???",
+    yomi: "???",
+    location: new Point3(-5120, 72, 1536),
+    markerLocation: new Point(-5120, 1471),
+    finished: false,
   }),
 ];
