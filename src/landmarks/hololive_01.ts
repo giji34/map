@@ -152,7 +152,7 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "うさだぺこらのいえ",
     location: new Point3(303, 68, -176),
     wikiIndex: 19,
-    finished: false,
+    finished: true,
   }),
   make({
     name: "さくらみこの家",
@@ -477,7 +477,7 @@ export const kHololive01Landmarks: Landmark[] = [
     location: new Point3(-5005, 55, -765),
     markerLocation: new Point(-5008, -770),
     wikiIndex: 69,
-    finished: false,
+    finished: true,
   }),
   make({
     name: "人間砲台",
@@ -610,7 +610,7 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "きょうかい",
     location: new Point3(448, 102, -174),
     markerLocation: new Point(464, -182),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "まつりの地下室",
@@ -650,7 +650,7 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "れんがのおうち",
     location: new Point3(133, 69, -140),
     markerLocation: new Point(124, -145),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "誰かの作業台",
@@ -669,20 +669,20 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "あやすばしんきょてん",
     location: new Point3(-125, 71, -705),
     markerLocation: new Point(-135, -746),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "LOVE HOUSE まつりちゃ先輩とルーナの愛の巣",
     yomi: "love house まつりちゃせんぱいとるーなのあいのす",
     location: new Point3(512, 72, -446),
     markerLocation: new Point(515, -465),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "ハート型のオブジェ",
     yomi: "はーとがたのおぶじぇ",
     location: new Point3(542, 74, -497),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "目印タワー",
@@ -716,7 +716,7 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "hololive 5 star barn",
     location: new Point3(110, 76, -171),
     markerLocation: new Point(103, -182),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "自動羊毛回収機",
@@ -728,7 +728,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "UPSIDE DOWN HOUSE",
     yomi: "upside down house",
     location: new Point3(90, 70, -146),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "YAGOO像(南)",
@@ -774,20 +774,20 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "スライムトラップ",
     yomi: "すらいむとらっぷ",
     location: new Point3(-88, 64, -741),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "LOVE♥LOVE AQUAMARINEGO! ボロ寮舎",
     yomi: "らぶらぶあくあまりんごうぼろりょうしゃ",
     location: new Point3(105, 63, -387),
     markerLocation: new Point(107, -399),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "LOVE♥LOVE AQUA MARINE GO!",
     yomi: "らぶらぶあくあまりんごう",
     location: new Point3(75, 64, -397),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "紫咲シオンの新居",
@@ -830,13 +830,13 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "ペコの地上絵",
     yomi: "ぺこのちじょうえ",
     location: new Point3(-2417, 72, 1345),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "シュヴァンゲリオン",
     yomi: ["しゅゔぁんげりおん"],
     location: new Point3(21, 64, -598),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "アイアンゴーレムトラップ",
@@ -866,7 +866,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "スナイパーぼたんクス",
     yomi: "すないぱーぼたんくす",
     location: new Point3(176, 64, -589),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "ふれあい公園",
@@ -890,7 +890,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "ホラーハウス",
     yomi: "ほらーはうす",
     location: new Point3(141, 66, -403),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "ポーション自販機",
@@ -920,13 +920,13 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "わため寿司",
     yomi: "わためずし",
     location: new Point3(456, 72, -527),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "あん肝ハウス",
     yomi: "あんきもハウス",
     location: new Point3(540, 72, -188),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "月の館",
@@ -950,7 +950,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "ドラウンドトラップ(ドラミングタワー)",
     yomi: ["どらうんどとらっぷ", "どらみんぐたわー"],
     location: new Point3(536, 222, 510),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "バベルの塔",
@@ -1004,7 +1004,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "チェストに座ったころね先輩の像",
     yomi: "ちぇすとにすわったころねせんぱいのぞう",
     location: new Point3(69, 70, -146),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "キング・オブ・ハーチャマ",
@@ -1064,7 +1064,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "サーカス団のテント",
     yomi: "さーかすだんのてんと",
     location: new Point3(106, 64, -595),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "村人運搬用地下鉄",
@@ -1099,7 +1099,7 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "HOLOLIVE大浴場",
     yomi: "hololiveだいよくじょう",
     location: new Point3(187, 64, -643),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "プレゼントツリー",
@@ -1158,13 +1158,13 @@ export const kHololive01Landmarks: Landmark[] = [
       new Point(-245, -515),
       new Point(-245, -533), // 本社前
     ],
-    finished: false,
+    finished: true,
   }),
   make({
     name: "星街すいせいの新居",
     yomi: "ほしまちすいせいのしんきょ",
     location: new Point3(74, 63, -698),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "つのまきじゃんけん",
@@ -1211,7 +1211,7 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "かなたちじょうえ",
     location: new Point3(-4991, 71, 1919),
     markerLocation: new Point(-4992, 1856),
-    finished: false,
+    finished: true,
   }),
   make({
     name: "誰かの仮拠点",
@@ -1231,6 +1231,55 @@ export const kHololive01Landmarks: Landmark[] = [
     yomi: "???",
     location: new Point3(-5120, 72, 1536),
     markerLocation: new Point(-5120, 1471),
+    finished: false,
+  }),
+  make({
+    name: "ネザーゲート(かなた地上絵)",
+    yomi: "かなたちじょうえ",
+    dimension: Dimension.TheNether,
+    location: new Point3(-631, 59, 239),
+    finished: true,
+  }),
+  make({
+    name: "砂漠バイオームへの通路",
+    yomi: "さばくばいおーむへのつうろ",
+    dimension: Dimension.TheNether,
+    location: new Point3(-632, 59, 237),
+    corners: [
+      new Point(-632, 237), // かなた地上絵
+      new Point(-632, -110), // 合流
+    ],
+    markerLocation: new Point(-632, 61),
+    finished: true,
+  }),
+  make({
+    name: "黒い羊記念像",
+    yomi: "くろいひつじきねんぞう",
+    location: new Point3(605, 64, -213),
+    finished: true,
+  }),
+  make({
+    name: "Moonaの新居",
+    yomi: "Moonaのしんきょ",
+    location: new Point3(11, 81, -190),
+    finished: false,
+  }),
+  make({
+    name: "holoID Shop",
+    yomi: "holoID Shop",
+    location: new Point3(36, 68, -232),
+    finished: false,
+  }),
+  make({
+    name: "麺屋ぼたん大空建築支店",
+    yomi: "めんやぼたんおおぞらけんちくしてん",
+    location: new Point3(-57, 67, -588),
+    finished: false,
+  }),
+  make({
+    name: "大観覧車風の家",
+    yomi: "だいかんらんしゃふうのいえ",
+    location: new Point3(0, 65, -644),
     finished: false,
   }),
 ];
