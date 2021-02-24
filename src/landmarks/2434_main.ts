@@ -2359,6 +2359,13 @@ export const k2434MainLandmarks: Landmark[] = [
     markerLocation: new Point(-4792, 4649),
     finished: false,
   }),
+  make({
+    name: "夜見地上絵",
+    yomi: "よるみちじょうえ",
+    location: new Point3(-30207, 87, -22783),
+    markerLocation: new Point(-30208, -22849),
+    finished: false,
+  }),
 
   // 沈没船
   make({

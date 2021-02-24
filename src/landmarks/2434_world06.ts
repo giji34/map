@@ -46,4 +46,10 @@ export const k2434World06Landmarks: Landmark[] = [
     wikiIndex: 295,
     finished: false,
   }),
+  make({
+    name: "DDD神社",
+    yomi: ["DDDじんじゃ", "だいやだいすきだいみょうじんじんじゃ"],
+    location: new Point3(148, 105, -29),
+    finished: false,
+  }),
 ];

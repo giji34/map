@@ -28,7 +28,7 @@ export const kHololive01Landmarks: Landmark[] = [
   make({
     name: "しけ村",
     yomi: "しけむら",
-    location: new Point3(356, 64, -304),
+    location: new Point3(314, 66, -323),
     markerLocation: new Point(366, -406),
     wikiIndex: 3,
     finished: true,
@@ -803,8 +803,8 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "ねぽらぽビル",
-    yomi: ["ごきせいびるじんぐ", "ねぽらぽびる"],
+    name: "ねぽらぼビル",
+    yomi: ["ごきせいびるじんぐ", "ねぽらぼびる"],
     location: new Point3(184, 69, -478),
     finished: false,
   }),
@@ -954,7 +954,7 @@ export const kHololive01Landmarks: Landmark[] = [
   }),
   make({
     name: "バベルの塔",
-    yomi: "ばべるのとう",
+    yomi: ["ばべるのとう", "wall haachama"],
     location: new Point3(469, 72, -776),
     finished: false,
   }),
@@ -1227,8 +1227,8 @@ export const kHololive01Landmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "???",
-    yomi: "???",
+    name: "PEKOMOONA",
+    yomi: "pekomoona",
     location: new Point3(-5120, 72, 1536),
     markerLocation: new Point(-5120, 1471),
     finished: false,
@@ -1280,6 +1280,19 @@ export const kHololive01Landmarks: Landmark[] = [
     name: "大観覧車風の家",
     yomi: "だいかんらんしゃふうのいえ",
     location: new Point3(0, 65, -644),
+    finished: false,
+  }),
+  make({
+    name: "KUREIJI KENSETSU OFFICE",
+    yomi: "kureiji kensetsu office",
+    location: new Point3(-11, 64, -273),
+    finished: true,
+  }),
+  make({
+    name: "しけ村エリート建設地上絵",
+    yomi: "しけむらえりーとけんせつちじょうえ",
+    location: new Point3(-5377, 70, 2054),
+    markerLocation: new Point(-5377, 1981),
     finished: false,
   }),
 ];
