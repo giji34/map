@@ -2366,6 +2366,32 @@ export const k2434MainLandmarks: Landmark[] = [
     markerLocation: new Point(-30208, -22849),
     finished: false,
   }),
+  make({
+    name: "誰かの作業台",
+    yomi: "だれかのさぎょうだい",
+    location: new Point3(-29602, 64, -19558),
+    finished: true,
+  }),
+  make({
+    name: "夜見仮拠点",
+    yomi: "よるみかりきょてん",
+    location: new Point3(-28274, 75, -18364),
+    finished: false,
+  }),
+  make({
+    name: "ガーディアントラップ行き線路",
+    yomi: "がーでぃあんとらっぷいきつうろ",
+    dimension: Dimension.TheNether,
+    location: new Point3(-576, 73, 624),
+    corners: [
+      new Point(-485, 843), // ガーディアントラップ
+      new Point(-564, 843),
+      new Point(-564, 662),
+      new Point(-576, 662),
+      new Point(-576, 626), // 🌸ンボ宮殿
+    ],
+    finished: true,
+  }),
 
   // 沈没船
   make({
