@@ -1310,12 +1310,12 @@ export const k2434MainLandmarks: Landmark[] = [
     finished: false,
   }),
   make({
-    name: "ニュイ・ソシエールの家（仮）",
-    yomi: "にゅいそしえーるのいえ",
+    name: "majonoie",
+    yomi: ["majonoie", "まじょのいえ"],
     location: new Point3(326, 69, 266),
     markerLocation: new Point(332, 228),
     wikiIndex: 223,
-    finished: false,
+    finished: true,
   }),
   make({
     name: "ラトナ・プティの家(仮)",
@@ -1330,7 +1330,7 @@ export const k2434MainLandmarks: Landmark[] = [
     location: new Point3(654, 64, 14),
     markerLocation: new Point(667, 6),
     wikiIndex: 225,
-    finished: false,
+    finished: true,
   }),
   make({
     name: "ぷりん",
@@ -2198,7 +2198,7 @@ export const k2434MainLandmarks: Landmark[] = [
     yomi: ["はとどけい", "よるみかんしとう"],
     location: new Point3(234, 69, 143),
     markerLocation: new Point(251, 130),
-    finished: true,
+    finished: false,
   }),
   make({
     name: "SOS",
@@ -2392,6 +2392,14 @@ export const k2434MainLandmarks: Landmark[] = [
     ],
     finished: true,
   }),
+  make({
+    name: "クリスマスタウン",
+    yomi: "くりすますたうん",
+    location: new Point3(-2443, 63, 1280),
+    finished: false,
+  }),
+
+  // /*latest*/
 
   // 沈没船
   make({
