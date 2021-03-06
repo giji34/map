@@ -7,7 +7,6 @@
 
 set -eu
 
-COMMIT_HASH_BEGIN=
 CHANGED_REGIONS=$(mktemp)
 if type nproc 2>&1 >/dev/null; then
   NPROC=$(nproc)
@@ -17,15 +16,15 @@ fi
 
 (
   cd "$BACKUP_DIR"
-  git config diff.renameLimit 2147483647
   (
     if [ "$1" = "all" ]; then
       find world world_nether/DIM-1 world_the_end/DIM1 -name '*\.nbt\.z'
     else
-      COMMIT_HASH_BEGIN=$(git rev-parse HEAD)
-      COMMIT_HASH_END=HEAD
-      git pull --ff-only origin master
-      git diff --name-only $COMMIT_HASH_BEGIN $COMMIT_HASH_END \
+      REV_BEGIN=$(hg log --template '{rev}' --limit 1)
+      hg pull
+      hg update
+      REV_END=$(hg log --template '{rev}' --limit 1)
+      hg status --rev $REV_BEGIN:$REV_END --template '{path}\n' \
         | grep \.nbt\.z$
     fi
   ) | sed 's:\(.*\)/c[.]\([0-9-]*\)[.]\([0-9-]*\)[.]nbt[.]z:\1 \2 \3:g' \
