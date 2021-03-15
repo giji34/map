@@ -17,7 +17,8 @@ import {
 } from "./landmarks/const";
 import { clamp } from "./number";
 import { OverScroller } from "./scroller";
-import { Point } from "./point";
+import { Border, Point } from "./point";
+import { kHololive01Borders } from "./landmarks/hololive_01";
 
 const kFileList = new Map<World, string[]>([
   ["2434_main", kFileList2434Main],
@@ -301,12 +302,27 @@ export class MainComponent extends React.Component<{}, MainState> {
   private fragmentUpdateTimer: number | undefined;
   private touchEventDetected: boolean = false;
   private readonly scroller = new OverScroller();
+  private showWorldBorder: boolean = false;
 
   constructor(props: {}) {
     super(props);
     this.state = createMainState();
     window.addEventListener("resize", () => {
       this.setState(this.state);
+    });
+    window.addEventListener("keydown", (ev: KeyboardEvent) => {
+      if (ev.key.toLowerCase() !== "b") {
+        return;
+      }
+      this.showWorldBorder = true;
+      this.isRedrawNeeded = true;
+    });
+    window.addEventListener("keyup", (ev: KeyboardEvent) => {
+      if (ev.key.toLowerCase() !== "b") {
+        return;
+      }
+      this.showWorldBorder = false;
+      this.isRedrawNeeded = true;
     });
   }
 
@@ -337,6 +353,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     const scale = window.devicePixelRatio;
     ctx.scale(scale, scale);
 
+    // draw map tiles
     const { x: cx, z: cz } = this.center;
     const blocksPerPixel = this.state.blocksPerPixel;
     const width = window.innerWidth * blocksPerPixel;
@@ -383,6 +400,34 @@ export class MainComponent extends React.Component<{}, MainState> {
       }
     }
 
+    // draw worldborders
+    if (this.showWorldBorder) {
+      let borders: Border[] = [];
+      if (this.state.world === "hololive_01") {
+        borders = kHololive01Borders;
+      }
+      for (const border of borders) {
+        if (border.dimension !== this.state.dimension) {
+          continue;
+        }
+        ctx.globalAlpha = 1;
+        ctx.save();
+        ctx.beginPath();
+        let p = this.worldToClient(this.state, border.points[0]);
+        ctx.moveTo(p.x, p.z);
+        for (let i = 1; i < border.points.length; i++) {
+          p = this.worldToClient(this.state, border.points[i]);
+          ctx.lineTo(p.x, p.z);
+        }
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "red";
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+
+    // draw landmarks
     const elapsed =
       (Date.now() - this.state.billboardsVisibilityChangedTimestamp) / 1000;
     let alpha = 1;

@@ -1,4 +1,4 @@
-import { Point, Point3 } from "../point";
+import { Border, Point, Point3 } from "../point";
 import { createLandmark, Dimension, Landmark } from "../landmark";
 
 function make(params: {
@@ -15,6 +15,59 @@ function make(params: {
 }): Landmark {
   return createLandmark({ ...params, world: "hololive_01" });
 }
+
+export const kHololive01Borders: Border[] = [
+  // ホロ村
+  new Border("hololive_01", Dimension.Overworld, [
+    new Point(248, 16),
+    new Point(658, -99),
+    new Point(709, -257),
+    new Point(707, -275),
+    new Point(707, -275),
+    new Point(589, -669),
+    new Point(524, -828),
+    new Point(403, -834),
+    new Point(-398, -812),
+    new Point(-508, -809),
+    new Point(-508, -740),
+    new Point(-562, -461),
+    new Point(-708, -333),
+    new Point(-706, -280),
+    new Point(-151, -277),
+    new Point(-31, -153),
+    new Point(82, 4),
+  ]),
+  // ドラウンドトラップ
+  new Border("hololive_01", Dimension.Overworld, [
+    new Point(564, 495),
+    new Point(496, 492),
+    new Point(494, 569),
+    new Point(569, 566),
+  ]),
+  // TTT
+  new Border("hololive_01", Dimension.Overworld, [
+    new Point(-5056, -732),
+    new Point(-4898, -728),
+    new Point(-4693, -813),
+    new Point(-4701, -958),
+    new Point(-4880, -953),
+    new Point(-5057, -822),
+  ]),
+  // ガーディアントラップ
+  new Border("hololive_01", Dimension.Overworld, [
+    new Point(-5388, -478),
+    new Point(-5388, -453),
+    new Point(-5361, -452),
+    new Point(-5362, -478),
+  ]),
+  // かなた地上絵
+  new Border("hololive_01", Dimension.Overworld, [
+    new Point(-5064, 1838),
+    new Point(-5065, 2012),
+    new Point(-4915, 2015),
+    new Point(-4918, 1836),
+  ]),
+];
 
 export const kHololive01Landmarks: Landmark[] = [
   make({
