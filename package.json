@@ -8,7 +8,8 @@
     "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'tool/*.ts' 'public/style/*.css'",
     "landmarks": "ts-node tool/export.ts mca2png > landmarks.tsv",
     "imagelist": "sh tool/imagelist.sh",
-    "dev": "ts-node dev.ts"
+    "dev": "ts-node dev.ts",
+    "worldborders": "ts-node tool/export-worldborders.ts"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
