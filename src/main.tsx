@@ -406,23 +406,33 @@ export class MainComponent extends React.Component<{}, MainState> {
       if (this.state.world === "hololive_01") {
         borders = kHololive01Borders;
       }
+      const radius = 4;
       for (const border of borders) {
         if (border.dimension !== this.state.dimension) {
           continue;
         }
+        const path = new Path2D();
         ctx.globalAlpha = 1;
         ctx.save();
-        ctx.beginPath();
         let p = this.worldToClient(this.state, border.points[0]);
-        ctx.moveTo(p.x, p.z);
+        ctx.beginPath();
+        ctx.ellipse(p.x, p.z, radius, radius, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        path.moveTo(p.x, p.z);
         for (let i = 1; i < border.points.length; i++) {
           p = this.worldToClient(this.state, border.points[i]);
-          ctx.lineTo(p.x, p.z);
+          path.lineTo(p.x, p.z);
+          ctx.beginPath();
+          ctx.ellipse(p.x, p.z, radius, radius, 0, 0, 2 * Math.PI);
+          ctx.fillStyle = "red";
+          ctx.fill();
         }
+        path.closePath();
         ctx.lineWidth = 2;
         ctx.strokeStyle = "red";
-        ctx.closePath();
-        ctx.stroke();
+        ctx.stroke(path);
+
         ctx.restore();
       }
     }
