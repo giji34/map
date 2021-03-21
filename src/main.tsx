@@ -9,6 +9,7 @@ import { kFileList as kFileList2434Main } from "./imagelists/2434_main";
 import { kFileList as kFileList2434World06 } from "./imagelists/2434_world06";
 import { kFileList as kFileListHololive01 } from "./imagelists/hololive_01";
 import { kFileList as kFileListEnHololive } from "./imagelists/en_hololive";
+import { kFileList as kFileListHololive00 } from "./imagelists/hololive_00";
 import { Dimension, World } from "./landmark";
 import {
   kLandmarks,
@@ -25,6 +26,7 @@ const kFileList = new Map<World, string[]>([
   ["2434_world06", kFileList2434World06],
   ["hololive_01", kFileListHololive01],
   ["en_hololive", kFileListEnHololive],
+  ["hololive_00", kFileListHololive00],
 ]);
 
 type Menu = World;
@@ -281,6 +283,15 @@ const kEnHololiveButtons: JumpToButton[] = [
     location: new Point(49, -58),
     dimension: Dimension.TheNether,
     label: "ネザー",
+  },
+];
+
+const kHololive00Buttons: JumpToButton[] = [
+  {
+    world: "hololive_00",
+    location: new Point(-47, -136),
+    dimension: Dimension.Overworld,
+    label: "オーバーワールド",
   },
 ];
 
@@ -1005,6 +1016,34 @@ export class MainComponent extends React.Component<{}, MainState> {
             {this.state.activeMenu === "2434_world06" && (
               <div className="dropdownMenu">
                 {k2434World06Buttons.map((button) => (
+                  <div className="menuItem">
+                    <div
+                      className="menuItemContent menuItemBorder"
+                      onClick={moveTo(
+                        button.world,
+                        button.location,
+                        button.dimension
+                      )}
+                    >
+                      {button.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div style={{ width: "10px" }} />
+          <div className="menuItem clickable">
+            <div
+              className="menuItemContent"
+              onClick={onClickJumpTo("hololive_00")}
+            >
+              旧ホロ鯖
+              <span className="pulldownMarker" />
+            </div>
+            {this.state.activeMenu === "hololive_00" && (
+              <div className="dropdownMenu">
+                {kHololive00Buttons.map((button) => (
                   <div className="menuItem">
                     <div
                       className="menuItemContent menuItemBorder"
