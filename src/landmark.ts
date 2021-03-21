@@ -13,6 +13,19 @@ export type World =
   | "en_hololive"
   | "hololive_00";
 
+export function isWorld(x: any): x is World {
+  if (typeof x !== "string") {
+    return false;
+  }
+  return (
+    x === "2434_main" ||
+    x === "2434_world06" ||
+    x === "hololive_01" ||
+    x === "en_hololive" ||
+    x === "hololive_00"
+  );
+}
+
 export type Landmark = {
   name: string;
   yomi: string | string[]; // name のローマ字表記. 別名がある場合は配列にする

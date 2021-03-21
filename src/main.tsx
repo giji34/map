@@ -10,7 +10,7 @@ import { kFileList as kFileList2434World06 } from "./imagelists/2434_world06";
 import { kFileList as kFileListHololive01 } from "./imagelists/hololive_01";
 import { kFileList as kFileListEnHololive } from "./imagelists/en_hololive";
 import { kFileList as kFileListHololive00 } from "./imagelists/hololive_00";
-import { Dimension, World } from "./landmark";
+import { Dimension, isWorld, World } from "./landmark";
 import {
   kLandmarks,
   kLandmarksRightBottom,
@@ -640,13 +640,8 @@ export class MainComponent extends React.Component<{}, MainState> {
       const key = keyAndValue[0];
       if (key === "world") {
         const value = keyAndValue[1];
-        switch (value) {
-          case "2434_main":
-          case "2434_world06":
-          case "hololive_01":
-          case "en_hololive":
-            world = value;
-            break;
+        if (isWorld(value)) {
+          world = value;
         }
       } else {
         const value = parseFloat(keyAndValue[1]);
