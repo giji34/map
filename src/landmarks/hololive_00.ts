@@ -23,4 +23,10 @@ export const kHololive00Landmarks: Landmark[] = [
     location: new Point3(12, 63, -230),
     finished: false,
   }),
+  make({
+    name: "新宝島ステージ",
+    yomi: "しんたからじますてーじ",
+    location: new Point3(25, 63, -198),
+    finished: true,
+  }),
 ];
