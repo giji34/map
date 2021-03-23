@@ -53,4 +53,17 @@ export const kHololive00Landmarks: Landmark[] = [
     location: new Point3(-155, 93, -113),
     finished: false,
   }),
+  make({
+    name: "風車",
+    yomi: "ふうしゃ",
+    location: new Point3(391, 67, -208),
+    markerLocation: new Point(391, -227),
+    finished: false,
+  }),
+  make({
+    name: "エチチコンロ",
+    yomi: "えちちこんろ",
+    location: new Point3(-80, 67, -75),
+    finished: false,
+  }),
 ];
