@@ -42,7 +42,7 @@ export class MainComponent extends React.Component<{}, MainState> {
     };
     return (
       <>
-        <iframe className="frame" src={`/${this.state.world}`} />
+        <iframe className="frame" src={`/${this.state.world}/`} />
         <div className="menu">
           <div className="menuItem">
             <div className="menuItemContent" style={{ fontSize: 18 }}>
