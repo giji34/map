@@ -24,15 +24,13 @@ body {
   cursor: pointer;
 }
 
-.canvas {
+.frame {
   position: absolute;
-  top: 0;
+  top: 40px;
   left: 0;
   min-width: 100%;
-  min-height: 100%;
-  cursor: crosshair;
-  background-image: url("../images/bg.png");
-  background-position: 7px 17px;
+  min-height: calc(100% - 40px);
+  border: none;
 }
 
 .menu {
@@ -68,173 +66,6 @@ body {
 
 .menuItem:hover {
   background-color: royalblue;
-}
-
-.dropdownMenu {
-  top: 40px;
-  display: flex;
-  border: solid 1px midnightblue;
-  background-color: cornflowerblue;
-  flex-direction: column;
-}
-
-.coordinateLabel {
-  display: flex;
-  flex-direction: column;
-  pointer-events: auto;
-}
-
-.coordinateValue {
-  flex-grow: 0;
-  line-height: 20px;
-  padding-right: 10px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.billboardsLegendContainer {
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
-  user-select: none;
-  -moz-user-select: none;
-  min-height: 100%;
-  width: var(--billboardLegendWidth);
-}
-
-.billboardsLegendSpacer {
-  flex-grow: 1;
-  width: 0;
-}
-
-.billboardsLegend {
-  display: flex;
-  flex-direction: column;
-  --billboardLegendWidth: 160px;
-  background-color: azure;
-  width: var(--billboardLegendWidth);
-  height: 100px;
-  z-index: 3;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border: solid 1px black;
-}
-
-.billboardsLegendCell {
-  margin: 5px;
-  font-size: 14px;
-  height: 20px;
-  line-height: 20px;
-}
-
-.billboardsLegendColor {
-  width: 40px;
-  height: 20px;
-  display: flex;
-  margin-left: 10px;
-  margin-right: 5px;
-  border: solid 1px;
-}
-
-.pulldownMarker {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 4px;
-  vertical-align: middle;
-  border-top: 4px dashed;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-}
-
-.attentionPopupBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-  background-color: rgba(0, 0, 0, 0.8);
-  user-select: none;
-  -moz-user-select: none;
-}
-
-.warningMessage {
-  padding: 20px;
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  top: 25%;
-  left: 25%;
-  background-color: pink;
-  pointer-events: none;
-  font-size: 25px;
-}
-
-.warningMessageLine {
-  text-align: center;
-  margin: 10px;
-}
-
-.fade {
-  opacity: 1;
-}
-
-.fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 0.3s;
-}
-
-.fade-enter-done {
-  opacity: 1;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: 0.3s;
-}
-
-.fade-exit-done {
-  opacity: 0;
-}
-
-.confirmButton {
-  width: 400px;
-  height: 50px;
-  background-color: hotpink;
-  line-height: 50px;
-  text-align: center;
-  margin: auto;
-  border: solid 2px mediumvioletred;
-  border-radius: 26px;
-  pointer-events: auto;
-}
-
-.confirmButton:active {
-  background-color: mediumvioletred;
-  border: solid 2px hotpink;
-  color: white;
-}
-
-.reticule {
-  --reticule-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  pointer-events: none;
-  overflow: visible;
 }
 
 .flexSpacer {
