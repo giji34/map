@@ -53,35 +53,30 @@ export class MainComponent extends React.Component<{}, MainState> {
           <div className="menuItem clickable">
             <div className="menuItemContent" onClick={moveTo("2434_main")}>
               にじ鯖メイン
-              <span className="pulldownMarker" />
             </div>
           </div>
           <div style={{ width: "10px" }} />
           <div className="menuItem clickable">
             <div className="menuItemContent" onClick={moveTo("2434_world06")}>
               にじ鯖新規ワールド
-              <span className="pulldownMarker" />
             </div>
           </div>
           <div style={{ width: "10px" }} />
           <div className="menuItem clickable">
             <div className="menuItemContent" onClick={moveTo("hololive_00")}>
               旧ホロ鯖
-              <span className="pulldownMarker" />
             </div>
           </div>
           <div style={{ width: "10px" }} />
           <div className="menuItem clickable">
             <div className="menuItemContent" onClick={moveTo("hololive_01")}>
               新ホロ鯖
-              <span className="pulldownMarker" />
             </div>
           </div>
           <div style={{ width: "10px" }} />
           <div className="menuItem clickable">
             <div className="menuItemContent" onClick={moveTo("en_hololive")}>
               ENホロ鯖
-              <span className="pulldownMarker" />
             </div>
           </div>
           <div className="hspacer" />
