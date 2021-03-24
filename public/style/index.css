@@ -24,15 +24,13 @@ body {
   cursor: pointer;
 }
 
-.canvas {
+.frame {
   position: absolute;
-  top: 0;
+  top: 40px;
   left: 0;
   min-width: 100%;
-  min-height: 100%;
-  cursor: crosshair;
-  background-image: url("../images/bg.png");
-  background-position: 7px 17px;
+  min-height: calc(100% - 40px);
+  border: none;
 }
 
 .menu {
@@ -90,50 +88,6 @@ body {
   padding-right: 10px;
   font-size: 14px;
   font-weight: bold;
-}
-
-.billboardsLegendContainer {
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
-  user-select: none;
-  -moz-user-select: none;
-  min-height: 100%;
-  width: var(--billboardLegendWidth);
-}
-
-.billboardsLegendSpacer {
-  flex-grow: 1;
-  width: 0;
-}
-
-.billboardsLegend {
-  display: flex;
-  flex-direction: column;
-  --billboardLegendWidth: 160px;
-  background-color: azure;
-  width: var(--billboardLegendWidth);
-  height: 100px;
-  z-index: 3;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border: solid 1px black;
-}
-
-.billboardsLegendCell {
-  margin: 5px;
-  font-size: 14px;
-  height: 20px;
-  line-height: 20px;
-}
-
-.billboardsLegendColor {
-  width: 40px;
-  height: 20px;
-  display: flex;
-  margin-left: 10px;
-  margin-right: 5px;
-  border: solid 1px;
 }
 
 .pulldownMarker {
@@ -208,33 +162,6 @@ body {
 
 .fade-exit-done {
   opacity: 0;
-}
-
-.confirmButton {
-  width: 400px;
-  height: 50px;
-  background-color: hotpink;
-  line-height: 50px;
-  text-align: center;
-  margin: auto;
-  border: solid 2px mediumvioletred;
-  border-radius: 26px;
-  pointer-events: auto;
-}
-
-.confirmButton:active {
-  background-color: mediumvioletred;
-  border: solid 2px hotpink;
-  color: white;
-}
-
-.reticule {
-  --reticule-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  pointer-events: none;
-  overflow: visible;
 }
 
 .flexSpacer {
