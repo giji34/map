@@ -1,5 +1,3 @@
-import { Dimension, World } from "./landmark";
-
 export class Point {
   readonly x: number;
   readonly z: number;
@@ -28,12 +26,4 @@ export class Point3 {
   clone(): Point3 {
     return new Point3(this.x, this.y, this.z);
   }
-}
-
-export class Border {
-  constructor(
-    readonly world: World,
-    readonly dimension: Dimension,
-    readonly points: Point[]
-  ) {}
 }

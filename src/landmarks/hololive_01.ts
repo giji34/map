@@ -1,4 +1,4 @@
-import { Border, Point, Point3 } from "../point";
+import { Point, Point3 } from "../point";
 import { createLandmark, Dimension, Landmark } from "../landmark";
 
 function make(params: {
@@ -15,102 +15,6 @@ function make(params: {
 }): Landmark {
   return createLandmark({ ...params, world: "hololive_01" });
 }
-
-export const kHololive01Borders: Border[] = [
-  // ホロ村
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(248, 16),
-    new Point(658, -99),
-    new Point(709, -257),
-    new Point(707, -275),
-    new Point(639, -404),
-    new Point(613, -680),
-    new Point(524, -828),
-    new Point(403, -834),
-    new Point(94, -756),
-    new Point(-398, -812),
-    new Point(-508, -809),
-    new Point(-506, -745),
-    new Point(-433, -588),
-    new Point(-299, -504),
-    new Point(-119, -490),
-    new Point(-95, -282),
-    new Point(-31, -153),
-    new Point(82, 4),
-  ]),
-  // ドラウンドトラップ
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(564, 495),
-    new Point(496, 492),
-    new Point(494, 569),
-    new Point(569, 566),
-  ]),
-  // TTT
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(-5056, -732),
-    new Point(-4898, -728),
-    new Point(-4693, -813),
-    new Point(-4701, -958),
-    new Point(-4880, -953),
-    new Point(-5057, -822),
-  ]),
-  // ガーディアントラップ
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(-5388, -478),
-    new Point(-5388, -453),
-    new Point(-5361, -452),
-    new Point(-5362, -478),
-  ]),
-  // かなた地上絵
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(-5064, 1838),
-    new Point(-5065, 2012),
-    new Point(-4915, 2015),
-    new Point(-4918, 1836),
-  ]),
-  // エンドポータル
-  new Border("hololive_01", Dimension.Overworld, [
-    new Point(1508, -1020),
-    new Point(1507, -1036),
-    new Point(1473, -1035),
-    new Point(1475, -1023),
-  ]),
-  // ネザー
-  new Border("hololive_01", Dimension.TheNether, [
-    new Point(56, -37),
-    new Point(57, 77),
-    new Point(75, 77),
-    new Point(75, -53),
-    new Point(191, -56),
-    new Point(192, -40),
-    new Point(221, -40),
-    new Point(221, -108),
-    new Point(209, -147),
-    new Point(185, -147),
-    new Point(182, -74),
-    new Point(90, -74),
-    new Point(70, -129),
-    new Point(32, -128),
-    new Point(12, -112),
-    new Point(-589, -111),
-    new Point(-598, -135),
-    new Point(-611, -135),
-    new Point(-619, -117),
-    new Point(-680, -118),
-    new Point(-679, -21),
-    new Point(-661, -22),
-    new Point(-663, -108),
-    new Point(-634, -107),
-    new Point(-634, 232),
-    new Point(-636, 243),
-    new Point(-624, 244),
-    new Point(-627, 235),
-    new Point(-627, -101),
-    new Point(-25, -100),
-    new Point(-28, -72),
-    new Point(8, -37),
-  ]),
-];
 
 export const kHololive01Landmarks: Landmark[] = [
   make({
