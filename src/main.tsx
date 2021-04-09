@@ -79,6 +79,11 @@ export class MainComponent extends React.Component<{}, MainState> {
               ENホロ鯖
             </div>
           </div>
+          <div className="menuItem clickable">
+            <div className="menuItemContent" onClick={moveTo("sightseeing")}>
+              観光鯖
+            </div>
+          </div>
           <div className="hspacer" />
         </div>
       </>

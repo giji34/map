@@ -11,7 +11,8 @@ export type World =
   | "2434_world06"
   | "hololive_01"
   | "en_hololive"
-  | "hololive_00";
+  | "hololive_00"
+  | "sightseeing";
 
 export function isWorld(x: any): x is World {
   if (typeof x !== "string") {
@@ -22,7 +23,8 @@ export function isWorld(x: any): x is World {
     x === "2434_world06" ||
     x === "hololive_01" ||
     x === "en_hololive" ||
-    x === "hololive_00"
+    x === "hololive_00" ||
+    x === "sightseeing"
   );
 }
 
