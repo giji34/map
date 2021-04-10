@@ -1,31 +1,10 @@
 import { Point, Point3 } from "./point";
+import { World } from "./world";
 
 export enum Dimension {
   TheNether = -1,
   Overworld = 0,
   TheEnd = 1,
-}
-
-export type World =
-  | "2434_main"
-  | "2434_world06"
-  | "hololive_01"
-  | "en_hololive"
-  | "hololive_00"
-  | "sightseeing";
-
-export function isWorld(x: any): x is World {
-  if (typeof x !== "string") {
-    return false;
-  }
-  return (
-    x === "2434_main" ||
-    x === "2434_world06" ||
-    x === "hololive_01" ||
-    x === "en_hololive" ||
-    x === "hololive_00" ||
-    x === "sightseeing"
-  );
 }
 
 export type Landmark = {

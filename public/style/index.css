@@ -77,6 +77,10 @@ body {
   background-color: royalblue;
 }
 
+.menuItem[data-selected="true"] {
+  background-color: royalblue;
+}
+
 .flexSpacer {
   flex-grow: 1;
 }
