@@ -86,17 +86,3 @@ export const MainComponent: FC<MainState> = ({}) => {
     </>
   );
 };
-
-// export class MainComponent_ extends React.Component<{}, MainState> {
-//   constructor(props: {}) {
-//     super(props);
-//     this.state = { world: "2434_main" };
-//   }
-//
-//   componentDidMount() {
-//     this.setState({ world });
-//   }
-//
-//   render() {
-//   }
-// }
