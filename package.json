@@ -7,9 +7,7 @@
   "scripts": {
     "build": "esbuild src/index.tsx --bundle --define:process.env.NODE_ENV=\\\"production\\\" --outfile=public/dist/index.js",
     "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'tool/*.ts' 'public/style/*.css'",
-    "landmarks": "ts-node tool/export.ts mca2png > landmarks.tsv",
-    "dev": "yarn build --servedir=public --serve=3000",
-    "worldborders": "ts-node tool/export-worldborders.ts"
+    "dev": "yarn build --servedir=public --serve=3000"
   },
   "devDependencies": {
     "@types/node": "^14.14.36",
@@ -22,7 +20,6 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-transition-group": "^4.4.1"
+    "react-dom": "^17.0.2"
   }
 }
