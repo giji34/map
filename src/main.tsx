@@ -23,7 +23,7 @@ export const MainComponent: FC = () => {
         }
       }
     }
-    return "2434_main";
+    return "hololive_01";
   });
   useEffect(() => {
     window.history.replaceState(null, document.title, `?world=${world}`);
