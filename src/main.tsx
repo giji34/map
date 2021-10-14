@@ -49,6 +49,7 @@ export const MainComponent: FC = () => {
           "hololive_00",
           "hololive_01",
           "en_hololive",
+          "id_hololive",
           "sightseeing",
         ].map((w: World, index: number) => {
           return (
