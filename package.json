@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "esbuild src/index.tsx --bundle --define:process.env.NODE_ENV=\\\"production\\\" --outfile=public/dist/index.js",
-    "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'tool/*.ts' 'public/style/*.css'",
+    "fmt": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'public/style/*.css'",
     "dev": "yarn build --servedir=public --serve=3000"
   },
   "devDependencies": {
