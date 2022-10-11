@@ -5,7 +5,8 @@ export type World =
   | "en_hololive"
   | "hololive_00"
   | "id_hololive"
-  | "sightseeing";
+  | "sightseeing"
+  | "hololive_sports_festival_2022";
 
 export function isWorld(x: any): x is World {
   if (typeof x !== "string") {
@@ -18,7 +19,8 @@ export function isWorld(x: any): x is World {
     x === "en_hololive" ||
     x === "hololive_00" ||
     x === "id_hololive" ||
-    x === "sightseeing"
+    x === "sightseeing" ||
+    x === "hololive_sports_festival_2022"
   );
 }
 
@@ -38,5 +40,7 @@ export function worldToString(world: World): string {
       return "IDホロ鯖";
     case "sightseeing":
       return "観光鯖";
+    case "hololive_sports_festival_2022":
+      return "ホロ鯖運動会";
   }
 }

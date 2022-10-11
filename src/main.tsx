@@ -51,6 +51,7 @@ export const MainComponent: FC = () => {
           "en_hololive",
           "id_hololive",
           "sightseeing",
+          "hololive_sports_festival_2022",
         ].map((w: World, index: number) => {
           return (
             <>
